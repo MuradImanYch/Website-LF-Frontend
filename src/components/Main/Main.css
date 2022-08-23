@@ -1,0 +1,82 @@
+.pageName {
+    color: #000;
+    padding: 5px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0px 0 15px 0px;
+    width: 100%;
+    border-bottom: 2px solid #18338a;
+}
+.newsStandings {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.topScoresNews {
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+@media (min-width: 768px) { /* >= 768px */ 
+    .newsStandings .standings {
+        display: flex;
+        justify-content: space-between;
+    }
+    .topScoresNews .topScores {
+        display: flex;
+        justify-content: space-between;
+    }
+    .standingsNews .standings {
+        display: flex;
+        justify-content: space-between;
+    }
+    .endedForecast {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+/*------------------Desctop-------------------*/
+@media (min-width: 1024px) { /* >= 1024px */
+    .pageName {
+        padding: 0;
+        font-size: 1.5em;
+    }
+    .newsStandings {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .newsStandings .standings {
+        display: block;
+    }
+    .uefaRanks {
+        display: flex;
+        justify-content: space-between;
+    }
+    .transfers {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1280px) { /* >= 1280px */
+    .topScoresNews .topScores {
+        display: block;
+    }
+    .topScoresNews {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .standingsNews {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+    }
+    .standingsNews .standings {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 0 0 22px;
+        margin: -32px 0 0 0;
+    }
+}

@@ -1,0 +1,97 @@
+#endedMatches .wrap {
+    width: 100%;
+    margin: 15px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    overflow: scroll;
+    cursor: pointer;
+}
+#endedMatches .wrap .col {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+    position: relative;
+    background: #fff;
+}
+#endedMatches .wrap span {
+    color: #000;
+    font-size: 0.7em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+#endedMatches .wrap .col img {
+    margin: 0 5px;
+}
+#endedMatches .wrap .col .lLogo img {
+    width: 14px;
+    height: 14px;
+}
+#endedMatches .wrap .hScore, #endedMatches .wrap .aScore {
+    border: 1px solid #ffbf66;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Graduate', cursive;
+}
+#endedMatches .rcWrap {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    width: 100%;
+    z-index: -1;
+    bottom: 4px;
+}
+#endedMatches .wrap .col:hover .rcWrap {
+    animation: rc 0.3s forwards;
+}
+@keyframes rc {
+    0% {bottom: 4px;}
+    50% {bottom: 15px;}
+    100% {bottom: 4px; z-index: 1;}
+}
+
+@media (min-width: 412px) {
+    #endedMatches .wrap .hScore, #endedMatches .wrap .aScore {
+        height: 20px;
+        width: 20px;
+    }
+    #endedMatches .wrap span {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 768px) {
+    #endedMatches {
+        width: 400px;
+    }
+    #endedMatches .wrap .hScore, #endedMatches .wrap .aScore {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #endedMatches {
+        width: 450px;
+    }
+    #endedMatches .wrap {
+        height: 350px;
+    }
+}
+
+@media (min-width: 1280px) {
+    #endedMatches {
+        width: 470px;
+    }
+}
+
+@media (min-width: 1680px) {
+    #endedMatches {
+        width: 570px;
+    }
+}

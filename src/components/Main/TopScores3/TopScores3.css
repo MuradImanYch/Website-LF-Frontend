@@ -1,0 +1,214 @@
+/*-----------------Mobile----------------*/
+#topScores3 .tableWrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
+    margin: 20px 0 0 0;
+}
+#topScores3 .tableWrap .table {
+    width: 100%;
+    border: 2px solid rgb(255, 191, 102);
+    height: 100%;
+    position: absolute;
+    padding: 0 5px 8px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#topScores3 .tableWrap .table:nth-child(1) {
+    left: 0;
+}
+#topScores3 .tableWrap .table:nth-child(2) {
+    left: 100%;
+}
+#topScores3 .tableWrap .table:nth-child(3) {
+    left: 200%;
+}
+#topScores3 .tableWrap .table > img {
+    width: 35px;
+    margin: 0 auto;
+    padding: 0 0 10px 0;
+}
+#topScores3 .tableWrap .table a {
+    text-align: center;
+    color: #000;
+    text-decoration: underline;
+    margin: 20px 0 0 0;
+}
+#topScores3 .tableWrap .table a:hover {
+    color: #FFD700;
+}
+#topScores3 .tableWrap .table .col {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+#topScores3 .tableWrap .table .col:nth-child(n+11) {
+    display: none;
+}
+#topScores3 .tableWrap .table .col:not(:nth-child(2)) {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+#topScores3 .tableWrap .table .col .head {
+    background: rgb(226, 226, 226);
+    min-width: 100%;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 0 0;
+}
+#topScores3 .tableWrap .table .col .head span {
+    font-size: 0.9em;
+    color: #000;
+}
+#topScores3 .tableWrap .table .col:nth-child(1) {
+    border: 0;
+}
+#topScores3 .tableWrap .table .col .head span:not(:last-child) {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+}
+#topScores3 .tableWrap .table .col .head span:nth-child(4) {
+    font-weight: bold;
+}
+#topScores3 .tableWrap .table .col .head span:nth-child(3) {
+    justify-content: flex-end;
+}
+#topScores3 .tableWrap .table .col .place {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 0.8em;
+    cursor: default;
+    font-weight: bold;
+    font-family: 'Graduate', cursive;
+}
+#topScores3 .tableWrap .table .col .photoName {
+    display: flex;
+    align-items: center;
+    width: 90px;
+}
+#topScores3 .tableWrap .table .col .photoName img {
+    width: 30px;
+    margin: 0 0 0 -15px;
+}
+#topScores3 .tableWrap .table .col .photoName span {
+    font-size: 0.8em;
+    color: #000;
+    display: flex;
+    text-align: center;
+    padding: 0 0 0 5px;
+}
+#topScores3 .tableWrap .table .col .assists { 
+    font-size: 0.9em;
+    color: #000;
+}
+#topScores3 .tableWrap .table .col .team {
+    width: 22px;
+    height: 22px;
+    margin-right: 25px;
+}
+#topScores3 .tableWrap .table .col .goals {
+    font-weight: bold;
+    color: #000;
+    font-size: 0.9em;
+    margin-right: 25px;
+}
+#topScores3 .arrowWrap {
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+#topScores3 .arrowWrap i {
+    color: rgb(0, 121, 202);
+    font-size: 1.4em;
+    padding: 8px 6px;
+    cursor: pointer;
+}
+#topScores3 .arrowWrap i:active {
+    color: rgb(255, 191, 102);
+}
+#topScores3 .col div {
+    color: #000;
+}
+
+@media (min-width: 768px) { /* > 768px */
+    #topScores3 .tableWrap {
+        display: flex;
+        justify-content: space-between;
+        width: 350px;
+    }
+    #topScores3 .tableWrap .table {
+        width: 350px;
+    }
+    #topScores3 .tableWrap .table .col {
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    #topScores3 .tableWrap .table .col:not(:nth-child(2)) {
+        padding-right: 3px;
+    }
+    #topScores3 .tableWrap .table .col .head {
+        padding: 0;
+    }
+    #topScores3 .tableWrap .table .col .head span:nth-child(1) {
+        width: 30px;
+    }
+    #topScores3 .tableWrap .table .col .head span:nth-child(5) {
+        padding: 0 5px 0 0;
+    }
+    #topScores3 .tableWrap .table .col .head span:nth-child(2) {
+        padding: 0 0 0 15px;
+    }
+    #topScores3 .tableWrap .table .col .head span:nth-child(3) {
+        margin: 0 0 0 15px;
+    }
+    #topScores3 .tableWrap .table .col .photoName {
+        width: 100px;
+    }
+}
+
+@media (min-width: 820px) { /* > 820px */
+    
+}
+
+@media (min-width: 1024px) { /* > 1024px */
+    #topScores3 .tableWrap .table, #topScores3 .tableWrap {
+        width: 450px;
+    }
+    #topScores3 {
+        margin: 0;
+        width: 450px;
+    }
+}
+
+@media (min-width: 1280px) { /* >= 1280px */
+    #topScores3 .tableWrap .table, #topScores3 .tableWrap {
+        width: 310px;
+    }
+    #topScores3 {
+        margin: 0;
+        width: 310px;
+    }
+}
+
+@media (min-width: 1680px) { 
+    #topScores3 .tableWrap .table, #topScores3 .tableWrap {
+        width: 360px;
+    }
+    #topScores3 {
+        width: 360px;
+    }
+}

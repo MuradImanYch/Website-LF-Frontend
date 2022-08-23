@@ -1,0 +1,102 @@
+/*-------------------Mobile------------------*/
+#newsSlider {
+    border: 2px solid rgb(204, 135, 45);
+}
+#newsSlider .swiper-slide {
+    height: 250px;
+}
+#newsSlider .swiper-slide a {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+#newsSlider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#newsSlider .swiper-slide h2 {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    background: rgb(0, 0, 0, 0.6);
+    width: 100%;
+    padding: 10px 10px 50px 10px;
+    line-height: 1.3;
+    font-size: 1.2em;
+}
+#newsSlider .swiper-slide:hover h2 {
+    background: rgb(0, 0, 0, 0.8);
+    transition: 0.4s;
+    color: rgb(224, 164, 79);
+}
+#newsSlider .swiper-slide:hover span {
+    background: rgb(0, 0, 0, 0.7);
+    transition: 0.4s;
+    color: rgb(224, 164, 79);
+}
+#newsSlider .swiper-pagination {
+    padding: 0 0 5px 0;
+}
+#newsSlider .swiper-pagination span {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border: 2px solid rgb(168, 122, 58);
+}
+#newsSlider .swiper-slide span {
+    position: absolute;
+    font-size: 0.8em;
+    background: rgb(0, 0, 0, 0.5);
+    padding: 4px 6px;
+    font-weight: bold;
+}
+
+
+@media (min-width: 540px) { /* >= 540px */
+    #newsSlider .swiper-slide {
+        height: 300px;
+    }
+}
+
+@media (min-width: 768px) { /* >= 768px */
+    #newsSlider .swiper-slide {
+        height: 400px;
+    }
+}
+
+@media (min-width: 820px) { /* >= 820px */
+    #newsSlider .swiper-slide {
+        height: 450px;
+    }
+}
+
+/*------------------Desctop-------------------*/
+@media (min-width: 1024px) { /* >= 1024px */
+    #newsSlider .swiper-slide {
+        height: 550px;
+    }
+    #newsSlider .swiper-slide h2 {
+        padding: 10px 10px 70px 10px;
+        font-size: 1.5em;
+    }
+    #newsSlider .swiper-pagination {
+        padding: 0 0 20px 0;
+    }
+    #newsSlider .swiper-slide span {
+        font-size: 0.9em;
+        padding: 6px 8px;
+    }
+}
+
+@media (min-width: 1920px) { /* >= 1920px */
+    #newsSlider .swiper-slide {
+        height: 650px;
+    }
+}
+
+@media (max-width: 320px) { /* <= 320px */
+    #newsSlider .swiper-slide {
+        height: 200px;
+    }
+}

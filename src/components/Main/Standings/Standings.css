@@ -1,0 +1,446 @@
+.chempionov {
+    background: linear-gradient(135deg, rgba(13,13,123,1) 35%, rgba(191,0,255,1) 100%);
+    color: #fff !important;
+}
+.Yevropi {
+    background: linear-gradient(135deg, rgba(255,87,0,1) 35%, rgba(0,0,0,1) 100%);
+    color: #fff !important;
+}
+.konferentsii {
+    background: linear-gradient(135deg, rgba(25,199,120,1) 35%, rgba(0,0,0,1) 100%);
+    color: #fff !important;
+}
+#standings .swiper-slide {
+    width: 100%;
+    border: 2px solid #ffbf66;
+    height: 500px;
+    margin: 20px 0 0 0;
+    padding: 0 5px;
+    position: relative;
+}
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 70px;
+}
+#standings .swiper-slide .lLogo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+#standings .swiper-slide img {
+    width: 40px;
+    height: 40px;
+}
+#standings .swiper-slide .head {
+    width: 100%;
+    height: 30px;
+    background: #e2e2e2;
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+#standings .swiper-slide .head span {
+    color: #000;
+}
+#standings .swiper-slide .head span:first-child {
+    margin: 0 0 0 10px;
+}
+#standings .swiper-slide .head span:nth-child(2) {
+    margin: 0 0 0 20px;
+}
+#standings .swiper-slide .head span:nth-child(3) {
+    margin: 0 0 0 55px;
+}
+#standings .swiper-slide .head span:nth-child(4) {
+    margin: 0 0 0 15px;
+}
+#standings .swiper-slide .head span:nth-child(5) {
+    margin: 0 0 0 15px;
+}
+#standings .col {
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+}
+#standings a {
+    color: #000;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+#standings a:hover {
+    color: #ffbf66;
+}
+#standings .col .place {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: .75em;
+    font-weight: 700;
+    font-family: "Graduate",cursive;
+    margin: 0 0 0 2px;
+    color: #000;
+}
+#standings .col img {
+    width: 25px;
+    height: 25px;
+}
+#standings .col .forAgainst {
+    display: flex;
+    margin: 0 0 0 10px;
+}
+#standings .col .forAgainst span {
+    margin: 0 0 0 2px;
+}
+#standings .col .name, #standings .col .games, #standings .col .forAgainst span, #standings .col .points {
+    font-size: .75em;
+    color: #000;
+}
+#standings .col .points, #standings .head span:last-child {
+    font-weight: bold;
+}
+#standings .col .points {
+    margin: 0 0 0 14px;
+    font-size: 0.9em;
+    font-family: 'Graduate', cursive;
+}
+#standings .nums {
+    display: flex;
+    margin: 0 8px 0 0;
+    width: 85px;
+    justify-content: space-between;
+}
+#standings .left {
+    display: flex;
+    align-items: center;
+}
+#standings .left img {
+    margin: 0 0 0 10px;
+}
+#standings .left .name {
+    margin: 0 0 0 4px;
+}
+
+@media (min-width: 320px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 10px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 20px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 20px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 24px;
+    }
+    #standings .nums {
+        margin: 0 10px 0 0;
+        width: 105px;
+    }
+    #standings .left img {
+        margin: 0 0 0 12px;
+    }
+    #standings .left .name {
+        margin: 0 0 0 6px;
+    }
+}
+
+@media (min-width: 360px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 30px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    #standings .col .place { 
+        margin: 0 0 0 14px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 29px;
+    }
+    #standings .nums {
+        margin: 0 20px 0 0;
+        width: 115px;
+    }
+    #standings .left img {
+        margin: 0 0 0 20px;
+    }
+    #standings .left .name {
+        margin: 0 0 0 8px;
+    }
+}
+
+@media (min-width: 375px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 50px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 8px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 21px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 23px;
+    }
+    #standings .nums {
+        margin: 0 16px 0 0;
+        width: 105px;
+    }
+    #standings .left img {
+        margin: 0 0 0 40px;
+    }
+}
+
+@media (min-width: 412px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 95px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 18px;
+    }
+    #standings .nums {
+        margin: 0 20px 0 0;
+        width: 106px;
+    }
+    #standings .left img {
+        margin: 0 0 0 52px;
+    }
+}
+
+@media (min-width: 414px) {
+    #standings .nums {
+        margin: 0 22px 0 0;
+        width: 105px;
+    }
+}
+
+@media (min-width: 540px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 45px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 65px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 120px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 50px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 50px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 37px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 46px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 48px;
+    }
+    #standings .nums {
+        margin: 0 44px 0 0;
+        width: 154px;
+    }
+    #standings .left img {
+        margin: 0 0 0 58px;
+    }
+    #standings .left .name {
+        margin: 0 0 0 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 30px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 13px;
+        min-width: 22px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 30px;
+    }
+    #standings .nums {
+        margin: 0 19px 0 0;
+        width: 115px;
+    }
+    #standings .left img {
+        margin: 0 0 0 22px;
+    }
+}
+
+@media (min-width: 820px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 30px;
+    }
+    #standings .nums {
+        margin: 0 26px 0 0;
+        width: 113px;
+    }
+    #standings .left img {
+        margin: 0 0 0 32px;
+    }
+}
+
+@media (min-width: 912px) {
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 120px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 65px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 20px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 20px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 8px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 15px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 19px;
+    }
+    #standings .nums {
+        margin: 0 10px 0 0;
+        width: 95px;
+    }
+    #standings .left img {
+        margin: 0 0 0 18px;
+    }
+    #standings .left .name {
+        margin: 0 0 0 8px;
+    }
+}
+
+@media (min-width: 1680px) {
+    #standings .swiper-slide .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    #standings .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #standings .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    #standings .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #standings .col .place {
+        margin: 0 0 0 18px;
+    }
+    #standings .col .forAgainst {
+        margin: 0 0 0 21px;
+    }
+    #standings .col .points {
+        margin: 0 0 0 23px;
+    }
+    #standings .nums {
+        margin: 0 28px 0 0;
+        width: 104px;
+    }
+    #standings .left img {
+        margin: 0 0 0 31px;
+    }
+    #standings .left .name {
+        margin: 0 0 0 8px;
+    }
+}
