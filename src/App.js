@@ -32,6 +32,17 @@ import Error from './components/Error/Error';
 import ExtendedNews from './components/Main/ExtendedNews/ExtendedNews';
 
 function App(props) {
+    var _lsTotal = 0,
+    _xLen, _x;
+for (_x in localStorage) {
+    if (!localStorage.hasOwnProperty(_x)) {
+        continue;
+    }
+    _xLen = ((localStorage[_x].length + _x.length) * 2);
+    _lsTotal += _xLen;
+    console.log(_x.substr(0, 50) + " = " + (_xLen / 1024).toFixed(2) + " KB")
+};
+console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
     const[barState, setBarstate] = useState(true); 
 
     const progressBar = () => { // scroll progressBar func
@@ -158,6 +169,9 @@ function App(props) {
 
     // desc sub sub menu enter/out events
     useEffect(() => { 
+        $('main .container').hide();
+        $('main .container').fadeIn();
+
         if($(window).width() > 1024) { // desctop
             $('#dNavWrap .subMenuWrap .rplLeagueMenu').mouseenter(() => {
                 $('#dNavWrap .rplLeagueMenu .subSubMenuWrap').show();
@@ -288,7 +302,7 @@ function App(props) {
                                 <li onMouseEnter={dOthersEnter} onMouseLeave={dOthersOut}>
                                     <Link to="">Разное <i className="fas fa-caret-down"></i></Link>
                                     <ul className='subMenuWrap othersSubMenu'>
-                                        <li><Link to=""><img src={videoReviews} alt="news" /> Видео обзоры</Link></li>
+                                        <li><Link to=""><img src={videoReviews} alt="news" /> Обзор матчей</Link></li>
                                         <li><Link to=""><img src={rank} alt="transfers" /> Рейтинг УЕФА</Link></li>
                                         <li><Link to=""><img src={rank} alt="transfers" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to=""><img src={tvProgram} alt="transfers" /> Телепрограмма</Link></li>
@@ -345,7 +359,7 @@ function App(props) {
                                 <li>
                                     <div><Link to="">Разное</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='othersSubMenu'>
-                                        <li><Link to=""><img src={videoReviews} alt="news" /> Видео обзоры</Link></li>
+                                        <li><Link to=""><img src={videoReviews} alt="news" /> Обзор матчей</Link></li>
                                         <li><Link to=""><img src={rank} alt="transfer" /> Рейтинг УЕФА</Link></li>
                                         <li><Link to=""><img src={rank} alt="transfers" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to=""><img src={tvProgram} alt="transfers" /> Телепрограмма</Link></li>
@@ -381,6 +395,7 @@ function App(props) {
                 <div className='container'>
                     <Routes>
                         <Route path='/' element={<Main />} />
+                        <Route path='/news/:id' element={<ExtendedNews />} />
                         <Route path='*' element={<Error />} />
                     </Routes>
                 </div>

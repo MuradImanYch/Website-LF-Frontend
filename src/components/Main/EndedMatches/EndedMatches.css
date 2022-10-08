@@ -6,7 +6,6 @@
     align-items: center;
     height: 250px;
     overflow: scroll;
-    cursor: pointer;
 }
 #endedMatches .wrap .col {
     display: flex;
@@ -36,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Graduate', cursive;
+    font-family: 'Graduate';
 }
 #endedMatches .rcWrap {
     display: flex;

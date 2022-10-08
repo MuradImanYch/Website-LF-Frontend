@@ -30,12 +30,15 @@ const MatchesSlider = () => {
               
                 return false;
               });
-            setMatchesSlider(unique && unique.map((e, i) => {
+              if(response.length > 0) {
+                localStorage.setItem('matchesSlider', JSON.stringify(unique));
+            }
+            setMatchesSlider(JSON.parse(localStorage.getItem('matchesSlider')) && JSON.parse(localStorage.getItem('matchesSlider')).map((e, i) => {
                 return <SwiperSlide key={'key' + i} id={'id' + i}>
                             <div className="top">
                                 <div className="lNameLogo">
                                     <img src={stadium} alt="стадион" title={e.stadium === '' ? 'Информация появится позже' : e.stadium} />
-                                    {e.lLogo === undefined ? <img src={friendly} alt={e.lNameRoundDateTime[0]} title='Товарищеский' width={'18px'} height={'18px'} /> : <img src={e.lLogo} alt={e.lNameRoundDateTime[0]} title={e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1]} />}
+                                    {e.lLogo === undefined ? <img src={friendly} alt={e.lNameRoundDateTime[0]} title='Товарищеский' width={'18px'} height={'18px'} /> : <img src={e.lLogo} alt={e.lNameRoundDateTime[0]} title={e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]} />}
                                     <img src={location} alt="геолокация" title={e.venue === '' ? 'Информация появится позже' : e.venue} />
                                 </div>
                                 <div className="teamsCoef">

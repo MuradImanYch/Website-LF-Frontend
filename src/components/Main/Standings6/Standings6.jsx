@@ -29,12 +29,15 @@ const Standings6 = () => {
             type: 'GET',
             url: selected1
         }).done((response) => {
-            setUeclStandings1(response && response.map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('ueclStandings1', JSON.stringify(response));
+            }
+            setUeclStandings1(JSON.parse(localStorage.getItem('ueclStandings1')) && JSON.parse(localStorage.getItem('ueclStandings1')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
-                                <span className='place' title='uel'>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -56,12 +59,15 @@ const Standings6 = () => {
             type: 'GET',
             url: selected2
         }).done((response) => {
-            setUeclStandings2(response && response.map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('ueclStandings2', JSON.stringify(response));
+            }
+            setUeclStandings2(JSON.parse(localStorage.getItem('ueclStandings2')) && JSON.parse(localStorage.getItem('ueclStandings2')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
-                                <span className='place' title='uel'>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -83,12 +89,15 @@ const Standings6 = () => {
             type: 'GET',
             url: selected3
         }).done((response) => {
-            setUeclStandings3(response && response.map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('ueclStandings3', JSON.stringify(response));
+            }
+            setUeclStandings3(JSON.parse(localStorage.getItem('ueclStandings3')) && JSON.parse(localStorage.getItem('ueclStandings3')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
-                                <span className='place' title='uel'>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>

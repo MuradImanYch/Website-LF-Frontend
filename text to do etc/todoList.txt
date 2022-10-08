@@ -1,82 +1,25 @@
-1) оптимизация рекламного банера 
-2) оптимизация слайдера
-3) оптимизация футера
-
-размер рекламого баннера: 
-1) для моб - 300х250, для фолдов итп. 100% по ширине и немного меньше по высоте. Для I Pad Pro 120x600
-2) для десктопа - 160х600, для <=1280 - 120x600. 
-Note: Для >=1366 все оптимизировать
-
-slice(6, response.articles.length)
-
-https://www.sport-express.ru/
-https://football-video.org/
-https://www.championat.com/video/
-
-
-let table1 = 0;
-    let table2 = 100;
-    let table3 = 200;
-    let leagId = [235, 39, 140, 135, 78, 61];
-    let selected = [];
-    let rand = Math.floor(Math.random() * leagId.length); // rand num | push & splice
-    selected.push(leagId[rand]);
-    leagId.splice(rand, 1);
-    let rand2 = Math.floor(Math.random() * leagId.length);
-    selected.push(leagId[rand2]);
-    leagId.splice(rand2, 1);
-    let rand3 = Math.floor(Math.random() * leagId.length);
-    selected.push(leagId[rand3]);
-    leagId.splice(rand3, 1);
-    let obj = [];
-    const[table, setTable] = useState();
-    let season = 2021;
-
-selected && selected.map((id) => {
-            const settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": `https://api-football-v1.p.rapidapi.com/v3/standings?season=${season}&league=${id}`,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5"
-                }
-            };
-            $.ajax(settings).done(function (response) {
-                obj.push(response.response);
-                setTable(obj && obj.map((id) => {
-                    return <div className="table" key={'id'+id[0].league.id} id={'id'+id[0].league.id}>
-                    <img src={id[0].league.logo} alt={id[0].league.name} title={id[0].league.name} />
-                    <div className="col">
-                        <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
-                        </div>
-                    </div>
-                    {
-                        id[0].league.standings[0] && id[0].league.standings[0].map((e, indx) => {
-                            return <div className="col" key={indx}>
-                                <div title={e.description} className={`place ${e.description?.split(" ")[2]?.toLowerCase() + e.description?.split(" ")[3]}`}>{e.rank}</div>
-                                <div className='logoName'>
-                                    <img src={e.team.logo} alt="img" />
-                                    <span>{e.team.name}</span>
+return <SwiperSlide key={liveFx.fixture.id} id={'fx'+liveFx.fixture.id}>
+                        <progress max="90" value={liveFx.fixture.status.elapsed}></progress> 
+                            <div className="slideWrap">
+                                <div className="col">
+                                    <img src={liveFx.teams.home.logo} alt="hLogo" title={liveFx.teams.home.name} />
+                                    <span title={liveFx.teams.home.name}>{liveFx.teams.home.name}</span>
                                 </div>
-                                <span className='games'>{e.all.played}</span>
-                                <div className='scoredConceded'>
-                                    <span>{e.all.goals.for} </span>
-                                    :
-                                    <span> {e.all.goals.against} </span>
+                                <div className="col">
+                                    <img src={liveFx.league.logo} alt="lLogo" title={liveFx.league.country + ' | ' + liveFx.league.name + ' | ' + liveFx.league.round} />
+                                    <div className='scoreWrap'>
+                                        <span>{liveFx.goals.home}</span>
+                                        <span>-</span>
+                                        <span>{liveFx.goals.away}</span>
+                                    </div>
+                                    <div className='periodTimeWrap'>
+                                        <span className='period'>{liveFx.fixture.status.short}</span>
+                                        <span className='time'>{liveFx.fixture.status.elapsed}</span>
+                                    </div>
                                 </div>
-                                <span className='points'>{e.points}</span>
+                                <div className="col">
+                                    <img src={liveFx.teams.away.logo} alt="aLogo" title={liveFx.teams.away.name} />
+                                    <span title={liveFx.teams.away.name}>{liveFx.teams.away.name}</span>
+                                </div>
                             </div>
-                        })
-                    }
-                    <NavLink to="">Подробнее...</NavLink>  
-                </div>
-                }));
-            });
-        });
+                        </SwiperSlide>

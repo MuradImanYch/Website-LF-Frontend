@@ -60,7 +60,7 @@
 }
 .uefaTable .place {
     font-weight: bold;
-    font-family: 'Graduate', cursive;
+    font-family: 'Graduate';
     font-size: 0.8em;
 }
 .uefaTable .total,  .uefaTable .current {
@@ -86,7 +86,7 @@
     }
     .uefaTable .place {
         font-weight: bold;
-        font-family: 'Graduate', cursive;
+        font-family: 'Graduate';
         font-size: 0.9em;
     }
     .uefaTable .flagName img {

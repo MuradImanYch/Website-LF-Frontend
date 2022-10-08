@@ -11,7 +11,10 @@ const VideoNews = () => {
             type: "GET",
             url: '/videoNews'
         }).done(function (response) {
-            setVideoNews(response && response.splice(0, 8).map((news, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('videoNews', JSON.stringify(response));
+            }
+            setVideoNews(JSON.parse(localStorage.getItem('videoNews')) && JSON.parse(localStorage.getItem('videoNews')).splice(0, 8).map((news, i) => {
                 const animIn = () => { // anim mouse in
                     $(`#videoNews #${'id' + i} .img img`).css({'transform': 'scale(1.04)'});
                     $(`#videoNews #${'id' + i}`).css({'boxShadow': '0px 0px 15px 1px #000'});

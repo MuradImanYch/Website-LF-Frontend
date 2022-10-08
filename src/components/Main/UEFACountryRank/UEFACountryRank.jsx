@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './UEFACountryRank.css';
 import $ from 'jquery';
-import uefaLogo from '../../../assets/ico/uefaLogo.png';
+import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import { Link } from 'react-router-dom';
 
 const UEFACountryRank = () => {
@@ -52,7 +52,7 @@ const UEFACountryRank = () => {
 
     const uefaCountryRankToggle = () => {
         setExpandToggle(31);
-        $('#uefaCountryRank > div > div.more > a > span').text('Подробнее');
+        $('#uefaCountryRank > section > div > div.more > a > span').text('Подробнее');
         setLinkToggle('uefa-country-rank');
     }
 

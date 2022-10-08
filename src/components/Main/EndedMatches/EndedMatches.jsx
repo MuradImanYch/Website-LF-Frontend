@@ -4,6 +4,7 @@ import './EndedMatches.css';
 import friendly from '../../../assets/ico/friendly.webp';
 import redCard from '../../../assets/ico/redCard.webp';
 import yellowRedCard from '../../../assets/ico/yellowRedCard.webp';
+import undefTeam from '../../../assets/ico/undefTeam.webp';
 
 const EndedMatches = () => {
     const[endedMatches, setEndedMatches] = useState();
@@ -14,8 +15,11 @@ const EndedMatches = () => {
                 type: "GET",
                 url: '/endedMatches',
             }).done(function (response) {
-                setEndedMatches(response && response.map((e, i) => {
-                    return  <div key={'key' + i} className="col" id={'id' + i} title={e.lName === '' ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
+                if(response.length > 0) {
+                    localStorage.setItem('endedMatches', JSON.stringify(response));
+                }
+                setEndedMatches(JSON.parse(localStorage.getItem('endedMatches')) && JSON.parse(localStorage.getItem('endedMatches')).map((e, i) => {
+                    return  <div key={'key' + i} className="col" id={'id' + i} title={e.lName.length > 70 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
                                 <div className="rcWrap">
                                     <div className="rcht">
                                         {e.hCards === 'yellowred' ? <img src={yellowRedCard} title={e.hCardPlayer} width={'14px'} alt="КК" /> : false}
@@ -47,16 +51,17 @@ const EndedMatches = () => {
                                     </div>
                                 </div>
                                 <span className="hName">{e.hName}</span>
-                                <span className="hLogo"><img src={e.hLogo} alt={e.hName} /></span>
+                                <span className="hLogo">{e.hLogo === undefined ? <img width={'13px'} src={undefTeam} alt={e.hName} /> : <img src={e.hLogo} alt={e.hName} />}</span>
                                 <span className="hScore">{e.hScore}</span>
-                                <span className='lLogo'>{e.lLogo == '' ? <img src={friendly} alt="Товарищеский" title="Товарищеский" /> : <img src={e.lLogo} alt={e.lName} />}</span>
+                                <span className='lLogo'>{e.lLogo === undefined ? <img src={friendly} alt={e.lName} /> : <img src={e.lLogo} alt={e.lName} />}</span>
                                 <span className="aScore">{e.aScore}</span>
-                                <span className="aLogo"><img src={e.aLogo} alt={e.aName} /></span>
+                                <span className="aLogo">{e.aLogo === undefined ? <img width={'13px'} src={undefTeam} alt={e.aName} /> : <img src={e.aLogo} alt={e.aName} />}</span>
                                 <span className="aName">{e.aName}</span>
                             </div>
                 })); 
             });
         }
+        
         update();
         setInterval(() => {
             update();

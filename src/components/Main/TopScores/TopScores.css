@@ -1,200 +1,555 @@
-/*-----------------Mobile----------------*/
-#topScores {
-    margin: 210px 0 0 0;
-}
-#topScores .tableWrap {
-    position: relative;
+#topScores .swiper-slide {
     width: 100%;
-    overflow: hidden;
+    border: 2px solid #ffbf66;
     height: 500px;
     margin: 20px 0 0 0;
+    padding: 0 5px;
+    position: relative;
 }
-#topScores .tableWrap .table {
-    width: 100%;
-    border: 2px solid rgb(255, 191, 102);
-    height: 100%;
+.swiper-button-prev, .swiper-button-next {
     position: absolute;
-    padding: 0 5px 8px 5px;
+    top: 70px;
+}
+#topScores .swiper-slide .lLogo {
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    padding: 20px 0 0 0;
 }
-#topScores .tableWrap .table:nth-child(1) {
-    left: 0;
+#topScores .swiper-slide img {
+    width: 40px;
+    height: 40px;
 }
-#topScores .tableWrap .table:nth-child(2) {
-    left: 100%;
+#topScores .swiper-slide .head {
+    width: 100%;
+    height: 30px;
+    background: #e2e2e2;
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
 }
-#topScores .tableWrap .table:nth-child(3) {
-    left: 200%;
-}
-#topScores .tableWrap .table > img {
-    width: 35px;
-    margin: 0 auto;
-    padding: 0 0 10px 0;
-}
-#topScores .tableWrap .table a {
-    text-align: center;
+#topScores .swiper-slide .head span {
     color: #000;
-    text-decoration: underline;
-    margin: 20px 0 0 0;
 }
-#topScores .tableWrap .table a:hover {
-    color: #FFD700;
+#topScores .swiper-slide .head span:first-child {
+    margin: 0 0 0 10px;
 }
-#topScores .tableWrap .table .col {
+#topScores .swiper-slide .head span:nth-child(2) {
+    margin: 0 0 0 20px;
+}
+#topScores .swiper-slide .head span:nth-child(3) {
+    margin: 0 0 0 45px;
+}
+#topScores .swiper-slide .head span:nth-child(4) {
+    margin: 0 0 0 35px;
+}
+#topScores .swiper-slide .head span:nth-child(5) {
+    margin: 0 0 0 20px;
+}
+#topScores .swiper-slide .head span:nth-child(6) {
+    margin: 0 0 0 15px;
+}
+#topScores .col {
     width: 100%;
     height: 35px;
+    border-bottom: 1px solid #ccc;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     padding: 20px 0;
-}
-#topScores .tableWrap .table .col:nth-child(n+11) {
-    display: none;
-}
-#topScores .tableWrap .table .col:not(:nth-child(2)) {
-    border-bottom: 1px solid rgb(204, 204, 204);
-}
-#topScores .tableWrap .table .col .head {
-    background: rgb(226, 226, 226);
-    min-width: 100%;
-    min-height: 30px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 20px 0 0;
 }
-#topScores .tableWrap .table .col .head span {
-    font-size: 0.9em;
+#topScores a {
     color: #000;
-}
-#topScores .tableWrap .table .col:nth-child(1) {
-    border: 0;
-}
-#topScores .tableWrap .table .col .head span:not(:last-child) {
-    width: 60px;
     display: flex;
     justify-content: center;
+    margin: 15px 0 0 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
-#topScores .tableWrap .table .col .head span:nth-child(4) {
-    font-weight: bold;
+#topScores a:hover {
+    color: #ffbf66;
 }
-#topScores .tableWrap .table .col .head span:nth-child(3) {
-    justify-content: flex-end;
-}
-#topScores .tableWrap .table .col .place {
+#topScores .col .place {
     width: 22px;
     height: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    font-size: 0.8em;
-    cursor: default;
-    font-weight: bold;
-    font-family: 'Graduate', cursive;
+    font-size: .75em;
+    font-weight: 700;
+    font-family: "Graduate";
+    margin: 0 0 0 2px;
+    color: #000;
 }
-#topScores .tableWrap .table .col .photoName {
+#topScores .col img {
+    width: 20px;
+    height: 20px;
+}
+#topScores .tLogoName {
+    margin: 0 0 0 30px;
     display: flex;
     align-items: center;
-    width: 80px;
 }
-#topScores .tableWrap .table .col .photoName img {
-    width: 30px;
-    margin: 0 0 0 -15px;
-}
-#topScores .tableWrap .table .col .photoName span {
-    font-size: 0.8em;
-    color: #000;
-    display: flex;
-    text-align: center;
-}
-#topScores .tableWrap .table .col .assists { 
-    font-size: 0.9em;
-    color: #000;
-}
-#topScores .tableWrap .table .col .team {
-    width: 22px;
-    height: 22px;
-}
-#topScores .tableWrap .table .col .photoName span {
-    padding: 0 0 0 5px;
-}
-#topScores .tableWrap .table .col .goals {
+#topScores .col .goals, #topScores .head span:nth-child(4) {
     font-weight: bold;
-    color: #000;
+}
+#topScores .col .goals {
     font-size: 0.9em;
+    font-family: 'Graduate';
+    min-width: 65px;
+    display: flex;justify-content: center;
 }
-#topScores .arrowWrap {
-    position: absolute;
-    width: 100%;
-    top: 45%;
+#topScores .nums {
     display: flex;
+    margin: 0 45px 0 0;
+    width: 85px;
     justify-content: space-between;
-    padding: 0 10px;
 }
-#topScores .arrowWrap i {
-    color: rgb(0, 121, 202);
-    font-size: 1.4em;
-    padding: 8px 6px;
-    cursor: pointer;
-}
-#topScores .arrowWrap i:active {
-    color: rgb(255, 191, 102);
-}
-#topScores .col div {
+#topScores .nums span {
     color: #000;
+    font-size: 0.75em;
+}
+#topScores .left {
+    display: flex;
+    align-items: center;
+}
+#topScores .left img {
+    margin: 0 0 0 10px;
+}
+#topScores .left .name {
+    margin: 0 0 0 6px;
+    width: 30px;
+    color: #000;
+    font-size: 0.8em;
+}
+#topScores .nums span:nth-child(2) {
+    min-width: 3px;
+    display: flex;
+    justify-content: center;
+}
+#topScores .nums span:nth-child(3) {
+    min-width: 45px;
+    display: flex;
+    justify-content: center;
+}
+#topScores .nums span:nth-child(4) {
+    min-width: 45px;
+    display: flex;
+    justify-content: center;
 }
 
-@media (min-width: 768px) { /* > 768px */
-    #topScores .arrowWrap {
-        display: none;
+@media (min-width: 320px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 10px;
     }
-    #topScores .tableWrap {
-        position: static;
-        display: flex;
-        justify-content: space-between;
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 20px;
     }
-    #topScores .tableWrap .table {
-        width: 230px;
-        position: static;
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 60px;
     }
-    #topScores .tableWrap .table .col {
-        justify-content: space-between;
-        padding: 20px 0;
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 45px;
     }
-    #topScores .tableWrap .table .col:not(:nth-child(2)) {
-        padding-right: 3px;
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
     }
-    #topScores .tableWrap .table .col .head {
-        padding: 0;
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 20px;
     }
-    #topScores .tableWrap .table .col .head span:nth-child(1) {
-        width: 30px;
+    #topScores .tLogoName {
+        margin: 0 0 0 45px;
     }
-    #topScores .tableWrap .table .col .head span:nth-child(5) {
-        padding: 0 5px 0 0;
+    #topScores .nums {
+        margin: 0 50px 0 0;
+        width: 105px;
     }
-    #topScores .tableWrap .table .col .head span:nth-child(2) {
-        padding: 0 0 0 15px;
+    #topScores .left img {
+        margin: 0 0 0 12px;
     }
-    #topScores .tableWrap .table .col .head span:nth-child(3) {
+    #topScores .nums span:nth-child(2) {
+        min-width: 0px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 55px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 20px;
+    }
+    #topScores .col .goals {
+        min-width: 75px;
+        margin: 0 0 0 5px;
+    }
+}
+
+@media (min-width: 360px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .col .place { 
+        margin: 0 0 0 14px;
+    }
+    #topScores .nums {
+        margin: 0 50px 0 0;
+        width: 115px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 20px;
+    }
+    #topScores .left .name {
+        margin: 0 0 0 8px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 70px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 10px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 30px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 52px;
+    }
+    #topScores .col .goals {
+        min-width: 10px;
+        margin: 0 0 0 35px;
+    }
+}
+
+@media (min-width: 375px) {
+    #topScores .swiper-slide .head span:first-child {
         margin: 0 0 0 15px;
     }
-}
-
-@media (min-width: 820px) { /* > 820px */
-    #topScores .tableWrap .table {
-        width: 250px;
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 50px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 8px;
+    }
+    #topScores .nums {
+        margin: 0 43px 0 0;
+        width: 105px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 40px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 56px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 15px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 66px;
+    }
+    #topScores .col .goals {
+        min-width: 15px;
+        margin: 0 0 0 33px;
     }
 }
 
-@media (min-width: 1024px) { /* > 1024px */
-    #topScores .tableWrap .table {
-        width: 320px;
+@media (min-width: 412px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 25px;
     }
-    #topScores {
-        margin: 0;
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 42px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 18px;
+    }
+    #topScores .nums {
+        margin: 0 47px 0 0;
+        width: 106px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 52px;
+    }
+}
+
+@media (min-width: 414px) {
+    #topScores .nums {
+        margin: 0 49px 0 0;
+        width: 105px;
+    }
+}
+
+@media (min-width: 540px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 45px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 94px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 70px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 50px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 45px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 37px;
+    }
+    #topScores .nums {
+        margin: 0 95px 0 0;
+        width: 154px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 58px;
+    }
+    #topScores .left .name {
+        margin: 0 0 0 12px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 92px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 20px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 15px;
+    }
+    #topScores .col .goals {
+        min-width: 30px;
+        margin: 0 0 0 53px;
+    }
+}
+
+@media (min-width: 768px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 30px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 13px;
+        min-width: 22px;
+    }
+    #topScores .nums {
+        margin: 0 55px 0 0;
+        width: 115px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 22px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 65px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 16px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 25px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 48px;
+    }
+    #topScores .col .goals {
+        min-width: 17px;
+        margin: 0 0 0 28px;
+    }
+}
+
+@media (min-width: 820px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #topScores .nums {
+        margin: 0 54px 0 0;
+        width: 113px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 32px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 66px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 17px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 56px;
+    }
+    #topScores .col .goals {
+        margin: 0 0 0 30px;
+    }
+}
+
+@media (min-width: 912px) {
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 91px;
+    }
+    #topScores .nums {
+        margin: 0 57px 0 0;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 65px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 16px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 25px;
+    }
+    #topScores .col .goals {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 63px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 60px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 35px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 20px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 20px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 8px;
+    }
+    #topScores .nums {
+        margin: 0 38px 0 0;
+        width: 95px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 18px;
+    }
+    #topScores .left .name {
+        margin: 0 0 0 8px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 45px;
+    }
+    #topScores .nums span:nth-child(4) {
+        min-width: 30px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 40px;
+    }
+    #topScores .col .goals {
+        margin: 0 0 0 25px;
+    }
+}
+
+@media (min-width: 1680px) {
+    #topScores .swiper-slide .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    #topScores .swiper-slide .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    #topScores .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    #topScores .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 45px;
+    }
+    #topScores .swiper-slide .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .swiper-slide .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    #topScores .col .place {
+        margin: 0 0 0 18px;
+    }
+    #topScores .nums {
+        margin: 0 56px 0 0;
+        width: 104px;
+    }
+    #topScores .left img {
+        margin: 0 0 0 31px;
+    }
+    #topScores .nums span:nth-child(2) {
+        min-width: 55px;
+    }
+    #topScores .nums span:nth-child(3) {
+        min-width: 17px;
+    }
+    #topScores .tLogoName {
+        margin: 0 0 0 52px;
+    }
+    #topScores .col .goals {
+        margin: 0 0 0 35px;
     }
 }

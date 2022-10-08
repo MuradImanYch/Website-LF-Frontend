@@ -10,7 +10,10 @@ const TransferList = () => {
             type: "GET",
             url: '/transferList',
         }).done((response) => {
-            setTransferList(response && response.splice(0, 21).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('transferList', JSON.stringify(response));
+            }
+            setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, 21).map((e, i) => {
                 return <div className="col" key={'key' + i} id={'id' + i}>
                 <div className="player">
                     <img src={e.img} alt={e.name} title={e.name} />

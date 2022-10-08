@@ -49,7 +49,7 @@
     align-items: center;
     margin: 0 -5px 0 0;
     font-weight: bold;
-    font-family: 'Graduate', cursive;
+    font-family: 'Graduate';
 }
 
 @media (min-width: 540px) { /* >= 540px */

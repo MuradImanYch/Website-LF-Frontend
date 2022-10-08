@@ -83,13 +83,13 @@
     border-radius: 5px;
     font-size: .75em;
     font-weight: 700;
-    font-family: "Graduate",cursive;
+    font-family: "Graduate";
     margin: 0 0 0 2px;
     color: #000;
 }
 #standings5 .col img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 #standings5 .col .forAgainst {
     display: flex;
@@ -108,7 +108,7 @@
 #standings5 .col .points {
     margin: 0 0 0 14px;
     font-size: 0.9em;
-    font-family: 'Graduate', cursive;
+    font-family: 'Graduate';
 }
 #standings5 .nums {
     display: flex;

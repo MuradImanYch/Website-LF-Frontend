@@ -1,5 +1,6 @@
 import React from 'react';
 import './Main.css';
+
 import MainSlider from './MainSlider/MainSlider';
 import MatchesSlider from './MatchesSlider/MatchesSlider';
 import MainNews from './MainNews/MainNews';
@@ -22,7 +23,6 @@ import VideoNews from './VideoNews/VideoNews';
 import EndedMatches from './EndedMatches/EndedMatches';
 import Forecasts from './Forecasts/Forecasts';
 import Standings6 from './Standings6/Standings6';
-import VKPosts from './VKPosts/VKPosts';
 
 const Main = (props) => {
 
@@ -45,7 +45,6 @@ const Main = (props) => {
             <div className="newsStandings">
                 <div className="newsVk">
                     <MainNews3 />
-                    <VKPosts />
                 </div>
                 <div className="standings">
                     <div>

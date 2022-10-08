@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './MainNews3.css';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 const MainNews3 = () => {
     const[mainNews, setMainNews] = useState(); 
@@ -10,7 +11,10 @@ const MainNews3 = () => {
                 type: "GET",
                 url: '/mainNews3'
             }).done(function (response) {
-                setMainNews(response && response.splice(0, 6).map((news, i) => {
+                if(response.length > 0) {
+                    localStorage.setItem('mainNews3', JSON.stringify(response));
+                }
+                setMainNews(JSON.parse(localStorage.getItem('mainNews3')) && JSON.parse(localStorage.getItem('mainNews3')).splice(0, 6).map((news, i) => {
                     const animIn = () => { // anim mouse in
                         $(`#mainNews3 #${'id' + i} .img img`).css({'transform': 'scale(1.04)'});
                         $(`#mainNews3 #${'id' + i}`).css({'boxShadow': '0px 0px 15px 1px #000'});
@@ -24,11 +28,11 @@ const MainNews3 = () => {
                         $(`#mainNews3 #${'id' + i} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'key' + i} className="cart" id={'id' + i} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <a href={'https://www.euro-football.ru' + news.src} target="__blank">
+                                <Link to={`/news/${news.id}`}>
                                     <div className="img"><img alt={news.title} src={news.img} /></div>
                                     <h3>{news.title}</h3>
                                     <span>{news.date}</span>
-                                </a>
+                                </Link>
                             </div>
                 })); 
             });

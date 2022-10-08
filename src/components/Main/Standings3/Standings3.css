@@ -87,7 +87,7 @@
     font-size: 0.8em;
     cursor: default;
     font-weight: bold;
-    font-family: 'Graduate', cursive;
+    font-family: 'Graduate';
 }
 #standingsSlider3 .tableWrap .table .col .logoName {
     display: flex;

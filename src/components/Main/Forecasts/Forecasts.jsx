@@ -10,7 +10,10 @@ const Forecasts = () => {
             type: "GET",
             url: '/forecasts',
         }).done(function (response) {
-            setForecasts(response && response.map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('forecasts', JSON.stringify(response));
+            }
+            setForecasts(JSON.parse(localStorage.getItem('forecasts')) && JSON.parse(localStorage.getItem('forecasts')).map((e, i) => {
                 return  <div className="col" id={'id' + i} key={'key' + i}>
                             <div><span className="lName">{e.lName}</span></div>
                             <div className='center'>

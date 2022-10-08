@@ -7,6 +7,7 @@ import 'swiper/css/scrollbar';
 import $ from 'jquery';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import { Link } from 'react-router-dom';
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -18,13 +19,16 @@ const NewsSlider = () => {
                 type: "GET",
                 url: '/mainSlider'
             }).done(function (response) {
-                setNewsSlider(response && response.splice(0, 8).map((news, i) => {
+                if(response.length > 0) {
+                    localStorage.setItem('mainSlider', JSON.stringify(response));
+                }
+                setNewsSlider(JSON.parse(localStorage.getItem('mainSlider')) && JSON.parse(localStorage.getItem('mainSlider')).splice(0, 8).map((news, i) => {
                     return <SwiperSlide key={'key' + i} id={'id' + i}>
-                        <a href={`https://footballhd.ru/articles${news.src}`} target="_blank">
+                        <Link to={`/news/${news.id}`}>
                             <span>{news.date}</span>
                             <img src={news.img} alt="img" />
                             <h2>{news.title}</h2>
-                        </a>
+                        </Link>
                     </SwiperSlide>
                 })); 
             });

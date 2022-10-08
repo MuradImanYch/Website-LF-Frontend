@@ -10,7 +10,6 @@ import laligaLogo from '../../../assets/ico/laligaLogo.webp';
 import bundesligaLogo from '../../../assets/ico/bundesligaLogo.webp';
 import serieaLogo from '../../../assets/ico/serieaLogo.webp';
 import ligue1Logo from '../../../assets/ico/ligue1Logo.webp';
-import CyrillicToTranslit from 'cyrillic-to-translit-js';
 
 SwiperCore.use([Navigation]);
 
@@ -22,17 +21,18 @@ const StandingsSlider = () => {
     const [serieaStandings, setSerieaStandings] = useState(); 
     const [ligue1Standings, setLigue1Standings] = useState(); 
 
-    useEffect(() => {
-        const cyrillicToTranslit = new CyrillicToTranslit();
-        
+    useEffect(() => { 
         $.ajax({
             type: 'GET',
             url: '/rplStandings'
         }).done((response) => {
-            setRplStandings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('rplStandings', JSON.stringify(response));
+            }
+            setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                             <div className="left">
-                                <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -53,10 +53,13 @@ const StandingsSlider = () => {
             type: 'GET',
             url: '/eplStandings'
         }).done((response) => {
-            setEplStandings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('eplStandings', JSON.stringify(response));
+            }
+            setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                             <div className="left">
-                                <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -77,10 +80,13 @@ const StandingsSlider = () => {
             type: 'GET',
             url: '/laligaStandings'
         }).done((response) => {
-            setLaligaStandings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('laligaStandings', JSON.stringify(response));
+            }
+            setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                             <div className="left">
-                                <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -101,10 +107,13 @@ const StandingsSlider = () => {
             type: 'GET',
             url: '/bundesligaStandings'
         }).done((response) => {
-            setBundesligaStandings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('bundesligaStandings', JSON.stringify(response));
+            }
+            setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                             <div className="left">
-                                <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -125,10 +134,13 @@ const StandingsSlider = () => {
             type: 'GET',
             url: '/serieaStandings'
         }).done((response) => {
-            setSerieaStandings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('serieaStandings', JSON.stringify(response));
+            }
+            setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                             <div className="left">
-                                <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                 <img src={e.logo} alt={e.name} title={e.name} />
                                 <span className='name'>{e.name}</span>
                             </div>
@@ -149,10 +161,13 @@ const StandingsSlider = () => {
             type: 'GET',
             url: '/ligue1Standings'
         }).done((response) => {
-            setLigue1Standings(response && response.splice(0, 8).map((e, i) => {
+            if(response.length > 0) {
+                localStorage.setItem('ligue1Standings', JSON.stringify(response));
+            }
+            setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
                         <div className="left">
-                            <span className={`place ${cyrillicToTranslit.transform(e.description, ' ').split(" ").slice(-1)}`} title={e.description}>{e.place}</span>
+                            <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                             <img src={e.logo} alt={e.name} title={e.name} />
                             <span className='name'>{e.name}</span>
                         </div>
@@ -173,7 +188,7 @@ const StandingsSlider = () => {
     return (
         <div id="standings">
             <section>
-                <h3 className="sectionName">Турнирная таблица - Чемпионат</h3>
+                <h3 className="sectionName">Турнирная таблица - Чемпионаты</h3>
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
