@@ -65,7 +65,7 @@ const EndedMatches = () => {
         update();
         setInterval(() => {
             update();
-        }, 60000);
+        }, 120000);
 }, []);
 
     return (

@@ -4,7 +4,7 @@ import './Error.css';
 const Error = (props) => {
     return (
         <div id='error'>
-            404
+            <img src={ require(`../../assets/img/error404${Math.ceil(Math.random() * 4)}.jpg`) } alt="" />
         </div>
     );
 };
