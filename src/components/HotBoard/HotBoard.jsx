@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './HotBoard.css';
-import $ from 'jquery';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from 'swiper';
+import $ from 'jquery';
+
 import friendly from '../../assets/ico/friendly.webp';
 import undefTeam from '../../assets/ico/undefTeam.webp';
 
@@ -39,7 +40,7 @@ function HotBoard(props) {
                 if(response.length > 0) document.querySelector('#hotBoard .liveWrap span').style.color = 'red';
             });
         }
-
+        
         update();
         setInterval(() => {
             update();
