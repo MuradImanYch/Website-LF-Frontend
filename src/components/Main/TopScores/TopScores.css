@@ -1,4 +1,4 @@
-#topScores .swiper-slide {
+.table6xn .swiper-slide {
     width: 100%;
     border: 2px solid #ffbf66;
     height: 500px;
@@ -10,17 +10,17 @@
     position: absolute;
     top: 70px;
 }
-#topScores .swiper-slide .lLogo {
+.table6xn .swiper-slide .lLogo {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 20px 0 0 0;
 }
-#topScores .swiper-slide img {
+.table6xn .swiper-slide img {
     width: 40px;
     height: 40px;
 }
-#topScores .swiper-slide .head {
+.table6xn .swiper-slide .head {
     width: 100%;
     height: 30px;
     background: #e2e2e2;
@@ -28,28 +28,28 @@
     display: flex;
     align-items: center;
 }
-#topScores .swiper-slide .head span {
+.table6xn .swiper-slide .head span {
     color: #000;
 }
-#topScores .swiper-slide .head span:first-child {
+.table6xn .swiper-slide .head span:first-child {
     margin: 0 0 0 10px;
 }
-#topScores .swiper-slide .head span:nth-child(2) {
+.table6xn .swiper-slide .head span:nth-child(2) {
     margin: 0 0 0 20px;
 }
-#topScores .swiper-slide .head span:nth-child(3) {
+.table6xn .swiper-slide .head span:nth-child(3) {
     margin: 0 0 0 45px;
 }
-#topScores .swiper-slide .head span:nth-child(4) {
+.table6xn .swiper-slide .head span:nth-child(4) {
     margin: 0 0 0 35px;
 }
-#topScores .swiper-slide .head span:nth-child(5) {
+.table6xn .swiper-slide .head span:nth-child(5) {
     margin: 0 0 0 20px;
 }
-#topScores .swiper-slide .head span:nth-child(6) {
+.table6xn .swiper-slide .head span:nth-child(6) {
     margin: 0 0 0 15px;
 }
-#topScores .col {
+.table6xn .col {
     width: 100%;
     height: 35px;
     border-bottom: 1px solid #ccc;
@@ -58,7 +58,7 @@
     padding: 20px 0;
     justify-content: space-between;
 }
-#topScores a {
+.table6xn a {
     color: #000;
     display: flex;
     justify-content: center;
@@ -66,10 +66,10 @@
     text-decoration: underline;
     text-underline-offset: 2px;
 }
-#topScores a:hover {
+.table6xn a:hover {
     color: #ffbf66;
 }
-#topScores .col .place {
+.table6xn .col .place {
     width: 22px;
     height: 22px;
     display: flex;
@@ -82,474 +82,480 @@
     margin: 0 0 0 2px;
     color: #000;
 }
-#topScores .col img {
+.table6xn .col img {
     width: 20px;
     height: 20px;
 }
-#topScores .tLogoName {
+.table6xn .tLogoName {
     margin: 0 0 0 30px;
     display: flex;
     align-items: center;
 }
-#topScores .col .goals, #topScores .head span:nth-child(4) {
+.table6xn .col .goals, .table6xn .head span:nth-child(4) {
     font-weight: bold;
 }
-#topScores .col .goals {
+.table6xn .col .goals {
     font-size: 0.9em;
     font-family: 'Graduate';
     min-width: 65px;
     display: flex;justify-content: center;
 }
-#topScores .nums {
+.table6xn .nums {
     display: flex;
     margin: 0 45px 0 0;
     width: 85px;
     justify-content: space-between;
 }
-#topScores .nums span {
+.table6xn .nums span {
     color: #000;
     font-size: 0.75em;
 }
-#topScores .left {
+.table6xn .left {
     display: flex;
     align-items: center;
 }
-#topScores .left img {
+.table6xn .left img {
     margin: 0 0 0 10px;
 }
-#topScores .left .name {
+.table6xn .left .name {
     margin: 0 0 0 6px;
     width: 30px;
     color: #000;
     font-size: 0.8em;
 }
-#topScores .nums span:nth-child(2) {
+.table6xn .nums span:nth-child(2) {
     min-width: 3px;
     display: flex;
     justify-content: center;
 }
-#topScores .nums span:nth-child(3) {
+.table6xn .nums span:nth-child(3) {
     min-width: 45px;
     display: flex;
     justify-content: center;
 }
-#topScores .nums span:nth-child(4) {
+.table6xn .nums span:nth-child(4) {
     min-width: 45px;
     display: flex;
     justify-content: center;
 }
 
 @media (min-width: 320px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 10px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 20px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 60px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 45px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 20px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 45px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 50px 0 0;
         width: 105px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 12px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 0px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 55px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 20px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         min-width: 75px;
         margin: 0 0 0 5px;
     }
 }
 
 @media (min-width: 360px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 30px;
     }
-    #topScores .col .place { 
+    .table6xn .col .place { 
         margin: 0 0 0 14px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 50px 0 0;
         width: 115px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 20px;
     }
-    #topScores .left .name {
+    .table6xn .left .name {
         margin: 0 0 0 8px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 70px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 10px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 30px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 52px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         min-width: 10px;
         margin: 0 0 0 35px;
     }
 }
 
 @media (min-width: 375px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 15px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 50px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 85px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 8px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 43px 0 0;
         width: 105px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 40px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 56px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 15px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 66px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         min-width: 15px;
         margin: 0 0 0 33px;
     }
 }
 
 @media (min-width: 412px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 85px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 42px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 18px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 47px 0 0;
         width: 106px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 52px;
     }
 }
 
 @media (min-width: 414px) {
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 49px 0 0;
         width: 105px;
     }
 }
 
 @media (min-width: 540px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 45px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 94px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 70px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 50px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 45px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 37px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 95px 0 0;
         width: 154px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 58px;
     }
-    #topScores .left .name {
+    .table6xn .left .name {
         margin: 0 0 0 12px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 92px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 20px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 15px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         min-width: 30px;
         margin: 0 0 0 53px;
     }
 }
 
 @media (min-width: 768px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 30px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 13px;
         min-width: 22px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 55px 0 0;
         width: 115px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 22px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 65px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 16px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 25px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 48px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         min-width: 17px;
         margin: 0 0 0 28px;
     }
 }
 
 @media (min-width: 820px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 80px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 54px 0 0;
         width: 113px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 32px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 66px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 17px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 56px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         margin: 0 0 0 30px;
     }
 }
 
 @media (min-width: 912px) {
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 91px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 57px 0 0;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 65px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 16px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 25px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 63px;
     }
 }
 
 @media (min-width: 1024px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 15px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 60px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 35px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 20px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 20px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 8px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 38px 0 0;
         width: 95px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 18px;
     }
-    #topScores .left .name {
+    .table6xn .left .name {
         margin: 0 0 0 8px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 45px;
     }
-    #topScores .nums span:nth-child(4) {
+    .table6xn .nums span:nth-child(4) {
         min-width: 30px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 40px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         margin: 0 0 0 25px;
     }
 }
 
+@media (min-width: 1280px) {
+    .table6xn .swiper-wrapper {
+        width: 300px !important;
+    }
+}
+
 @media (min-width: 1680px) {
-    #topScores .swiper-slide .head span:first-child {
+    .table6xn .swiper-slide .head span:first-child {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(2) {
+    .table6xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    #topScores .swiper-slide .head span:nth-child(3) {
+    .table6xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #topScores .swiper-slide .head span:nth-child(4) {
+    .table6xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 45px;
     }
-    #topScores .swiper-slide .head span:nth-child(5) {
+    .table6xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #topScores .swiper-slide .head span:nth-child(6) {
+    .table6xn .swiper-slide .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
-    #topScores .col .place {
+    .table6xn .col .place {
         margin: 0 0 0 18px;
     }
-    #topScores .nums {
+    .table6xn .nums {
         margin: 0 56px 0 0;
         width: 104px;
     }
-    #topScores .left img {
+    .table6xn .left img {
         margin: 0 0 0 31px;
     }
-    #topScores .nums span:nth-child(2) {
+    .table6xn .nums span:nth-child(2) {
         min-width: 55px;
     }
-    #topScores .nums span:nth-child(3) {
+    .table6xn .nums span:nth-child(3) {
         min-width: 17px;
     }
-    #topScores .tLogoName {
+    .table6xn .tLogoName {
         margin: 0 0 0 52px;
     }
-    #topScores .col .goals {
+    .table6xn .col .goals {
         margin: 0 0 0 35px;
     }
 }

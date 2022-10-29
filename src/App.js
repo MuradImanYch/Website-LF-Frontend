@@ -30,8 +30,10 @@ import forecasts from './assets/ico/forecasts.webp';
 import Main from './components/Main/Main';
 import Error from './components/Error/Error';
 import ExtendedNews from './components/Main/ExtendedNews/ExtendedNews';
+import Admin from './components/Admin/Main';
 
 function App(props) {
+    // localstorage busy memory calc
     var _lsTotal = 0,
     _xLen, _x;
 for (_x in localStorage) {
@@ -43,6 +45,7 @@ for (_x in localStorage) {
     console.log(_x.substr(0, 50) + " = " + (_xLen / 1024).toFixed(2) + " KB")
 };
 console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
+
     const[barState, setBarstate] = useState(true); 
 
     const progressBar = () => { // scroll progressBar func
@@ -58,7 +61,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
     const menuToggle = () => {
         if($(window).width() <= 1024) { // for mobile
             setBarstate(!barState);
-            if(barState === true) {
+            if(barState) {
                 $('.bar1').css({'transform': 'rotate(-45deg) translate(-8px, 7px)'});
                 $('.bar2').css({'opacity': '0'});
                 $('.bar3').css({'transform': 'rotate(45deg) translate(-8px, -8px)'});
@@ -395,7 +398,8 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 <div className='container'>
                     <Routes>
                         <Route path='/' element={<Main />} />
-                        <Route path='/news/:id' element={<ExtendedNews />} />
+                        <Route path='news/:id' element={<ExtendedNews />} />
+                        <Route path='admin/*' element={<Admin />} />
                         <Route path='*' element={<Error />} />
                     </Routes>
                 </div>

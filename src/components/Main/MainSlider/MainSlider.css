@@ -1,4 +1,9 @@
 /*-------------------Mobile------------------*/
+#newsSlider h1, #newsSlider h2, #newsSlider h3, #newsSlider h4, #newsSlider h5, #newsSlider h6, #newsSlider p {
+    margin: 0 !important;
+    font-weight: normal;
+}
+
 #newsSlider {
     border: 2px solid rgb(204, 135, 45);
 }

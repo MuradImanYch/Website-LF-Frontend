@@ -70,7 +70,7 @@ const TopScores3 = () => {
     }, []);
 
     return (
-        <div id="topScores3">
+        <div className='table6xn' id="topScores3">
             <section>
                 <h3 className="sectionName">Бомбардиры - Турниры сборных</h3>
                 <Swiper navigation grabCursor={true} slidesPerView={1}>

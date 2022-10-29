@@ -1,9 +1,13 @@
 /*---------------Mobile--------------*/
-#mainNews3 {
+.newsVr h1, .newsVr h2, .newsVr h3, .newsVr h4, .newsVr h5, .newsVr h6, .newsVr p {
+    margin: 0 !important;
+}
+
+.newsVr {
     max-width: 100%;
     padding: 15px 0 0 0;
 }
-#mainNews3 .cart span {
+.newsVr .cart span {
     position: absolute;
     font-size: 0.7em;
     background: rgb(0, 0, 0, 0.5);
@@ -11,19 +15,19 @@
     font-weight: bold;
     top: 0;
 }
-#mainNews3 .cart:hover span {
+.newsVr .cart:hover span {
     background: rgb(0, 0, 0, 0.7);
     transition: 0.4s;
     color: rgb(224, 164, 79);
 }
-#mainNews3 .cart {
+.newsVr .cart {
     width: 100%;
     height: 250px;
     position: relative;
     transition: 0.6s;
     margin: 20px 0 0 0;
 }
-#mainNews3 .cart .img {
+.newsVr .cart .img {
     width: 100%;
     height: 100%;
     box-shadow: inset 0px -80px 100px 1px #000;
@@ -31,14 +35,14 @@
     transition: 0.6s;
     overflow: hidden;
 }
-#mainNews3 .cart .img img {
+.newsVr .cart .img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.8;
     transition: 0.6s;
 }
-#mainNews3 .cart h3 {
+.newsVr .cart h3 {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -53,54 +57,54 @@
 }
 
 @media (min-width: 540px) { /* >= 540px */
-    #mainNews3 .cart {
+    .newsVr .cart {
         height: 280px;
     }
 }
 
 @media (min-width: 768px) {
-    #mainNews3 section {
+    .newsVr section {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    #mainNews3 .cart {
+    .newsVr .cart {
         height: 230px;
         width: 360px;
     }
 }
 
 @media (min-width: 820px) { /* >= 820px */
-    #mainNews3 .cart {
+    .newsVr .cart {
         height: 240px;
         width: 385px;
     }
 }
 
 @media (min-width: 912px) { 
-    #mainNews3 .cart {
+    .newsVr .cart {
         height: 280px;
         width: 426px;
     }
 }
 
 @media (min-width: 1024px) {
-    #mainNews3 {
+    .newsVr {
         width: 95.5%;
         padding: 35px 0 0 0;
     }
-    #mainNews3 .cart {
+    .newsVr .cart {
         width: 320px;
         height: 220px;
     }
 }
 
 @media (min-width: 1680px) {
-    #mainNews3 {
+    .newsVr {
         width: 94%;
         padding: 40px 0 0 0;
     }
-    #mainNews3 .cart {
+    .newsVr .cart {
         width: 385px;
         height: 250px;
     }

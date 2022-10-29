@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './TransferList.css';
-import $ from 'jquery';
+import axios from 'axios';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
 
     useEffect(() => {
-        $.ajax({
-            type: "GET",
-            url: '/transferList',
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('transferList', JSON.stringify(response));
+        axios.get('/transferList')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('transferList', JSON.stringify(response.data));
             }
             setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, 21).map((e, i) => {
                 return <div className="col" key={'key' + i} id={'id' + i}>
@@ -27,6 +25,9 @@ const TransferList = () => {
                 <div className="price">{e.price}</div>
             </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 

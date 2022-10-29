@@ -1,0 +1,320 @@
+#editDeleteNews .newsCart {
+    width: 100%;
+    min-height: 400px;
+    border: 2px solid rgb(204, 135, 45);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 40px 0 40px 0;
+    margin: 35px 0 0 0;
+    position: relative;
+}
+#editDeleteNews .newsCart .newsId, #editDeleteNews .newsCart .newsDate {
+    position: absolute;
+    bottom: 0;
+    color: #000;
+    padding: 0 0 3px 6px;
+    font-size: 0.8em;
+}
+#editDeleteNews .newsCart .newsDate {
+    text-align: center;
+    width: 100%;
+    padding: 0 0 3px 0;
+}
+#editDeleteNews .newsCart img {
+    width: 100%;
+    height: auto;
+    border-radius: 40px 0 0 0;
+}
+#editDeleteNews .newsCart p {
+    color: #000;
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0 10px;
+}
+#editDeleteNews .newsCart .editDelWrap {
+    display: flex;
+    justify-content: center;
+}
+#editDeleteNews .newsCart .editDelWrap button {
+    margin: 30px 50px;
+    color: #000;
+    font-size: 1.4em;
+    min-width: 45px;
+    min-height: 45px;
+    border-radius: 50%;
+    border: 2px solid rgb(204, 135, 45);
+    font-weight: bold;
+    outline: none;
+    transition: 0.2s;
+    cursor: pointer;
+    background: #fff;
+}
+#editDeleteNews .newsCart .editDelWrap button:first-child {
+    color: rgb(21, 104, 172);
+}
+#editDeleteNews .newsCart .editDelWrap button:first-child:hover {
+    background: rgb(149, 207, 255);
+}
+#editDeleteNews .newsCart .editDelWrap button:last-child {
+    color: red;
+}
+#editDeleteNews .newsCart .editDelWrap button:last-child:hover {
+    background: rgb(255, 192, 192);
+}
+#editDeleteNews .hover:hover p {
+    text-decoration: underline;
+}
+#delConfirm {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    padding: 250px 0 0 0;
+    z-index: 2021;
+}
+#delConfirm p {
+    text-align: center;
+    font-size: 1.4em;
+    color: #fff !important;
+}
+#delConfirm #btnWrap {
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+#btnWrap button {
+    width: 100px;
+    height: 40px;
+    margin: 0 10px;
+    outline: none;
+    border: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+#btnWrap button:first-child {
+    background: rgba(23, 177, 30, 0.9);
+}
+#btnWrap button:last-child {
+    background: rgb(255, 32, 32, 0.9);
+}
+.editPopup {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2021;
+    height: 100vh;
+    display: none;
+}
+.editPopup .rejectBtn, .editPopup .acceptBtn {
+    position: fixed;
+    background: rgba(204, 135, 45, 0.9);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 5%;
+    right: 8%;
+    color: #fff !important;
+    font-size: 2em;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+.editPopup .acceptBtn {
+    right: 50%;
+    background: rgba(23, 177, 30, 0.9);
+}
+.editPopup .rejectBtn {
+    background: rgb(255, 32, 32, 0.9);
+}
+.editPopup .container {
+    width: 96%;
+    background: #fff;
+    margin: auto;
+    padding: 30px 10px 350px 10px;
+    overflow: scroll !important;
+    height: 100vh !important;
+}
+.editPopup .popupTitle {
+    color: #fff !important;
+    margin: 70px 0 30px 0 !important; 
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.ck-content {
+    min-height: 100vh;
+}
+#newsContentLabel {
+    padding: 0 0 7px 0;
+}
+.editPopup label, .editPopup input, .ck * {
+    color: #000 !important;
+    text-align: left !important;
+}
+.editPopup select, .editPopup input {
+    outline: none;
+    margin: 6px 0 0 0;
+    font-size: 1em;
+    font-family: Arial;
+}
+.editPopup label:not(.editPopup label:first-child) {
+    margin: 20px 0 0 0;
+}
+.editPopup select, .editPopup input {
+    height: 30px;
+}
+.editPopup #editImg {
+    width: 100%;
+    font-size: 0.8em;
+}
+#editNewsContentLabel {
+    padding: 0 0 6px 0;
+}
+
+@media (min-width: 320px) {
+    .editPopup .acceptBtn {
+        right: 40%;
+    }
+}
+
+@media (min-width: 360px) { 
+    #editDeleteNews .newsCart {
+        min-height: 350px;
+    }
+    #delConfirm {
+        padding: 300px 0 0 0;
+    }
+    .editPopup .acceptBtn {
+        right: 35%;
+    }
+}
+
+@media (min-width: 412px) {
+    .editPopup .acceptBtn {
+        right: 33%;
+    }
+}
+
+@media (min-width: 540px) {
+    .editPopup .acceptBtn {
+        right: 28%;
+    }
+    .editPopup .popupTitle {
+        font-size: 1.6em;
+    }
+}
+
+@media (min-width: 768px) { 
+    #editDeleteNews {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #editDeleteNews .newsCart {
+        width: 350px;
+    }
+    #delConfirm p {
+        font-size: 2em;
+    }
+    #btnWrap button {
+        width: 140px;
+        height: 60px;
+        margin: 0 20px;
+    }
+    #delConfirm {
+        padding: 400px 0 0 0;
+    }
+    .editPopup .acceptBtn {
+        right: 22%;
+    }
+}
+
+@media (min-width: 820px) { 
+    #editDeleteNews .newsCart {
+        width: 375px;
+    }
+    .editPopup .acceptBtn {
+        right: 21%;
+    }
+}
+
+@media (min-width: 912px) {
+    .editPopup .acceptBtn {
+        right: 20%;
+    }
+    .editPopup .popupTitle {
+        font-size: 2em;
+        margin: 90px 0 30px 0 !important;
+    }
+}
+
+@media (min-width: 1024px) { 
+    #editDeleteNews .newsCart {
+        width: 308px;
+    }
+    #delConfirm {
+        padding: 450px 0 0 0;
+    }
+    .editPopup .acceptBtn {
+        right: 18%;
+    }
+    .editPopup .container {
+        width: 1020px;
+        padding: 30px 10px 400px 10px;
+    }
+}
+
+@media (min-width: 1280px) { 
+    #editDeleteNews .newsCart {
+        width: 300px;
+        margin: 0;
+    }
+    #editDeleteNews .newsCart:not(#editDeleteNews .newsCart:first-child, #editDeleteNews .newsCart:nth-child(2), #editDeleteNews .newsCart:nth-child(3)) {
+        margin: 50px 0 0 0;
+    }
+    #delConfirm p {
+        font-size: 1.7em;
+    }
+    #btnWrap button {
+        width: 120px;
+        height: 50px;
+    }
+    #delConfirm {
+        padding: 250px 0 0 0;
+    }
+    .editPopup .acceptBtn {
+        right: 15%;
+    }
+    .editPopup .popupTitle {
+        font-size: 1.7em;
+    }
+}
+
+@media (min-width: 1680px) { 
+    #editDeleteNews .newsCart {
+        width: 350px;
+        margin: 0;
+    }
+    #editDeleteNews .newsCart:not(#editDeleteNews .newsCart:first-child, #editDeleteNews .newsCart:nth-child(2), #editDeleteNews .newsCart:nth-child(3)) {
+        margin: 70px 0 0 0;
+    }
+    .editPopup .acceptBtn {
+        right: 13%;
+    }
+    .editPopup .container {
+        min-width: 1220px !important;
+    }
+}

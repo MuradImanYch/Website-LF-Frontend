@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './TopScores.css';
-import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
+import axios from 'axios';
+
 import rplLogo from '../../../assets/ico/rplLogo.webp';
 import eplLogo from '../../../assets/ico/eplLogo.webp';
 import laligaLogo from '../../../assets/ico/laligaLogo.webp';
@@ -23,12 +24,10 @@ const TopScoresSlider = () => {
     const [ligue1TopScores, setLigue1TopScores] = useState(); 
 
     useEffect(() => { 
-        $.ajax({
-            type: 'GET',
-            url: '/rplTopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('rplTopScores', JSON.stringify(response));
+        axios.get('/rplTopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('rplTopScores', JSON.stringify(response.data));
             }
             setRplTopScores(JSON.parse(localStorage.getItem('rplTopScores')) && JSON.parse(localStorage.getItem('rplTopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -47,14 +46,15 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/eplTopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('eplTopScores', JSON.stringify(response));
+        axios.get('/eplTopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('eplTopScores', JSON.stringify(response.data));
             }
             setEplTopScores(JSON.parse(localStorage.getItem('eplTopScores')) && JSON.parse(localStorage.getItem('eplTopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -73,14 +73,15 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/laligaTopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('laligaTopScores', JSON.stringify(response));
+        axios.get('/laligaTopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('laligaTopScores', JSON.stringify(response.data));
             }
             setLaligaTopScores(JSON.parse(localStorage.getItem('laligaTopScores')) && JSON.parse(localStorage.getItem('laligaTopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -99,14 +100,15 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/bundesligaTopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('bundesligaTopScores', JSON.stringify(response));
+        axios.get('/bundesligaTopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('bundesligaTopScores', JSON.stringify(response.data));
             }
             setBundesligaTopScores(JSON.parse(localStorage.getItem('bundesligaTopScores')) && JSON.parse(localStorage.getItem('bundesligaTopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -125,14 +127,15 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/serieaTopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('serieaTopScores', JSON.stringify(response));
+        axios.get('/serieaTopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('serieaTopScores', JSON.stringify(response.data));
             }
             setSerieaTopScores(JSON.parse(localStorage.getItem('serieaTopScores')) && JSON.parse(localStorage.getItem('serieaTopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -151,14 +154,15 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/ligue1TopScores'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('ligue1TopScores', JSON.stringify(response));
+        axios.get('/ligue1TopScores')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('ligue1TopScores', JSON.stringify(response.data));
             }
             setLigue1TopScores(JSON.parse(localStorage.getItem('ligue1TopScores')) && JSON.parse(localStorage.getItem('ligue1TopScores')).splice(1, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -177,11 +181,14 @@ const TopScoresSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 
     return (
-        <div id="topScores">
+        <div className='table6xn'>
             <section>
                 <h3 className="sectionName">Бомбардиры - Чемпионаты</h3>
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>

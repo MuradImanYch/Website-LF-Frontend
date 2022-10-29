@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Standings.css';
-import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
@@ -10,6 +9,7 @@ import laligaLogo from '../../../assets/ico/laligaLogo.webp';
 import bundesligaLogo from '../../../assets/ico/bundesligaLogo.webp';
 import serieaLogo from '../../../assets/ico/serieaLogo.webp';
 import ligue1Logo from '../../../assets/ico/ligue1Logo.webp';
+import axios from 'axios';
 
 SwiperCore.use([Navigation]);
 
@@ -22,12 +22,10 @@ const StandingsSlider = () => {
     const [ligue1Standings, setLigue1Standings] = useState(); 
 
     useEffect(() => { 
-        $.ajax({
-            type: 'GET',
-            url: '/rplStandings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('rplStandings', JSON.stringify(response));
+        axios.get('/rplStandings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('rplStandings', JSON.stringify(response.data));
             }
             setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -47,14 +45,15 @@ const StandingsSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/eplStandings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('eplStandings', JSON.stringify(response));
+        axios.get('/eplStandings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('eplStandings', JSON.stringify(response.data));
             }
             setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -74,14 +73,15 @@ const StandingsSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/laligaStandings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('laligaStandings', JSON.stringify(response));
+        axios.get('/laligaStandings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('laligaStandings', JSON.stringify(response.data));
             }
             setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -101,14 +101,15 @@ const StandingsSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/bundesligaStandings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('bundesligaStandings', JSON.stringify(response));
+        axios.get('/bundesligaStandings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
             }
             setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -128,14 +129,15 @@ const StandingsSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/serieaStandings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('serieaStandings', JSON.stringify(response));
+        axios.get('/serieaStandings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('serieaStandings', JSON.stringify(response.data));
             }
             setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -155,14 +157,15 @@ const StandingsSlider = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: '/ligue1Standings'
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('ligue1Standings', JSON.stringify(response));
+        axios.get('/ligue1Standings')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('ligue1Standings', JSON.stringify(response.data));
             }
             setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
                 return <div id={'id' + i} key={'key' + i} className="col">
@@ -182,11 +185,14 @@ const StandingsSlider = () => {
                         </div>
                     </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 
     return (
-        <div id="standings">
+        <div className='table5xn' id='standings'>
             <section>
                 <h3 className="sectionName">Турнирная таблица - Чемпионаты</h3>
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>

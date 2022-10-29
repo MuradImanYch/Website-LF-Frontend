@@ -11,7 +11,7 @@ img {
 ::-webkit-scrollbar-thumb {
    -webkit-border-radius: 10px !important;
    border-radius: 0 !important;
-   background: rgb(204, 135, 45) !important; 
+   background: linear-gradient(to bottom, rgb(196, 122, 26), rgb(219, 194, 162)) !important; 
 }
 #mNavWrap > ul > li:nth-child(1) > ul, #mNavWrap > ul > li:nth-child(2) > ul, #mNavWrap > ul > li:nth-child(3) > ul, #mNavWrap > ul > li:nth-child(4) > ul {
     background-color: rgba(0, 140, 255, 0.6);
@@ -198,7 +198,7 @@ nav .actual:hover, nav .actual div a:hover {
 /*------------------Desctop-------------------*/
 @media (min-width: 1024px) { /* >= 1024px */
     ::-webkit-scrollbar { /* main scrollbar */
-        width: 4px !important;
+        width: 6px !important;
     }
     /*---------Header---------*/
     #app > header > div > a {

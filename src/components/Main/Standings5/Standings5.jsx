@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
-import './Standings5.css';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
@@ -117,7 +116,7 @@ const Standings5 = () => {
     }, []);
 
     return (
-        <div id="standings5">
+        <div className='table5xn standingsEurocups'>
                 <section>
                     <h3 className="sectionName">Турнирная таблица - Лига европы</h3>
                     <Swiper navigation grabCursor={true} slidesPerView={1}>

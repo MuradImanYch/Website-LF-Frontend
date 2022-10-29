@@ -1,34 +1,34 @@
-#standings4 .idB:nth-child(3), #standings4 .idC:nth-child(3), #standings4 .idD:nth-child(3), #standings4 .idE:nth-child(3), #standings4 .idF:nth-child(3), #standings4 .idG:nth-child(3), #standings4 .idH:nth-child(3) {
+.table5xn .idB:nth-child(3), .table5xn .idC:nth-child(3), .table5xn .idD:nth-child(3), .table5xn .idE:nth-child(3), .table5xn .idF:nth-child(3), .table5xn .idG:nth-child(3), .table5xn .idH:nth-child(3) {
     display: none;
 }
-#standings4 .swiper-slide {
+.table5xn .swiper-slide {
     width: 100%;
     border: 2px solid #ffbf66;
     margin: 20px 0 0 0;
     padding: 0 5px 17px 5px;
     position: relative;
 }
-#standings4 .group {
+.table5xn .group {
    color: #000;
    margin: 5px 0 0 0;
    position: absolute;
    top: 0;
 }
-.swiper-button-prev, .swiper-button-next {
+.table5xn .swiper-button-prev, .swiper-button-next {
     position: absolute;
     top: 70px;
 }
-#standings4 .swiper-slide .lLogo {
+.table5xn .swiper-slide .lLogo {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 20px 0 0 0;
 }
-#standings4 .swiper-slide img {
+.table5xn .swiper-slide img {
     width: 40px;
     height: 40px;
 }
-#standings4 .swiper-slide .head {
+.table5xn .swiper-slide .head {
     width: 100%;
     height: 30px;
     background: #e2e2e2;
@@ -36,25 +36,25 @@
     display: flex;
     align-items: center;
 }
-#standings4 .swiper-slide .head span {
+.table5xn .swiper-slide .head span {
     color: #000;
 }
-#standings4 .swiper-slide .head span:first-child {
+.table5xn .swiper-slide .head span:first-child {
     margin: 0 0 0 10px;
 }
-#standings4 .swiper-slide .head span:nth-child(2) {
+.table5xn .swiper-slide .head span:nth-child(2) {
     margin: 0 0 0 20px;
 }
-#standings4 .swiper-slide .head span:nth-child(3) {
+.table5xn .swiper-slide .head span:nth-child(3) {
     margin: 0 0 0 55px;
 }
-#standings4 .swiper-slide .head span:nth-child(4) {
+.table5xn .swiper-slide .head span:nth-child(4) {
     margin: 0 0 0 15px;
 }
-#standings4 .swiper-slide .head span:nth-child(5) {
+.table5xn .swiper-slide .head span:nth-child(5) {
     margin: 0 0 0 15px;
 }
-#standings4 .col {
+.table5xn .col {
     width: 100%;
     height: 35px;
     border-bottom: 1px solid #ccc;
@@ -63,7 +63,7 @@
     padding: 20px 0;
     justify-content: space-between;
 }
-#standings4 a {
+.table5xn a {
     color: #000;
     display: flex;
     justify-content: center;
@@ -71,10 +71,10 @@
     text-decoration: underline;
     text-underline-offset: 2px;
 }
-#standings4 a:hover {
+.table5xn a:hover {
     color: #ffbf66;
 }
-#standings4 .col .place {
+.table5xn .col .place {
     width: 22px;
     height: 22px;
     display: flex;
@@ -87,371 +87,445 @@
     margin: 0 0 0 2px;
     color: #000;
 }
-#standings4 .col img {
+.table5xn .col img {
     width: 20px;
     height: 20px;
 }
-#standings4 .col .forAgainst {
-    display: flex;
-    margin: 0 0 0 10px;
-}
-#standings4 .col .forAgainst span {
-    margin: 0 0 0 2px;
-}
-#standings4 .col .name, #standings4 .col .games, #standings4 .col .forAgainst span, #standings4 .col .points {
+.table5xn .col .name, .table5xn .col .games, .table5xn .col .forAgainst span, .table5xn .col .points {
     font-size: .75em;
     color: #000;
 }
-#standings4 .col .points, #standings4 .head span:last-child {
+.table5xn .col .points, .table5xn .head span:last-child {
     font-weight: bold;
 }
-#standings4 .col .points {
-    margin: 0 0 0 14px;
-    font-size: 0.9em;
-    font-family: 'Graduate';
-}
-#standings4 .nums {
+.table5xn .nums {
     display: flex;
     margin: 0 8px 0 0;
     width: 85px;
     justify-content: space-between;
 }
-#standings4 .left {
+.standingsEurocups .nums {
+    margin: 0 13px 0 0;
+}
+.table5xn .left {
     display: flex;
     align-items: center;
 }
-#standings4 .left img {
+.table5xn .left img {
     margin: 0 0 0 10px;
 }
-#standings4 .left .name {
+.table5xn .left .name {
     margin: 0 0 0 4px;
+}
+.table5xn .col .games {
+    min-width: 16px;
+    display: flex;
+    justify-content: center;
+}
+.table5xn .col .forAgainst {
+    display: flex;
+    min-width: 54px;
+    justify-content: center;
+}
+.table5xn .col .forAgainst span {
+    margin: 0 0 0 3px;
+}
+.table5xn .col .points {
+    font-size: 0.9em;
+    font-family: 'Graduate';
+    min-width: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 @media (min-width: 320px) {
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 10px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 20px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 20px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 24px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 10px 0 0;
         width: 105px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 13px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 12px;
     }
-    #standings4 .left .name {
+    .table5xn .left .name {
         margin: 0 0 0 6px;
+    }
+    .table5xn .col .games {
+        min-width: 10px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 80px;
+    }
+    .table5xn .col .points {
+        min-width: 26px;
     }
 }
 
 @media (min-width: 360px) {
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 30px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    #standings4 .col .place { 
+    .table5xn .col .place { 
         margin: 0 0 0 14px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 25px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 29px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 20px 0 0;
         width: 115px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 23px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 20px;
     }
-    #standings4 .left .name {
+    .table5xn .left .name {
         margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 13px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 88px;
+    }
+    .table5xn .col .points {
+        min-width: 26px;
     }
 }
 
 @media (min-width: 375px) {
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 15px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 50px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 85px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 8px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 21px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 23px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 16px 0 0;
         width: 105px;
     }
-    #standings4 .left img {
+    .table5xn .nums {
+        margin: 0 17px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 40px;
+    }
+    .table5xn .col .games {
+        min-width: 11px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 82px;
+    }
+    .table5xn .col .points {
+        min-width: 20px;
     }
 }
 
 @media (min-width: 412px) {
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 95px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 18px;
     }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 20px 0 0;
         width: 106px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 22px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 52px;
     }
 }
 
 @media (min-width: 414px) {
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 22px 0 0;
         width: 105px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 24px 0 0;
     }
 }
 
 @media (min-width: 540px) {
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 45px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 65px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 120px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 50px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 50px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 37px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 46px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 48px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 44px 0 0;
-        width: 154px;
+        width: 157px;
     }
-    #standings4 .left img {
+    .table5xn .nums {
+        margin: 0 46px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 58px;
     }
-    #standings4 .left .name {
+    .table5xn .left .name {
         margin: 0 0 0 12px;
+    }
+    .table5xn .col .games {
+        min-width: 14px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 128px;
+    }
+    .table5xn .col .points {
+        min-width: 25px;
     }
 }
 
 @media (min-width: 768px) {
-    #standings4 {
+    .table5xn {
         width: 340px;
     }
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 30px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 13px;
         min-width: 22px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 25px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 30px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 12px 0 0;
         width: 115px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 15px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 22px;
+    }
+    .table5xn .col .games {
+        min-width: 7px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 94px;
+    }
+    .table5xn .col .points {
+        min-width: 18px;
     }
 }
 
 @media (min-width: 820px) {
-    #standings4 {
+    .table5xn {
         width: 360px;
     }
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 20px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
-        margin: 0 0 0 80px;
+    .table5xn .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 70px;
     }
-    #standings4 .col .points {
-        margin: 0 0 0 30px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 26px 0 0;
         width: 113px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 27px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 32px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 95px;
     }
 }
 
 @media (min-width: 912px) {
-    #standings4 {
+    .table5xn {
         width: 410px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 120px;
+    }
+    .table5xn .col .games {
+        min-width: 8px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 94px;
+    }
+    .table5xn .col .points {
+        min-width: 18px;
     }
 }
 
 @media (min-width: 1024px) {
-    #standings4 {
+    .table5xn {
         width: 310px;
     }
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 15px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
+    .table5xn .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 72px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 20px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 20px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 8px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 15px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 19px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 10px 0 0;
         width: 95px;
     }
-    #standings4 .left img {
+    .table5xn .left img {
         margin: 0 0 0 18px;
     }
-    #standings4 .left .name {
+    .table5xn .left .name {
         margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 3px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 78px;
+    }
+    .table5xn .col .points {
+        min-width: 16px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .standingsEurocups .nums {
+        margin: 0 11px 0 0;
     }
 }
 
 @media (min-width: 1680px) {
-    #standings4 {
+    .table5xn {
         width: 360px;
     }
-    #standings4 .swiper-slide .head span:first-child {
+    .table5xn .swiper-slide .head span:first-child {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(2) {
+    .table5xn .swiper-slide .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    #standings4 .swiper-slide .head span:nth-child(3) {
-        margin: 0 0 0 35px;
+    .table5xn .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 90px;
     }
-    #standings4 .swiper-slide .head span:nth-child(4) {
+    .table5xn .swiper-slide .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    #standings4 .swiper-slide .head span:nth-child(5) {
+    .table5xn .swiper-slide .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    #standings4 .col .place {
+    .table5xn .col .place {
         margin: 0 0 0 18px;
     }
-    #standings4 .col .forAgainst {
-        margin: 0 0 0 21px;
-    }
-    #standings4 .col .points {
-        margin: 0 0 0 23px;
-    }
-    #standings4 .nums {
+    .table5xn .nums {
         margin: 0 12px 0 0;
         width: 104px;
     }
-    #standings4 .left img {
+    .standingsEurocups .nums {
+        margin: 0 10px 0 0;
+    }
+    .table5xn .left img {
         margin: 0 0 0 31px;
     }
-    #standings4 .left .name {
+    .table5xn .left .name {
         margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 7px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 85px;
+    }
+    .table5xn .col .points {
+        min-width: 15px;
     }
 }

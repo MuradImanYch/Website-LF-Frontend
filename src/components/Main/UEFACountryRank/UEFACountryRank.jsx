@@ -3,6 +3,7 @@ import './UEFACountryRank.css';
 import $ from 'jquery';
 import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const UEFACountryRank = () => {
     const[uefaCountryRankSeason, setUefaCountryRankSeason] = useState();
@@ -11,11 +12,9 @@ const UEFACountryRank = () => {
     const[linkToggle, setLinkToggle] = useState('#');
 
     useEffect(() => {
-        $.ajax({
-            type: "GET",
-            url: '/uefaCountryRankSeason',
-        }).done((response) => {
-            setUefaCountryRankSeason(response && response.map((item, indx) => {
+        axios.get('/uefaCountryRankSeason')
+        .then(response => {
+            setUefaCountryRankSeason(response.data && response.data.map((item, indx) => {
                 return <div key={indx}>
                     <span>{item.seasonLast5}</span>
                     <span>{item.seasonLast4}</span>
@@ -24,13 +23,14 @@ const UEFACountryRank = () => {
                     <span className='current'>{item.seasonCurrent}</span>
                 </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: "GET",
-            url: '/uefaCountryRank',
-        }).done((response) => {
-            setUefaCountryRank(response && response.splice(0, expandToggle).map((item, indx) => {
+        axios.get('/uefaCountryRank')
+        .then(response => {
+            setUefaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
                 return <div className="col wrap" key={indx}>
                 <div>
                     <span className='place'>{item.place}<span>.</span></span>
@@ -47,6 +47,9 @@ const UEFACountryRank = () => {
                 </div>
             </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, [expandToggle]); 
 

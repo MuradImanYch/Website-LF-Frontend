@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './HotBoard.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from 'swiper';
-import $ from 'jquery';
+import axios from 'axios';
 
 import friendly from '../../assets/ico/friendly.webp';
 import undefTeam from '../../assets/ico/undefTeam.webp';
@@ -15,11 +15,9 @@ function HotBoard(props) {
 
     useEffect(() => {
         const update = () => {
-            $.ajax({
-                type: "GET",
-                url: '/liveMatches',
-            }).done(function (response) {
-                setLiveMatches(response && response.map((e, i) => {
+            axios.get('/liveMatches')
+            .then(response => {
+                setLiveMatches(response.data && response.data.map((e, i) => {
                     return  <SwiperSlide key={'key' + i} id={'id' + i} title={e.lName.length > 70 ? 'Товарищеский' : e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
                                 <div className='slideWrap'>
                                     <progress value={e.time === 'Перерыв' ? '45' : e.time.match(/\d+/)} max={'90'}></progress>
@@ -36,8 +34,11 @@ function HotBoard(props) {
                                 </div>
                             </SwiperSlide>
                 })); 
-                setMatchesQuant(response.length);
-                if(response.length > 0) document.querySelector('#hotBoard .liveWrap span').style.color = 'red';
+                setMatchesQuant(response.data.length);
+                if(response.data.length > 0) document.querySelector('#hotBoard .liveWrap span').style.color = 'red';
+            })
+            .catch(err => {
+                console.log(err);
             });
         }
         

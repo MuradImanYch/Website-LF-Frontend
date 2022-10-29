@@ -1,9 +1,14 @@
 /*---------------Mobile--------------*/
-.mainNews {
+/*-------------------Mobile------------------*/
+.newsHr h1, .newsHr h2, .newsHr h3, .newsHr h4, .newsHr h5, .newsHr h6, .newsHr p {
+    margin: 0 !important;
+}
+
+.newsHr {
     max-width: 100%;
     padding: 15px 0 0 0;
 }
-.mainNews .cart span {
+.newsHr .cart span {
     position: absolute;
     font-size: 0.7em;
     background: rgb(0, 0, 0, 0.5);
@@ -11,19 +16,19 @@
     font-weight: bold;
     top: 0;
 }
-.mainNews .cart:hover span {
+.newsHr .cart:hover span {
     background: rgb(0, 0, 0, 0.7);
     transition: 0.4s;
     color: rgb(224, 164, 79);
 }
-.mainNews .cart {
+.newsHr .cart {
     width: 100%;
     height: 250px;
     position: relative;
     transition: 0.6s;
     margin: 20px 0 0 0;
 }
-.mainNews .cart .img {
+.newsHr .cart .img {
     width: 100%;
     height: 100%;
     box-shadow: inset 0px -80px 100px 1px #000;
@@ -31,14 +36,14 @@
     transition: 0.6s;
     overflow: hidden;
 }
-.mainNews .cart .img img {
+.newsHr .cart .img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.8;
     transition: 0.6s;
 }
-.mainNews .cart h3 {
+.newsHr .cart h3 {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -53,18 +58,18 @@
 }
 
 @media (min-width: 540px) { /* >= 540px */
-    .mainNews .cart {
+    .newsHr .cart {
         height: 280px;
     }
 }
 
 @media (min-width: 768px) {
-    .mainNews section {
+    .newsHr section {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    .mainNews .cart {
+    .newsHr .cart {
         height: 230px;
         width: 360px;
         margin: 20px 0 0 0;
@@ -72,7 +77,7 @@
 }
 
 @media (min-width: 820px) { /* >= 820px */
-    .mainNews .cart {
+    .newsHr .cart {
         height: 240px;
         width: 385px;
         margin: 20px 0 0 0;
@@ -80,17 +85,17 @@
 }
 
 @media (min-width: 912px) {
-    .mainNews .cart {
+    .newsHr .cart {
         height: 280px;
         width: 426px;
     }
 }
 
 @media (min-width: 1024px) {
-    .mainNews {
+    .newsHr {
         padding: 20px 0 0 0;
     }
-    .mainNews .cart {
+    .newsHr .cart {
         width: 320px;
         height: 220px;
         margin: 20px 0 0 0;
@@ -98,7 +103,7 @@
 }
 
 @media (min-width: 1680px) {
-    .mainNews .cart {
+    .newsHr .cart {
         width: 385px;
         height: 250px;
     }

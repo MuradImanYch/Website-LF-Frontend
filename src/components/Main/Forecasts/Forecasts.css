@@ -21,7 +21,7 @@
 }
 .forecasts .col span {
     color: #000;
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 .forecasts .lName {
     display: flex;
@@ -36,7 +36,7 @@
     margin: 5px 0 0 0;
 }
 .forecasts .center img {
-    width: 20px;
+    width: 16px;
 }
 .forecasts .hName, .forecasts .aName {
     display: flex;
@@ -79,10 +79,30 @@
     font-family: 'Graduate';
 }
 
+@media (min-width: 320px) {
+    .forecasts .col span {
+        font-size: 0.8em;
+    }
+    .forecasts .center img {
+        width: 20px;
+    }
+}
 
 @media (min-width: 768px) {
     .forecasts {
         width: 300px;
+    }
+    .forecasts .col span {
+        font-size: 0.75em;
+    }
+}
+
+@media (min-width: 820px) {
+    .forecasts {
+        width: 345px;
+    }
+    .forecasts .col span {
+        font-size: 0.8em;
     }
 }
 

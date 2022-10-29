@@ -4,8 +4,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import $ from 'jquery';
 import { Swiper, SwiperSlide } from "swiper/react";
+import axios from 'axios';
+
 import friendly from '../../../assets/ico/friendly.webp';
 import stadium from '../../../assets/ico/stadium.webp';
 import location from '../../../assets/ico/location.webp';
@@ -15,13 +16,11 @@ const MatchesSlider = () => {
     const[matchesSlider, setMatchesSlider] = useState();
 
     useEffect(() => {
-        $.ajax({
-            type: "GET",
-            url: '/matchesSlider'
-        }).done(function (response) {
-              const uniqueIds = [];
+        axios.get('/matchesSlider')
+        .then(response => {
+            const uniqueIds = [];
               
-              const unique = response.filter(element => { // del duplicate obj props/teams
+            const unique = response.data.filter(element => { // del duplicate obj props/teams
                 const isDuplicate = uniqueIds.includes(element.hName);
                 if (!isDuplicate) {
                   uniqueIds.push(element.hName);
@@ -29,8 +28,8 @@ const MatchesSlider = () => {
                 }
               
                 return false;
-              });
-              if(response.length > 0) {
+            });
+            if(response.data.length > 0) {
                 localStorage.setItem('matchesSlider', JSON.stringify(unique));
             }
             setMatchesSlider(JSON.parse(localStorage.getItem('matchesSlider')) && JSON.parse(localStorage.getItem('matchesSlider')).map((e, i) => {
@@ -58,13 +57,16 @@ const MatchesSlider = () => {
                                 </div>
                             </div>
                             <div className="bottom">
-                                <img src={whistle} alt="судья"  title={e.refree.split(' ').join('').split(':')[0] === 'Арбитры' ? e.refree.split(' ').join('').replaceAll('|', ` | `).replace(':', ': ') : 'Информация появится позже'} />
+                                <img src={whistle} alt="судья"  title={e.refree ? e.refree.split(' ').join('').replaceAll('|', ` | `).replace(':', ': ') : 'Информация появится позже'} />
                                 <span>{e.lNameRoundDateTime[e.lNameRoundDateTime.length - 1]}</span>
                                 {e.weatherDescr === '' ? <span style={{fontWeight: 'bold', color: 'blue'}} title="Информация появится позже">?</span> : <img src={e.weatherIco} alt="погода" title={e.weatherDescr} />}
                             </div>
                         </SwiperSlide>
             }));
-        });
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }, []);
 
     return (

@@ -17,7 +17,7 @@ import Standings4 from './Standings4/Standings4';
 import Standings5 from './Standings5/Standings5';
 import MainNews5 from './MainNews5/MainNews5';
 import UEFACountryRank from './UEFACountryRank/UEFACountryRank';
-import TransferNews from './TransferNews/TransferNews';
+import MainNews6 from './MainNews6/MainNews6';
 import TransferList from './TransferList/TransferList';
 import VideoNews from './VideoNews/VideoNews';
 import EndedMatches from './EndedMatches/EndedMatches';
@@ -37,7 +37,7 @@ const Main = (props) => {
             </div>
             <VideoNews />
             <div className="transfers">
-                <TransferNews />
+                <MainNews6 />
                 <TransferList />
             </div>
             <Standings />

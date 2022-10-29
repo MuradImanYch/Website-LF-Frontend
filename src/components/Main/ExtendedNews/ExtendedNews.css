@@ -1,3 +1,32 @@
+/*-----Re reset-----*/
+.extendedNews .textWrap table tr td {
+    padding: 6px;
+}
+.extendedNews .textWrap a {
+    color: rgb(0, 110, 201);
+    text-decoration: underline;
+}
+.extendedNews .textWrap ul, .extendedNews .textWrap ol {
+    margin: 10px !important;
+    padding: 10px !important;
+}
+.extendedNews .textWrap ul {
+    list-style: disc;
+}
+.extendedNews .textWrap ol {
+    list-style: decimal;
+}
+.extendedNews .textWrap li {
+    color: #000 !important;
+}
+
+.extendedNews .container img {
+    margin: 0 0 30px 0;
+    border: 2px solid #ffbf66;
+    box-shadow: 0 0 10px #000;
+    width: 100%;
+    height: auto;
+}
 .extendedNews h1 {
     margin: 20px 0 0 0;
     font-size: 1.4em;
@@ -15,59 +44,29 @@
     text-decoration: underline;
     text-underline-offset: 4px;
 }
-.extendedNews .container img {
-    margin: 0 0 30px 0;
-    border: 2px solid #ffbf66;
-    box-shadow: 0 0 10px #000;
-    width: 100%;
-}
 .extendedNews .textWrap {
     color: #000;
     line-height: 1.4;
     font-family: Roboto;
-}
-.extendedNews .textWrap b, .extendedNews .textWrap h2, .extendedNews .textWrap h3 {
-    color: #000;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
-}
-.extendedNews .autor, .extendedNews .social-likes, .extendedNews .tags, .extendedNews .external-article__title, .extendedNews .content-photo, .extendedNews .article-footer, .extendedNews .match-info, .extendedNews .js-social-embed-iframe, .extendedNews .article-head, .extendedNews .external-article__icon svg, .extendedNews .article-live__action, .extendedNews .article-live-elem__footer, .extendedNews .ratingz, .article-subscription {
-    display: none;
-}
-.extendedNews a, .extendedNews p, .extendedNews h2, .extendedNews i, .extendedNews .blockquote a, .extendedNews span, .textWrap h3, .quote-expert__desc, .extendedNews .textWrap ul li, .extendedNews .textWrap td, .extendedNews dl, .extendedNews dt, .extendedNews dd {
-    color: #000;
-}
-i {
-    font-style: italic;
+    padding: 0 0 200px 0;
 }
 .extendedNews p {
-    margin: 10px 0 30px 0;
+    color: #000;
 }
-.extendedNews .external-article-list {
-    flex-direction: column;
+.extendedNews table * {
+    color: #000;
 }
-.extendedNews .external-article {
-    display: flex;
-    justify-content: center;
-}
+
 
 @media (min-width: 1024px) {
     .extendedNews .container img {
-        width: auto;
-    }
-    .extendedNews .container a img {
-        margin: 0;
-        margin: 0 0 5px 5px;
+        width: 400px;
+        float: right;
+        margin-left: 30px;
     }
     .extendedNews h1 {
         margin: 0;
         font-size: 1.7em;
         text-align: left;
-    }
-}
-
-@media (max-width: 820px) {
-    iframe {
-        width: 100% !important;
     }
 }

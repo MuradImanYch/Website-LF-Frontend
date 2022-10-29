@@ -1,0 +1,89 @@
+#adminMain form {
+    display: flex;
+    flex-direction: column;
+}
+#adminNav {
+    width: 100%;
+    background: rgb(204, 135, 45);
+    padding: 0 10px;
+    margin: 20px auto 40px auto;
+    display: none;
+}
+#adminNav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#adminNav ul li {
+    height: 40px;
+    width: 100%;
+}
+#adminNav ul li:hover a {
+    background: rgb(156, 103, 33);
+    transition: 0.3s;
+}
+#adminNav ul li a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#adminNav ul li a img {
+    margin: 0 10px;
+    width: 20px;
+}
+#menuToggleAdminWrap {
+    display: flex;
+    justify-content: center;
+}
+.bar1Admin,
+.bar2Admin,
+.bar3Admin {
+  width: 35px;
+  height: 4px;
+  background-color: rgb(145, 99, 40);
+  margin: 7px 0;
+  transition: 0.4s;
+}
+
+@media (min-width: 540px) { /* >= 540px */
+    #adminNav {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1024px) { /* >= 1024px */
+    #adminNav {
+        width: 100%;
+        display: block;
+        margin-top: 0;
+    }
+    #adminNav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+    #adminNav ul li {
+        margin: 0 6px;
+        width: auto;
+        font-size: 0.95em;
+    }
+    #adminNav ul li a {
+        padding: 0 10px;
+    }
+    #menuToggleAdminWrap {
+        display: none;
+    }
+}
+@media (min-width: 1280px) { /* >= 1280px */
+    main .container {
+        min-width: 1000px;
+    }
+}
+
+@media (min-width: 1680px) { /* >= 1680px */
+    main .container {
+        min-width: 1200px;
+    }
+}

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
 import './Forecasts.css';
+import axios from 'axios';
 
 const Forecasts = () => {
     const[forecasts, setForecasts] = useState();
 
     useEffect(() => {
-        $.ajax({
-            type: "GET",
-            url: '/forecasts',
-        }).done(function (response) {
-            if(response.length > 0) {
-                localStorage.setItem('forecasts', JSON.stringify(response));
+        axios.get('/forecasts')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('forecasts', JSON.stringify(response.data));
             }
             setForecasts(JSON.parse(localStorage.getItem('forecasts')) && JSON.parse(localStorage.getItem('forecasts')).map((e, i) => {
                 return  <div className="col" id={'id' + i} key={'key' + i}>
@@ -31,6 +29,9 @@ const Forecasts = () => {
                             </div>
                         </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 
