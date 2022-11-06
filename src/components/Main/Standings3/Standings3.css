@@ -1,219 +1,38 @@
-/*-----------------Mobile----------------*/
-#standingsSlider3 .tableWrap {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 410px;
-    margin: 20px auto 0 auto;
-}
-#standingsSlider3 .tableWrap .table {
-    width: 100%;
-    border: 2px solid rgb(255, 191, 102);
-    height: 100%;
-    position: absolute;
-    padding: 0 5px 8px 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#standingsSlider3 .tableWrap .table:nth-child(1) {
-    left: 0;
-}
-#standingsSlider3 .tableWrap .table:nth-child(2) {
-    left: 100%;
-}
-#standingsSlider3 .tableWrap .table:nth-child(3) {
-    left: 200%;
-}
-#standingsSlider3 .tableWrap .table > img {
-    width: 35px;
-    margin: 0 auto;
-    padding: 0 0 10px 0;
-}
-#standingsSlider3 .tableWrap .table a {
-    text-align: center;
-    color: #000;
-    text-decoration: underline;
-    margin: 20px 0 0 0;
-}
-#standingsSlider3 .tableWrap .table a:hover {
-    color: #FFD700;
-}
-#standingsSlider3 .tableWrap .table .col {
-    width: 100%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px 0;
-}
-#standingsSlider3 .tableWrap .table .col:not(:nth-child(2)) {
-    border-bottom: 1px solid rgb(204, 204, 204);
-}
-#standingsSlider3 .tableWrap .table .col .head {
-    background: rgb(226, 226, 226);
-    min-width: 100%;
-    min-height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px 0 0;
-}
-#standingsSlider3 .tableWrap .table .col .head span {
-    font-size: 0.9em;
-    color: #000;
-}
-#standingsSlider3 .tableWrap .table .col:nth-child(1) {
-    border: 0;
-}
-#standingsSlider3 .tableWrap .table .col .head span:not(:last-child) {
-    width: 60px;
-    display: flex;
-    justify-content: center;
-}
-#standingsSlider3 .tableWrap .table .col .head span:last-child {
-    font-weight: bold;
-}
-#standingsSlider3 .tableWrap .table .col .head span:nth-child(3) {
-    justify-content: flex-end;
-}
-#standingsSlider3 .tableWrap .table .col .place {
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    font-size: 0.8em;
-    cursor: default;
-    font-weight: bold;
-    font-family: 'Graduate';
-}
-#standingsSlider3 .tableWrap .table .col .logoName {
-    display: flex;
-    align-items: center;
-    width: 110px;
-    justify-content: flex-start;
-}
-#standingsSlider3 .tableWrap .table .col .logoName img {
-    width: 22px;
-}
-#standingsSlider3 .tableWrap .table .col .logoName span, #standingsSlider3 .tableWrap .table .col .games, #standingsSlider3 .tableWrap .table .col .points {
-    font-size: 0.8em;
-    color: #000;
-    display: flex;
-    text-align: center;
-}
-#standingsSlider3 .tableWrap .table .col .logoName span {
-    padding: 0 0 0 5px;
-}
-#standingsSlider3 .tableWrap .table .col .points {
-    font-weight: bold;
-    color: #000;
-}
-#standingsSlider3 .tableWrap .table .col .scoredConceded {
-    display: flex;
-    align-items: center;
-    color: #000;
-    font-size: 0.85em;
-}
-#standingsSlider3 .tableWrap .table .col .scoredConceded span  {
-    color: #000;
-    font-size: 0.9em;
-    padding: 0 2px 0 1px;
-}
-#standingsSlider3 .arrowWrap {
-    position: absolute;
-    width: 100%;
-    top: 45%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-#standingsSlider3 .arrowWrap i {
-    color: rgb(0, 121, 202);
-    font-size: 1.4em;
-    padding: 8px 6px;
-    cursor: pointer;
-}
-#standingsSlider3 .arrowWrap i:active {
-    color: rgb(255, 191, 102);
-}
-#standingsSlider3 .promotion {
-    background: #004682;
-}
-#standingsSlider3 .relegation {
-    background: #bd0000;
-}
-#standingsSlider3 .tableWrap .table .col .place:not(#standingsSlider3 .promotion, #standingsSlider3 .relegation) {
-    color: #000;
-}
-
-@media (min-width: 768px) { /* > 768px */
-    #standingsSlider3 .tableWrap {
-        width: 350px;
-    }
-    #standingsSlider3 .tableWrap .table {
-        width: 350px;
-    }
-    #standingsSlider3 .tableWrap .table .col {
-        justify-content: space-between;
-        padding: 20px 0;
-    }
-    #standingsSlider3 .tableWrap .table .col:not(:nth-child(2)) {
-        padding-right: 3px;
-    }
-    #standingsSlider3 .tableWrap .table .col .head {
-        padding: 0;
-    }
-    #standingsSlider3 .tableWrap .table .col .head span:nth-child(1) {
-        width: 30px;
-    }
-    #standingsSlider3 .tableWrap .table .col .head span:nth-child(5) {
-        padding: 0 5px 0 0;
-    }
-    #standingsSlider3 .tableWrap .table .col .head span:nth-child(2) {
-        padding: 0 0 0 15px;
-    }
-    #standingsSlider3 .tableWrap .table .col .head span:nth-child(3) {
-        margin: 0 0 0 15px;
-    }
-    #standingsSlider3 .tableWrap .table .col .logoName img { 
-        margin: 0 0 0 5px;
+@media (min-width: 768px) {
+    #standings3 {
+       min-width: 300px !important;
     }
 }
 
-@media (min-width: 1024px) { /* > 1024px */
-    #standingsSlider3 .tableWrap .table {
-        width: 450px;
+@media (min-width: 1024px) {
+    #standings3 {
+       min-width: 450px !important;
     }
-    #standingsSlider3 {
-        width: 455px;
+    #standings3 .nums {
+        margin: 0 60px 0 0;
     }
-    #standingsSlider3 .tableWrap {
-        width: 450px;
-    }
-}
-@media (min-width: 1280px) { /* > 1280px */
-    #standingsSlider3 .tableWrap .table {
-        width: 310px;
-    }
-    #standingsSlider3 {
-        width: 315px;
-    }
-    #standingsSlider3 .tableWrap {
-        width: 310px;
+    #standings3 .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 163px;
     }
 }
 
-@media (min-width: 1920px) { /* > 1920px */
-    #standingsSlider3 .tableWrap .table {
-        width: 360px;
+@media (min-width: 1280px) {
+    #standings3 {
+       min-width: 300px !important;
     }
-    #standingsSlider3 {
-        width: 365px;
+    #standings3 .nums {
+        margin: 0 11px 0 0;
     }
-    #standingsSlider3 .tableWrap {
-        width: 360px;
+    #standings3 .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 72px;
+    }
+}
+
+@media (min-width: 1680px) {
+    #standings3 .nums {
+        margin: 0 20px 0 0;
+    }
+    #standings3 .swiper-slide .head span:nth-child(3) {
+        margin: 0 0 0 80px;
     }
 }

@@ -9,23 +9,27 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const EditDeleteNews = () => {
     const[news, setNews] = useState();
-    const[delId, setDelId] = useState();
-    const[league, setLeague] = useState();
+    const[delId, setDelId] = useState('');
+    const[category, setCategory] = useState();
     const[title, setTitle] = useState('wqdwq');
     const[img, setImg] = useState('');
     const[content, setContent] = useState('');
-    const[editId, setEditId] = useState();
+    const[editId, setEditId] = useState('');
 
     const rejectEdit = () => {
+        setEditId('');
+        setImg('');
+        setTitle('');
+        setContent('');
+        setCategory('none');
         $('.editPopup').fadeOut();
         $('body').css({overflow: "auto"});
-        setEditId('');
     }
     const acceptEdit = (e) => {
         e.preventDefault();
         
-        if(league === 'none') {
-            alert('Выберите лигу');
+        if(category === 'none') {
+            alert('Выберите категорию');
         }
         else if(title === '') {
             alert('Введите заголовок');
@@ -37,19 +41,31 @@ const EditDeleteNews = () => {
             alert('Введите контент для новости');
         }
         else {
+            setEditId('');
+            setImg('');
+            setTitle('');
+            setContent('');
+            setCategory('none');
+
             $('.editPopup').fadeOut();
             $('body').css({overflow: "auto"});
+            $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
+            $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
             
-            axios.post('/editNews', {id: editId, league, title, img, content})
+            axios.post('/editNews', {id: editId && editId, category, title, img, content})
             .catch(err => {
                 console.log(err);
             });
-            setEditId('');
+
+            setTimeout(() => {
+                $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
+                $('#editDeleteNews .newsCart .editDelWrap button').css({background: '#fff'});
+            }, 10000);
         }
     }
 
     useEffect(() => { 
-        axios.get('/myNews')
+        axios.get('/allNews')
         .then(response => {
             setNews(response.data && response.data.reverse().map((e) => {
                 let date = new Date(e.date);
@@ -60,22 +76,22 @@ const EditDeleteNews = () => {
                 let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
 
                 const deleteNews = (e) => {
-                    $('#delConfirm').fadeIn();
                     setDelId(e.target.id.match(/\d+/)[0]);
+                    $('#delConfirm').fadeIn();
                     $('body').css({overflow: "hidden"});
                 }
                 const acceptDel = () => {
+                    setDelId('');
                     $('#delConfirm').fadeOut();
                     $('body').css({overflow: "auto"});
 
-                    axios.post('/delNews', {id: delId})
+                    axios.post('/delNews', {id: delId && delId})
                     .catch(err => {
                         if(err) throw err;
                     });
 
                     $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
                     $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
-                    setDelId('');
 
                     setTimeout(() => {
                         $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
@@ -83,9 +99,9 @@ const EditDeleteNews = () => {
                     }, 10000);
                 }
                 const rejectDel = () => {
+                    setDelId('');
                     $('#delConfirm').fadeOut();
                     $('body').css({overflow: "auto"});
-                    setDelId('');
                 }
 
                 return  <div key={'key' + e.id} className="newsCart" id={'id' + e.id}>
@@ -124,17 +140,17 @@ const EditDeleteNews = () => {
     
             axios.post('/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
             .then(response => {
-                setLeague(response.data[0].league);
+                setEditId(e.target.id.match(/\d+/)[0]);
+                setCategory(response.data[0].category);
                 setTitle(response.data[0].title);
                 setImg(response.data[0].img);
                 setContent(response.data[0].content);
-                setEditId(e.target.id.match(/\d+/)[0]);
             })
             .catch(err => {
                 console.log(err);
             });
         }
-    }, [news, delId, league, title, img, content, editId]);  
+    }, [news, delId, category, title, img, content, editId]);  
 
     return (
         <div id="editDeleteNews">
@@ -144,10 +160,10 @@ const EditDeleteNews = () => {
 
                                 <div className="container">
                                     <form action='/editNews' method='POST'>
-                                        <label htmlFor="editNewsLeagues">Лига:</label>
+                                        <label htmlFor="editNewsCategory">Категория:</label>
                                         <select onChange={(e) => {
-                                            setLeague(e.target.value);
-                                        }} value={league} name="editNewsLeagues" id="editNewsLeagues">
+                                            setCategory(e.target.value);
+                                        }} value={category} name="editNewsCategory" id="editNewsCategory">
                                             <option value="none" disabled>Не выбрана</option>
                                             <option value="rpl">РПЛ</option>
                                             <option value="epl">АПЛ</option>
@@ -160,6 +176,9 @@ const EditDeleteNews = () => {
                                             <option value="uecl">ЛК</option>
                                             <option value="wc">ЧМ</option>
                                             <option value="ec">ЧЕ</option>
+                                            <option value="other">Разное</option>
+                                            <option value="blog">Блоги</option>
+                                            <option value="video">Видео</option>
                                         </select>
                                         <label htmlFor="editNewsTitle">Заголовок:</label>
                                         <input onChange={(e) => {

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './MainNews3.css';
-import $ from 'jquery';
+import './Blogs.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {Navigation, Pagination} from "swiper";
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 import axios from 'axios';
 
-const MainNews3 = () => {
-    const[mainNews, setMainNews] = useState(); 
+SwiperCore.use([Navigation, Pagination]);
+
+const Blogs = () => {
+    const[blogs, setBlogs] = useState(); 
 
     useEffect(() => { 
-        axios.get('/mainNews')
+        axios.get('/blogs')
         .then(response => {
-            setMainNews(response.data && response.data.reverse().splice(20, 6).map((e) => {
+            setBlogs(response.data && response.data.reverse().splice(0, 6).map((e) => {
                 let date = new Date(e.date);
                 let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
                 let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth()) : String(date.getMonth());
@@ -30,13 +34,15 @@ const MainNews3 = () => {
                     $(`.newsVr #${'id' + e.id} h3`).css({'backgroundColor': 'rgba(0, 0, 0, 0.1)'}).css({'color': 'rgb(255, 255, 255)'});
                     $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                 }
-                return  <div key={'key' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
+                return  <SwiperSlide>
+                    <div key={'key' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                             <Link to={`/news/${e.id}`}>
                                 <div className="img"><img alt={e.title} src={e.img} /></div>
                                 <h3>{e.title}</h3>
                                 <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
                             </Link>
                         </div>
+                </SwiperSlide>
             })); 
         })
         .catch(err => {
@@ -45,12 +51,16 @@ const MainNews3 = () => {
     }, []); 
 
     return (
-        <div className='newsVr'>
+        <div id='blogs' className='newsVr'>
             <section>
-                {mainNews}
+                <h3 className="sectionName">Блоги</h3>
+                <Swiper navigation grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 1024: {slidesPerView: 3}}} direction={"vertical"} pagination={{type: "progressbar", clickable: true}}>
+                    {blogs}
+                </Swiper>
+                <Link to="#">Подробнее</Link>
             </section>
         </div>
     );
 };
 
-export default MainNews3;
+export default Blogs;

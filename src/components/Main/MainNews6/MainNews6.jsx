@@ -8,9 +8,9 @@ const MainNews6 = () => {
     const[mainNews, setMainNews] = useState();
 
     useEffect(() => {
-        axios.get('/myNews')
+        axios.get('/mainNews')
         .then(response => {
-            setMainNews(response.data && response.data.reverse().splice(8, 6).map((e) => {
+            setMainNews(response.data && response.data.reverse().splice(8, 8).map((e) => {
                 let date = new Date(e.date);
                 let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
                 let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth()) : String(date.getMonth());

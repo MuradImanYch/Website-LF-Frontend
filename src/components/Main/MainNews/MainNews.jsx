@@ -8,7 +8,7 @@ const News = () => {
     const[mainNews, setMainNews] = useState(); 
     
     useEffect(() => { 
-        axios.get('/myNews')
+        axios.get('/mainNews')
         .then(response => {
             setMainNews(response.data && response.data.reverse().splice(32, 6).map((e) => {
                 let date = new Date(e.date);

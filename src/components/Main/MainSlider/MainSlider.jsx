@@ -15,7 +15,7 @@ const NewsSlider = () => {
     const[newsSlider, setNewsSlider] = useState(); 
     
     useEffect(() => {
-        axios.get('/myNews')
+        axios.get('/mainNews')
         .then(response => {
             setNewsSlider(response.data && response.data.reverse().splice(0, 8).map((e) => {
                 let date = new Date(e.date);
@@ -38,6 +38,10 @@ const NewsSlider = () => {
             console.log(err);
         });
     }, []);
+
+    var timeStamp= 1107110465663
+var dateFormat= new Date(timeStamp);
+console.log(dateFormat.getHours())
 
     return (
         <div id="newsSlider">

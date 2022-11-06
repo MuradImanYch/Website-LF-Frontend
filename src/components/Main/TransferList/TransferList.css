@@ -1,3 +1,15 @@
+#transferList a {
+    text-decoration: underline;
+    color: #000;
+    text-underline-offset: 2px;
+    display: block;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+#transferList a:hover {
+    color: #ffbf66;
+}
 #transferList {
     margin: 20px 0 0 0;
     width: 100%;
@@ -61,6 +73,7 @@
 @media (min-width: 1024px) { /* >= 540px */
     #transferList {
         width: 300px;
+        margin: 0;
     }
     #transferList .listWrap {
         width: 100%;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
 import './EndedMatches.css';
+import axios from 'axios';
+
 import friendly from '../../../assets/ico/friendly.webp';
 import redCard from '../../../assets/ico/redCard.webp';
 import yellowRedCard from '../../../assets/ico/yellowRedCard.webp';
@@ -10,12 +11,10 @@ const EndedMatches = () => {
     const[endedMatches, setEndedMatches] = useState();
 
     useEffect(() => {
-        $.ajax({
-            type: "GET",
-            url: '/endedMatches',
-        }).done(function (response) {
-            if(response.length > 0) {
-                localStorage.setItem('endedMatches', JSON.stringify(response));
+        axios.get('/endedMatches')
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('endedMatches', JSON.stringify(response.data));
             }
             setEndedMatches(JSON.parse(localStorage.getItem('endedMatches')) && JSON.parse(localStorage.getItem('endedMatches')).map((e, i) => {
                 return  <div key={'key' + i} className="col" id={'id' + i} title={e.lName.length > 70 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
@@ -58,6 +57,9 @@ const EndedMatches = () => {
                             <span className="aName">{e.aName}</span>
                         </div>
             })); 
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 

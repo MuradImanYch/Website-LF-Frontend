@@ -23,6 +23,7 @@ import VideoNews from './VideoNews/VideoNews';
 import EndedMatches from './EndedMatches/EndedMatches';
 import Forecasts from './Forecasts/Forecasts';
 import Standings6 from './Standings6/Standings6';
+import Blogs from './Blogs/Blogs';
 
 const Main = (props) => {
 
@@ -35,10 +36,13 @@ const Main = (props) => {
                 <EndedMatches />
                 <Forecasts />
             </div>
-            <VideoNews />
             <div className="transfers">
                 <MainNews6 />
                 <TransferList />
+            </div>
+            <div id="videoBlogs">
+                <VideoNews />
+                <Blogs />
             </div>
             <Standings />
             <MainNews2 />

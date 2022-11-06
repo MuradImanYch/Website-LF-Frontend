@@ -1,73 +1,160 @@
 import React, { useEffect, useState } from 'react';
 import './Standings2.css';
-import $ from 'jquery';
 import { Link } from 'react-router-dom';
-let season = 2022;
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {Navigation} from "swiper";
+import axios from 'axios';
 
-const Standings = () => {
-    let table1 = 0;
-    let table2 = 100;
-    let table3 = 200;
-    let leagId = [];
-    let selected = [];
-    const[table, setTable] = useState();
+import unlLogo from '../../../assets/ico/unlLogo.webp';
 
-    const next = () => { // next table slider
-        $('#standingsSlider2 .tableWrap .table').eq(0).animate({'left': `${table1-=100}%`});
-        $('#standingsSlider2 .tableWrap .table').eq(1).animate({'left': `${table2-=100}%`});
-        $('#standingsSlider2 .tableWrap .table').eq(2).animate({'left': `${table3-=100}%`});
-        if (table3 === -100) {
-            table1 += 100;
-            table2 += 100;
-            table3 += 100;
-            $('#standingsSlider2 .tableWrap .table').eq(0).animate({'left': `${table1}%`});
-            $('#standingsSlider2 .tableWrap .table').eq(1).animate({'left': `${table2}%`});
-            $('#standingsSlider2 .tableWrap .table').eq(2).animate({'left': `${table3}%`});
-        }
-    }
-    const prev = () => { // prev table slider
-        $('#standingsSlider2 .tableWrap .table').eq(0).animate({'left': `${table1+=100}%`});
-        $('#standingsSlider2 .tableWrap .table').eq(1).animate({'left': `${table2+=100}%`});
-        $('#standingsSlider2 .tableWrap .table').eq(2).animate({'left': `${table3+=100}%`});
-        if (table1 === 100) {
-            table1 -= 100;
-            table2 -= 100;
-            table3 -= 100;
-            $('#standingsSlider2 .tableWrap .table').eq(0).animate({'left': `${table1}%`});
-            $('#standingsSlider2 .tableWrap .table').eq(1).animate({'left': `${table2}%`});
-            $('#standingsSlider2 .tableWrap .table').eq(2).animate({'left': `${table3}%`});
-        }
-    }
+SwiperCore.use([Navigation]);
 
-    /* useEffect(() => {
-        const settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": `https://api-football-v1.p.rapidapi.com/v3/standings?season=${season}&league=5`,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key": "64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5"
+const Standings4 = () => {
+    const [unlStandingsA, setUnlStandingsA] = useState();
+    const [unlStandingsB, setUnlStandingsB] = useState();
+    const [unlStandingsC, setUnlStandingsC] = useState();
+    const [unlStandingsD, setUnlStandingsD] = useState();
+
+    let endpointsA = ['/unlStandingsA1', '/unlStandingsA2', 'unlStandingsA3', 'unlStandingsA4'];
+    let endpointsB = ['/unlStandingsB1', '/unlStandingsB2', '/unlStandingsB3', '/unlStandingsB4'];
+    let endpointsC = ['/unlStandingsC1', '/unlStandingsC2', '/unlStandingsC3', '/unlStandingsC4'];
+    let endpointsD = ['/unlStandingsD1', '/unlStandingsD2'];
+
+    useEffect(() => {
+        axios.get(endpointsA[Math.floor(Math.random() * endpointsA.length)])
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('unlStandingsA', JSON.stringify(response.data));
             }
-        };
-        $.ajax(settings).done(function (response) {
-            for(let i = 0; i <= response.response[0].league.standings.length - 1; i++) {
-                leagId.push(i);
-            }
-            let rand = Math.floor(Math.random() * leagId.length); // rand num | push & splice
-            selected.push(leagId[rand]);
-            leagId.splice(rand, 1);
-            let rand2 = Math.floor(Math.random() * leagId.length);
-            selected.push(leagId[rand2]);
-            leagId.splice(rand2, 1);
-            let rand3 = Math.floor(Math.random() * leagId.length);
-            selected.push(leagId[rand3]);
-            leagId.splice(rand3, 1);
-
-            setTable(selected && selected.map((index, indx) => {
-                return <div className="table" key={'id' + indx} id={'id' + indx}>
-                        <img src={response.response[0].league.logo} alt={response.response[0].league.name} title={response.response[0].league.name} />
+            setUnlStandingsA(JSON.parse(localStorage.getItem('unlStandingsA')) && JSON.parse(localStorage.getItem('unlStandingsA')).map((e, i) => {
+                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                    <div className="group">{e.group}</div>
                         <div className="col">
+                            <div className="left">
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <span className='name'>{e.name}</span>
+                            </div>
+                            <div className="nums">
+                                <span className="games">{e.games}</span>
+                                <div className="forAgainst">
+                                    <span className='for'>{e.goalsFor}</span>
+                                    <span>:</span>
+                                    <span className='against'>{e.goalsAgainst}</span>
+                                </div>
+                                <div className="points">{e.points}</div>
+                            </div>
+                        </div>
+                </div>
+            }));
+        })
+        .catch(err => {
+            console.log(err)
+        });
+
+        axios.get(endpointsB[Math.floor(Math.random() * endpointsB.length)])
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('unlStandingsB', JSON.stringify(response.data));
+            }
+            setUnlStandingsB(JSON.parse(localStorage.getItem('unlStandingsB')) && JSON.parse(localStorage.getItem('unlStandingsB')).map((e, i) => {
+                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                    <div className="group">{e.group}</div>
+                        <div className="col">
+                            <div className="left">
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <span className='name'>{e.name}</span>
+                            </div>
+                            <div className="nums">
+                                <span className="games">{e.games}</span>
+                                <div className="forAgainst">
+                                    <span className='for'>{e.goalsFor}</span>
+                                    <span>:</span>
+                                    <span className='against'>{e.goalsAgainst}</span>
+                                </div>
+                                <div className="points">{e.points}</div>
+                            </div>
+                        </div>
+                </div>
+            }));
+        })
+        .catch(err => {
+            console.log(err)
+        });
+
+        axios.get(endpointsC[Math.floor(Math.random() * endpointsC.length)])
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('unlStandingsC', JSON.stringify(response.data));
+            }
+            setUnlStandingsC(JSON.parse(localStorage.getItem('unlStandingsC')) && JSON.parse(localStorage.getItem('unlStandingsC')).map((e, i) => {
+                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                    <div className="group">{e.group}</div>
+                        <div className="col">
+                            <div className="left">
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <span className='name'>{e.name}</span>
+                            </div>
+                            <div className="nums">
+                                <span className="games">{e.games}</span>
+                                <div className="forAgainst">
+                                    <span className='for'>{e.goalsFor}</span>
+                                    <span>:</span>
+                                    <span className='against'>{e.goalsAgainst}</span>
+                                </div>
+                                <div className="points">{e.points}</div>
+                            </div>
+                        </div>
+                </div>
+            }));
+        })
+        .catch(err => {
+            console.log(err)
+        });
+
+        axios.get(endpointsD[Math.floor(Math.random() * endpointsD.length)])
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('unlStandingsD', JSON.stringify(response.data));
+            }
+            setUnlStandingsD(JSON.parse(localStorage.getItem('unlStandingsD')) && JSON.parse(localStorage.getItem('unlStandingsD')).map((e, i) => {
+                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                    <div className="group">{e.group}</div>
+                        <div className="col">
+                            <div className="left">
+                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <span className='name'>{e.name}</span>
+                            </div>
+                            <div className="nums">
+                                <span className="games">{e.games}</span>
+                                <div className="forAgainst">
+                                    <span className='for'>{e.goalsFor}</span>
+                                    <span>:</span>
+                                    <span className='against'>{e.goalsAgainst}</span>
+                                </div>
+                                <div className="points">{e.points}</div>
+                            </div>
+                        </div>
+                </div>
+            }));
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }, []);
+
+    return (
+        <div className='table5xn standingsEurocups' id="standings2">
+                <section>
+                    <h3 className="sectionName">Турнирная таблица - Лига наций</h3>
+                    <Swiper navigation grabCursor={true} slidesPerView={1}>
+                        <SwiperSlide>
+                            <div className="lLogo">
+                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                            </div>
                             <div className="head">
                                 <span>#</span>
                                 <span>Команда</span>
@@ -75,45 +162,55 @@ const Standings = () => {
                                 <span>З : П</span>
                                 <span>О</span>
                             </div>
-                        </div>
-                        {
-                            response.response[0].league.standings[index] && response.response[0].league.standings[index].map((e, indx) => {
-                                return <div className="col" key={indx}>
-                                    <div title={e.description} className={`place ${e.description?.split(" ")[0]?.toLowerCase()}`}>{e.rank}</div>
-                                    <div className='logoName'>
-                                        <img src={e.team.logo} alt="img" />
-                                        <span>{e.team.name}</span>
-                                    </div>
-                                    <span className='games'>{e.all.played}</span>
-                                    <div className='scoredConceded'>
-                                        <span>{e.all.goals.for} </span>
-                                        :
-                                        <span> {e.all.goals.against} </span>
-                                    </div>
-                                    <span className='points'>{e.points}</span>
-                                </div>
-                            })
-                        }
-                        <Link to="">Подробнее...</Link>  
-                    </div> 
-            }));
-        });
-    }, []); */
-
-    return (
-        <div id="standingsSlider2">
-            <section>
-                <h3 className="sectionName">Турнирная таблица - Лига наций</h3>
-                <div className="tableWrap">
-                    {table}
-                    <div className="arrowWrap">
-                        <i onClick={prev} className="fas fa-chevron-left"></i>
-                        <i onClick={next} className="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </section>
+                            {unlStandingsA}
+                            <Link to="#">Подробнее</Link>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="lLogo">
+                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                            </div>
+                            <div className="head">
+                                <span>#</span>
+                                <span>Команда</span>
+                                <span>И</span>
+                                <span>З : П</span>
+                                <span>О</span>
+                            </div>
+                            {unlStandingsB}
+                            <Link to="#">Подробнее</Link>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="lLogo">
+                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                            </div>
+                            <div className="head">
+                                <span>#</span>
+                                <span>Команда</span>
+                                <span>И</span>
+                                <span>З : П</span>
+                                <span>О</span>
+                            </div>
+                            {unlStandingsC}
+                            <Link to="#">Подробнее</Link>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="lLogo">
+                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                            </div>
+                            <div className="head">
+                                <span>#</span>
+                                <span>Команда</span>
+                                <span>И</span>
+                                <span>З : П</span>
+                                <span>О</span>
+                            </div>
+                            {unlStandingsD}
+                            <Link to="#">Подробнее</Link>
+                        </SwiperSlide>
+                    </Swiper>
+                </section>
         </div>
     );
 };
 
-export default Standings;
+export default Standings4;

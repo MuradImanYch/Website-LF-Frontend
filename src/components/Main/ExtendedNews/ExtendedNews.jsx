@@ -10,7 +10,7 @@ const ExtendedNews = () => {
     const[selected, setSelected] = useState();
 
     useEffect(() => {
-        axios.get('/myNews')
+        axios.get('/allNews')
         .then(response => {
             setSelected(response.data.find((obj) => {
                 return obj.id === +id;
@@ -21,7 +21,7 @@ const ExtendedNews = () => {
         });
 
         $('.extendedNews').hide();
-        $('.extendedNews').fadeIn();
+        $('.extendedNews').fadeIn('slow');
         $("html, body").animate({ scrollTop: 0 }, "slow");
     }, []);
     
@@ -43,10 +43,12 @@ const ExtendedNews = () => {
         <div className='extendedNews'>
             <div className="container">
                 <div className="postWrap">
-                    <h1 className="pageName">{selected && selected.title}</h1>
-                    <span className="date">{selected && convertDate(selected.date)}</span>
-                    <img src={selected && selected.img} alt="newsImg" />
-                    <div className='textWrap'>{selected && parse(selected.content)}</div>
+                    <article>
+                        <h1 className="pageName">{selected && selected.title}</h1>
+                        <span className="date">{selected && convertDate(selected.date)}</span>
+                        <img id='mainImg' src={selected && selected.img} alt="newsImg" />
+                        <div className='textWrap'>{selected && parse(selected.content)}</div>
+                    </article>
                 </div>
             </div>
         </div>

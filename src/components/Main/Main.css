@@ -56,6 +56,10 @@
         display: flex;
         justify-content: space-between;
     }
+    #videoBlogs {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 @media (min-width: 1280px) { /* >= 1280px */
@@ -70,12 +74,19 @@
         display: flex;
         align-items: flex-end;
         flex-direction: column;
+        width: 100%;
     }
     .standingsNews .standings {
         display: flex;
         width: 100%;
         justify-content: space-between;
-        padding: 0 0 0 22px;
         margin: -32px 0 0 0;
+        padding: 0 0 0 40px;
+    }
+}
+
+@media (min-width: 1680px) { /* >= 1680px */
+    .standingsNews .standings {
+        padding: 0 0 0 60px;
     }
 }

@@ -7,7 +7,7 @@ const MainNews2 = () => {
     const[mainNews, setMainNews] = useState(); 
     
     useEffect(() => { 
-        axios.get('/myNews')
+        axios.get('/mainNews')
         .then(response => {
             setMainNews(response.data && response.data.reverse().splice(14, 6).map((e) => {
                 let date = new Date(e.date);
@@ -44,7 +44,7 @@ const MainNews2 = () => {
     }, []); 
 
     return (
-        <div className="newsHr">
+        <div className="newsHr" style={{margin: '40px 0 0 0'}}>
             <section>
                 {mainNews}
             </section>

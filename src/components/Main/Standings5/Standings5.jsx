@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
+
 import uelLogo from '../../../assets/ico/uelLogo.webp';
 
 SwiperCore.use([Navigation]);
@@ -24,12 +25,10 @@ const Standings5 = () => {
         let selected2 = getMultipleRandom(endpoints, 3)[1];
         let selected3 = getMultipleRandom(endpoints, 3)[2];
 
-        $.ajax({
-            type: 'GET',
-            url: selected1
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('uelStandings1', JSON.stringify(response));
+        axios.get(selected1)
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('uelStandings1', JSON.stringify(response.data));
             }
             setUelStandings1(JSON.parse(localStorage.getItem('uelStandings1')) && JSON.parse(localStorage.getItem('uelStandings1')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
@@ -52,14 +51,15 @@ const Standings5 = () => {
                         </div>
                 </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: selected2
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('uelStandings2', JSON.stringify(response));
+        axios.get(selected2)
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('uelStandings2', JSON.stringify(response.data));
             }
             setUelStandings2(JSON.parse(localStorage.getItem('uelStandings2')) && JSON.parse(localStorage.getItem('uelStandings2')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
@@ -82,14 +82,15 @@ const Standings5 = () => {
                         </div>
                 </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
 
-        $.ajax({
-            type: 'GET',
-            url: selected3
-        }).done((response) => {
-            if(response.length > 0) {
-                localStorage.setItem('uelStandings3', JSON.stringify(response));
+        axios.get(selected3)
+        .then(response => {
+            if(response.data.length > 0) {
+                localStorage.setItem('uelStandings3', JSON.stringify(response.data));
             }
             setUelStandings3(JSON.parse(localStorage.getItem('uelStandings3')) && JSON.parse(localStorage.getItem('uelStandings3')).map((e, i) => {
                 return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
@@ -112,6 +113,9 @@ const Standings5 = () => {
                         </div>
                 </div>
             }));
+        })
+        .catch(err => {
+            console.log(err);
         });
     }, []);
 

@@ -1,4 +1,7 @@
 /*---------------Mobile--------------*/
+#videoNews {
+    margin: 40px 0 0 0;
+}
 #videoNews .cart {
     width: 100%;
     height: 250px;
@@ -48,15 +51,20 @@
 
 @media (min-width: 768px) {
     #videoNews .cart {
-        height: 160px;
-        width: 232px;
+        height: 230px;
+        width: 360px;
     }
+    #videoNews {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    
 }
 
 @media (min-width: 820px) { /* >= 820px */
     #videoNews .cart {
-        height: 170px;
-        width: 250px;
+        height: 240px;
+        width: 385px;
     }
 }
 
@@ -69,18 +77,35 @@
 
 @media (min-width: 1024px) {
     #videoNews .cart {
-        width: 235px;
-        height: 160px;
+        height: 220px;
+        width: 320px;
     }
     #videoNews .cart .playWrap img {
         width: 55px;
         height: 55px;
     }
+    #videoNews {
+        width: 660px;
+    }
+}
+
+@media (min-width: 1280px) {
+    #videoNews .cart {
+        height: 220px;
+        width: 320px;
+    }
+    #videoNews {
+        width: 658px;
+    }
 }
 
 @media (min-width: 1680px) {
     #videoNews .cart {
-        width: 284px;
-        height: 180px;
+        width: 385px;
+        height: 250px;
+    }
+    #videoNews {
+        margin: 50px 0 0 0;
+        width: 790px;
     }
 }

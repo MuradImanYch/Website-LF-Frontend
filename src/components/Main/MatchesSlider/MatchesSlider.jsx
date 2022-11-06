@@ -33,7 +33,7 @@ const MatchesSlider = () => {
                 localStorage.setItem('matchesSlider', JSON.stringify(unique));
             }
             setMatchesSlider(JSON.parse(localStorage.getItem('matchesSlider')) && JSON.parse(localStorage.getItem('matchesSlider')).map((e, i) => {
-                return <SwiperSlide key={'key' + i} id={'id' + i}>
+                return <SwiperSlide key={'key' + i} id={'id' + i} title={e.lLogo === undefined ? 'Товарищеский' : e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
                             <div className="top">
                                 <div className="lNameLogo">
                                     <img src={stadium} alt="стадион" title={e.stadium === '' ? 'Информация появится позже' : e.stadium} />

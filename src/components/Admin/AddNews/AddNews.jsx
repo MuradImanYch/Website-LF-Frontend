@@ -8,7 +8,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const parse = require('html-react-parser');
 
 const AddNews = () => {
-    const[league, setLeague] = useState('none');
+    const[category, setCategory] = useState('none');
     const[title, setTitle] = useState('');
     const[img, setImg] = useState('');
     const[content, setContent] = useState('');
@@ -17,8 +17,8 @@ const AddNews = () => {
     const addNews = (e) => {
         e.preventDefault();
 
-        if(league === 'none') {
-            alert('Выберите лигу');
+        if(category === 'none') {
+            alert('Выберите категорию');
         }
         else if(title === '') {
             alert('Введите заголовок');
@@ -42,7 +42,7 @@ const AddNews = () => {
 
     const acceptAdd = () => {
         axios.post('/addNews', {
-            league,
+            category,
             title,
             img,
             content
@@ -54,20 +54,23 @@ const AddNews = () => {
         $('select').prop({selectedIndex: '0'});
         document.querySelector('#newsSubmit').innerHTML = '✓';
         document.querySelector('#newsSubmit').setAttribute('disabled', 'disabled');
-        document.querySelector('#newsLeagues').setAttribute('disabled', 'disabled');
+        document.querySelector('#newsCategory').setAttribute('disabled', 'disabled');
         document.querySelector('#newsTitle').setAttribute('disabled', 'disabled');
         document.querySelector('#newsImg').setAttribute('disabled', 'disabled');
         document.querySelector('#newsSubmit').style.background = '#18ba20';
         $('.preview').fadeOut();
         $('body').css({overflow: "auto"});
         setDisabled(true);
+        setImg('');
+        setTitle('');
         setContent('');
+        setCategory('none');
         $('input').val('');
 
         setTimeout(() => {
             document.querySelector('#newsSubmit').innerHTML = '+';
             document.querySelector('#newsSubmit').removeAttribute('disabled');
-            document.querySelector('#newsLeagues').removeAttribute('disabled');
+            document.querySelector('#newsCategory').removeAttribute('disabled');
             document.querySelector('#newsTitle').removeAttribute('disabled');
             document.querySelector('#newsImg').removeAttribute('disabled');
             document.querySelector('#newsSubmit').style.background = 'rgba(204, 135, 45, 0.9)';
@@ -78,10 +81,10 @@ const AddNews = () => {
     return (
         <div id='addNews'>
             <form action='/addNews' method='POST'>
-                <label htmlFor="newsLeagues">Лига:</label>
+                <label htmlFor="newsCategory">Категория:</label>
                 <select onChange={(e) => {
-                    setLeague(e.target.value);
-                }} defaultValue={'none'}  name="newsLeagues" id="newsLeagues">
+                    setCategory(e.target.value);
+                }} defaultValue={'none'}  name="newsCategory" id="newsCategory">
                     <option value="none" disabled>Не выбрана</option>
                     <option value="rpl">РПЛ</option>
                     <option value="epl">АПЛ</option>
@@ -94,17 +97,20 @@ const AddNews = () => {
                     <option value="uecl">ЛК</option>
                     <option value="wc">ЧМ</option>
                     <option value="ec">ЧЕ</option>
+                    <option value="other">Разное</option>
+                    <option value="blog">Блоги</option>
+                    <option value="video">Видео</option>
                 </select>
                 <label htmlFor="newsTitle">Заголовок:</label>
-                <input onChange={(e) => {
+                <input placeholder='Введите заголовок' onChange={(e) => {
                     setTitle(e.target.value);
                 }} type="text" id='newsTitle' name='newsTitle' />
                 <label htmlFor="newsImg">Изображение:</label>
-                <input onChange={(e) => {
+                <input placeholder='Вставьте ссылку на изображение' onChange={(e) => {
                     setImg(e.target.value);
                 }} type="text" name='newsImg' id='newsImg' />
                 <label id='newsContentLabel' htmlFor="newsContent">Контент:</label>
-                <CKEditor data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
+                <CKEditor config={{placeholder: "Введите описание новости", mediaEmbed: {previewsInData: true}}} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
                     setContent(editor.getData());
                 }} />
                 <button title='Предпросмотр' type='submit' id='newsSubmit' onClick={addNews}>+</button>
@@ -116,7 +122,7 @@ const AddNews = () => {
                 <div className="container">
                     <p className="pageName">{title}</p>
                     <span className="date">ДД-ММ-ГГГГ | ЧЧ:ММ</span>
-                    <img src={img} alt="newsImg" />
+                    <img id='mainImg' src={img} alt="newsImg" />
                     <div className="textWrap">{parse(content)}</div>
                 </div>
 
