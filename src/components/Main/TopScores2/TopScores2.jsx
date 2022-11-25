@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import uclLogo from '../../../assets/ico/uclLogo.webp';
 import uelLogo from '../../../assets/ico/uelLogo.webp';
@@ -23,14 +25,14 @@ const TopScores = () => {
                 localStorage.setItem('uclTopScores', JSON.stringify(response.data));
             }
             setUclTopScores(JSON.parse(localStorage.getItem('uclTopScores')) && JSON.parse(localStorage.getItem('uclTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'uclTopScores' + i} key={'uclTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={e.img} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -50,14 +52,14 @@ const TopScores = () => {
                 localStorage.setItem('uelTopScores', JSON.stringify(response.data));
             }
             setUelTopScores(JSON.parse(localStorage.getItem('uelTopScores')) && JSON.parse(localStorage.getItem('uelTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'uelTopScores' + i} key={'uelTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={e.img} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -77,14 +79,14 @@ const TopScores = () => {
                 localStorage.setItem('ueclTopScores', JSON.stringify(response.data));
             }
             setUeclTopScores(JSON.parse(localStorage.getItem('ueclTopScores')) && JSON.parse(localStorage.getItem('ueclTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'ueclTopScores' + i} key={'ueclTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={e.img} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -106,7 +108,7 @@ const TopScores = () => {
                 <Swiper navigation grabCursor={true} slidesPerView={1}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={uclLogo} alt="ЛЧ" title='ЛЧ' />
+                            <Tippy content={'ЛЧ'}><img src={uclLogo} alt="ЛЧ" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -121,7 +123,7 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={uelLogo} alt="ЛЕ" title='ЛЕ' />
+                            <Tippy content={'ЛЕ'}><img src={uelLogo} alt="ЛЕ" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -136,7 +138,7 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={ueclLogo} alt="ЛК" title='ЛК' />
+                            <Tippy content={'ЛК'}><img src={ueclLogo} alt="ЛК" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>

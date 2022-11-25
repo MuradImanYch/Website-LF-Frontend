@@ -6,6 +6,7 @@ import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
 
 import unlLogo from '../../../assets/ico/unlLogo.webp';
+import Tippy from '@tippyjs/react';
 
 SwiperCore.use([Navigation]);
 
@@ -27,12 +28,12 @@ const Standings4 = () => {
                 localStorage.setItem('unlStandingsA', JSON.stringify(response.data));
             }
             setUnlStandingsA(JSON.parse(localStorage.getItem('unlStandingsA')) && JSON.parse(localStorage.getItem('unlStandingsA')).map((e, i) => {
-                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                return <div className={'unlStandingsA' + e.group.split(' ')[1]} key={'unlStandingsA' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
                                 <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -58,12 +59,12 @@ const Standings4 = () => {
                 localStorage.setItem('unlStandingsB', JSON.stringify(response.data));
             }
             setUnlStandingsB(JSON.parse(localStorage.getItem('unlStandingsB')) && JSON.parse(localStorage.getItem('unlStandingsB')).map((e, i) => {
-                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                return <div className={'unlStandingsB' + e.group.split(' ')[1]} key={'unlStandingsB' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
                                 <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -89,12 +90,12 @@ const Standings4 = () => {
                 localStorage.setItem('unlStandingsC', JSON.stringify(response.data));
             }
             setUnlStandingsC(JSON.parse(localStorage.getItem('unlStandingsC')) && JSON.parse(localStorage.getItem('unlStandingsC')).map((e, i) => {
-                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                return <div className={'unlStandingsC' + e.group.split(' ')[1]} key={'unlStandingsC' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
                                 <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -120,12 +121,12 @@ const Standings4 = () => {
                 localStorage.setItem('unlStandingsD', JSON.stringify(response.data));
             }
             setUnlStandingsD(JSON.parse(localStorage.getItem('unlStandingsD')) && JSON.parse(localStorage.getItem('unlStandingsD')).map((e, i) => {
-                return <div className={'id' + e.group.split(' ')[1]} key={'key' + i}>
+                return <div className={'unlStandingsD' + e.group.split(' ')[1]} key={'unlStandingsD' + i}>
                     <div className="group">{e.group}</div>
                         <div className="col">
                             <div className="left">
                                 <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -153,7 +154,7 @@ const Standings4 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
                                 <span>#</span>
@@ -167,7 +168,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
                                 <span>#</span>
@@ -181,7 +182,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
                                 <span>#</span>
@@ -195,7 +196,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <img src={unlLogo} alt="ЛН" title='ЛН' />
+                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
                                 <span>#</span>

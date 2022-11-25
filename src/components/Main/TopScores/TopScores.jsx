@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import rplLogo from '../../../assets/ico/rplLogo.webp';
 import eplLogo from '../../../assets/ico/eplLogo.webp';
@@ -30,14 +32,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('rplTopScores', JSON.stringify(response.data));
             }
             setRplTopScores(JSON.parse(localStorage.getItem('rplTopScores')) && JSON.parse(localStorage.getItem('rplTopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'rplTopScores' + i} key={'rplTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={e.img} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={e.img} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -57,14 +59,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('eplTopScores', JSON.stringify(response.data));
             }
             setEplTopScores(JSON.parse(localStorage.getItem('eplTopScores')) && JSON.parse(localStorage.getItem('eplTopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'eplTopScores' + i} key={'eplTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={person} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={person} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -84,14 +86,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('laligaTopScores', JSON.stringify(response.data));
             }
             setLaligaTopScores(JSON.parse(localStorage.getItem('laligaTopScores')) && JSON.parse(localStorage.getItem('laligaTopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'laligaTopScores' + i} key={'laligaTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={person} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={person} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -111,14 +113,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('bundesligaTopScores', JSON.stringify(response.data));
             }
             setBundesligaTopScores(JSON.parse(localStorage.getItem('bundesligaTopScores')) && JSON.parse(localStorage.getItem('bundesligaTopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'bundesligaTopScores' + i} key={'bundesligaTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={person} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={person} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -138,14 +140,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('serieaTopScores', JSON.stringify(response.data));
             }
             setSerieaTopScores(JSON.parse(localStorage.getItem('serieaTopScores')) && JSON.parse(localStorage.getItem('serieaTopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'serieaTopScores' + i} key={'serieaTopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={person} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={person} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -165,14 +167,14 @@ const TopScoresSlider = () => {
                 localStorage.setItem('ligue1TopScores', JSON.stringify(response.data));
             }
             setLigue1TopScores(JSON.parse(localStorage.getItem('ligue1TopScores')) && JSON.parse(localStorage.getItem('ligue1TopScores')).splice(1, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'ligue1TopScores' + i} key={'ligue1TopScores' + i} className="col">
                             <div className="left">
                                 <span className="place">{e.place}</span>
-                                <img src={person} alt={e.player} title={e.player} />
+                                <Tippy content={e.player}><img src={person} alt={e.player}/></Tippy>
                                 <span className='name'>{e.player}</span>
                             </div>
                             <div className="tLogoName">
-                                <img src={e.tLogo} alt={e.tName} title={e.tName} />
+                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
                             </div>
                             <div className="nums">
                                 <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -194,7 +196,7 @@ const TopScoresSlider = () => {
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={rplLogo} alt="РПЛ" title='РПЛ' />
+                            <Tippy content='РПЛ'><img src={rplLogo} alt="РПЛ" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -209,7 +211,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={eplLogo} alt="АПЛ" title='АПЛ' />
+                            <Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -224,7 +226,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={laligaLogo} alt="Ла лига" title='Ла лига' />
+                            <Tippy content='Ла лига'><img src={laligaLogo} alt="Ла лига" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -239,7 +241,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={bundesligaLogo} alt="Бундеслига" title='Бундеслига' />
+                            <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -254,7 +256,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={serieaLogo} alt="Серия А" title='Серия А' />
+                            <Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -269,7 +271,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={ligue1Logo} alt="Лига 1" title='Лига 1' />
+                            <Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>

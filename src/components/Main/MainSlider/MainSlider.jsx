@@ -25,8 +25,8 @@ const NewsSlider = () => {
                 let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                 let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
 
-                return <SwiperSlide key={'key' + e.id} id={'id' + e.id}>
-                    <Link to={`/news/${e.id}`}>
+                return <SwiperSlide key={'maiSlider' + e.id} id={'maiSlider' + e.id}>
+                    <Link to={`/news/read/${e.id}`}>
                         <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
                         <img src={e.img} alt="img" />
                         <h2>{e.title}</h2>
@@ -38,10 +38,6 @@ const NewsSlider = () => {
             console.log(err);
         });
     }, []);
-
-    var timeStamp= 1107110465663
-var dateFormat= new Date(timeStamp);
-console.log(dateFormat.getHours())
 
     return (
         <div id="newsSlider">

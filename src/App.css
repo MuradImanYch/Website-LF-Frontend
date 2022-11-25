@@ -1,3 +1,9 @@
+nav [aria-describedby] {
+    cursor: default !important;
+}
+nav [aria-describedby]:hover {
+    transform: scale(1) !important;
+}
 body {
     overflow-x: hidden !important;
 }

@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom';
-import HotBoard from './components/HotBoard/HotBoard';
-import AdVerticalLeft from './components/Main/AdVerticalLeft/AdVerticalLeft';
-import AdVerticalLeft2 from './components/Main/AdVerticalLeft2/AdVerticalLeft2';
-import AdVerticalRight from './components/Main/AdVerticalRight/AdVerticalRight';
-import AdVerticalRight2 from './components/Main/AdVerticalRight2/AdVerticalRight2';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import logo from './assets/ico/logo.webp';
 import $ from 'jquery';
@@ -26,12 +23,18 @@ import videoReviews from './assets/ico/videoReviews.webp';
 import rank from './assets/ico/rank.webp';
 import tvProgram from './assets/ico/tvProgram.webp';
 import forecasts from './assets/ico/forecasts.webp';
+import unlLogo from './assets/ico/unlLogo.webp';
 
+import HotBoard from './components/HotBoard/HotBoard';
+import AdVerticalLeft from './components/Main/AdVerticalLeft/AdVerticalLeft';
+import AdVerticalLeft2 from './components/Main/AdVerticalLeft2/AdVerticalLeft2';
+import AdVerticalRight from './components/Main/AdVerticalRight/AdVerticalRight';
+import AdVerticalRight2 from './components/Main/AdVerticalRight2/AdVerticalRight2';
 import Main from './components/Main/Main';
 import Error from './components/Error/Error';
 import ExtendedNews from './components/Main/ExtendedNews/ExtendedNews';
 import Admin from './components/Admin/Main';
-import News from './components/News/News';
+import News from './components/News/Main';
 
 function App(props) {
     // localstorage busy memory calc
@@ -180,15 +183,13 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
         {name: 'ЛЧ', img: uclLogo, id: 'ucl', title: 'Лига Чемпионов'},
         {name: 'ЛЕ', img: uelLogo, id: 'uel', title: 'Лига Европы'},
         {name: 'ЛК', img: ueclLogo, id: 'uecl', title: 'Лига Конференций'},
+        {name: 'ЛН', img: unlLogo, id: 'unl', title: 'Лига наций УЕФА'},
         {name: 'ЧМ 2022', img: wcLogo, id: 'wc', title: 'Чемпионат Мира'},
         {name: 'ЧЕ 2024', img: ecLogo, id: 'ec', title: 'Чемпионат Европы'}
     ]
 
     // desc sub sub menu enter/out events
     useEffect(() => { 
-        $('main .container').hide();
-        $('main .container').fadeIn();
-
         if($(window).width() > 1024) { // desctop
             $('#dNavWrap .subMenuWrap .rplLeagueMenu').mouseenter(() => {
                 $('#dNavWrap .rplLeagueMenu .subSubMenuWrap').show();
@@ -256,7 +257,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
             $('#dNavWrap .subMenuWrap .ecLeagueMenu').mouseleave(() => {
                 $('#dNavWrap .ecLeagueMenu .subSubMenuWrap').hide();
             });
-        }    
+        }   
     }, []);
 
     const mMenuDownUp = (e) => { // mobile menu news arrow toggle
@@ -264,8 +265,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
         $(e.nativeEvent.path[0]).toggleClass('fa-caret-square-up');
         $(e.nativeEvent.path[0]).toggleClass('subMenuArrowColorToggle');
     }
-
-
+    
     return (
         <div id='app'>
             <div id="progressBar"></div>
@@ -280,9 +280,11 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     </Link>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <li title={e.title} className={e.id + 'NewsMenu'} key={e.id}>
-                                            <Link to=""><img src={e.img} alt={e.name} />{e.name}</Link>
-                                        </li>
+                                        <Tippy placement='left' content={e.title}>
+                                            <li className={e.id + 'NewsMenu'} key={e.id + 'dNews'}>
+                                                <Link to={'/news/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link>
+                                            </li>
+                                        </Tippy>
                                         )}
                                     </ul>
                                 </li>
@@ -291,20 +293,28 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     </Link>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <li className={`${e.id}LeagueMenu`} title={e.title} key={e.id}>
-                                            <Link to=""><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
-                                            <ul className='subSubMenuWrap'>
-                                                <li title={`Календарь ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-calendar-alt"></i> Календарь</Link>
-                                                </li>
-                                                <li title={`Таблица ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-list-ol"></i> Таблица</Link>
-                                                </li>
-                                                <li title={`Результаты ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        <Tippy placement='left' content={e.title}>
+                                            <li className={`${e.id}LeagueMenu`} key={e.id + 'dLeague'}>
+                                                <Link to=""><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
+                                                <ul className='subSubMenuWrap'>
+                                                    <Tippy placement='right' content={`Календарь ${e.name}`}>
+                                                        <li>
+                                                            <Link to=""><i className="fas fa-calendar-alt"></i> Календарь</Link>
+                                                        </li>
+                                                    </Tippy>
+                                                    <Tippy placement='right' content={`Таблица ${e.name}`}>
+                                                        <li>
+                                                            <Link to=""><i className="fas fa-list-ol"></i> Таблица</Link>
+                                                        </li>
+                                                    </Tippy>
+                                                    <Tippy placement='right' content={`Результаты ${e.name}`}>
+                                                        <li>
+                                                            <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
+                                                        </li>
+                                                    </Tippy>
+                                                </ul>
+                                            </li>
+                                        </Tippy>
                                         )}
                                     </ul>
                                 </li>
@@ -339,8 +349,8 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     <div><Link to="/news">Новости</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <li title={e.title} className={e.id + 'NewsMenu'} key={e.id}>
-                                            <Link to=""><img src={e.img} alt={e.name} />{e.name}</Link>
+                                        <li title={e.title} className={e.id + 'NewsMenu'} key={e.id + 'mNews'}>
+                                            <Link to={'/news/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link>
                                         </li>
                                         )}
                                     </ul>
@@ -349,7 +359,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     <div><Link title='Все лиги' to="">Лига</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul>
                                         {leagues && leagues.map((e) => 
-                                        <li title={e.title} key={e.id}>
+                                        <li title={e.title} key={e.id + 'mLeague'}>
                                             <div>
                                                 <Link to=""><img src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
                                             </div>
@@ -416,8 +426,8 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 <div className='container'>
                     <Routes>
                         <Route path='/' element={<Main />} />
-                        <Route path='news' element={<News />} />
-                        <Route path='news/:id' element={<ExtendedNews />} />
+                        <Route path='news/*' element={<News />} />
+                        <Route path='news/read/:id' element={<ExtendedNews />} />
                         <Route path='admin/*' element={<Admin />} />
                         <Route path='*' element={<Error />} />
                     </Routes>

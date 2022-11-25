@@ -3,9 +3,13 @@ import './HotBoard.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from 'swiper';
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import friendly from '../../assets/ico/friendly.webp';
+import notRecogLeague from '../../assets/ico/notRecogLeague.webp';
 import undefTeam from '../../assets/ico/undefTeam.webp';
+import wcLogo from '../../assets/ico/wcLogo.webp';
 
 SwiperCore.use([Autoplay]);
 
@@ -18,18 +22,24 @@ function HotBoard(props) {
             axios.get('/liveMatches')
             .then(response => {
                 setLiveMatches(response.data && response.data.map((e, i) => {
-                    return  <SwiperSlide key={'key' + i} id={'id' + i} title={e.lName.length > 70 ? 'Товарищеский' : e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
+                    return  <SwiperSlide key={'key' + i} id={'id' + i}>
                                 <div className='slideWrap'>
                                     <progress value={e.time === 'Перерыв' ? '45' : e.time.match(/\d+/)} max={'90'}></progress>
                                     <span className="hName">{e.hName.slice(0, 10)}</span>
-                                    {e.hLogo === undefined ? <img width={'13px'} src={undefTeam} alt={e.hName} title={e.hName} /> : <img src={e.hLogo} alt={e.hName} title={e.hName} />}
+                                    <Tippy placement='bottom' content={e.hName}>
+                                        <img width={'13px'} src={e.hLogo === undefined ? undefTeam : e.hLogo} alt={e.hName} />
+                                    </Tippy>
                                     <span className='hScore'>{e.hScore}</span>
                                     <div className="lLogoTime">
-                                        {e.lLogo === undefined ? <img src={friendly} alt={e.lNameRoundDateTime[0]} width={'14px'} /> : <img width={'14px'} src={e.lLogo} alt={e.lNameRoundDateTime[0]} />}
+                                        <Tippy placement='bottom' content={e.lNameRoundDateTime[0] === 'Товарищеский' ? 'Товарищеский' : e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
+                                            <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lNameRoundDateTime[0]} />
+                                        </Tippy>
                                         <span className="time">{e.time === 'Перерыв' ? 'Пер.' : e.time}</span>
                                     </div>
                                     <span className='aScore'>{e.aScore}</span>
-                                    {e.aLogo === undefined ? <img width={'13px'} src={undefTeam} alt={e.aName} title={e.aName} /> : <img src={e.aLogo} alt={e.aName} title={e.aName} />}
+                                    <Tippy placement='bottom' content={e.aName}>
+                                        <img width={'13px'} src={e.aLogo === undefined ? undefTeam : e.aLogo} alt={e.aName} />
+                                    </Tippy>
                                     <span className="aName">{e.aName.slice(0, 10)}</span>
                                 </div>
                             </SwiperSlide>
@@ -54,7 +64,9 @@ function HotBoard(props) {
                 {liveMatches}
             </Swiper>
             <div className="liveWrap">
-                <span title='Live'>{matchesQuant}</span>
+                <Tippy placement='bottom' content='Live'>
+                    <span>{matchesQuant}</span>
+                </Tippy>
             </div>
         </div>
     );

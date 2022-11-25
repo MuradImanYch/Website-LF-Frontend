@@ -1,0 +1,32 @@
+.logoPageName {
+    display: flex;
+}
+.logoPageName img {
+    width: 60px;
+    height: 60px;
+    border: #ffbf66 2px solid;
+    padding: 5px;
+    margin: 0 15px 0 0;
+}
+.logoPageName h1 {
+    display: flex;
+    align-items: flex-end;
+}
+
+@media (min-width: 768px) {
+    .logoPageName img {
+        width: 80px;
+        height: auto;
+        padding: 7px;
+    }
+}   
+
+@media (min-width: 1024px) {
+    
+}   
+
+@media (min-width: 1280px) {
+    .logoPageName img {
+        width: 90px;
+    }
+}   

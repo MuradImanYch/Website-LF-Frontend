@@ -95,11 +95,13 @@ const AddNews = () => {
                     <option value="ucl">ЛЧ</option>
                     <option value="uel">ЛЕ</option>
                     <option value="uecl">ЛК</option>
+                    <option value="unl">ЛН</option>
                     <option value="wc">ЧМ</option>
                     <option value="ec">ЧЕ</option>
                     <option value="other">Разное</option>
                     <option value="blog">Блоги</option>
                     <option value="video">Видео</option>
+                    <option value="transfer">Трансферы</option>
                 </select>
                 <label htmlFor="newsTitle">Заголовок:</label>
                 <input placeholder='Введите заголовок' onChange={(e) => {
@@ -119,12 +121,14 @@ const AddNews = () => {
             <div className="preview">
                 <p className="popupTitle">Предпросмотр</p>
 
-                <div className="container">
-                    <p className="pageName">{title}</p>
-                    <span className="date">ДД-ММ-ГГГГ | ЧЧ:ММ</span>
-                    <img id='mainImg' src={img} alt="newsImg" />
-                    <div className="textWrap">{parse(content)}</div>
-                </div>
+                <section>
+                    <div className="container">
+                        <p className="pageName">{title}</p>
+                        <span className="date">ДД-ММ-ГГГГ | ЧЧ:ММ</span>
+                        <img id='mainImg' src={img} alt="newsImg" />
+                        <div className="textWrap">{parse(content)}</div>
+                    </div>
+                </section>
 
                 <button title='Подтвердить' type='submit' className='acceptBtn' onClick={acceptAdd}>✓</button>
                 <button title='Отклонить' type='submit' className='rejectBtn' onClick={rejectAdd}>⨯</button>

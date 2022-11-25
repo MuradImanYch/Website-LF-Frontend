@@ -4,18 +4,20 @@ import $ from 'jquery';
 import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const UEFACountryRank = () => {
     const[uefaCountryRankSeason, setUefaCountryRankSeason] = useState();
     const[uefaCountryRank, setUefaCountryRank] = useState();
-    const[expandToggle, setExpandToggle] = useState(11);
+    const[expandToggle, setExpandToggle] = useState(6);
     const[linkToggle, setLinkToggle] = useState('#');
 
     useEffect(() => {
         axios.get('/uefaCountryRankSeason')
         .then(response => {
             setUefaCountryRankSeason(response.data && response.data.map((item, indx) => {
-                return <div key={indx}>
+                return <div key={'uefaCountryRankSeason' + indx}>
                     <span>{item.seasonLast5}</span>
                     <span>{item.seasonLast4}</span>
                     <span>{item.seasonLast3}</span>
@@ -31,10 +33,10 @@ const UEFACountryRank = () => {
         axios.get('/uefaCountryRank')
         .then(response => {
             setUefaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
-                return <div className="col wrap" key={indx}>
+                return <div className="col wrap" key={'uefaCountryRank' + indx}>
                 <div>
                     <span className='place'>{item.place}<span>.</span></span>
-                    <div className='flagName'><img title={item.name} src={'https://terrikon.com' + item.flag} alt={item.name} /><span>{item.name}</span></div>
+                    <div className='flagName'><Tippy content={item.name}><img src={'https://terrikon.com' + item.flag} alt={item.name} /></Tippy><span>{item.name}</span></div>
                     <span>{item.quantity}</span>
                     <span className='total'>{item.total}</span>
                 </div>
@@ -54,7 +56,7 @@ const UEFACountryRank = () => {
     }, [expandToggle]); 
 
     const uefaCountryRankToggle = () => {
-        setExpandToggle(31);
+        setExpandToggle(11);
         $('#uefaCountryRank > section > div > div.more > a > span').text('Подробнее');
         setLinkToggle('uefa-country-rank');
     }
@@ -65,7 +67,7 @@ const UEFACountryRank = () => {
                 <h3 className="sectionName">Рейтинг ассоциаций УЕФА</h3>
                 <div className="uefaTable">
                     <div className="logoWrap">
-                        <img src={uefaLogo} alt="uefaLogo" title='UEFA' />
+                        <Tippy content='UEFA'><img src={uefaLogo} alt="uefaLogo" /></Tippy>
                     </div>
                     <div className="col">
                         <div>
@@ -78,7 +80,7 @@ const UEFACountryRank = () => {
                     </div>
                     {uefaCountryRank}
                     <div className="more">
-                        <Link to={linkToggle}><span to="" onClick={uefaCountryRankToggle}>Развернуть список</span></Link>
+                        <Link to={linkToggle}><span onClick={uefaCountryRankToggle}>Развернуть список</span></Link>
                     </div>
                 </div>
             </section>

@@ -19,19 +19,19 @@ const MainNews3 = () => {
                 let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
 
                 const animIn = () => { // anim mouse in
-                    $(`.newsVr #${'id' + e.id} .img img`).css({'transform': 'scale(1.04)'});
-                    $(`.newsVr #${'id' + e.id}`).css({'boxShadow': '0px 0px 15px 1px #000'});
-                    $(`.newsVr #${'id' + e.id} h3`).css({'backgroundColor': 'rgba(0, 0, 0, 0.7)'}).css({'color': 'rgb(224, 164, 79)'});
-                    $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '1'});
+                    $(`.newsVr #${'mainNews3' + e.id} .img img`).css({'transform': 'scale(1.04)'});
+                    $(`.newsVr #${'mainNews3' + e.id}`).css({'boxShadow': '0px 0px 15px 1px #000'});
+                    $(`.newsVr #${'mainNews3' + e.id} h3`).css({'backgroundColor': 'rgba(0, 0, 0, 0.7)'}).css({'color': 'rgb(224, 164, 79)'});
+                    $(`.newsVr #${'mainNews3' + e.id} .img img`).css({'opacity': '1'});
                 }
                 const animOut = () => { // anim mouse out
-                    $(`.newsVr #${'id' + e.id} .img img`).css({'transform': 'scale(1)'});
-                    $(`.newsVr #${'id' + e.id}`).css({'boxShadow': '0px 0px 0px 0px #000'});
-                    $(`.newsVr #${'id' + e.id} h3`).css({'backgroundColor': 'rgba(0, 0, 0, 0.1)'}).css({'color': 'rgb(255, 255, 255)'});
-                    $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
+                    $(`.newsVr #${'mainNews3' + e.id} .img img`).css({'transform': 'scale(1)'});
+                    $(`.newsVr #${'mainNews3' + e.id}`).css({'boxShadow': '0px 0px 0px 0px #000'});
+                    $(`.newsVr #${'mainNews3' + e.id} h3`).css({'backgroundColor': 'rgba(0, 0, 0, 0.1)'}).css({'color': 'rgb(255, 255, 255)'});
+                    $(`.newsVr #${'mainNews3' + e.id} .img img`).css({'opacity': '0.8'});
                 }
-                return  <div key={'key' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                            <Link to={`/news/${e.id}`}>
+                return  <div key={'mainNews3' + e.id} className="cart" id={'mainNews3' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
+                            <Link to={`/news/read/${e.id}`}>
                                 <div className="img"><img alt={e.title} src={e.img} /></div>
                                 <h3>{e.title}</h3>
                                 <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>

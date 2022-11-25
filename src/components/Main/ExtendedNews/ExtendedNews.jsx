@@ -41,16 +41,18 @@ const ExtendedNews = () => {
 
     return (
         <div className='extendedNews'>
-            <div className="container">
-                <div className="postWrap">
-                    <article>
-                        <h1 className="pageName">{selected && selected.title}</h1>
-                        <span className="date">{selected && convertDate(selected.date)}</span>
-                        <img id='mainImg' src={selected && selected.img} alt="newsImg" />
-                        <div className='textWrap'>{selected && parse(selected.content)}</div>
-                    </article>
+            <section>
+                <div className="container">
+                    <div className="postWrap">
+                        <article>
+                            <h1 className="pageName">{selected && selected.title}</h1>
+                            <span className="date">{selected && convertDate(selected.date)}</span>
+                            <img id='mainImg' src={selected && selected.img} alt="newsImg" />
+                            <div className='textWrap'>{selected && parse(selected.content)}</div>
+                        </article>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 };

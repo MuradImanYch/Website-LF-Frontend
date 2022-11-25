@@ -1,0 +1,57 @@
+#fifaRank {
+    margin: 60px 0;
+}
+#fifaRank .uefaTable .logoWrap img {
+    height: auto;
+    width: 50px;
+}
+#fifaRank .uefaTable .flagName img {
+    min-width: 18px;
+    height: 17px;
+}
+#fifaRank .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
+    margin: 0 0 0 -14px;
+}   
+#fifaRank .flagName {
+    margin-left: 15px;
+    align-items: center;
+}
+#fifaRank > section > div > div > div:nth-child(2) > span:nth-child(2) {
+    width: 100px;
+    text-align: center;
+}
+#fifaRank > section > div > .col:not(#fifaRank > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3) {
+    margin-right: -20px;
+}
+#fifaRank > section > div > .col:not(#fifaRank > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total {
+    margin-right: -20px;
+    padding-left: 10px;
+}
+#fifaRank .diffEqual {
+    color: gray;
+}
+#fifaRank .diffUp {
+    color: green;
+}
+#fifaRank .diffDown {
+    color: red;
+}
+
+@media (min-width: 1024px) {
+    #fifaRank .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
+        margin: 0 0 0 15px;
+    }   
+    #fifaRank .flagName {
+        margin-left: -10px;
+    }
+    #fifaRank > section > div > .col:not(#fifaRank > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3) {
+        margin-right: 50px;
+    }
+    #fifaRank > section > div > .col:not(#fifaRank > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total {
+        padding-right: 20px;
+    }
+    #fifaRank .uefaTable .flagName img {
+        min-width: 25px;
+        height: 22px;
+    }
+}

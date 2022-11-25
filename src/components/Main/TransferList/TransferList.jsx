@@ -3,6 +3,8 @@ import './TransferList.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -16,15 +18,15 @@ const TransferList = () => {
                 localStorage.setItem('transferList', JSON.stringify(response.data));
             }
             setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
-                return <div className="col" key={'key' + i} id={'id' + i}>
+                return <div className="col" key={'transferList' + i} id={'transferList' + i}>
                 <div className="player">
-                    <img src={e.img} alt={e.name} title={e.name} />
+                    <Tippy offset={[0, 10]} content={e.name}><img src={e.img} alt={e.name} /></Tippy>
                     <span>{e.name}</span>
                 </div>
                 <div className="outIn">
-                    <img className='out' src={e.clubOut} alt="" title={e.clubOutName} />
+                    <Tippy content={e.clubOutName}><img className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
                     <span>→</span>
-                    <img className='in' src={e.clubIn} alt="" title={e.clubInName} />
+                    <Tippy content={e.clubInName}><img className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                 </div>
                 <div className="price">{e.price}</div>
             </div>

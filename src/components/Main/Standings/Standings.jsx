@@ -3,6 +3,9 @@ import './Standings.css';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
 import rplLogo from '../../../assets/ico/rplLogo.webp';
 import eplLogo from '../../../assets/ico/eplLogo.webp';
 import laligaLogo from '../../../assets/ico/laligaLogo.webp';
@@ -28,10 +31,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('rplStandings', JSON.stringify(response.data));
             }
             setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'rplStandings' + i} key={'rplStandings' + i} className="col">
                             <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -56,10 +59,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('eplStandings', JSON.stringify(response.data));
             }
             setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'eplStandings' + i} key={'eplStandings' + i} className="col">
                             <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -84,10 +87,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('laligaStandings', JSON.stringify(response.data));
             }
             setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'laligaStandings' + i} key={'laligaStandings' + i} className="col">
                             <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -112,10 +115,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
             }
             setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'bundesligaStandings' + i} key={'bundesligaStandings' + i} className="col">
                             <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -140,10 +143,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('serieaStandings', JSON.stringify(response.data));
             }
             setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'serieaStandings' + i} key={'serieaStandings' + i} className="col">
                             <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <img src={e.logo} alt={e.name} title={e.name} />
+                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -168,10 +171,10 @@ const StandingsSlider = () => {
                 localStorage.setItem('ligue1Standings', JSON.stringify(response.data));
             }
             setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
-                return <div id={'id' + i} key={'key' + i} className="col">
+                return <div id={'ligue1Standings' + i} key={'ligue1Standings' + i} className="col">
                         <div className="left">
-                            <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                            <img src={e.logo} alt={e.name} title={e.name} />
+                            <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                            <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
                             <span className='name'>{e.name}</span>
                         </div>
                         <div className="nums">
@@ -198,7 +201,9 @@ const StandingsSlider = () => {
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={rplLogo} alt="РПЛ" title='РПЛ' />
+                            <Tippy content='РПЛ'>
+                                <img src={rplLogo} alt="РПЛ" />
+                            </Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -212,7 +217,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={eplLogo} alt="АПЛ" title='АПЛ' />
+                            <Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -226,7 +231,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={laligaLogo} alt="Ла-лига" title='Ла-лига' />
+                            <Tippy content='Ла-лига'><img src={laligaLogo} alt="Ла-лига" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -240,7 +245,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={bundesligaLogo} alt="Бундеслига" title='Бундеслига' />
+                            <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -254,7 +259,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={serieaLogo} alt="Серия А" title='Серия А' />
+                            <Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>
@@ -268,7 +273,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <img src={ligue1Logo} alt="Лига 1" title='Лига 1' />
+                            <Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy>
                         </div>
                         <div className="head">
                             <span>#</span>

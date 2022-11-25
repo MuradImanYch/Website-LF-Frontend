@@ -1,13 +1,13 @@
 import React from 'react';
 import './Main.css';
 import { Link, Route, Routes } from 'react-router-dom';
-import Error from '../Error/Error';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
 
 import Dashboard from './Dashboard/Dashboard';
 import AddNews from './AddNews/AddNews';
 import EditDeleteNews from './EditDeleteNews/EditDeleteNews';
+import Error from '../Error/Error';
 
 import homeIco from '../../assets/ico/homeIco.webp';
 import newsIco from '../../assets/ico/newspaperIco.webp';

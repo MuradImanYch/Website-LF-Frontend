@@ -16,6 +16,10 @@
     flex-direction: column-reverse;
     display: flex;
 }
+.newsMatchesSchedule {
+    display: flex;
+    flex-direction: column-reverse;
+}
 
 @media (min-width: 768px) { /* >= 768px */ 
     .newsStandings .standings {
@@ -59,6 +63,9 @@
     #videoBlogs {
         display: flex;
         justify-content: space-between;
+    }
+    .newsMatchesSchedule {
+        flex-direction: column;
     }
 }
 

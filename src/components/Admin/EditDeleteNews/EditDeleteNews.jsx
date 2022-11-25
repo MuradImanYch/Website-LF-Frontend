@@ -105,7 +105,7 @@ const EditDeleteNews = () => {
                 }
 
                 return  <div key={'key' + e.id} className="newsCart" id={'id' + e.id}>
-                            <Link to={'/news/' + e.id}>
+                            <Link to={'/news/read/' + e.id}>
                                 <div className='hover'>
                                     <img src={e.img} alt="newsimg" />
                                     <p>{e.title}</p>
@@ -174,11 +174,13 @@ const EditDeleteNews = () => {
                                             <option value="ucl">ЛЧ</option>
                                             <option value="uel">ЛЕ</option>
                                             <option value="uecl">ЛК</option>
+                                            <option value="unl">ЛН</option>
                                             <option value="wc">ЧМ</option>
                                             <option value="ec">ЧЕ</option>
                                             <option value="other">Разное</option>
                                             <option value="blog">Блоги</option>
                                             <option value="video">Видео</option>
+                                            <option value="transfer">Трансферы</option>
                                         </select>
                                         <label htmlFor="editNewsTitle">Заголовок:</label>
                                         <input onChange={(e) => {
