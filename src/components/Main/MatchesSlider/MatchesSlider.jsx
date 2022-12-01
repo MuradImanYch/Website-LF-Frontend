@@ -36,10 +36,10 @@ const MatchesSlider = () => {
               
                 return false;
             });
-            if(response.data.length > 0) {
+            /* if(response.data.length > 0) {
                 localStorage.setItem('matchesSlider', JSON.stringify(unique));
-            }
-            setMatchesSlider(JSON.parse(localStorage.getItem('matchesSlider')) && JSON.parse(localStorage.getItem('matchesSlider')).map((e, i) => {
+            } */
+            setMatchesSlider(unique && unique.map((e, i) => {
                 return <SwiperSlide key={'matchesSlider' + i} id={'matchesSlider' + i}>
                             <div className="top">
                                 <div className="lNameLogo">
