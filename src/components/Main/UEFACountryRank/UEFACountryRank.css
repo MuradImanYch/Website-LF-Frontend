@@ -79,6 +79,9 @@
 .uefaTable .more span:hover {
     color: rgb(255, 191, 102);
 }
+.uefaTable [aria-describedby]:hover {
+    transform: scale(1.12) !important;
+}
 
 @media (min-width: 360px) {
     .uefaTable .col:not(.uefaTable .col:nth-child(2)) {

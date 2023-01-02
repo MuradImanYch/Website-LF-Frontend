@@ -199,12 +199,12 @@ const TopScoresSlider = () => {
                             <Tippy content='РПЛ'><img src={rplLogo} alt="РПЛ" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {rplTopScores}
                         <Link to="#">Подробнее</Link>
@@ -214,12 +214,12 @@ const TopScoresSlider = () => {
                             <Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {eplTopScores}
                         <Link to="#">Подробнее</Link>
@@ -229,12 +229,12 @@ const TopScoresSlider = () => {
                             <Tippy content='Ла лига'><img src={laligaLogo} alt="Ла лига" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {laligaTopScores}
                         <Link to="#">Подробнее</Link>
@@ -244,12 +244,12 @@ const TopScoresSlider = () => {
                             <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {bundesligaTopScores}
                         <Link to="#">Подробнее</Link>
@@ -259,12 +259,12 @@ const TopScoresSlider = () => {
                             <Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {serieaTopScores}
                         <Link to="#">Подробнее</Link>
@@ -274,12 +274,12 @@ const TopScoresSlider = () => {
                             <Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {ligue1TopScores}
                         <Link to="#">Подробнее</Link>

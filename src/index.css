@@ -33,6 +33,7 @@ article, aside, details, footer, header, hgroup, main, menu, nav, section {
 }
 body {
 	line-height: 1;
+	overflow: hidden;
 }
 a {
 	text-decoration: none;
@@ -53,4 +54,59 @@ table {
 [aria-describedby]:hover {
     transform: scale(1.2);
     transition: 0.2s;
+}
+
+#preloader {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#fff;
+	z-index: 9999;
+	transition: 2s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#preloader .imgWrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 200px;
+	height: 150px;
+}
+#preloader .imgWrap img {
+	position: absolute;
+}
+#preloader .imgWrap img:first-child {
+	width: 34px;
+	height: 49px;
+	left: 67px;
+	top: 30px;
+	animation: logoL 2s infinite;
+}
+#preloader .imgWrap img:last-child {
+	width: 57px;
+	height: 49px;
+	right: 65px;
+	top: 45px;
+	animation: logoF 2s infinite;
+}
+@keyframes logoL {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes logoF {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
 }

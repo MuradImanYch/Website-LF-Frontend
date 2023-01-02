@@ -157,11 +157,11 @@ const Standings4 = () => {
                                 <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsA}
                             <Link to="#">Подробнее</Link>
@@ -171,11 +171,11 @@ const Standings4 = () => {
                                 <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsB}
                             <Link to="#">Подробнее</Link>
@@ -185,11 +185,11 @@ const Standings4 = () => {
                                 <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsC}
                             <Link to="#">Подробнее</Link>
@@ -199,11 +199,11 @@ const Standings4 = () => {
                                 <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsD}
                             <Link to="#">Подробнее</Link>

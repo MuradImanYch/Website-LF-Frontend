@@ -21,10 +21,10 @@ import MainNews6 from './MainNews6/MainNews6';
 import TransferList from './TransferList/TransferList';
 import VideoNews from './VideoNews/VideoNews';
 import EndedMatches from './EndedMatches/EndedMatches';
-import Forecasts from './Forecasts/Forecasts';
+import Forecasts from './Odds/Odds';
 import Standings6 from './Standings6/Standings6';
 import Blogs from './Blogs/Blogs';
-import MatchesSchedule from './MatchesSchedule/MatchesSchedule';
+import TVSchedule from './TVSchedule/TVSchedule';
 import FifaRanking from './FifaRanking/FifaRanking';
 
 const Main = (props) => {
@@ -51,7 +51,7 @@ const Main = (props) => {
             <div className="newsStandings">
                 <div className="newsMatchesSchedule">
                     <MainNews3 />
-                    <MatchesSchedule />
+                    <TVSchedule />
                 </div>
                 <div className="standings">
                     <div>

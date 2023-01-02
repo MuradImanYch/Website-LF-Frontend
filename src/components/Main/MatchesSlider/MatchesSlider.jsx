@@ -36,9 +36,6 @@ const MatchesSlider = () => {
               
                 return false;
             });
-            /* if(response.data.length > 0) {
-                localStorage.setItem('matchesSlider', JSON.stringify(unique));
-            } */
             setMatchesSlider(unique && unique.map((e, i) => {
                 return <SwiperSlide key={'matchesSlider' + i} id={'matchesSlider' + i}>
                             <div className="top">
@@ -91,7 +88,7 @@ const MatchesSlider = () => {
     return (
         <div id="matchesSlider">
             <section>
-                <h3 className="sectionName">Предстоящие матчи</h3>
+                <h3 className="sectionName">Матчи избранных команд</h3>
                 <div className="matchesSliderWrap">
                     <Swiper pagination={{type: "progressbar"}} spaceBetween={20} grabCursor={true} slidesPerView={1} breakpoints={{360: {slidesPerView: 2}, 540: {slidesPerView: 3}, 768: {slidesPerView: 4}, 1024: {slidesPerView: 5, spaceBetween: 30}}}>
                         {matchesSlider}

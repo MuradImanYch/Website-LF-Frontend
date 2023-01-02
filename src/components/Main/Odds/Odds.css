@@ -1,0 +1,166 @@
+.forecasts, #forecastsOther {
+    width: 100%;
+}
+.forecasts .col > div.center > span, #forecastsOther .col > div.center > span {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.forecasts .wrap, #forecastsOther .wrap {
+    margin: 15px 0 0 0;
+    height: 250px;
+    overflow: scroll;
+}
+.forecasts .col, #forecastsOther .col {
+    width: 100%;
+    border: 2px solid #ffbf66;
+    border-radius: 15px;
+}
+.forecasts .col:not(:first-child), #forecastsOther .col:not(:first-child) {
+    margin: 20px 0 0 0;
+}
+.forecasts .head, #forecastsOther .head {
+    background: #e2e2e2;
+    display: flex;
+    justify-content: center;
+    color: #000;
+    padding: 8px 0;
+    border-radius: 15px 15px 0 0;
+}
+.forecasts .head span, .forecasts .center span, #forecastsOther .head span, #forecastsOther .center span {
+    color: #000;
+    font-size: 0.85em;
+}
+.forecasts .center, #forecastsOther .center {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.forecasts .center div, #forecastsOther .center div {
+    display: flex;
+    align-items: center;
+}
+.forecasts .center img, #forecastsOther .center img {
+    width: 20px;
+}
+.forecasts .center .home img, #forecastsOther .center .home img {
+    margin: 0 2px 0 0;
+}
+.forecasts .center .away img, .forecasts .center .away img {
+    margin: 0 0 0 2px;
+}
+.forecasts .center .home span, #forecastsOther .center .away span {
+    font-size: 0.65em;
+}
+.forecasts .center .dateTime, #forecastsOther .center .dateTime {
+    display: flex;
+    flex-direction: column;
+}
+.forecasts .center .dateTime span:first-child, #forecastsOther .center .dateTime span:first-child {
+    border-bottom: 1px solid #000;
+    padding: 0 0 4px 0;
+    text-align: center;
+}
+.forecasts .center .dateTime span:last-child, #forecastsOther .center .dateTime span:last-child {
+    font-size: 0.8em;
+    margin: 6px 0 0 0;
+}
+.forecasts .coefWrap, #forecastsOther .coefWrap {
+    background: #e2e2e2;
+    color: #000;
+    border-radius: 0 0 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px 5px 15px;
+}
+.forecasts .coefWrap div, #forecastsOther .coefWrap div {
+    font-size: 0.7em;
+}
+.forecasts .coefWrap div span, #forecastsOther .coefWrap div span {
+    color: #000;
+}
+.forecasts .coefWrap div span:first-child, #forecastsOther .coefWrap div span:first-child {
+    font-size: 0.85em;
+}
+.forecasts .coefWrap div span:last-child, #forecastsOther .coefWrap div span:last-child {
+    background: #fff;
+    padding: 5px 10px;
+    margin: 5px 0 0 0;
+    border-radius: 10px;
+    border: 2px solid #ffbf66;
+    font-weight: bold;
+    font-family: Graduate;
+    color: #18338a;
+}
+.forecasts .coefWrap .w1, #forecastsOther .coefWrap .w1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+@media (min-width: 360px) {
+    .forecasts .center, #forecastsOther .center {
+        padding: 10px 15px;
+    }
+    .forecasts .head span, .forecasts .center span, #forecastsOther .head span, #forecastsOther .center span {
+        font-size: 0.9em;
+    }
+    .forecasts .coefWrap div, #forecastsOther .coefWrap div {
+        font-size: 0.8em;
+    }
+    .forecasts .center .home img, #forecastsOther .center .home img {
+        margin: 0 10px 0 0;
+    }
+    .forecasts .center .away img, #forecastsOther .center .away img {
+        margin: 0 0 0 10px;
+    }
+    .forecasts .center .home span, .forecasts .center .away span, #forecastsOther .center .home span, #forecastsOther .center .away span {
+        font-size: 0.8em;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .forecasts {
+        width: 300px;
+    }
+    .forecasts .center {
+        padding: 10px;
+    }
+    .forecasts .center .home img, #forecastsOther .center .home img {
+        margin: 0 2px 0 0;
+    }
+    .forecasts .center .away img, .forecasts .center .away img {
+        margin: 0 0 0 2px;
+    }
+}
+
+@media (min-width: 820px) {
+    .forecasts {
+        width: 345px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .forecasts {
+        width: 450px;
+    }
+    .forecasts .wrap {
+        height: 350px;
+    }
+    .forecasts .center img, #forecastsOther .center img {
+        width: 25px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .forecasts {
+        width: 470px;
+    }
+}
+
+@media (min-width: 1680px) {
+    .forecasts {
+        width: 570px;
+    }
+}

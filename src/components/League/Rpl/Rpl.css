@@ -1,0 +1,241 @@
+#league .logoPageName .info {
+    display: flex;
+    width: 100%;
+    border: 2px solid #18338a;
+    padding: 10px 10px;
+    flex-direction: column;
+}
+#league .logoPageName .info .left {
+    display: flex;
+}
+#league .logoPageName .info .left div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#league .logoPageName .info .left span {
+    color: #000;
+}
+#league .logoPageName .info .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
+}
+#league .logoPageName .info .right span {
+    color: #000;
+}
+#league .logoPageName .info .left div img {
+    border: 0;
+}
+#league .logoPageName h1 span {
+    font-size: 0.7em;
+}
+#league .logoPageName .info .left div:nth-child(2) span {
+    margin: 10px 0 0 0;
+}
+#league .logoPageName .info .left div:nth-child(2) span span, #league .logoPageName .info .right span span {
+    font-weight: bold;
+}
+#league div div .sectionName {
+    margin: 30px 0 0 0 !important;
+}
+#league div div .pageName {
+    -webkit-text-stroke: 0.3px #ffbf66;
+}
+#league .standings, #league .topScores {
+    border: 2px solid #ffbf66;
+    margin: 15px 0 0 0;
+    padding-bottom: 17px;
+}
+#league .standings .head, #league .topScores .head {
+    margin: 0;
+}
+#league .standings .col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#league .standings .head span:nth-child(3) {
+    margin: 0 0 0 65px;
+}
+#league .table6xn .head span:nth-child(3) {
+    margin: 0 0 0 60px;
+}
+#league .table6xn .tLogoName {
+    margin: 0 0 0 47px;
+}
+
+@media (min-width: 320px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 75px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 60px;
+    }
+}
+
+@media (min-width: 360px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 78px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 62px;
+    }
+}
+
+@media (min-width: 375px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 90px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 90px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 72px;
+    }
+}
+
+@media (min-width: 393px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 105px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 95px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 82px;
+    }
+}
+
+@media (min-width: 412px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 100px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 100px;
+    }
+}
+
+@media (min-width: 414px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 102px;
+    }
+}
+
+@media (min-width: 540px) {
+    #league .logoPageName h1 span {
+        padding: 0 0 0 20px;
+    }
+    #league .logoPageName .info .left div:nth-child(2) span {
+        margin: 0;
+    } 
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 123px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 110px;
+    }
+}
+
+@media (min-width: 768px) {
+    #league .logoPageName .info {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+    #league .table5xn {
+        min-width: 350px !important;
+    }
+    #league .table6xn {
+        width: 340px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 86px;
+    }
+    .standingsTopScores {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 58px;
+    }
+}
+
+@media (min-width: 820px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    #league .table6xn {
+        width: 370px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 95px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 71px;
+    }
+}
+
+@media (min-width: 912px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 127px;
+    }
+    #league .table6xn .goals {
+        margin: 0 0 0 31px;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 72px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #league .logoPageName .info .right {
+        justify-content: space-around;
+        text-align: right;
+        line-height: 0;
+    }
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 78px;
+    }
+    #league .table5xn {
+        min-width: auto !important;
+    }
+    #league .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 43px !important;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 94px;
+    }
+    #league .table6xn {
+        width: 340px;
+    }
+    #league .newsWrap {
+        width: auto;
+    }
+}
+
+@media (min-width: 1680px) {
+    #league .standings .head span:nth-child(3) {
+        margin: 0 0 0 94px;
+    }
+    #league .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 72px;
+    }
+    #league .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 41px !important;
+    }
+    #league .table6xn .tLogoName {
+        margin: 0 0 0 55px;
+    }
+}

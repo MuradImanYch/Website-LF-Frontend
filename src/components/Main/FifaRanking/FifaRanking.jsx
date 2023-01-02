@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './FifaRanking.css';
 import $ from 'jquery';
-import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+
+import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 
 const FifaRanking = () => {
     const[fifaCountryRank, setFifaCountryRank] = useState();
@@ -38,7 +39,7 @@ const FifaRanking = () => {
     const fifaCountryRankToggle = () => {
         setExpandToggle(10);
         $('#fifaRank > section > div > div.more > a > span').text('Подробнее');
-        setLinkToggle('fifa-country-rank');
+        setLinkToggle('/other/fifa-ranking');
     }
 
     return (
@@ -51,14 +52,14 @@ const FifaRanking = () => {
                     </div>
                     <div className="col">
                         <div>
-                            <span>#</span>
-                            <span>Страна</span>
-                            <span>Изменения</span>
-                            <span className='total'>Очки</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Страна"><span>Страна</span></Tippy>
+                            <Tippy content="Изменения в позиции"><span>Изменения</span></Tippy>
+                            <Tippy content="Сумма очков"><span className='total'>Очки</span></Tippy>
                         </div>
                         <div>
-                            <span>+/-</span>
-                            <span>Ассоциация</span>
+                            <Tippy content="Разница с предыдущими очками"><span>+/-</span></Tippy>
+                            <Tippy content="Ассоциация"><span>Ассоциация</span></Tippy>
                         </div>
                     </div>
                     {fifaCountryRank}

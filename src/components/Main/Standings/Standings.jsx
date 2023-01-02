@@ -206,11 +206,11 @@ const StandingsSlider = () => {
                             </Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {rplStandings}
                         <Link to="#">Подробнее</Link>
@@ -220,11 +220,11 @@ const StandingsSlider = () => {
                             <Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {eplStandings}
                         <Link to="#">Подробнее</Link>
@@ -234,11 +234,11 @@ const StandingsSlider = () => {
                             <Tippy content='Ла-лига'><img src={laligaLogo} alt="Ла-лига" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {laligaStandings}
                         <Link to="#">Подробнее</Link>
@@ -248,11 +248,11 @@ const StandingsSlider = () => {
                             <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {bundesligaStandings}
                         <Link to="#">Подробнее</Link>
@@ -262,11 +262,11 @@ const StandingsSlider = () => {
                             <Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {serieaStandings}
                         <Link to="#">Подробнее</Link>
@@ -276,11 +276,11 @@ const StandingsSlider = () => {
                             <Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Команда</span>
-                            <span>И</span>
-                            <span>З : П</span>
-                            <span>О</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {ligue1Standings}
                         <Link to="#">Подробнее</Link>

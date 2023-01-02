@@ -28,7 +28,7 @@
     width: 40px;
     height: 40px;
 }
-.table5xn .swiper-slide .head {
+.table5xn .head {
     width: 100%;
     height: 30px;
     background: #e2e2e2;
@@ -36,22 +36,22 @@
     display: flex;
     align-items: center;
 }
-.table5xn .swiper-slide .head span {
+.table5xn .head span {
     color: #000;
 }
-.table5xn .swiper-slide .head span:first-child {
+.table5xn .head span:first-child {
     margin: 0 0 0 10px;
 }
-.table5xn .swiper-slide .head span:nth-child(2) {
+.table5xn .head span:nth-child(2) {
     margin: 0 0 0 20px;
 }
-.table5xn .swiper-slide .head span:nth-child(3) {
+.table5xn .head span:nth-child(3) {
     margin: 0 0 0 55px;
 }
-.table5xn .swiper-slide .head span:nth-child(4) {
+.table5xn .head span:nth-child(4) {
     margin: 0 0 0 15px;
 }
-.table5xn .swiper-slide .head span:nth-child(5) {
+.table5xn .head span:nth-child(5) {
     margin: 0 0 0 15px;
 }
 .table5xn .col {
@@ -139,19 +139,19 @@
 }
 
 @media (min-width: 320px) {
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 10px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 20px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
     .table5xn .nums {
@@ -179,19 +179,19 @@
 }
 
 @media (min-width: 360px) {
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 30px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
     .table5xn .col .place { 
@@ -222,19 +222,19 @@
 }
 
 @media (min-width: 375px) {
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 15px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 50px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 85px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
     .table5xn .col .place {
@@ -261,20 +261,26 @@
     }
 }
 
+@media (min-width: 393px) {
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 100px;
+    }
+}
+
 @media (min-width: 412px) {
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 95px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
     .table5xn .col .place {
@@ -303,19 +309,19 @@
 }
 
 @media (min-width: 540px) {
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 45px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 65px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
-        margin: 0 0 0 120px;
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 118px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 50px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 50px;
     }
     .table5xn .col .place {
@@ -349,19 +355,19 @@
     .table5xn {
         width: 340px;
     }
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 30px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
     .table5xn .col .place {
@@ -393,13 +399,13 @@
     .table5xn {
         width: 360px;
     }
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
     .table5xn .nums {
@@ -421,7 +427,7 @@
     .table5xn {
         width: 410px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 120px;
     }
     .table5xn .col .games {
@@ -439,19 +445,19 @@
     .table5xn {
         width: 310px;
     }
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 15px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 72px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 20px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 20px;
     }
     .table5xn .col .place {
@@ -488,19 +494,19 @@
     .table5xn {
         width: 360px;
     }
-    .table5xn .swiper-slide .head span:first-child {
+    .table5xn .head span:first-child {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(2) {
+    .table5xn .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    .table5xn .swiper-slide .head span:nth-child(3) {
+    .table5xn .head span:nth-child(3) {
         margin: 0 0 0 90px;
     }
-    .table5xn .swiper-slide .head span:nth-child(4) {
+    .table5xn .head span:nth-child(4) {
         margin: 0 0 0 25px;
     }
-    .table5xn .swiper-slide .head span:nth-child(5) {
+    .table5xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
     .table5xn .col .place {

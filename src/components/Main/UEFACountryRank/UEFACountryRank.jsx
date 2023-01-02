@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './UEFACountryRank.css';
 import $ from 'jquery';
-import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+
+import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 
 const UEFACountryRank = () => {
     const[uefaCountryRankSeason, setUefaCountryRankSeason] = useState();
@@ -18,11 +19,11 @@ const UEFACountryRank = () => {
         .then(response => {
             setUefaCountryRankSeason(response.data && response.data.map((item, indx) => {
                 return <div key={'uefaCountryRankSeason' + indx}>
-                    <span>{item.seasonLast5}</span>
-                    <span>{item.seasonLast4}</span>
-                    <span>{item.seasonLast3}</span>
-                    <span>{item.seasonLast2}</span>
-                    <span className='current'>{item.seasonCurrent}</span>
+                    <Tippy content={'Сумма очков за сезон 20' + item.seasonLast5.split('/')[0] + '/20' + item.seasonLast5.split('/')[1]}><span>{item.seasonLast5}</span></Tippy>
+                    <Tippy content={'Сумма очков за сезон 20' + item.seasonLast4.split('/')[0] + '/20' + item.seasonLast4.split('/')[1]}><span>{item.seasonLast4}</span></Tippy>
+                    <Tippy content={'Сумма очков за сезон 20' + item.seasonLast3.split('/')[0] + '/20' + item.seasonLast3.split('/')[1]}><span>{item.seasonLast3}</span></Tippy>
+                    <Tippy content={'Сумма очков за сезон 20' + item.seasonLast2.split('/')[0] + '/20' + item.seasonLast2.split('/')[1]}><span>{item.seasonLast2}</span></Tippy>
+                    <Tippy content={'Сумма очков за текущий сезон'}><span className='current'>{item.seasonCurrent}</span></Tippy>
                 </div>
             }));
         })
@@ -58,7 +59,7 @@ const UEFACountryRank = () => {
     const uefaCountryRankToggle = () => {
         setExpandToggle(11);
         $('#uefaCountryRank > section > div > div.more > a > span').text('Подробнее');
-        setLinkToggle('uefa-country-rank');
+        setLinkToggle('/other/uefa-country-ranking');
     }
 
     return (
@@ -71,10 +72,10 @@ const UEFACountryRank = () => {
                     </div>
                     <div className="col">
                         <div>
-                            <span>#</span>
-                            <span>Страна</span>
-                            <span>Клубы</span>
-                            <span className='total'>Сумма</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Страна"><span>Страна</span></Tippy>
+                            <Tippy content="Количество клубов"><span>Клубы</span></Tippy>
+                            <Tippy content="Сумма очков"><span className='total'>Сумма</span></Tippy>
                         </div>
                         {uefaCountryRankSeason}
                     </div>

@@ -3,6 +3,8 @@ import './BundesligaNews.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import $ from 'jquery';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import bundesligaLogo from '../../../assets/ico/bundesligaLogo.webp';
 
@@ -15,7 +17,7 @@ const BundesligaNews = () => {
             setNews(response.data && response.data.reverse().map((e) => {
                 let date = new Date(e.date);
                 let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth()) : String(date.getMonth());
+                let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                 let year = date.getFullYear();
                 let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                 let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -49,7 +51,7 @@ const BundesligaNews = () => {
     return (
         <div id='bundesligaNews' className='newsHr leagueNews'>
             <div className="logoPageName">
-                <img src={bundesligaLogo} alt="bundesligaLogo" title='Бундеслига' />
+                <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="bundesligaLogo" /></Tippy>
                 <h1 className="pageName">Бундеслига</h1>
             </div>
             <section>

@@ -1,0 +1,24 @@
+#tvScheduleOther .wrap .col {
+    display: flex;
+    align-items: center;
+}     
+#tvScheduleOther .wrap .col:first-child {
+    padding: 2px 0 13px 0;
+}
+#tvScheduleOther .wrap .col:not(#tvScheduleOther .wrap .col:first-child) {
+    padding: 20px 0 15px 0;
+}
+#tvScheduleOther .wrap .col:not(#tvScheduleOther .wrap .col:first-child) {
+    border-top: 1px solid silver;
+}
+#tvScheduleOther .wrap .col div, #tvScheduleOther .wrap .col span {
+    color: #000;
+}
+#tvScheduleOther .channel {
+    margin: 0 15px 0 0;
+}
+#tvScheduleOther .timeProgramme span:first-child {
+    margin: 0 15px 0 0;
+    font-weight: bold;
+    color: red;
+}

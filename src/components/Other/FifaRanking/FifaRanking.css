@@ -1,0 +1,7 @@
+@media (min-width: 1024px) { 
+    #fifaRankOther span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

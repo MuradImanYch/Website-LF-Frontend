@@ -28,7 +28,7 @@ const ExtendedNews = () => {
     function convertDate(str) { // convert date & time
         let date = new Date(str);
         let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-        let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth()) : String(date.getMonth());
+        let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
         let year = date.getFullYear();
         let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
         let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());

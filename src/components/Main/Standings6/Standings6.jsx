@@ -131,11 +131,11 @@ const Standings6 = () => {
                                 <Tippy content='ЛК'><img src={ueclLogo} alt="ЛК" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {ueclStandings1}
                             <Link to="#">Подробнее</Link>
@@ -145,11 +145,11 @@ const Standings6 = () => {
                                 <Tippy content='ЛК'><img src={ueclLogo} alt="ЛК" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {ueclStandings2}
                             <Link to="#">Подробнее</Link>
@@ -159,11 +159,11 @@ const Standings6 = () => {
                                 <Tippy content='ЛК'><img src={ueclLogo} alt="ЛК" /></Tippy>
                             </div>
                             <div className="head">
-                                <span>#</span>
-                                <span>Команда</span>
-                                <span>И</span>
-                                <span>З : П</span>
-                                <span>О</span>
+                                <Tippy content="Позиция"><span>#</span></Tippy>
+                                <Tippy content="Название"><span>Команда</span></Tippy>
+                                <Tippy content="Количество игр"><span>И</span></Tippy>
+                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
                             {ueclStandings3}
                             <Link to="#">Подробнее</Link>

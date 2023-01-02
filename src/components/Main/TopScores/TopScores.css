@@ -10,17 +10,17 @@
     position: absolute;
     top: 70px;
 }
-.table6xn .swiper-slide .lLogo {
+.table6xn .lLogo {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 20px 0 0 0;
 }
-.table6xn .swiper-slide img {
+.table6xn img {
     width: 40px;
     height: 40px;
 }
-.table6xn .swiper-slide .head {
+.table6xn .head {
     width: 100%;
     height: 30px;
     background: #e2e2e2;
@@ -28,25 +28,25 @@
     display: flex;
     align-items: center;
 }
-.table6xn .swiper-slide .head span {
+.table6xn .head span {
     color: #000;
 }
-.table6xn .swiper-slide .head span:first-child {
+.table6xn .head span:first-child {
     margin: 0 0 0 10px;
 }
-.table6xn .swiper-slide .head span:nth-child(2) {
+.table6xn .head span:nth-child(2) {
     margin: 0 0 0 20px;
 }
-.table6xn .swiper-slide .head span:nth-child(3) {
+.table6xn .head span:nth-child(3) {
     margin: 0 0 0 45px;
 }
-.table6xn .swiper-slide .head span:nth-child(4) {
+.table6xn .head span:nth-child(4) {
     margin: 0 0 0 35px;
 }
-.table6xn .swiper-slide .head span:nth-child(5) {
+.table6xn .head span:nth-child(5) {
     margin: 0 0 0 20px;
 }
-.table6xn .swiper-slide .head span:nth-child(6) {
+.table6xn .head span:nth-child(6) {
     margin: 0 0 0 15px;
 }
 .table6xn .col {
@@ -140,22 +140,22 @@
 }
 
 @media (min-width: 320px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 10px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 20px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 60px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 45px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 20px;
     }
     .table6xn .tLogoName {
@@ -184,22 +184,22 @@
 }
 
 @media (min-width: 360px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 30px;
     }
     .table6xn .col .place { 
@@ -234,22 +234,22 @@
 }
 
 @media (min-width: 375px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 15px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 50px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
-        margin: 0 0 0 85px;
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 84px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
     .table6xn .col .place {
@@ -277,23 +277,29 @@
     }
 }
 
+@media (min-width: 393px) {
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+}
+
 @media (min-width: 412px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 85px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 42px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
     .table6xn .col .place {
@@ -316,22 +322,22 @@
 }
 
 @media (min-width: 540px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 45px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 60px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 94px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 70px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 50px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 45px;
     }
     .table6xn .col .place {
@@ -363,22 +369,22 @@
 }
 
 @media (min-width: 768px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 30px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
+    .table6xn .head span:nth-child(4) {
         margin: 0 0 0 40px;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 30px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 30px;
     }
     .table6xn .col .place {
@@ -411,13 +417,13 @@
 }
 
 @media (min-width: 820px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 20px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 80px;
     }
     .table6xn .nums {
@@ -442,7 +448,7 @@
 }
 
 @media (min-width: 912px) {
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 91px;
     }
     .table6xn .nums {
@@ -466,22 +472,22 @@
 }
 
 @media (min-width: 1024px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 15px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 60px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
-        margin: 0 0 0 35px;
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 35px !important;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 20px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 20px;
     }
     .table6xn .col .place {
@@ -518,22 +524,22 @@
 }
 
 @media (min-width: 1680px) {
-    .table6xn .swiper-slide .head span:first-child {
+    .table6xn .head span:first-child {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(2) {
+    .table6xn .head span:nth-child(2) {
         margin: 0 0 0 40px;
     }
-    .table6xn .swiper-slide .head span:nth-child(3) {
+    .table6xn .head span:nth-child(3) {
         margin: 0 0 0 70px;
     }
-    .table6xn .swiper-slide .head span:nth-child(4) {
-        margin: 0 0 0 45px;
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 45px !important;
     }
-    .table6xn .swiper-slide .head span:nth-child(5) {
+    .table6xn .head span:nth-child(5) {
         margin: 0 0 0 25px;
     }
-    .table6xn .swiper-slide .head span:nth-child(6) {
+    .table6xn .head span:nth-child(6) {
         margin: 0 0 0 25px;
     }
     .table6xn .col .place {

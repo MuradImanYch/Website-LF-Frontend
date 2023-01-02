@@ -24,6 +24,7 @@ import rank from './assets/ico/rank.webp';
 import tvProgram from './assets/ico/tvProgram.webp';
 import forecasts from './assets/ico/forecasts.webp';
 import unlLogo from './assets/ico/unlLogo.webp';
+import topScores from './assets/ico/topScores.webp';
 
 import HotBoard from './components/HotBoard/HotBoard';
 import AdVerticalLeft from './components/Main/AdVerticalLeft/AdVerticalLeft';
@@ -35,6 +36,10 @@ import Error from './components/Error/Error';
 import ExtendedNews from './components/Main/ExtendedNews/ExtendedNews';
 import Admin from './components/Admin/Main';
 import News from './components/News/Main';
+import Transfers from './components/Transfers/Main';
+import Other from './components/Other/Main';
+import Poll from './components/Main/Poll/Poll';
+import League from './components/League/Main';
 
 function App(props) {
     // localstorage busy memory calc
@@ -152,22 +157,22 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
         $('#dNavWrap .menuWrap > li:nth-child(2) i').eq(0).css({'color': '#fff'});
     }
     const dTransfersEnter = () => {
-        $('#dNavWrap .menuWrap > li:nth-child(3) a > i:nth-child(1)').attr('class', 'fas fa-caret-up');
+        $('#dNavWrap > ul > li:nth-child(3) > div > i').attr('class', 'fas fa-caret-up');
         $('#dNavWrap .menuWrap li:nth-child(3) .subMenuWrap').show();
         $('#dNavWrap .menuWrap > li:nth-child(3) i').eq(0).css({'color': 'rgb(204, 135, 45)'});
     }
     const dTransfersOut = () => {
-        $('#dNavWrap .menuWrap > li:nth-child(3) a > i:nth-child(1)').attr('class', 'fas fa-caret-down');
+        $('#dNavWrap > ul > li:nth-child(3) > div > i').attr('class', 'fas fa-caret-down');
         $('#dNavWrap .menuWrap li:nth-child(3) .subMenuWrap').hide();
         $('#dNavWrap .menuWrap > li:nth-child(3) i').eq(0).css({'color': '#fff'});
     }
     const dOthersEnter = () => {
-        $('#dNavWrap .menuWrap > li:nth-child(4) a > i:nth-child(1)').attr('class', 'fas fa-caret-up');
+        $('#dNavWrap > ul > li:nth-child(4) > div > i').attr('class', 'fas fa-caret-up');
         $('#dNavWrap .menuWrap li:nth-child(4) .subMenuWrap').show();
         $('#dNavWrap .menuWrap > li:nth-child(4) i').eq(0).css({'color': 'rgb(204, 135, 45)'});
     }
     const dOthersOut = () => {
-        $('#dNavWrap .menuWrap > li:nth-child(4) a > i:nth-child(1)').attr('class', 'fas fa-caret-down');
+        $('#dNavWrap > ul > li:nth-child(4) > div > i').attr('class', 'fas fa-caret-down');
         $('#dNavWrap .menuWrap li:nth-child(4) .subMenuWrap').hide();
         $('#dNavWrap .menuWrap > li:nth-child(4) i').eq(0).css({'color': '#fff'});
     }
@@ -276,12 +281,12 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         <div id="dNavWrap">
                             <ul className='menuWrap'>
                                 <li onMouseEnter={dNewsEnter} onMouseLeave={dNewsOut}>
-                                    <Link to="/news">Новости <i className="fas fa-caret-down"></i>
-                                    </Link>
+                                    <Tippy placement='left' content='Все новости'><Link to="/news">Новости <i className="fas fa-caret-down"></i>
+                                    </Link></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <Tippy placement='left' content={e.title}>
-                                            <li className={e.id + 'NewsMenu'} key={e.id + 'dNews'}>
+                                        <Tippy key={e.id + 'dNews'} placement='left' content={e.title}>
+                                            <li className={e.id + 'NewsMenu'}>
                                                 <Link to={'/news/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link>
                                             </li>
                                         </Tippy>
@@ -289,13 +294,13 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     </ul>
                                 </li>
                                 <li onMouseEnter={dLeagueEnter} onMouseLeave={dLeagueOut}>
-                                    <Link to="">Лига <i className="fas fa-caret-down"></i>
-                                    </Link>
+                                    <Tippy placement='left' content='Все турниры'><Link to="/league">Лига <i className="fas fa-caret-down"></i>
+                                    </Link></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <Tippy placement='left' content={e.title}>
-                                            <li className={`${e.id}LeagueMenu`} key={e.id + 'dLeague'}>
-                                                <Link to=""><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
+                                        <Tippy key={e.id + 'dLeague'} placement='left' content={e.title}>
+                                            <li className={`${e.id}LeagueMenu`}>
+                                                <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
                                                 <ul className='subSubMenuWrap'>
                                                     <Tippy placement='right' content={`Календарь ${e.name}`}>
                                                         <li>
@@ -312,6 +317,11 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                                             <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                         </li>
                                                     </Tippy>
+                                                    <Tippy placement='right' content={`Бомбардиры ${e.name}`}>
+                                                        <li>
+                                                            <Link to=""><img src={topScores} /> Бомбардиры</Link>
+                                                        </li>
+                                                    </Tippy>
                                                 </ul>
                                             </li>
                                         </Tippy>
@@ -319,23 +329,23 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     </ul>
                                 </li>
                                 <li onMouseEnter={dTransfersEnter} onMouseLeave={dTransfersOut}>
-                                    <Link to="">Трансферы <i className="fas fa-caret-down"></i>
-                                    </Link>
+                                    <div>Трансферы <i className="fas fa-caret-down"></i>
+                                    </div>
                                     <ul className='subMenuWrap transfersSubMenu'>
-                                        <li><Link to=""><img src={newspaperIco} alt="news" /> Новости</Link></li>
-                                        <li><Link to=""><img src={transferIco} alt="transfers" /> Переходы</Link></li>
+                                        <li><Link to="/transfers/news"><img src={newspaperIco} alt="news" /> Новости</Link></li>
+                                        <li><Link to="/transfers/list"><img src={transferIco} alt="transfers" /> Переходы</Link></li>
                                     </ul>
                                 </li>
                                 <li onMouseEnter={dOthersEnter} onMouseLeave={dOthersOut}>
-                                    <Link to="">Разное <i className="fas fa-caret-down"></i></Link>
-                                    <ul className='subMenuWrap othersSubMenu'>
-                                        <li><Link to=""><img src={newspaperIco} alt="other news" /> Новости</Link></li>
-                                        <li><Link to=""><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to=""><img src={videoReviews} alt="video news" /> Видео</Link></li>
-                                        <li><Link to=""><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
-                                        <li><Link to=""><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
-                                        <li><Link to=""><img src={tvProgram} alt="tv program" /> Телепрограмма</Link></li>
-                                        <li><Link to=""><img src={forecasts} alt="forecasts" /> Прогнозы</Link></li>
+                                    <div>Разное <i className="fas fa-caret-down"></i></div>
+                                    <ul className='subMenuWrap oТВ расписаниеthersSubMenu'>
+                                        <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
+                                        <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
+                                        <li><Link to="/other/video"><img src={videoReviews} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
+                                        <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
+                                        <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
+                                        <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -346,7 +356,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         <div id="mNavWrap">
                             <ul className="menuWrap">
                                 <li>
-                                    <div><Link to="/news">Новости</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
+                                    <Tippy placement='left' content='Все новости'><div><Link to="/news">Новости</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} className={e.id + 'NewsMenu'} key={e.id + 'mNews'}>
@@ -356,12 +366,12 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                     </ul>
                                 </li>
                                 <li>
-                                    <div><Link title='Все лиги' to="">Лига</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
+                                    <Tippy placement='left' content='Все турниры'><div><Link to="/league">Лига</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
                                     <ul>
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} key={e.id + 'mLeague'}>
                                             <div>
-                                                <Link to=""><img src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
+                                                <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
                                             </div>
                                             <ul className={e.id+'LeagueWrap'}>
                                                 <li title={`Календарь ${e.name}`}>
@@ -373,28 +383,31 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                                 <li title={`Результаты ${e.name}`}>
                                                     <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                 </li>
+                                                <li title={`Бомбардиры ${e.name}`}>
+                                                    <Link to=""><img src={topScores} /> Бомбардиры</Link>
+                                                </li>
                                             </ul>
                                         </li>
                                         )}
                                     </ul>
                                 </li>
                                 <li>
-                                    <div><Link to="">Трансферы</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
+                                    <div>Трансферы <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='transfersSubMenu'>
-                                        <li><Link to=""><img src={newspaperIco} alt="news" /> Новости</Link></li>
-                                        <li><Link to=""><img src={transferIco} alt="transfer" /> Переходы</Link></li>
+                                        <li><Link to="/transfers/news"><img src={newspaperIco} alt="news" /> Новости</Link></li>
+                                        <li><Link to="/transfers/list"><img src={transferIco} alt="transfer" /> Переходы</Link></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <div><Link to="">Разное</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
+                                    <div>Разное <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='othersSubMenu'>
-                                        <li><Link to=""><img src={newspaperIco} alt="other news" /> Новости</Link></li>
-                                        <li><Link to=""><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to=""><img src={videoReviews} alt="video news" /> Видео</Link></li>
-                                        <li><Link to=""><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
-                                        <li><Link to=""><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
-                                        <li><Link to=""><img src={tvProgram} alt="tv program" /> Телепрограмма</Link></li>
-                                        <li><Link to=""><img src={forecasts} alt="forecasts" /> Прогнозы</Link></li>
+                                        <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
+                                        <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
+                                        <li><Link to="/other/video"><img src={videoReviews} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
+                                        <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
+                                        <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
+                                        <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -421,6 +434,8 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                     <div id='adWrapLeft'>
                         <AdVerticalLeft />
                         <AdVerticalLeft2 />
+
+                        <Poll />
                     </div>
                 </div>
                 <div className='container'>
@@ -429,6 +444,9 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         <Route path='news/*' element={<News />} />
                         <Route path='news/read/:id' element={<ExtendedNews />} />
                         <Route path='admin/*' element={<Admin />} />
+                        <Route path='transfers/*' element={<Transfers />} />
+                        <Route path='other/*' element={<Other />} />
+                        <Route path='league/*' element={<League leagues={leagues} />} />
                         <Route path='*' element={<Error />} />
                     </Routes>
                 </div>

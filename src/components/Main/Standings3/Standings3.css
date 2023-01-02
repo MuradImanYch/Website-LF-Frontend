@@ -1,3 +1,12 @@
+.has-tip {
+    background-color: #e90812;
+    color: #fff !important;
+}
+
+#standings3 .col img {
+    height: 18px;
+}
+
 @media (min-width: 768px) {
     #standings3 {
        min-width: 300px !important;

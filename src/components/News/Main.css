@@ -1,5 +1,5 @@
-#news #matchesSlider .sectionName {
-    margin: 0 !important;
+#news .sectionName {
+    margin-top: 0;
 }
 #news #matchesSlider {
     margin: 0 0 40px 0;

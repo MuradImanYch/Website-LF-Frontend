@@ -1,0 +1,167 @@
+#transferListPage .head, #transferListPage .col {
+    background: #e2e2e2;
+    display: flex;
+    padding: 10px 15px;
+    flex-direction: column;
+}
+#transferListPage .head > div, #transferListPage .col > div {
+    width: 100%;
+    display: flex;
+}
+#transferListPage .head > div:first-child, #transferListPage .col > div:first-child {
+    margin: 10px 0 0 0;
+    justify-content: space-between;
+}
+#transferListPage .head > div:last-child, #transferListPage .col > div:last-child {
+    margin: 10px 0 0 0;
+    justify-content: space-evenly;
+}
+#transferListPage .head span, #transferListPage .col span {
+    color: #000;
+}
+#transferListPage .col {
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    font-size: 0.9em;
+    padding: 3px 15px 13px 15px;
+}
+#transferListPage .col .player img:nth-child(1) {
+    width: 30px;
+}
+#transferListPage .col .player img:nth-child(2) {
+    width: 20px;
+}
+#transferListPage .col .player {
+    display: flex;
+    align-items: center;
+}
+#transferListPage .col .player img {
+    margin: 0 10px 0 0;
+}
+#transferListPage .col .fromTo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#transferListPage .col .fromTo img {
+    width: 20px;
+}
+#transferListPage .col .fromTo img:last-child {
+    margin: 0 0 0 5px;
+}
+#transferListPage .col .fromTo img:first-child {
+    margin: 0 5px 0 0;
+}
+#transferListPage .col .price span {
+    color: green;
+    font-family: graduate;
+    font-weight: bold;
+    font-size: 0.75em;
+}
+#transferListPage > span {
+    text-decoration: underline;
+    color: #000;
+    text-underline-offset: 2px;
+    display: block;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 0 0;
+}
+#transferListPage > span:hover {
+    color: #ffbf66;
+    cursor: pointer;
+}
+#transferListPage [aria-describedby]:hover {
+    transform: scale(1.12) !important;
+}
+#transferListPage h1 {
+    display: flex;
+    justify-content: space-between;
+}
+#transferListPage .default > span:last-child, #transferListPage .other > span:last-child {
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 0 0;
+}
+#transferListPage .default > span:last-child:hover, #transferListPage .other > span:last-child:hover {
+    color: rgb(255, 191, 102);
+}
+
+@media (min-width: 360px) {
+    #transferListPage .col .player img:nth-child(1) {
+        width: 40px;
+    }
+    #transferListPage .col .fromTo img:last-child {
+        margin: 0 0 0 20px;
+    }
+    #transferListPage .col .fromTo img:first-child {
+        margin: 0 20px 0 0;
+    }
+    #transferListPage .col .player img {
+        margin: 0 15px 0 0;
+    }
+}
+
+@media (min-width: 412px) {
+    #transferListPage .col .fromTo img:last-child {
+        margin: 0 0 0 25px;
+    }
+    #transferListPage .col .fromTo img:first-child {
+        margin: 0 25px 0 0;
+    }
+    #transferListPage .col .player img {
+        margin: 0 20px 0 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #transferListPage .col {
+        font-size: 1em;   
+    }
+    #transferListPage .col .player img:nth-child(2) {
+        width: 25px;
+    }
+    #transferListPage .col .fromTo img {
+        width: 25px;
+    }
+    #transferListPage .col .price span {
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 1024px) {
+    #transferListPage .col { 
+        display: flex;
+        align-items: center;
+        padding: 10px 0px;
+    }
+    #transferListPage .head, #transferListPage .col {
+        flex-direction: row;
+    }
+    #transferListPage .head > div:first-child, #transferListPage .col > div:first-child {
+        justify-content: space-around;
+        margin: 0;
+    }
+    #transferListPage .head > div:last-child, #transferListPage .col > div:last-child {
+        margin: 0;
+        justify-content: space-around;
+    }
+    #transferListPage .col .fromTo img {
+        width: 20px;
+    }
+    #transferListPage > div > div.head > div:nth-child(1) > span:nth-child(2) {
+        padding: 0 0 0 160px;
+    }
+    #transferListPage > div > div.head > div:nth-child(2) > span:nth-child(1) {
+        padding: 0 0 0 40px;
+    }
+    #transferListPage > div > div.head > div:nth-child(2) > span:nth-child(2) {
+        padding: 0 0 0 60px;
+    }
+}

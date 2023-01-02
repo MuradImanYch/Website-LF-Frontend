@@ -1,0 +1,56 @@
+@media (min-width: 1280px) {
+    .poll {
+        width: 120px;
+        margin: 150px 0 0 0;
+    }
+    .poll form div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .poll form div div {
+        margin: 0;
+    }
+    .poll form div:nth-child(2) {
+        margin: 15px 0 0 0;
+    }
+    .poll form label {
+        width: 100% !important;
+        display: inline-block;
+        font-size: 0.95em;
+    }
+    .poll form button {
+        background: transparent;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #000;
+        width: 100%;
+        margin: 15px 0 0 0;
+    }
+    .poll form button:hover {
+        transition: 0.3s;
+        background: rgb(230, 230, 230);
+    }
+    .poll form .progress {
+        height: 2px;
+        background: #ecab51;
+        margin: 0 0 0 5px !important;
+        transition: 0.6s;
+        text-align: center;
+        display: none;
+    }
+    .poll form .progress span {
+        font-size: 0.6em;
+        text-align: center;
+        width: 100%;
+    }
+    .poll form input[type="radio"] {
+        margin: 0 5px 0 0;
+    }
+    .poll h4 {
+        color: #000;
+        font-weight: bold;
+        font-size: 0.8em;
+    }
+}

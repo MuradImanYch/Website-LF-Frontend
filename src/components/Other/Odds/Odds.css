@@ -1,0 +1,25 @@
+@media (min-width: 1024px) { 
+    #forecastsOther .col {
+        display: flex;
+        justify-content: space-between;
+    }
+    #forecastsOther .coefWrap {
+        width: 50%;
+        align-items: center;
+        border-radius: 0 15px 15px 0;
+    }
+    #forecastsOther .head {
+        width: 100% !important;
+        border-radius: 15px 0 0 0;
+    }
+    #forecastsOther .col > div:nth-child(1) {
+        width: 50%;
+    }
+    #forecastsOther .coefWrap div span:first-child {
+        font-size: 0.9em;
+    }
+    #forecastsOther .coefWrap div span:last-child {
+        padding: 8px 13px;
+        margin: 20px 0 0 0;
+    }
+}

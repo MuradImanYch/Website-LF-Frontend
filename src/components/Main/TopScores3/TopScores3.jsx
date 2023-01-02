@@ -56,12 +56,12 @@ const TopScores3 = () => {
                             <Tippy content='Европейская Квлф.'><img src={euroQualLogo} alt="Европейская Квлф." /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {euroQualTopScores}
                         <Link to="#">Подробнее</Link>
@@ -71,12 +71,12 @@ const TopScores3 = () => {
                             <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {unlTopScores}
                         <Link to="#">Подробнее</Link>

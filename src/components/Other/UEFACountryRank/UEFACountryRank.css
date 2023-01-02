@@ -1,0 +1,18 @@
+#uefaCountryRankOther > section > div > div:nth-child(3) {
+    display: none;
+}
+
+
+@media (min-width: 1024px) { 
+    #uefaCountryRankOther span, #uefaCountryRankOther .flagName {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #uefaCountryRankOther > section > div > div:nth-child(2) > div:nth-child(1) > span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    #uefaCountryRankOther > section > div > div:nth-child(2) > div:nth-child(1) > span:nth-child(3) {
+        margin: 0 0 0 60px;
+    }
+}

@@ -1,11 +1,14 @@
 nav [aria-describedby] {
-    cursor: default !important;
+    cursor: pointer !important;
 }
 nav [aria-describedby]:hover {
     transform: scale(1) !important;
 }
 body {
     overflow-x: hidden !important;
+}
+#mNavWrap > ul > li:nth-child(2) > ul > li > ul > li:nth-child(4) > a > img {
+    margin: 0 20px 0 0;
 }
 img {
     font-size: 0.5em !important;
@@ -191,6 +194,7 @@ main .container {
 }
 nav .actual, nav .actual div a {
     background-color: #f02d54;
+    cursor: pointer;
 }
 nav .actual:hover, nav .actual div a:hover {
     background-color: #f04e6f !important;
@@ -199,6 +203,12 @@ nav .actual:hover, nav .actual div a:hover {
     min-height: 30px;
     display: flex;
     padding: 5px 0 0 0;
+}
+#dNavWrap > ul > li:nth-child(3) {
+    cursor: default;
+}
+#dNavWrap > ul > li:nth-child(4) {
+    cursor: default;
 }
 
 /*------------------Desctop-------------------*/
@@ -370,6 +380,9 @@ nav .actual:hover, nav .actual div a:hover {
     main .container {
         width: 1000px;
     }
+    #dNavWrap > ul > li:nth-child(2) > ul > li > ul > li:nth-child(4) > a > img {
+        margin: 0 10px 0 0;
+    }
 }
 
 @media (min-width: 1280px) { /* >= 1280px */
@@ -379,10 +392,18 @@ nav .actual:hover, nav .actual div a:hover {
     }
     .sidebar:first-child {
         justify-content: flex-end;
-        margin: 0 15px 0 0;
+        margin: 0 30px 0 0;
     }
     .sidebar:last-child {
-        margin: 0 0 0 15px;
+        margin: 0 0 0 30px;
+    }
+    .sidebar h3 {
+        color: #000;
+        font-size: 0.85em;
+        text-align: center;
+    }
+    .sidebar label, .sidebar span {
+        color: #000;
     }
 }
 

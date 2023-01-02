@@ -21,8 +21,8 @@ const EndedMatches = () => {
                 localStorage.setItem('endedMatches', JSON.stringify(response.data));
             }
             setEndedMatches(JSON.parse(localStorage.getItem('endedMatches')) && JSON.parse(localStorage.getItem('endedMatches')).map((e, i) => {
-                return  <Tippy offset={[0, 15]} className='endedMatchesTippy' content={e.lName.length > 80 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
-                    <div key={'endedMatches' + i} className="col" id={'endedmatches' + i}>
+                return  <Tippy key={'endedMatches' + i} offset={[0, 15]} className='endedMatchesTippy' content={e.lName + ' | ' + e.lRound}>
+                    <div className="col" id={'endedmatches' + i}>
                             <div className="rcWrap">
                                 <div className="rcht">
                                     <Tippy content={e.hCardPlayer}>

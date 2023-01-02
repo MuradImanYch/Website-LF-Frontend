@@ -64,7 +64,7 @@ function HotBoard(props) {
                 {liveMatches}
             </Swiper>
             <div className="liveWrap">
-                <Tippy placement='bottom' content='Live'>
+                <Tippy placement='bottom' content='Количество матчей'>
                     <span>{matchesQuant}</span>
                 </Tippy>
             </div>

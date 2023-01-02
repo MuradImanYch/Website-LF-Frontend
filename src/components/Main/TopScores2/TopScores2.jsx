@@ -111,12 +111,12 @@ const TopScores = () => {
                             <Tippy content={'ЛЧ'}><img src={uclLogo} alt="ЛЧ" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {uclTopScores}
                         <Link to="#">Подробнее</Link>
@@ -126,12 +126,12 @@ const TopScores = () => {
                             <Tippy content={'ЛЕ'}><img src={uelLogo} alt="ЛЕ" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {uelTopScores}
                         <Link to="#">Подробнее</Link>
@@ -141,12 +141,12 @@ const TopScores = () => {
                             <Tippy content={'ЛК'}><img src={ueclLogo} alt="ЛК" /></Tippy>
                         </div>
                         <div className="head">
-                            <span>#</span>
-                            <span>Игрок</span>
-                            <span>К</span>
-                            <span>Г</span>
-                            <span>А</span>
-                            <span>И</span>
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {ueclTopScores}
                         <Link to="#">Подробнее</Link>
