@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import LazyLoad from 'react-lazy-load';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -12,29 +13,35 @@ const TransferList = () => {
     const[linkToggle, setLinkToggle] = useState('#');
 
     useEffect(() => {
-        axios.get('/transferList')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('transferList', JSON.stringify(response.data));
-            }
-            setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
-                return <div className="col" key={'transferList' + i} id={'transferList' + i}>
-                <div className="player">
-                    <Tippy offset={[0, 10]} content={e.name}><img src={e.img} alt={e.name} /></Tippy>
-                    <span>{e.name}</span>
+        const fetchData = async () => {
+            await axios.get('/transferList')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('transferList', JSON.stringify(response.data));
+                }
+                setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
+                    return <div className="col" key={'transferList' + i}>
+                    <div className="player">
+                        <LazyLoad offset={800}>
+                            <Tippy offset={[0, 10]} content={e.name}><img src={e.img} alt={e.name} /></Tippy>
+                        </LazyLoad>
+                        <span>{e.name}</span>
+                    </div>
+                    <div className="outIn">
+                        <Tippy content={e.clubOutName}><img className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                        <span>→</span>
+                        <Tippy content={e.clubInName}><img className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
+                    </div>
+                    <div className="price">{e.price}</div>
                 </div>
-                <div className="outIn">
-                    <Tippy content={e.clubOutName}><img className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                    <span>→</span>
-                    <Tippy content={e.clubInName}><img className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
-                </div>
-                <div className="price">{e.price}</div>
-            </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        
+        fetchData();
     }, [expandToggle]);
 
     const transferToggle = () => {

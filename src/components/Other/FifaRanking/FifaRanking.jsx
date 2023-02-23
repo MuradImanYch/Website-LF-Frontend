@@ -4,6 +4,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import LazyLoad from 'react-lazy-load';
 
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 import { Link } from 'react-router-dom';
@@ -13,26 +14,33 @@ const FifaRanking = () => {
     const[expandToggle, setExpandToggle] = useState(50);
 
     useEffect(() => {
-        axios.get('/fifaRanking')
-        .then(response => {
-            setFifaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
-                return <div className="col wrap" key={'fifaRanking' + indx}>
-                <div>
-                    <span className='place'>{item.place}.<span></span></span>
-                    <div className='flagName'><Tippy content={item.name}><img src={item.flag} alt={item.name} /></Tippy><span>{item.name}</span></div>
-                    <span className={item.difference[0] === '=' ? 'diffEqual' : false || item.difference[0] === '↑' ? 'diffUp' : false || item.difference[0] === '↓' ? 'diffDown' : false}>{item.difference}</span>
-                    <span className='total'>{item.points}</span>
+        const fetchData = async () => {
+            await axios.get('/fifaRanking')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('fifaRanking', JSON.stringify(response.data));
+                }
+                setFifaCountryRank(JSON.parse(localStorage.getItem('fifaRanking')) && JSON.parse(localStorage.getItem('fifaRanking')).splice(0, expandToggle).map((item, indx) => {
+                    return <div className="col wrap" key={'fifaRanking' + indx}>
+                    <div>
+                        <span className='place'>{item.place}.<span></span></span>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img src={item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
+                        <span className={item.difference[0] === '=' ? 'diffEqual' : false || item.difference[0] === '↑' ? 'diffUp' : false || item.difference[0] === '↓' ? 'diffDown' : false}>{item.difference}</span>
+                        <span className='total'>{item.points}</span>
+                    </div>
+                    <div>
+                        <span>{item.pointsDiff}</span>
+                        <span>{item.association}</span>
+                    </div>
                 </div>
-                <div>
-                    <span>{item.pointsDiff}</span>
-                    <span>{item.association}</span>
-                </div>
-            </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
+        fetchData();
     }, [expandToggle]); 
 
     const fifaCountryRankToggle = () => {
@@ -46,7 +54,7 @@ const FifaRanking = () => {
             <section>
                 <div className="uefaTable">
                     <div className="logoWrap">
-                        <Tippy content='FIFA'><img src={fifaLogo} alt="fifaLogo" /></Tippy>
+                        <LazyLoad offset={800}><Tippy content='FIFA'><img src={fifaLogo} alt="fifaLogo" /></Tippy></LazyLoad>
                     </div>
                     <div className="col">
                         <div>

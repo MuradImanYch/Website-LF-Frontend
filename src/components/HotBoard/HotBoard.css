@@ -1,4 +1,4 @@
-#hotBoard {
+.hotBoard {
     width: 100%;
     height: 40px;
     background: transparent;
@@ -7,8 +7,9 @@
     z-index: 2021;
     top: 40px;
     box-shadow: 0px 1px 10px 1px gray;
+    left: 0;
 }
-#hotBoard #noMatches {
+.hotBoard #noMatches {
     width: 100%;
     height: 40px;
     color: #000;
@@ -19,7 +20,7 @@
     align-items: center;
     font-weight: bold;
 }
-#hotBoard progress {
+.hotBoard progress {
     position: absolute;
     width: 240px;
     height: 100%;
@@ -27,7 +28,7 @@
     left: 0;
     z-index: -1;
 }
-#hotBoard .liveWrap {
+.hotBoard .liveWrap {
     width: 100%;
     height: 20px;
     display: flex;
@@ -35,7 +36,7 @@
     position: absolute;
     top: 45px;
 }
-#hotBoard .liveWrap span {
+.hotBoard .liveWrap span {
     min-width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -47,17 +48,17 @@
     font-size: 0.75em;
     padding: 6px;
 }
-#hotBoard progress::-webkit-progress-value { 
-    background: linear-gradient(to right, rgba(123, 255, 123, 0.8), rgba(87, 255, 87, 0.8), rgba(0, 230, 0, 0.8))
+.hotBoard progress::-webkit-progress-value { 
+    background: linear-gradient(to right, rgba(123, 255, 123, 0.5), rgba(87, 255, 87, 0.6), rgba(0, 230, 0, 0.8));
 }
-#hotBoard ::-webkit-progress-bar {
+.hotBoard ::-webkit-progress-bar {
     background-color: transparent;
 }
-#hotBoard .swiper-wrapper {
+.hotBoard .swiper-wrapper {
     transition-timing-function: linear;
     min-height: 100%;
 }
-#hotBoard .swiper-slide .slideWrap {
+.hotBoard .swiper-slide .slideWrap {
     min-height: 40px;
     width: 240px;
     display: flex;
@@ -67,25 +68,25 @@
     border-left: 2px solid rgb(255, 191, 102);
     border-right: 2px solid rgb(255, 191, 102);
 }
-#hotBoard .swiper-slide .slideWrap span {
+.hotBoard .swiper-slide .slideWrap span {
     color: #000;
 }
-#hotBoard .swiper-slide .slideWrap .hName, #hotBoard .swiper-slide .slideWrap .aName {
+.hotBoard .swiper-slide .slideWrap .hName, .hotBoard .swiper-slide .slideWrap .aName {
     font-size: 0.7em;
 }
-#hotBoard .swiper-slide .slideWrap .lLogoTime {
+.hotBoard .swiper-slide .slideWrap .lLogoTime {
     display: flex;
     flex-direction: column;
     margin: 0 4px;
     position: relative;
 }
-#hotBoard .swiper-slide .slideWrap .lLogoTime .time {
+.hotBoard .swiper-slide .slideWrap .lLogoTime .time {
     font-size: 0.6em;
     margin: 5px 0 0 0;
     padding: 0 0 2px 0;
     text-align: center;
 }
-#hotBoard .swiper-slide .slideWrap .lLogoTime .time::before {
+.hotBoard .swiper-slide .slideWrap .lLogoTime .time::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -100,75 +101,75 @@
     50% {transform: scaleX(1); background: red;}
     100% {transform: scaleX(0); transform-origin: bottom right; background: #000;}
 }
-#hotBoard .swiper-slide .slideWrap .hScore, #hotBoard .swiper-slide .slideWrap .aScore, #hotBoard .swiper-slide .slideWrap .hName, #hotBoard .swiper-slide .slideWrap .aName {
+.hotBoard .swiper-slide .slideWrap .hScore, .hotBoard .swiper-slide .slideWrap .aScore, .hotBoard .swiper-slide .slideWrap .hName, .hotBoard .swiper-slide .slideWrap .aName {
     margin: 0 3px;
 }
-#hotBoard .swiper-slide .slideWrap .hScore, #hotBoard .swiper-slide .slideWrap .aScore {
+.hotBoard .swiper-slide .slideWrap .hScore, .hotBoard .swiper-slide .slideWrap .aScore {
     font-family: Graduate;
 }
 
 @media (min-width: 360px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 300px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 300px;
     }
 }
 
 @media (min-width: 540px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 240px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 240px;
     }
 }
 
 @media (min-width: 768px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 220px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 220px;
     }
 }
 
 @media (min-width: 912px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 260px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 260px;
     }
 }
 
 @media (min-width: 1024px) {
-    #hotBoard {
+    .hotBoard {
         top: 60px;
     }
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 300px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 300px;
     }
 }
 
 @media (min-width: 1280px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 240px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 240px;
     }
 }
 
 @media (min-width: 1680px) {
-    #hotBoard .swiper-slide .slideWrap {
+    .hotBoard .swiper-slide .slideWrap {
         width: 300px;
     }
-    #hotBoard progress {
+    .hotBoard progress {
         width: 300px;
     }
 }

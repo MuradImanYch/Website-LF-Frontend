@@ -1,9 +1,8 @@
 #blogs {
-    margin: 50px 0 0 0;
+    margin: 30px 0 0 0;
 }
 #blogs .swiper {
-    height: 400px;
-    padding: 0 5px;
+    padding: 8px 0 0 0;
 }
 #blogs .swiper-slide {
     display: flex;
@@ -13,19 +12,11 @@
 #blogs .swiper-pagination {
     margin: 20px 0 0 0;
 }
-#blogs .swiper-button-prev, #blogs .swiper-button-next {
-    transform: rotate(-90deg);
-}
-#blogs .swiper-button-prev , #blogs .swiper-button-next{
-    left: 0;
-    right: 0;
-    margin: auto;
-}
 #blogs .swiper-button-prev {
-    top: 90%;
+    top: 50%;
 }
 #blogs .swiper-button-next {
-    top: 4%;
+    top: 50%;
 }
 #blogs section > a {
     width: 100%;
@@ -50,12 +41,27 @@
     }
     #blogs .swiper {
         height: 750px;
+        padding: 0 0 0 5px;
     }
     #blogs .swiper-button-prev {
         top: 95%;
     }
     #blogs .swiper-button-next {
         top: 0;
+    }
+    #blogs .swiper-button-prev, #blogs .swiper-button-next {
+        transform: rotate(-90deg);
+    }
+    #blogs .swiper-button-prev , #blogs .swiper-button-next{
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    #blogs .swiper-button-prev {
+        top: 94%;
+    }
+    #blogs .swiper-button-next {
+        top: 0%;
     }
 }
 

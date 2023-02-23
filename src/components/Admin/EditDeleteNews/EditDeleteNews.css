@@ -9,17 +9,16 @@
     margin: 35px 0 0 0;
     position: relative;
 }
-#editDeleteNews .newsCart .newsId, #editDeleteNews .newsCart .newsDate {
-    position: absolute;
-    bottom: 0;
-    color: #000;
-    padding: 0 0 3px 6px;
-    font-size: 0.8em;
+#editDeleteNews .newsCart .bottom {
+    padding: 0 0 6px 6px;
 }
-#editDeleteNews .newsCart .newsDate {
-    text-align: center;
-    width: 100%;
-    padding: 0 0 3px 0;
+#editDeleteNews .newsCart .bottom {
+    display: flex;
+    justify-content: space-evenly;
+}
+#editDeleteNews .newsCart .bottom span {
+    color: #000;
+    font-size: 0.8em;
 }
 #editDeleteNews .newsCart img {
     width: 100%;

@@ -3,6 +3,7 @@ import './ExtendedNews.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import $ from 'jquery';
+
 const parse = require('html-react-parser');
 
 const ExtendedNews = () => {
@@ -10,20 +11,24 @@ const ExtendedNews = () => {
     const[selected, setSelected] = useState();
 
     useEffect(() => {
-        axios.get('/allNews')
-        .then(response => {
-            setSelected(response.data.find((obj) => {
-                return obj.id === +id;
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        $('.extendedNews').hide();
-        $('.extendedNews').fadeIn('slow');
-        $("html, body").animate({ scrollTop: 0 }, "slow");
-    }, []);
+        const fetchData = async () => {
+            await axios.get('/news/allNews')
+            .then(response => {
+                setSelected(response.data.find((obj) => {
+                    return obj.id === +id;
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            $('.extendedNews').hide();
+            $('.extendedNews').fadeIn('slow');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+        
+        fetchData();
+    }, [id]);
     
     function convertDate(str) { // convert date & time
         let date = new Date(str);
@@ -46,7 +51,12 @@ const ExtendedNews = () => {
                     <div className="postWrap">
                         <article>
                             <h1 className="pageName">{selected && selected.title}</h1>
-                            <span className="date">{selected && convertDate(selected.date)}</span>
+                            <div className="dateCategory">
+                                <ul>
+                                    <li className='category'>{selected && selected.category}</li>
+                                </ul>
+                                <span className="date">{selected && convertDate(selected.date)}</span>
+                            </div>
                             <img id='mainImg' src={selected && selected.img} alt="newsImg" />
                             <div className='textWrap'>{selected && parse(selected.content)}</div>
                         </article>

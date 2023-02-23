@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import LazyLoad from 'react-lazy-load';
 
 const MainNews5 = () => {
     const[mainNews, setMainNews] = useState(); 
 
     useEffect(() => { 
-            axios.get('/mainNews')
+        const fetchData = async () => {
+            await axios.get('/news/mainNews')
             .then(response => {
                 setMainNews(response.data && response.data.reverse().splice(38, 6).map((e) => {
                     let date = new Date(e.date);
@@ -16,7 +18,7 @@ const MainNews5 = () => {
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
-
+    
                     const animIn = () => { // anim mouse in
                         $(`.newsHr #${'mainNews5' + e.id} .img img`).css({'transform': 'scale(1.04)'});
                         $(`.newsHr #${'mainNews5' + e.id}`).css({'boxShadow': '0px 0px 15px 1px #000'});
@@ -31,9 +33,14 @@ const MainNews5 = () => {
                     }
                     return  <div key={'mainNews5' + e.id} className="cart" id={'mainNews5' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id}`}>
-                                    <div className="img"><img alt={e.title} src={e.img} /></div>
+                                    <div className="img">
+                                        <LazyLoad offset={800}>
+                                            <img alt={e.title} src={e.img} />
+                                        </LazyLoad>
+                                    </div>
                                     <h3>{e.title}</h3>
                                     <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
+                                    <span className='category'>{`#${e.category}`}</span>
                                 </Link>
                             </div>
                 })); 
@@ -41,6 +48,9 @@ const MainNews5 = () => {
             .catch(err => {
                 console.log(err);
             });
+        }
+        
+        fetchData();
     }, []); 
 
     return (

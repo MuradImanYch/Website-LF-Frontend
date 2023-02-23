@@ -67,6 +67,10 @@
     .newsMatchesSchedule {
         flex-direction: column;
     }
+    .mainSliderMatchesLive {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 @media (min-width: 1280px) { /* >= 1280px */

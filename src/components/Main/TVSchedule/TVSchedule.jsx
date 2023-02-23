@@ -1,29 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import './TVSchedule.css';
 import axios from 'axios';
+import LazyLoad from 'react-lazy-load';
 
 const MatchesSchedule = () => {
     const[matchesSchedule, setMatchesSchedule] = useState();
 
     useEffect(() => {
-        axios.get('/matchesSchedule')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('matchesSchedule', JSON.stringify(response.data));
-            }
-            setMatchesSchedule(JSON.parse(localStorage.getItem('matchesSchedule')) && JSON.parse(localStorage.getItem('matchesSchedule')).splice(0, 12).map((e, i) => {
-                return <div key={'matchesSchedule' + i} id={'matchesSchedule' + i} className="col">
-                            <div className="channel"><img src={e.channel} alt="channel" /></div>
-                            <div className="timeProgramme">
-                                <span>{e.time}</span>
-                                <span>{e.programme}</span>
+        const fetchData = async () => {
+            await axios.get('/matchesSchedule')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('matchesSchedule', JSON.stringify(response.data));
+                }
+                setMatchesSchedule(JSON.parse(localStorage.getItem('matchesSchedule')) && JSON.parse(localStorage.getItem('matchesSchedule')).splice(0, 12).map((e, i) => {
+                    return <div key={'matchesSchedule' + i} className="col">
+                                <div className="channel">
+                                    <LazyLoad offset={800}>
+                                        <img src={e.channel} alt="channel" />
+                                    </LazyLoad>
+                                </div>
+                                <div className="timeProgramme">
+                                    <span>{e.time}</span>
+                                    <span>{e.programme}</span>
+                                </div>
                             </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        
+        fetchData();
     }, []);
 
     return (

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import LazyLoad from 'react-lazy-load';
 
 const EditDeleteNews = () => {
     const[news, setNews] = useState();
@@ -52,7 +53,7 @@ const EditDeleteNews = () => {
             $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
             $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
             
-            axios.post('/editNews', {id: editId && editId, category, title, img, content})
+            axios.post('/admin/editNews', {id: editId && editId, category, title, img, content})
             .catch(err => {
                 console.log(err);
             });
@@ -65,80 +66,89 @@ const EditDeleteNews = () => {
     }
 
     useEffect(() => { 
-        axios.get('/allNews')
-        .then(response => {
-            setNews(response.data && response.data.reverse().map((e) => {
-                let date = new Date(e.date);
-                let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
-                let year = date.getFullYear();
-                let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
-                let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
+        const fetchData = async () => {
+            await axios.get('/news/allNews')
+            .then(response => {
+                setNews(response.data && response.data.reverse().map((e) => {
+                    let date = new Date(e.date);
+                    let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
+                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let year = date.getFullYear();
+                    let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
+                    let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
 
-                const deleteNews = (e) => {
-                    setDelId(e.target.id.match(/\d+/)[0]);
-                    $('#delConfirm').fadeIn();
-                    $('body').css({overflow: "hidden"});
-                }
-                const acceptDel = () => {
-                    setDelId('');
-                    $('#delConfirm').fadeOut();
-                    $('body').css({overflow: "auto"});
+                    const deleteNews = (e) => {
+                        setDelId(e.target.id.match(/\d+/)[0]);
+                        $('#delConfirm').fadeIn();
+                        $('body').css({overflow: "hidden"});
+                    }
+                    const acceptDel = () => {
+                        setDelId('');
+                        $('#delConfirm').fadeOut();
+                        $('body').css({overflow: "auto"});
 
-                    axios.post('/delNews', {id: delId && delId})
-                    .catch(err => {
-                        if(err) throw err;
-                    });
+                        axios.post('/admin/delNews', {id: delId && delId})
+                        .catch(err => {
+                            if(err) throw err;
+                        });
 
-                    $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
-                    $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
+                        $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
+                        $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
 
-                    setTimeout(() => {
-                        $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
-                        $('#editDeleteNews .newsCart .editDelWrap button').css({background: '#fff'});
-                    }, 10000);
-                }
-                const rejectDel = () => {
-                    setDelId('');
-                    $('#delConfirm').fadeOut();
-                    $('body').css({overflow: "auto"});
-                }
+                        setTimeout(() => {
+                            $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
+                            $('#editDeleteNews .newsCart .editDelWrap button').css({background: '#fff'});
+                        }, 10000);
+                    }
+                    const rejectDel = () => {
+                        setDelId('');
+                        $('#delConfirm').fadeOut();
+                        $('body').css({overflow: "auto"});
+                    }
 
-                return  <div key={'key' + e.id} className="newsCart" id={'id' + e.id}>
-                            <Link to={'/news/read/' + e.id}>
-                                <div className='hover'>
-                                    <img src={e.img} alt="newsimg" />
-                                    <p>{e.title}</p>
+                    return  <div key={'news' + e.id} className="newsCart">
+                                <Link to={'/news/read/' + e.id}>
+                                    <div className='hover'>
+                                        <LazyLoad offset={800}>
+                                            <img src={e.img} alt="newsimg" />
+                                        </LazyLoad>
+                                        <p>{e.title}</p>
+                                    </div>
+                                </Link>
+                                <div className='editDelWrap'>
+                                    <button id={'edit' + e.id} title='Редактировать' onClick={editNews}>✎</button>
+                                    <button id={'del' + e.id} title='Удалить' onClick={deleteNews}>🗑</button>
                                 </div>
-                            </Link>
-                            <div className='editDelWrap'>
-                                <button id={'edit' + e.id} title='Редактировать' onClick={editNews}>✎</button>
-                                <button id={'del' + e.id} title='Удалить' onClick={deleteNews}>🗑</button>
-                            </div>
-                            <span className='newsId'>ID: {e.id}</span>
-                            <span className='newsDate'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
+                                <div className="bottom">
+                                    <span className='newsId'>ID: {e.id}</span>
+                                    <span className='newsDate'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
+                                    <span className='newsCategory'>{`#${e.category}`}</span>
+                                </div>
 
-                            <div id="delConfirm">
-                                <div id="forCenter">
-                                    <p>Удалить эту новость?</p>
-                                    <div id="btnWrap">
-                                        <button onClick={acceptDel}>ДА</button>
-                                        <button onClick={rejectDel}>НЕТ</button>
+                                <div id="delConfirm">
+                                    <div id="forCenter">
+                                        <p>Удалить эту новость?</p>
+                                        <div id="btnWrap">
+                                            <button onClick={acceptDel}>ДА</button>
+                                            <button onClick={rejectDel}>НЕТ</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-            })); 
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                })); 
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
+        fetchData();
 
         const editNews = (e) => {
             $('.editPopup').fadeIn();
             $('body').css({overflow: "hidden"});
     
-            axios.post('/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
+            axios.post('/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
             .then(response => {
                 setEditId(e.target.id.match(/\d+/)[0]);
                 setCategory(response.data[0].category);
@@ -150,7 +160,7 @@ const EditDeleteNews = () => {
                 console.log(err);
             });
         }
-    }, [news, delId, category, title, img, content, editId]);  
+    }, [delId, category, title, img, content, editId]);  // <-- deleted [news]
 
     return (
         <div id="editDeleteNews">
@@ -159,7 +169,7 @@ const EditDeleteNews = () => {
                                 <p className="popupTitle">Редактировать</p>
 
                                 <div className="container">
-                                    <form action='/editNews' method='POST'>
+                                    <form>
                                         <label htmlFor="editNewsCategory">Категория:</label>
                                         <select onChange={(e) => {
                                             setCategory(e.target.value);

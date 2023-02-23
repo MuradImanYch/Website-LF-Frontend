@@ -6,6 +6,7 @@ import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import LazyLoad from 'react-lazy-load';
 
 import uclLogo from '../../../assets/ico/uclLogo.webp';
 import uelLogo from '../../../assets/ico/uelLogo.webp';
@@ -19,86 +20,90 @@ const TopScores = () => {
     const [ueclTopScores, setUeclTopScores] = useState(); 
 
     useEffect(() => { 
-        axios.get('/uclTopScores')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('uclTopScores', JSON.stringify(response.data));
-            }
-            setUclTopScores(JSON.parse(localStorage.getItem('uclTopScores')) && JSON.parse(localStorage.getItem('uclTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'uclTopScores' + i} key={'uclTopScores' + i} className="col">
-                            <div className="left">
-                                <span className="place">{e.place}</span>
-                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
-                                <span className='name'>{e.player}</span>
+        const fetchData = async () => {
+            await axios.get('/uclTopScores')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('uclTopScores', JSON.stringify(response.data));
+                }
+                setUclTopScores(JSON.parse(localStorage.getItem('uclTopScores')) && JSON.parse(localStorage.getItem('uclTopScores')).splice(0, 8).map((e, i) => {
+                    return <div key={'uclTopScores' + i} className="col">
+                                <div className="left">
+                                    <span className="place">{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.player}</span>
+                                </div>
+                                <div className="tLogoName">
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                </div>
+                                <div className="nums">
+                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
+                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.games}</span>
+                                </div>
                             </div>
-                            <div className="tLogoName">
-                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/uelTopScores')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('uelTopScores', JSON.stringify(response.data));
+                }
+                setUelTopScores(JSON.parse(localStorage.getItem('uelTopScores')) && JSON.parse(localStorage.getItem('uelTopScores')).splice(0, 8).map((e, i) => {
+                    return <div key={'uelTopScores' + i} className="col">
+                                <div className="left">
+                                    <span className="place">{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.player}</span>
+                                </div>
+                                <div className="tLogoName">
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                </div>
+                                <div className="nums">
+                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
+                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.games}</span>
+                                </div>
                             </div>
-                            <div className="nums">
-                                <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
-                                <span>{e.games}</span>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/ueclTopScores')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('ueclTopScores', JSON.stringify(response.data));
+                }
+                setUeclTopScores(JSON.parse(localStorage.getItem('ueclTopScores')) && JSON.parse(localStorage.getItem('ueclTopScores')).splice(0, 8).map((e, i) => {
+                    return <div key={'ueclTopScores' + i} className="col">
+                                <div className="left">
+                                    <span className="place">{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.player}</span>
+                                </div>
+                                <div className="tLogoName">
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                </div>
+                                <div className="nums">
+                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
+                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.games}</span>
+                                </div>
                             </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/uelTopScores')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('uelTopScores', JSON.stringify(response.data));
-            }
-            setUelTopScores(JSON.parse(localStorage.getItem('uelTopScores')) && JSON.parse(localStorage.getItem('uelTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'uelTopScores' + i} key={'uelTopScores' + i} className="col">
-                            <div className="left">
-                                <span className="place">{e.place}</span>
-                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
-                                <span className='name'>{e.player}</span>
-                            </div>
-                            <div className="tLogoName">
-                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
-                            </div>
-                            <div className="nums">
-                                <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
-                                <span>{e.games}</span>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/ueclTopScores')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('ueclTopScores', JSON.stringify(response.data));
-            }
-            setUeclTopScores(JSON.parse(localStorage.getItem('ueclTopScores')) && JSON.parse(localStorage.getItem('ueclTopScores')).splice(0, 8).map((e, i) => {
-                return <div id={'ueclTopScores' + i} key={'ueclTopScores' + i} className="col">
-                            <div className="left">
-                                <span className="place">{e.place}</span>
-                                <Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy>
-                                <span className='name'>{e.player}</span>
-                            </div>
-                            <div className="tLogoName">
-                                <Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy>
-                            </div>
-                            <div className="nums">
-                                <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
-                                <span>{e.games}</span>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        
+        fetchData();
     }, []);
 
     return (
@@ -108,14 +113,14 @@ const TopScores = () => {
                 <Swiper navigation grabCursor={true} slidesPerView={1}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content={'ЛЧ'}><img src={uclLogo} alt="ЛЧ" /></Tippy>
+                            <LazyLoad offset={800}><Tippy content={'ЛЧ'}><img src={uclLogo} alt="ЛЧ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
                             <Tippy content="Игрок"><span>Игрок</span></Tippy>
                             <Tippy content="Команда"><span>К</span></Tippy>
                             <Tippy content="Голы"><span>Г</span></Tippy>
-                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {uclTopScores}
@@ -123,14 +128,14 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content={'ЛЕ'}><img src={uelLogo} alt="ЛЕ" /></Tippy>
+                            <LazyLoad offset={800}><Tippy content={'ЛЕ'}><img src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
                             <Tippy content="Игрок"><span>Игрок</span></Tippy>
                             <Tippy content="Команда"><span>К</span></Tippy>
                             <Tippy content="Голы"><span>Г</span></Tippy>
-                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {uelTopScores}
@@ -138,14 +143,14 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content={'ЛК'}><img src={ueclLogo} alt="ЛК" /></Tippy>
+                            <LazyLoad offset={800}><Tippy content={'ЛК'}><img src={ueclLogo} alt="ЛК" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
                             <Tippy content="Игрок"><span>Игрок</span></Tippy>
                             <Tippy content="Команда"><span>К</span></Tippy>
                             <Tippy content="Голы"><span>Г</span></Tippy>
-                            <Tippy content="Ассисты"><span>А</span></Tippy>
+                            <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {ueclTopScores}

@@ -1,0 +1,136 @@
+.matchesLive {
+    margin: 40px 0 0 0;
+}
+.matchesLive h3 {
+    margin: 0;
+}
+.matchesLive .col span {
+    color: #000;
+}
+.matchesLive .col {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 30px 0;
+}
+.matchesLive .wrap {
+    margin: 5px 0 0 0;
+    max-height: 250px;
+    overflow: scroll;
+    padding: 0 5px;
+}
+.matchesLive .hName, .matchesLive .aName {
+    display: none;
+}
+.matchesLive .col .round span, .matchesLive .col .dateTime span {
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+.matchesLive .center {
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+.matchesLive .col span {
+    font-size: 0.7em;
+}
+.matchesLive .col img {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+}
+.matchesLive .hScore, .matchesLive .aScore {
+    font-size: 0.8em !important;
+    margin: 0 5px;
+    border: 1px solid #ffbf66;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Graduate';
+}
+.matchesLive .col .round, .matchesLive .col .dateTime {
+    background: #ffbf66;
+    padding: 0 5px;
+} 
+.matchesLive .col .round {
+    transform: skewX(10deg);
+}
+.matchesLive .col .dateTime {
+    transform: skewX(-10deg);
+}
+
+@media (min-width: 320px) {
+    .matchesLive .col span {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 360px) {
+    .matchesLive .col .round, .matchesLive .col .dateTime {
+        padding: 0 10px;
+    }
+}
+
+@media (min-width: 375px) {
+    .matchesLive .hScore, .matchesLive .aScore {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media (min-width: 540px) {
+    .matchesLive .hName, .matchesLive .aName {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .matchesLive .col span {
+        font-size: 0.9em;
+    }
+    .matchesLive .hScore, .matchesLive .aScore {
+        height: 22px;
+        width: 22px;
+        font-size: 1em !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .matchesLive {
+        margin: 0;
+        width: 32%;
+    }
+    .matchesLive .wrap {
+        max-height: 350px;
+    }
+    .matchesLive .round span, .matchesLive .dateTime span, .matchesLive .aName, #league .resultsWrap .hName {
+        font-size: 0.75em !important;
+    }
+    .matchesLive .col img {
+        margin: 0 3px;
+    }
+    .matchesLive .hScore, .matchesLive .aScore {
+        margin: 0 3px;
+    }
+    .matchesLive .hName, .matchesLive .aName {
+        display: none;
+    }
+}
+
+@media (min-width: 1680px) {
+    .matchesLive {
+        margin: 0;
+        width: 33%;
+    }
+    .matchesLive .wrap {
+        max-height: 400px;
+    }
+    .matchesLive .col img {
+        margin: 0 10px;
+    }
+}

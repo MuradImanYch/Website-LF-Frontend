@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import LazyLoad from 'react-lazy-load';
 
 import rplLogo from '../../../assets/ico/rplLogo.webp';
 import eplLogo from '../../../assets/ico/eplLogo.webp';
@@ -25,16 +26,157 @@ const StandingsSlider = () => {
     const [ligue1Standings, setLigue1Standings] = useState(); 
 
     useEffect(() => { 
-        axios.get('/rplStandings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('rplStandings', JSON.stringify(response.data));
-            }
-            setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'rplStandings' + i} key={'rplStandings' + i} className="col">
+        const fetchData = async () => {
+            await axios.get('/rplStandings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('rplStandings', JSON.stringify(response.data));
+                }
+                setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
+                    return <div key={'rplStandings' + i} className="col">
+                                <div className="left">
+                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/eplStandings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('eplStandings', JSON.stringify(response.data));
+                }
+                setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
+                    return <div key={'eplStandings' + i} className="col">
+                                <div className="left">
+                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/laligaStandings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('laligaStandings', JSON.stringify(response.data));
+                }
+                setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
+                    return <div key={'laligaStandings' + i} className="col">
+                                <div className="left">
+                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/bundesligaStandings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
+                }
+                setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
+                    return <div key={'bundesligaStandings' + i} className="col">
+                                <div className="left">
+                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/serieaStandings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('serieaStandings', JSON.stringify(response.data));
+                }
+                setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
+                    return <div key={'serieaStandings' + i} className="col">
+                                <div className="left">
+                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    
+            await axios.get('/ligue1Standings')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('ligue1Standings', JSON.stringify(response.data));
+                }
+                setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
+                    return <div key={'ligue1Standings' + i} className="col">
                             <div className="left">
                                 <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
+                                <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -47,151 +189,14 @@ const StandingsSlider = () => {
                                 <div className="points">{e.points}</div>
                             </div>
                         </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
 
-        axios.get('/eplStandings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('eplStandings', JSON.stringify(response.data));
-            }
-            setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'eplStandings' + i} key={'eplStandings' + i} className="col">
-                            <div className="left">
-                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
-                                </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/laligaStandings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('laligaStandings', JSON.stringify(response.data));
-            }
-            setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'laligaStandings' + i} key={'laligaStandings' + i} className="col">
-                            <div className="left">
-                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
-                                </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/bundesligaStandings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
-            }
-            setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'bundesligaStandings' + i} key={'bundesligaStandings' + i} className="col">
-                            <div className="left">
-                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
-                                </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/serieaStandings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('serieaStandings', JSON.stringify(response.data));
-            }
-            setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
-                return <div id={'serieaStandings' + i} key={'serieaStandings' + i} className="col">
-                            <div className="left">
-                                <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
-                                </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-        axios.get('/ligue1Standings')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('ligue1Standings', JSON.stringify(response.data));
-            }
-            setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
-                return <div id={'ligue1Standings' + i} key={'ligue1Standings' + i} className="col">
-                        <div className="left">
-                            <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                            <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                            <span className='name'>{e.name}</span>
-                        </div>
-                        <div className="nums">
-                            <span className="games">{e.games}</span>
-                            <div className="forAgainst">
-                                <span className='for'>{e.goalsFor}</span>
-                                <span>:</span>
-                                <span className='against'>{e.goalsAgainst}</span>
-                            </div>
-                            <div className="points">{e.points}</div>
-                        </div>
-                    </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        fetchData();
     }, []);
 
     return (
@@ -201,9 +206,11 @@ const StandingsSlider = () => {
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='РПЛ'>
-                                <img src={rplLogo} alt="РПЛ" />
-                            </Tippy>
+                            <LazyLoad offset={800} height={40}>
+                                <Tippy content='РПЛ'>
+                                    <img src={rplLogo} alt="РПЛ" />
+                                </Tippy>
+                            </LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -217,7 +224,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy>
+                            <LazyLoad offset={800} height={40}><Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -231,7 +238,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='Ла-лига'><img src={laligaLogo} alt="Ла-лига" /></Tippy>
+                            <LazyLoad offset={800} height={40}><Tippy content='Ла-лига'><img src={laligaLogo} alt="Ла-лига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -245,7 +252,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy>
+                            <LazyLoad offset={800} height={40}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -259,7 +266,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy>
+                            <LazyLoad offset={800} height={40}><Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -273,7 +280,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy>
+                            <LazyLoad offset={800} height={40}><Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>

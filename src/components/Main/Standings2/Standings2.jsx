@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
+import LazyLoad from 'react-lazy-load';
 
 import unlLogo from '../../../assets/ico/unlLogo.webp';
 import Tippy from '@tippyjs/react';
@@ -22,129 +23,133 @@ const Standings4 = () => {
     let endpointsD = ['/unlStandingsD1', '/unlStandingsD2'];
 
     useEffect(() => {
-        axios.get(endpointsA[Math.floor(Math.random() * endpointsA.length)])
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('unlStandingsA', JSON.stringify(response.data));
-            }
-            setUnlStandingsA(JSON.parse(localStorage.getItem('unlStandingsA')) && JSON.parse(localStorage.getItem('unlStandingsA')).map((e, i) => {
-                return <div className={'unlStandingsA' + e.group.split(' ')[1]} key={'unlStandingsA' + i}>
-                    <div className="group">{e.group}</div>
-                        <div className="col">
-                            <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
+        const fetchData = async () => {
+            await axios.get(endpointsA[Math.floor(Math.random() * endpointsA.length)])
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('unlStandingsA', JSON.stringify(response.data));
+                }
+                setUnlStandingsA(JSON.parse(localStorage.getItem('unlStandingsA')) && JSON.parse(localStorage.getItem('unlStandingsA')).map((e, i) => {
+                    return <div className={'unlStandingsA' + e.group.split(' ')[1]} key={'unlStandingsA' + i}>
+                        <div className="group">{e.group}</div>
+                            <div className="col">
+                                <div className="left">
+                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
                                 </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-                </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err)
-        });
-
-        axios.get(endpointsB[Math.floor(Math.random() * endpointsB.length)])
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('unlStandingsB', JSON.stringify(response.data));
-            }
-            setUnlStandingsB(JSON.parse(localStorage.getItem('unlStandingsB')) && JSON.parse(localStorage.getItem('unlStandingsB')).map((e, i) => {
-                return <div className={'unlStandingsB' + e.group.split(' ')[1]} key={'unlStandingsB' + i}>
-                    <div className="group">{e.group}</div>
-                        <div className="col">
-                            <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
                                 </div>
-                                <div className="points">{e.points}</div>
                             </div>
-                        </div>
-                </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err)
-        });
-
-        axios.get(endpointsC[Math.floor(Math.random() * endpointsC.length)])
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('unlStandingsC', JSON.stringify(response.data));
-            }
-            setUnlStandingsC(JSON.parse(localStorage.getItem('unlStandingsC')) && JSON.parse(localStorage.getItem('unlStandingsC')).map((e, i) => {
-                return <div className={'unlStandingsC' + e.group.split(' ')[1]} key={'unlStandingsC' + i}>
-                    <div className="group">{e.group}</div>
-                        <div className="col">
-                            <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
+                    </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    
+            await axios.get(endpointsB[Math.floor(Math.random() * endpointsB.length)])
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('unlStandingsB', JSON.stringify(response.data));
+                }
+                setUnlStandingsB(JSON.parse(localStorage.getItem('unlStandingsB')) && JSON.parse(localStorage.getItem('unlStandingsB')).map((e, i) => {
+                    return <div className={'unlStandingsB' + e.group.split(' ')[1]} key={'unlStandingsB' + i}>
+                        <div className="group">{e.group}</div>
+                            <div className="col">
+                                <div className="left">
+                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
                                 </div>
-                                <div className="points">{e.points}</div>
-                            </div>
-                        </div>
-                </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err)
-        });
-
-        axios.get(endpointsD[Math.floor(Math.random() * endpointsD.length)])
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('unlStandingsD', JSON.stringify(response.data));
-            }
-            setUnlStandingsD(JSON.parse(localStorage.getItem('unlStandingsD')) && JSON.parse(localStorage.getItem('unlStandingsD')).map((e, i) => {
-                return <div className={'unlStandingsD' + e.group.split(' ')[1]} key={'unlStandingsD' + i}>
-                    <div className="group">{e.group}</div>
-                        <div className="col">
-                            <div className="left">
-                                <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                <Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy>
-                                <span className='name'>{e.name}</span>
-                            </div>
-                            <div className="nums">
-                                <span className="games">{e.games}</span>
-                                <div className="forAgainst">
-                                    <span className='for'>{e.goalsFor}</span>
-                                    <span>:</span>
-                                    <span className='against'>{e.goalsAgainst}</span>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
                                 </div>
-                                <div className="points">{e.points}</div>
                             </div>
-                        </div>
-                </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err)
-        });
+                    </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    
+            await axios.get(endpointsC[Math.floor(Math.random() * endpointsC.length)])
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('unlStandingsC', JSON.stringify(response.data));
+                }
+                setUnlStandingsC(JSON.parse(localStorage.getItem('unlStandingsC')) && JSON.parse(localStorage.getItem('unlStandingsC')).map((e, i) => {
+                    return <div className={'unlStandingsC' + e.group.split(' ')[1]} key={'unlStandingsC' + i}>
+                        <div className="group">{e.group}</div>
+                            <div className="col">
+                                <div className="left">
+                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                    </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    
+            await axios.get(endpointsD[Math.floor(Math.random() * endpointsD.length)])
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('unlStandingsD', JSON.stringify(response.data));
+                }
+                setUnlStandingsD(JSON.parse(localStorage.getItem('unlStandingsD')) && JSON.parse(localStorage.getItem('unlStandingsD')).map((e, i) => {
+                    return <div className={'unlStandingsD' + e.group.split(' ')[1]} key={'unlStandingsD' + i}>
+                        <div className="group">{e.group}</div>
+                            <div className="col">
+                                <div className="left">
+                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <span className='name'>{e.name}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games">{e.games}</span>
+                                    <div className="forAgainst">
+                                        <span className='for'>{e.goalsFor}</span>
+                                        <span>:</span>
+                                        <span className='against'>{e.goalsAgainst}</span>
+                                    </div>
+                                    <div className="points">{e.points}</div>
+                                </div>
+                            </div>
+                    </div>
+                }));
+            })
+            .catch(err => {
+                console.log(err)
+            });
+        }
+        
+        fetchData();
     }, []);
 
     return (
@@ -154,7 +159,7 @@ const Standings4 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -168,7 +173,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -182,7 +187,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -196,7 +201,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>

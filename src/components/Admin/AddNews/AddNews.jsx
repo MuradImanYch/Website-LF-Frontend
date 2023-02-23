@@ -5,6 +5,8 @@ import { useState } from 'react';
 import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import LazyLoad from 'react-lazy-load';
+
 const parse = require('html-react-parser');
 
 const AddNews = () => {
@@ -41,7 +43,7 @@ const AddNews = () => {
     }
 
     const acceptAdd = () => {
-        axios.post('/addNews', {
+        axios.post('/admin/addNews', {
             category,
             title,
             img,
@@ -80,7 +82,7 @@ const AddNews = () => {
 
     return (
         <div id='addNews'>
-            <form action='/addNews' method='POST'>
+            <form>
                 <label htmlFor="newsCategory">Категория:</label>
                 <select onChange={(e) => {
                     setCategory(e.target.value);
@@ -125,7 +127,9 @@ const AddNews = () => {
                     <div className="container">
                         <p className="pageName">{title}</p>
                         <span className="date">ДД-ММ-ГГГГ | ЧЧ:ММ</span>
-                        <img id='mainImg' src={img} alt="newsImg" />
+                        <LazyLoad offset={800}>
+                            <img id='mainImg' src={img} alt="newsImg" />
+                        </LazyLoad>
                         <div className="textWrap">{parse(content)}</div>
                     </div>
                 </section>

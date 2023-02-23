@@ -5,6 +5,7 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
+import LazyLoad from 'react-lazy-load';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -14,75 +15,83 @@ const TransferList = () => {
     const[endpoint, setEndpoint] = useState();
 
     useEffect(() => {
-        $('#transferListPage .other').hide();
+        const fetchData = async () => {
+            $('#transferListPage .other').hide();
 
-        axios.get('/transferList')
-        .then(response => {
-            if(response.data.length > 0) {
-                localStorage.setItem('transferList', JSON.stringify(response.data));
-            }
-            setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
-
-                return <div className="col" key={`transferListOther` + i}>
-                            <div>
-                                <div className='player'>
-                                    <Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy>
-                                    <img src={e.flag} alt="flag" />
-                                    <span>{e.position}</span>
+            await axios.get('/transferList')
+            .then(response => {
+                if(response.data.length > 0) {
+                    localStorage.setItem('transferList', JSON.stringify(response.data));
+                }
+                setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
+    
+                    return <div className="col" key={`transferListOther` + i}>
+                                <div>
+                                    <div className='player'>
+                                        <LazyLoad offset={800}><Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy></LazyLoad>
+                                        <img src={e.flag} alt="flag" />
+                                        <span>{e.position}</span>
+                                    </div>
+                                    <div className='fromTo'>
+                                        <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <span>→</span>
+                                        <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                    </div>
                                 </div>
-                                <div className='fromTo'>
-                                    <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                                    <span>→</span>
-                                    <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                <div>
+                                    <div className='date'>
+                                        <span>{e.date}</span>
+                                    </div>
+                                    <div className='price'>
+                                        <span>{e.price}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <div className='date'>
-                                    <span>{e.date}</span>
-                                </div>
-                                <div className='price'>
-                                    <span>{e.price}</span>
-                                </div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
+        fetchData();
     }, [expandToggle]);
 
     useEffect(() => {
-        axios.get(endpoint)
-        .then(response => {
-            setTransferListLeagues(response.data && response.data.splice(0, expandToggleLeagues).map((e, i) => {
-                return <div className="col" key={`transferListOther` + i}>
-                            <div>
-                                <div className='player'>
-                                    <Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy>
-                                    <img src={e.flag} alt="flag" />
-                                    <span>{e.position}</span>
+        const fetchData = async () => {
+            await axios.get(endpoint)
+            .then(response => {
+                setTransferListLeagues(response.data && response.data.splice(0, expandToggleLeagues).map((e, i) => {
+                    return <div className="col" key={`transferListOther` + i}>
+                                <div>
+                                    <div className='player'>
+                                        <Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy>
+                                        <img src={e.flag} alt="flag" />
+                                        <span>{e.position}</span>
+                                    </div>
+                                    <div className='fromTo'>
+                                        <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <span>→</span>
+                                        <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                    </div>
                                 </div>
-                                <div className='fromTo'>
-                                    <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                                    <span>→</span>
-                                    <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                <div>
+                                    <div className='date'>
+                                        <span>{e.date}</span>
+                                    </div>
+                                    <div className='price'>
+                                        <span>{e.price}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <div className='date'>
-                                    <span>{e.date}</span>
-                                </div>
-                                <div className='price'>
-                                    <span>{e.price}</span>
-                                </div>
-                            </div>
-                        </div>
-            }));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
+        fetchData();
     }, [expandToggleLeagues, endpoint]);
 
     const transferToggle = () => {
@@ -92,13 +101,13 @@ const TransferList = () => {
         setExpandToggleLeagues(expandToggleLeagues + 20);
     }
 
-    const selectleague = (e) => {
+    const selectleague = async (e) => {
         $('#transferListPage .other').show();
         $('#transferListPage .default').hide();
         setEndpoint(e.target.value);
         setExpandToggleLeagues(20);
 
-        axios.get(e.target.value)
+        await axios.get(e.target.value)
         .then(response => {
             setTransferListLeagues(response.data && response.data.splice(0, expandToggleLeagues).map((e, i) => {
                 return <div className="col" key={`transferListOther` + i}>

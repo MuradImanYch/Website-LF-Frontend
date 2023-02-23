@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './LeagueAll.css';
+import LazyLoad from 'react-lazy-load';
 
 const LeagueAll = (props) => {
     const[leagues, setLeagues] = useState();
@@ -9,7 +10,9 @@ const LeagueAll = (props) => {
         setLeagues(props.leagues.map((e, i) => {
             return <Link key={'league' + i} to={`/league/${e.id}`}>
                         <div>
-                            <img src={e.img} alt={e.name} />
+                            <LazyLoad offset={800}>
+                                <img src={e.img} alt={e.name} />
+                            </LazyLoad>
                             <span>{e.name}</span>
                         </div>
                     </Link>

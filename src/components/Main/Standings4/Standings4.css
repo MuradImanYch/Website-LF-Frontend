@@ -88,8 +88,10 @@
     color: #000;
 }
 .table5xn .col img {
-    width: 20px;
-    height: 20px;
+    max-width: 20px;
+    height: auto;
+    max-height: 20px;
+    width: auto;
 }
 .table5xn .col .name, .table5xn .col .games, .table5xn .col .forAgainst span, .table5xn .col .points {
     font-size: .75em;

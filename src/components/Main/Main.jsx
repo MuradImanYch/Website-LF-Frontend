@@ -26,13 +26,17 @@ import Standings6 from './Standings6/Standings6';
 import Blogs from './Blogs/Blogs';
 import TVSchedule from './TVSchedule/TVSchedule';
 import FifaRanking from './FifaRanking/FifaRanking';
+import MatchesLive from './MatchesLive/MatchesLive';
 
 const Main = (props) => {
 
     return (
         <div id='main'>
             <h1 className="pageName">Главная</h1>
-            <MainSlider />
+            <div className="mainSliderMatchesLive">
+                <MainSlider />
+                <MatchesLive />
+            </div>
             <MatchesSlider />
             <div className="endedForecast">
                 <EndedMatches />

@@ -1,56 +1,130 @@
+.poll {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100%;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 30% 0 0 0;
+}
+.poll .wrap {
+    display: block;
+    border: 2px solid #ecab51;
+    padding: 20px 40px 10px 40px;
+    position: absolute;
+    width: 85%;
+    transform: translate(-50%, 50%);
+    top: 10%;
+    left: 50%;
+    backdrop-filter: blur(10px);
+}
+.poll .close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: block;
+    background: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ecab51;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.poll form {
+    margin: 30px 0;
+}
+.poll form div {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+.poll form div:nth-child(2) {
+    margin: 15px 0 0 0;
+}
+.poll form label {
+    width: 100% !important;
+    display: inline-block;
+    font-size: 0.95em;
+    color: #000;
+}
+.poll form button {
+    background: transparent;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #000;
+    width: 100%;
+    margin: 30px 0 0 0;
+    height: 35px;
+}
+.poll form button:hover {
+    transition: 0.3s;
+    background: rgb(230, 230, 230);
+}
+.poll form .progress {
+    height: 2px;
+    background: #ecab51;
+    margin: 0 0 0 5px !important;
+    transition: 0.6s;
+    text-align: center;
+    display: none;
+}
+.poll form .progress span {
+    font-size: 0.65em;
+    text-align: center;
+    width: 100%;
+    padding: 0 0 15px 0;
+    color: #000;
+}
+.poll form input[type="radio"] {
+    margin: 0 5px 0 0;
+}
+.poll h4 {
+    color: #000;
+    font-weight: bold;
+    font-size: 0.8em;
+    text-align: center;
+}
+.poll .total {
+    color: #000;
+}
+
 @media (min-width: 1280px) {
     .poll {
+        position: static;
         width: 120px;
         margin: 150px 0 0 0;
-    }
-    .poll form div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .poll form div div {
-        margin: 0;
-    }
-    .poll form div:nth-child(2) {
-        margin: 15px 0 0 0;
-    }
-    .poll form label {
-        width: 100% !important;
-        display: inline-block;
-        font-size: 0.95em;
-    }
-    .poll form button {
+        min-width: auto;
+        min-height: auto;
         background: transparent;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-        border: 1px solid #000;
-        width: 100%;
-        margin: 15px 0 0 0;
-    }
-    .poll form button:hover {
-        transition: 0.3s;
-        background: rgb(230, 230, 230);
-    }
-    .poll form .progress {
-        height: 2px;
-        background: #ecab51;
-        margin: 0 0 0 5px !important;
-        transition: 0.6s;
-        text-align: center;
-        display: none;
-    }
-    .poll form .progress span {
-        font-size: 0.6em;
-        text-align: center;
-        width: 100%;
-    }
-    .poll form input[type="radio"] {
-        margin: 0 5px 0 0;
+        padding: 0;
     }
     .poll h4 {
-        color: #000;
-        font-weight: bold;
-        font-size: 0.8em;
+        text-align: left;
+    }
+    .poll .wrap {
+        border: 0;
+        padding: 0;
+        position: static;
+        width: 100%;
+        transform: translate(0, 0);
+    }
+    .poll form {
+        margin: 0;
+    }
+    .poll form button {
+        margin: 15px 0 0 0;
+        height: auto;
+    }
+    .poll .close {
+        display: none;
     }
 }

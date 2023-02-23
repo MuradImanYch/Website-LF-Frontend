@@ -59,6 +59,10 @@
     transition: 0.6s;
     font-weight: bold;
 }
+.newsHr .category {
+    position: absolute;
+    right: 0;
+}
 
 @media (min-width: 540px) { /* >= 540px */
     .newsHr .cart {

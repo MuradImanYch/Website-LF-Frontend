@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import LazyLoad from 'react-lazy-load';
+import cookies from 'js-cookie';
 
 import logo from './assets/ico/logo.webp';
 import $ from 'jquery';
@@ -26,20 +28,23 @@ import forecasts from './assets/ico/forecasts.webp';
 import unlLogo from './assets/ico/unlLogo.webp';
 import topScores from './assets/ico/topScores.webp';
 
+import Preloader from './components/Preloader/Preloader';
 import HotBoard from './components/HotBoard/HotBoard';
 import AdVerticalLeft from './components/Main/AdVerticalLeft/AdVerticalLeft';
 import AdVerticalLeft2 from './components/Main/AdVerticalLeft2/AdVerticalLeft2';
 import AdVerticalRight from './components/Main/AdVerticalRight/AdVerticalRight';
 import AdVerticalRight2 from './components/Main/AdVerticalRight2/AdVerticalRight2';
-import Main from './components/Main/Main';
-import Error from './components/Error/Error';
-import ExtendedNews from './components/Main/ExtendedNews/ExtendedNews';
-import Admin from './components/Admin/Main';
-import News from './components/News/Main';
-import Transfers from './components/Transfers/Main';
-import Other from './components/Other/Main';
 import Poll from './components/Main/Poll/Poll';
-import League from './components/League/Main';
+import SearchTeam from './components/Main/SearchTeam/SearchTeam';
+
+const Error = React.lazy(() => import('./components/Error/Error'));
+const Main = React.lazy(() => import('./components/Main/Main'));
+const ExtendedNews = React.lazy(() => import('./components/Main/ExtendedNews/ExtendedNews'));
+const News = React.lazy(() => import('./components/News/Main'));
+const Transfers = React.lazy(() => import('./components/Transfers/Main'));
+const Admin = React.lazy(() => import('./components/Admin/Main'));
+const Other = React.lazy(() => import('./components/Other/Main'));
+const League = React.lazy(() => import('./components/League/Main'));
 
 function App(props) {
     // localstorage busy memory calc
@@ -56,6 +61,9 @@ for (_x in localStorage) {
 console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
 
     const[barState, setBarstate] = useState(true); 
+    const location = useLocation();
+    const[adminAuth, setAdminAuth] = useState(false);
+    const navigate = useNavigate();
 
     const progressBar = () => { // scroll progressBar func
         let windScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -263,12 +271,40 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 $('#dNavWrap .ecLeagueMenu .subSubMenuWrap').hide();
             });
         }   
-    }, []);
+
+        location.pathname.indexOf('/admin') !== -1 ? $('.hotBoard').hide() : $('.hotBoard').show(); // path handler for delete smth
+
+        if(location.pathname === '/admin') {
+            if(cookies.get('adminAuth')) {
+                navigate('/admin/dashboard');
+            }
+        }
+
+        if(!cookies.get('adminAuth')) { // auth path handler
+            if(location.pathname.indexOf('/admin') !== -1) {
+                if(prompt('') === '123') {
+                    setAdminAuth(true);
+                    cookies.set('adminAuth', 'true', { expires: 7 });
+                    navigate('/admin/dashboard');
+                }
+                else {
+                    alert('Отклонено');
+                }
+            }
+        }
+        else {
+            setAdminAuth(true);
+        }
+        
+    }, [location]);
 
     const mMenuDownUp = (e) => { // mobile menu news arrow toggle
-        $(e.nativeEvent.path[2].lastChild).slideToggle('slow');
-        $(e.nativeEvent.path[0]).toggleClass('fa-caret-square-up');
-        $(e.nativeEvent.path[0]).toggleClass('subMenuArrowColorToggle');
+        $(e.target).parent().parent().find('> ul').slideToggle('slow');
+        $(e.target).toggleClass('fa-caret-square-up subMenuArrowColorToggle');
+    }
+    const closeAddFavorite = () => {
+        $('.favoriteTeamPopUp').fadeOut();
+        $('body').css({overflow: 'scroll'});
     }
     
     return (
@@ -276,7 +312,11 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
             <div id="progressBar"></div>
             <header> {/* ---------------Header--------------- */}
                 <div className="container">
-                    <Link to="/"><img src={logo} alt="Logo" /></Link>
+                    <Link to="/">
+                        <LazyLoad offset={800}>
+                            <img src={logo} alt="Logo" />
+                        </LazyLoad>
+                    </Link>
                     <nav> {/* --------------Nav----------------*/}
                         <div id="dNavWrap">
                             <ul className='menuWrap'>
@@ -319,7 +359,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                                     </Tippy>
                                                     <Tippy placement='right' content={`Бомбардиры ${e.name}`}>
                                                         <li>
-                                                            <Link to=""><img src={topScores} /> Бомбардиры</Link>
+                                                            <Link to=""><img src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                         </li>
                                                     </Tippy>
                                                 </ul>
@@ -384,7 +424,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                                                     <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                 </li>
                                                 <li title={`Бомбардиры ${e.name}`}>
-                                                    <Link to=""><img src={topScores} /> Бомбардиры</Link>
+                                                    <Link to=""><img src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -439,16 +479,18 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                     </div>
                 </div>
                 <div className='container'>
-                    <Routes>
-                        <Route path='/' element={<Main />} />
-                        <Route path='news/*' element={<News />} />
-                        <Route path='news/read/:id' element={<ExtendedNews />} />
-                        <Route path='admin/*' element={<Admin />} />
-                        <Route path='transfers/*' element={<Transfers />} />
-                        <Route path='other/*' element={<Other />} />
-                        <Route path='league/*' element={<League leagues={leagues} />} />
-                        <Route path='*' element={<Error />} />
-                    </Routes>
+                    <Suspense fallback={<Preloader />}>
+                        <Routes>
+                            <Route path='/' element={<Main />} />
+                            <Route path='news/*' element={<News />} />
+                            <Route path='news/read/:id' element={<ExtendedNews />} />
+                            {adminAuth ? <Route path='admin/*' element={<Admin />} /> : null}
+                            <Route path='transfers/*' element={<Transfers />} />
+                            <Route path='other/*' element={<Other />} />
+                            <Route path='league/*' element={<League leagues={leagues} />} />
+                            <Route path='*' element={<Error />} />
+                        </Routes>
+                    </Suspense>
                 </div>
                 <div className='sidebar'>
                     <div id='adWrapRight'>
@@ -457,6 +499,10 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                     </div>
                 </div>
             </main>
+            <div className="favoriteTeamPopUp">
+                <SearchTeam />
+                <div className="close" onClick={closeAddFavorite}>⨯</div>
+            </div>
         </div>
     );
 }

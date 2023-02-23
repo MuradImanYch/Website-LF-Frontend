@@ -13,6 +13,16 @@
     margin: 15px 0 0 0;
     background: linear-gradient(to left, #18338a, #2098f7);
 }
+#matchesSlider .title, .matchesLive .title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+#matchesSlider .title img, .matchesLive .title img {
+   height: 30px;
+   cursor: pointer;
+   margin: 0 0 5px 0;
+}
 #matchesSlider .swiper, #matchesSlider .swiper-wrapper, #matchesSlider .swiper-slide {
     height: 100%;
 }
@@ -63,7 +73,7 @@
     height: 15px;
 }
 #matchesSlider .swiper-slide .top .lNameLogo img:last-child {
-    width: 10px;
+    width: auto;
     height: 15px;
     margin: -4px 0 0 0;
 }
@@ -100,7 +110,6 @@
     color: #18338a;
     font-weight: bold;
 }
-
 
 @media (min-width: 360px) {
     .sectionName {

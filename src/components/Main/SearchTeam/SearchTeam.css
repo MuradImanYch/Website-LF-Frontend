@@ -1,0 +1,107 @@
+#searchTeam {
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    padding:  0 0 100px;
+}
+#searchTeam .wrap {
+    margin: 20% auto;
+    width: 90%;
+}
+#searchTeam .wrap input {
+    width: 100%;
+    height: 50px;
+    font-size: 1.1em;
+    outline: 0;
+    border: 2px solid rgb(204, 135, 45);
+    border-radius: 8px;
+    padding: 0 20px;
+    box-shadow: 0px 0px 20px 2px #000;
+}
+#searchTeam .wrap p {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+#searchTeam .finded {
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 350px;
+    overflow: scroll;
+    background: #fff;
+    border-radius: 8px;
+    border: 2px solid rgb(204, 135, 45);
+    display: none;
+}
+#searchTeam .finded div, #searchTeam .selected div {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#searchTeam .finded div span, #searchTeam .selected div span, #searchTeam .selected p {
+    color: #000;
+    font-weight: bold;
+}
+#searchTeam .finded img, #searchTeam .selected img {
+    margin: 0 10px;
+}
+#searchTeam .finded div button, #searchTeam .selected div button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 0 0 15px;
+    cursor: pointer;
+}
+#searchTeam .finded div:hover, #searchTeam .selected div:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+#searchTeam .finded div:hover span, #searchTeam .selected div:hover span {
+   color: #1466d1;
+   transition: 0.3s;
+}
+#searchTeam .selected {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 350px;
+    overflow: scroll;
+    background: #fff;
+    border-radius: 8px;
+    border: 2px solid rgb(204, 135, 45);
+}
+#searchTeam .finded div button {
+    background: rgb(63, 224, 71);
+    font-weight: bold;
+}
+#searchTeam .finded div button:hover {
+    transition: 0.3s;
+    background: rgb(36, 190, 44);
+}
+#searchTeam .selected div button {
+    background: rgb(255, 70, 70);
+    font-weight: bold;
+}
+#searchTeam .selected div button:hover {
+    transition: 0.3s;
+    background: rgb(231, 23, 23);
+}
+
+@media (min-width: 1024px) {
+    #searchTeam .wrap {
+        margin: 7% auto;
+        width: 400px;
+    }
+    #searchTeam .selected {
+        width: 400px;
+    }
+}

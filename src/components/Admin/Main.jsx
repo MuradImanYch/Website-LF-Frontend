@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
 
+import Auth from './Auth/Auth';
 import Dashboard from './Dashboard/Dashboard';
 import AddNews from './AddNews/AddNews';
 import EditDeleteNews from './EditDeleteNews/EditDeleteNews';
@@ -72,6 +73,7 @@ const Main = () => {
                 </ul>
             </div>
             <Routes>
+                <Route path="/" element={<Auth />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="news" element={<EditDeleteNews />} />
                 <Route path="addnews" element={<AddNews />} />

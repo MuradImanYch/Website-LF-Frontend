@@ -1,3 +1,7 @@
+#fifaRankOther > section > div > div > div:nth-child(1) > div > span {
+    padding: 0 40px 0 10px;
+}
+
 @media (min-width: 1024px) { 
     #fifaRankOther span {
         display: flex;

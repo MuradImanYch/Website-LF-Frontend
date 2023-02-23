@@ -38,7 +38,7 @@
 .extendedNews .container {
     margin: auto;
 }
-.extendedNews .container .date {
+.extendedNews .container .dateCategory .date {
     color: gray;
     font-weight: bold;
     display: block;
@@ -46,6 +46,17 @@
     font-style: italic;
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+.extendedNews .container .dateCategory {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.extendedNews .container .dateCategory .category {
+    color: gray;
+    font-weight: bold;
+    margin: 0 0 0 15px;
+    list-style: square;
 }
 .extendedNews .textWrap {
     color: #000;
