@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './LeagueAll.css';
 import LazyLoad from 'react-lazy-load';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const LeagueAll = (props) => {
     const[leagues, setLeagues] = useState();
@@ -11,7 +13,7 @@ const LeagueAll = (props) => {
             return <Link key={'league' + i} to={`/league/${e.id}`}>
                         <div>
                             <LazyLoad offset={800}>
-                                <img src={e.img} alt={e.name} />
+                                <Tippy content={e.title}><img src={e.img} alt={e.name} /></Tippy>
                             </LazyLoad>
                             <span>{e.name}</span>
                         </div>

@@ -53,10 +53,10 @@ const Poll = () => {
 
         $('.poll form input[type="radio"]:checked').val() === undefined ? alert('Выберите вариант') :
 
-        await axios.get('https://api.ipify.org/') // set & get poll choise
+        await axios.get('https://api.ipify.org/') // set & get poll choice
         .then(response => {
             axios.post('/postPoll', {
-                choiseVal: $('.poll form input[type="radio"]:checked').val(),
+                choiceVal: $('.poll form input[type="radio"]:checked').val(),
                 clientIP: response.data
             })
             .catch(err => {

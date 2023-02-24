@@ -32,7 +32,7 @@ function HotBoard() {
                                     <span className='hScore'>{e.hScore}</span>
                                     <div className="lLogoTime">
                                         <Tippy placement='bottom' content={e.lName + ' | ' + String(e.round).replace('null', '') + ', ' + String(e.roundInfo).replace('null', '')}>
-                                            <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={'ddd'} />
+                                            <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                         </Tippy>
                                         <span className="time">{e.time === 'Перерыв' ? 'Пер.' : e.time}</span>
                                     </div>
