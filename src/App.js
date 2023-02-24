@@ -312,7 +312,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
             <div id="progressBar"></div>
             <header> {/* ---------------Header--------------- */}
                 <div className="container">
-                    <Link to="https://muradimanych.github.io/Website-LF-Frontend">
+                    <Link to="/Website-LF-Frontend">
                         <LazyLoad offset={800}>
                             <img src={logo} alt="Logo" />
                         </LazyLoad>
