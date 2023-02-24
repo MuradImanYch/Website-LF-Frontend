@@ -28,7 +28,7 @@ const TopScoresSlider = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/rplTopScores')
+            await axios.get('https://legfootball.herokuapp.com/rplTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplTopScores', JSON.stringify(response.data));
@@ -55,7 +55,7 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/eplTopScores')
+            await axios.get('https://legfootball.herokuapp.com/eplTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('eplTopScores', JSON.stringify(response.data));
@@ -82,7 +82,7 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/laligaTopScores')
+            await axios.get('https://legfootball.herokuapp.com/laligaTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('laligaTopScores', JSON.stringify(response.data));
@@ -109,7 +109,7 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/bundesligaTopScores')
+            await axios.get('https://legfootball.herokuapp.com/bundesligaTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('bundesligaTopScores', JSON.stringify(response.data));
@@ -136,7 +136,7 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/serieaTopScores')
+            await axios.get('https://legfootball.herokuapp.com/serieaTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('serieaTopScores', JSON.stringify(response.data));
@@ -163,7 +163,7 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/ligue1TopScores')
+            await axios.get('https://legfootball.herokuapp.com/ligue1TopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('ligue1TopScores', JSON.stringify(response.data));

@@ -14,7 +14,7 @@ const TransferList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/transferList')
+            await axios.get('https://legfootball.herokuapp.com/transferList')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('transferList', JSON.stringify(response.data));

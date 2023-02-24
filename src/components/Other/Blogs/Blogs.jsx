@@ -10,7 +10,7 @@ const Blogs = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/news/blogs')
+            await axios.get('https://legfootball.herokuapp.com/news/blogs')
             .then(response => {
                 setNews(response.data && response.data.reverse().map((e) => {
                     let date = new Date(e.date);

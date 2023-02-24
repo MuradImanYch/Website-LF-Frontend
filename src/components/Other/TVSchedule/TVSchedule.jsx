@@ -8,7 +8,7 @@ const TVSchedule = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matchesSchedule')
+            await axios.get('https://legfootball.herokuapp.com/matchesSchedule')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('matchesSchedule', JSON.stringify(response.data));

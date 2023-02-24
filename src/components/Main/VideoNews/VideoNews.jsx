@@ -11,7 +11,7 @@ const VideoNews = () => {
     
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/news/videoNews')
+            await axios.get('https://legfootball.herokuapp.com/news/videoNews')
             .then(response => {
                 setVideoNews(response.data && response.data.splice(0, 8).reverse().map((e, i) => {
                     let date = new Date(e.date);

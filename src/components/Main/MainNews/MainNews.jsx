@@ -10,7 +10,7 @@ const News = () => {
     
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/news/mainNews')
+            await axios.get('https://legfootball.herokuapp.com/news/mainNews')
             .then(response => {
                 setMainNews(response.data && response.data.reverse().splice(32, 6).map((e) => {
                     let date = new Date(e.date);

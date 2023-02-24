@@ -16,7 +16,7 @@ const Standings6 = () => {
     const [ueclStandings2, setUeclStandings2] = useState();
     const [ueclStandings3, setUeclStandings3] = useState();
 
-    let endpoints = ['/ueclStandingsA', '/ueclStandingsB', '/ueclStandingsC', '/ueclStandingsD', '/ueclStandingsE', '/ueclStandingsF', '/ueclStandingsG', '/ueclStandingsH'];
+    let endpoints = ['https://legfootball.herokuapp.com/ueclStandingsA', 'https://legfootball.herokuapp.com/ueclStandingsB', 'https://legfootball.herokuapp.com/ueclStandingsC', 'https://legfootball.herokuapp.com/ueclStandingsD', 'https://legfootball.herokuapp.com/ueclStandingsE', 'https://legfootball.herokuapp.com/ueclStandingsF', 'https://legfootball.herokuapp.com/ueclStandingsG', 'https://legfootball.herokuapp.com/ueclStandingsH'];
 
     useEffect(() => {
         const fetchData = async () => {

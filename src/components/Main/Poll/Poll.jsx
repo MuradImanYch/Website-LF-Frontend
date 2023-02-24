@@ -20,7 +20,7 @@ const Poll = () => {
                 }, 60000);
             }
     
-            await axios.get('/getPollYes')
+            await axios.get('https://legfootball.herokuapp.com/getPollYes')
             .then(response => {
                 setYes(response.data.length);
             })
@@ -28,7 +28,7 @@ const Poll = () => {
                 console.log(err);
             });
     
-            await axios.get('/getPollNo')
+            await axios.get('https://legfootball.herokuapp.com/getPollNo')
             .then(response => {
                 setNo(response.data.length);
             })
@@ -63,7 +63,7 @@ const Poll = () => {
                 if(err) throw err;
             });
 
-            axios.get('/getPollYes')
+            axios.get('https://legfootball.herokuapp.com/getPollYes')
             .then(response => {
                 setYes(response.data.length);
             })
@@ -71,7 +71,7 @@ const Poll = () => {
                 console.log(err);
             });
 
-            axios.get('/getPollNo')
+            axios.get('https://legfootball.herokuapp.com/getPollNo')
             .then(response => {
                 setNo(response.data.length);
             })

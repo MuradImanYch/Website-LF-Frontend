@@ -12,7 +12,7 @@ const ExtendedNews = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/news/allNews')
+            await axios.get('https://legfootball.herokuapp.com/news/allNews')
             .then(response => {
                 setSelected(response.data.find((obj) => {
                     return obj.id === +id;

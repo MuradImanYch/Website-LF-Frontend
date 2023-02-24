@@ -30,7 +30,7 @@ const Rpl = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/rplSeasonInfo')
+            await axios.get('https://legfootball.herokuapp.com/rplSeasonInfo')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplSeasonInfo', JSON.stringify(response.data));
@@ -41,7 +41,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplLastWinner')
+            await axios.get('https://legfootball.herokuapp.com/rplLastWinner')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplLastWinner', JSON.stringify(response.data));
@@ -52,7 +52,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplMostWinner')
+            await axios.get('https://legfootball.herokuapp.com/rplMostWinner')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplMostWinner', JSON.stringify(response.data));
@@ -63,7 +63,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplStandings')
+            await axios.get('https://legfootball.herokuapp.com/rplStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplStandings', JSON.stringify(response.data));
@@ -91,7 +91,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplTopScores')
+            await axios.get('https://legfootball.herokuapp.com/rplTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplTopScores', JSON.stringify(response.data));
@@ -118,7 +118,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/news/rplNews')
+            await axios.get('https://legfootball.herokuapp.com/news/rplNews')
             .then(response => {
                 setNews(response.data && response.data.reverse().splice(0, 2).map((e) => {
                     let date = new Date(e.date);
@@ -154,7 +154,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplResults')
+            await axios.get('https://legfootball.herokuapp.com/rplResults')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplResults', JSON.stringify(response.data));
@@ -191,7 +191,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/news/rplNews')
+            await axios.get('https://legfootball.herokuapp.com/news/rplNews')
             .then(response => {
                 setNews2(response.data && response.data.reverse().splice(2, 2).map((e) => {
                     let date = new Date(e.date);
@@ -227,7 +227,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/news/rplNews')
+            await axios.get('https://legfootball.herokuapp.com/news/rplNews')
             .then(response => {
                 setNews3(response.data && response.data.reverse().splice(4, 2).map((e) => {
                     let date = new Date(e.date);
@@ -263,7 +263,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplFixtures')
+            await axios.get('https://legfootball.herokuapp.com/rplFixtures')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplFixtures', JSON.stringify(response.data));
@@ -300,7 +300,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/uefaCountryRankSeason')
+            await axios.get('https://legfootball.herokuapp.com/uefaCountryRankSeason')
             .then(response => {
                 setUefaCurrentSeason(response.data[0].seasonCurrent);
             })
@@ -308,7 +308,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/uefaCountryRank')
+            await axios.get('https://legfootball.herokuapp.com/uefaCountryRank')
             .then(response => {
                 setUefaRankName(response.data && response.data.filter(e => {
                     return e.name === 'Россия';
@@ -322,7 +322,7 @@ const Rpl = () => {
                 return e.name === 'Россия';
             }));  
     
-            await axios.get('/news/rplNews')
+            await axios.get('https://legfootball.herokuapp.com/news/rplNews')
             .then(response => {
                 setNews4(response.data && response.data.reverse().splice(6, 2).map((e) => {
                     let date = new Date(e.date);
@@ -358,7 +358,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/transferListRpl')
+            await axios.get('https://legfootball.herokuapp.com/transferListRpl')
             .then(response => {
                 setTransferList(response.data && response.data.splice(0, 10).map((e, i) => {
                     return <div className="col" key={'transferList' + i}>

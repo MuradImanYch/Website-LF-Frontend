@@ -14,7 +14,7 @@ const Ligue1News = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/news/ligue1News')
+            await axios.get('https://legfootball.herokuapp.com/news/ligue1News')
             .then(response => {
                 setNews(response.data && response.data.reverse().map((e) => {
                     let date = new Date(e.date);

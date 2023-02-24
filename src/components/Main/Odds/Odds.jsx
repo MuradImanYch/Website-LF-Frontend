@@ -10,7 +10,7 @@ const Forecasts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/forecasts')
+            await axios.get('https://legfootball.herokuapp.com/forecasts')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('forecasts', JSON.stringify(response.data));

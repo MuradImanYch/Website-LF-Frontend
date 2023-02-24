@@ -17,10 +17,10 @@ const Standings4 = () => {
     const [unlStandingsC, setUnlStandingsC] = useState();
     const [unlStandingsD, setUnlStandingsD] = useState();
 
-    let endpointsA = ['/unlStandingsA1', '/unlStandingsA2', 'unlStandingsA3', 'unlStandingsA4'];
-    let endpointsB = ['/unlStandingsB1', '/unlStandingsB2', '/unlStandingsB3', '/unlStandingsB4'];
-    let endpointsC = ['/unlStandingsC1', '/unlStandingsC2', '/unlStandingsC3', '/unlStandingsC4'];
-    let endpointsD = ['/unlStandingsD1', '/unlStandingsD2'];
+    let endpointsA = ['https://legfootball.herokuapp.com/unlStandingsA1', 'https://legfootball.herokuapp.com/unlStandingsA2', 'https://legfootball.herokuapp.com/unlStandingsA3', 'https://legfootball.herokuapp.com/unlStandingsA4'];
+    let endpointsB = ['https://legfootball.herokuapp.com/unlStandingsB1', 'https://legfootball.herokuapp.com/unlStandingsB2', 'https://legfootball.herokuapp.com/unlStandingsB3', 'https://legfootball.herokuapp.com/unlStandingsB4'];
+    let endpointsC = ['https://legfootball.herokuapp.com/unlStandingsC1', 'https://legfootball.herokuapp.com/unlStandingsC2', 'https://legfootball.herokuapp.com/unlStandingsC3', 'https://legfootball.herokuapp.com/unlStandingsC4'];
+    let endpointsD = ['https://legfootball.herokuapp.com/unlStandingsD1', 'https://legfootball.herokuapp.com/unlStandingsD2'];
 
     useEffect(() => {
         const fetchData = async () => {

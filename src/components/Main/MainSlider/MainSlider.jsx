@@ -16,7 +16,7 @@ const NewsSlider = () => {
     
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/news/mainNews')
+            await axios.get('https://legfootball.herokuapp.com/news/mainNews')
             .then(response => {
                 setNewsSlider(response.data && response.data.reverse().splice(0, 8).map((e) => {
                     let date = new Date(e.date);

@@ -16,7 +16,7 @@ const FifaRanking = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/fifaRanking')
+            await axios.get('https://legfootball.herokuapp.com/fifaRanking')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('fifaRanking', JSON.stringify(response.data));

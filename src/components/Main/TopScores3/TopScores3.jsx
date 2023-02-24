@@ -20,7 +20,7 @@ const TopScores3 = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/unlTopScores')
+            await axios.get('https://legfootball.herokuapp.com/unlTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('unlTopScores', JSON.stringify(response.data));

@@ -17,7 +17,7 @@ const EndedMatches = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matches/ended')
+            await axios.get('https://legfootball.herokuapp.com/matches/ended')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('endedMatches', JSON.stringify(response.data));

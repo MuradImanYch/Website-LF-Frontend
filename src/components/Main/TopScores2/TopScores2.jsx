@@ -21,7 +21,7 @@ const TopScores = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/uclTopScores')
+            await axios.get('https://legfootball.herokuapp.com/uclTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('uclTopScores', JSON.stringify(response.data));
@@ -48,7 +48,7 @@ const TopScores = () => {
                 console.log(err);
             });
     
-            await axios.get('/uelTopScores')
+            await axios.get('https://legfootball.herokuapp.com/uelTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('uelTopScores', JSON.stringify(response.data));
@@ -75,7 +75,7 @@ const TopScores = () => {
                 console.log(err);
             });
     
-            await axios.get('/ueclTopScores')
+            await axios.get('https://legfootball.herokuapp.com/ueclTopScores')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('ueclTopScores', JSON.stringify(response.data));
