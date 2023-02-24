@@ -481,7 +481,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 <div className='container'>
                     <Suspense fallback={<Preloader />}>
                         <Routes>
-                            <Route path='/' element={<Main />} />
+                            <Route path='/Website-LF-Frontend' element={<Main />} />
                             <Route path='news/*' element={<News />} />
                             <Route path='news/read/:id' element={<ExtendedNews />} />
                             {adminAuth ? <Route path='admin/*' element={<Admin />} /> : null}
