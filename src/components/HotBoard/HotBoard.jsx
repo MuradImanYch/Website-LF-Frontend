@@ -19,7 +19,7 @@ function HotBoard() {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matches/live')
+            await axios.get('https://legfootball.herokuapp.com/matches/live')
             .then(response => {
                 setLiveMatches(response.data && response.data.map((e, i) => {
                     return  <SwiperSlide key={'live' + i}>
