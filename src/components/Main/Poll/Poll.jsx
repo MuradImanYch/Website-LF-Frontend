@@ -53,9 +53,9 @@ const Poll = () => {
 
         $('.poll form input[type="radio"]:checked').val() === undefined ? alert('Выберите вариант') :
 
-        await axios.get('https://legfootball.herokuapp.comhttps://api.ipify.org/') // set & get poll choice
+        await axios.get('https://api.ipify.org/') // set & get poll choice
         .then(response => {
-            axios.post('/postPoll', {
+            axios.post('https://legfootball.herokuapp.com/postPoll', {
                 choiceVal: $('.poll form input[type="radio"]:checked').val(),
                 clientIP: response.data
             })
@@ -63,7 +63,7 @@ const Poll = () => {
                 if(err) throw err;
             });
 
-            axios.get('/getPollYes')
+            axios.get('https://legfootball.herokuapp.com/getPollYes')
             .then(response => {
                 setYes(response.data.length);
             })
@@ -71,7 +71,7 @@ const Poll = () => {
                 console.log(err);
             });
 
-            axios.get('/getPollNo')
+            axios.get('https://legfootball.herokuapp.com/getPollNo')
             .then(response => {
                 setNo(response.data.length);
             })
