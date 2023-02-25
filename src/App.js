@@ -318,6 +318,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         </LazyLoad>
                     </Link>
                     <nav> {/* --------------Nav----------------*/}
+                    <Link className='adm' to='/admin'>admin</Link>
                         <div id="dNavWrap">
                             <ul className='menuWrap'>
                                 <li onMouseEnter={dNewsEnter} onMouseLeave={dNewsOut}>
