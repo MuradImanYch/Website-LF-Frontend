@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Website-LF-Frontend/static/css/main.e0027967.css",
-    "main.js": "/Website-LF-Frontend/static/js/main.1badbde3.js",
+    "main.js": "/Website-LF-Frontend/static/js/main.47cc3d6a.js",
     "static/css/136.d7c852f6.chunk.css": "/Website-LF-Frontend/static/css/136.d7c852f6.chunk.css",
     "static/js/136.ecb32881.chunk.js": "/Website-LF-Frontend/static/js/136.ecb32881.chunk.js",
     "static/css/652.40efa8b0.chunk.css": "/Website-LF-Frontend/static/css/652.40efa8b0.chunk.css",
@@ -66,7 +66,7 @@
     "static/media/rank.webp": "/Website-LF-Frontend/static/media/rank.c628baa3aff7a148ae96.webp",
     "static/media/homeIco.webp": "/Website-LF-Frontend/static/media/homeIco.524ceaca1ca99f1349fd.webp",
     "main.e0027967.css.map": "/Website-LF-Frontend/static/css/main.e0027967.css.map",
-    "main.1badbde3.js.map": "/Website-LF-Frontend/static/js/main.1badbde3.js.map",
+    "main.47cc3d6a.js.map": "/Website-LF-Frontend/static/js/main.47cc3d6a.js.map",
     "136.d7c852f6.chunk.css.map": "/Website-LF-Frontend/static/css/136.d7c852f6.chunk.css.map",
     "136.ecb32881.chunk.js.map": "/Website-LF-Frontend/static/js/136.ecb32881.chunk.js.map",
     "652.40efa8b0.chunk.css.map": "/Website-LF-Frontend/static/css/652.40efa8b0.chunk.css.map",
@@ -89,6 +89,6 @@
   },
   "entrypoints": [
     "static/css/main.e0027967.css",
-    "static/js/main.1badbde3.js"
+    "static/js/main.47cc3d6a.js"
   ]
 }
