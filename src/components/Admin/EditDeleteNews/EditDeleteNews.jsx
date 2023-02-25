@@ -53,7 +53,7 @@ const EditDeleteNews = () => {
             $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
             $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
             
-            axios.post('/admin/editNews', {id: editId && editId, category, title, img, content})
+            axios.post('https://legfootball.herokuapp.com/admin/editNews', {id: editId && editId, category, title, img, content})
             .catch(err => {
                 console.log(err);
             });
@@ -67,7 +67,7 @@ const EditDeleteNews = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/news/allNews')
+            await axios.get('https://legfootball.herokuapp.com/news/allNews')
             .then(response => {
                 setNews(response.data && response.data.reverse().map((e) => {
                     let date = new Date(e.date);
@@ -87,7 +87,7 @@ const EditDeleteNews = () => {
                         $('#delConfirm').fadeOut();
                         $('body').css({overflow: "auto"});
 
-                        axios.post('/admin/delNews', {id: delId && delId})
+                        axios.post('https://legfootball.herokuapp.com/admin/delNews', {id: delId && delId})
                         .catch(err => {
                             if(err) throw err;
                         });
