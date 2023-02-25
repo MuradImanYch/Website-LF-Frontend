@@ -53,7 +53,7 @@ const EditDeleteNews = () => {
             $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
             $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
             
-            axios.post('https://legfootball.herokuapp.com/admin/editNews', {id: editId && editId, category, title, img, content})
+            axios.post('/admin/editNews', {id: editId && editId, category, title, img, content})
             .catch(err => {
                 console.log(err);
             });
@@ -87,7 +87,7 @@ const EditDeleteNews = () => {
                         $('#delConfirm').fadeOut();
                         $('body').css({overflow: "auto"});
 
-                        axios.post('https://legfootball.herokuapp.com/admin/delNews', {id: delId && delId})
+                        axios.post('/admin/delNews', {id: delId && delId})
                         .catch(err => {
                             if(err) throw err;
                         });
@@ -148,7 +148,7 @@ const EditDeleteNews = () => {
             $('.editPopup').fadeIn();
             $('body').css({overflow: "hidden"});
     
-            axios.post('https://legfootball.herokuapp.com/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
+            axios.post('/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
             .then(response => {
                 setEditId(e.target.id.match(/\d+/)[0]);
                 setCategory(response.data[0].category);

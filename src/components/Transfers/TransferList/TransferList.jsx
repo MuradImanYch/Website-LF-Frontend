@@ -143,13 +143,13 @@ const TransferList = () => {
         <div id="transferListPage">
             <h1 className="pageName">Трансферный список 
             <select onChange={selectleague} name="leagueSelection">
-                <option value="https://legfootball.herokuapp.com/transferList">Все лиги</option>
-                <option value="https://legfootball.herokuapp.com/transferListRpl">РПЛ</option>
-                <option value="https://legfootball.herokuapp.com/transferListEpl">АПЛ</option>
-                <option value="https://legfootball.herokuapp.com/transferListLaliga">Ла Лига</option>
-                <option value="https://legfootball.herokuapp.com/transferListSeriea">Серия А</option>
-                <option value="https://legfootball.herokuapp.com/transferListBundesliga">Бундеслига</option>
-                <option value="https://legfootball.herokuapp.com/transferListLigue1">Лига 1</option>
+                <option value="/transferList">Все лиги</option>
+                <option value="/transferListRpl">РПЛ</option>
+                <option value="/transferListEpl">АПЛ</option>
+                <option value="/transferListLaliga">Ла Лига</option>
+                <option value="/transferListSeriea">Серия А</option>
+                <option value="/transferListBundesliga">Бундеслига</option>
+                <option value="/transferListLigue1">Лига 1</option>
             </select></h1>
             <div className="listWrap">
                 <div className="head">

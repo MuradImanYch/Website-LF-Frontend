@@ -29,7 +29,7 @@ const UEFACountryRank = () => {
                 console.log(err);
             });
 
-            axios.get('https://legfootball.herokuapp.com/uefaCountryRank')
+            axios.get('/uefaCountryRank')
             .then(response => {
                 setUefaCountryRank(response.data && response.data.map((item, indx) => {
                     return <div className="col wrap" key={'uefaCountryRank' + indx}>

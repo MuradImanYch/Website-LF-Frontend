@@ -43,7 +43,7 @@ const AddNews = () => {
     }
 
     const acceptAdd = () => {
-        axios.post('https://legfootball.herokuapp.com/admin/addNews', {
+        axios.post('/admin/addNews', {
             category,
             title,
             img,
