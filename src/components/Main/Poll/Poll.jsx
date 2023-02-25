@@ -15,7 +15,7 @@ const Poll = () => {
             localStorage.getItem('poll') && $('.poll form button').attr('disabled', true) && $('.poll form input').attr('disabled', true) && $(`.poll form input[value=${localStorage.getItem('poll')}]`).attr('checked', true) && $('.poll form button').text(`Голосов: ${total}`).css({background: 'silver', color: 'gray'}) && $('.poll form .progress').fadeIn() && $('.poll form .progress span').fadeIn();
             
             if($(window).width() < 1024) {
-                localStorage.getItem('poll') ? $(".poll").attr("style", "display: none !important") : setTimeout(() => {
+                localStorage.getItem('poll') ? setTimeout(() => {$(".poll").attr("style", "display: none !important")}, 5000) : setTimeout(() => {
                     $(".poll").attr("style", "display: block !important");
                 }, 60000);
             }
