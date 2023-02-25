@@ -71,13 +71,15 @@ const Poll = () => {
                 console.log(err);
             });
 
-            axios.get('https://legfootball.herokuapp.com/getPollNo')
-            .then(response => {
-                setNo(response.data.length);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            setTimeout(() => {
+                axios.get('https://legfootball.herokuapp.com/getPollNo')
+                .then(response => {
+                    setNo(response.data.length);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            }, 2000);
 
             setYesWidth((yes * 100) / (yes + no));
             setNoWidth((no * 100) / (yes + no));
