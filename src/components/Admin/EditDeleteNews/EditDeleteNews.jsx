@@ -148,7 +148,7 @@ const EditDeleteNews = () => {
             $('.editPopup').fadeIn();
             $('body').css({overflow: "hidden"});
     
-            axios.post('/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
+            axios.post('https://legfootball.herokuapp.com/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
             .then(response => {
                 setEditId(e.target.id.match(/\d+/)[0]);
                 setCategory(response.data[0].category);

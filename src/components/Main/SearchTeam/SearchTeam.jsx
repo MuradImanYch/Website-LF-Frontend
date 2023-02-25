@@ -13,7 +13,7 @@ const SearchTeam = () => {
     }
 
     const searchTeam = () => {        
-        axios.post('/searchTeam', {
+        axios.post('https://legfootball.herokuapp.com/searchTeam', {
             team: document.querySelector('#searchTeam input').value        
         })
         .then(response => {
@@ -47,7 +47,7 @@ const SearchTeam = () => {
         }));
 
         /* setInterval(() => {
-            axios.post('/favoriteTeams', JSON.parse(localStorage.getItem('teamArr')));
+            axios.post('https://legfootball.herokuapp.com/favoriteTeams', JSON.parse(localStorage.getItem('teamArr')));
         }, 10000); */
     }, [teamArr]);
 

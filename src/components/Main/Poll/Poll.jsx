@@ -55,7 +55,7 @@ const Poll = () => {
 
         await axios.get('https://api.ipify.org/') // set & get poll choice
         .then(response => {
-            axios.post('/postPoll', {
+            axios.post('https://legfootball.herokuapp.com/postPoll', {
                 choiceVal: $('.poll form input[type="radio"]:checked').val(),
                 clientIP: response.data
             })
