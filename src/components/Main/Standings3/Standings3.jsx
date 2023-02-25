@@ -17,7 +17,7 @@ const Standings4 = () => {
     const [euroQualStandings2, setEuroQualStandings2] = useState();
     const [euroQualStandings3, setEuroQualStandings3] = useState();
 
-    let endpoints = ['/euroQualStandingsA', '/euroQualStandingsB', '/euroQualStandingsC', '/euroQualStandingsD', '/euroQualStandingsE', '/euroQualStandingsF', '/euroQualStandingsG', '/euroQualStandingsH', '/euroQualStandingsI', '/euroQualStandingsJ'];
+    let endpoints = ['https://legfootball.herokuapp.com/euroQualStandingsA', 'https://legfootball.herokuapp.com/euroQualStandingsB', 'https://legfootball.herokuapp.com/euroQualStandingsC', 'https://legfootball.herokuapp.com/euroQualStandingsD', 'https://legfootball.herokuapp.com/euroQualStandingsE', 'https://legfootball.herokuapp.com/euroQualStandingsF', 'https://legfootball.herokuapp.com/euroQualStandingsG', 'https://legfootball.herokuapp.com/euroQualStandingsH', 'https://legfootball.herokuapp.com/euroQualStandingsI', 'https://legfootball.herokuapp.com/euroQualStandingsJ'];
 
     useEffect(() => {
         const fetchData = async () => {
