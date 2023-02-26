@@ -27,7 +27,7 @@ const StandingsSlider = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('https://legfootball.herokuapp.com/rplStandings')
+            await axios.get('/rplStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('rplStandings', JSON.stringify(response.data));
@@ -55,7 +55,7 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/eplStandings')
+            await axios.get('/eplStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('eplStandings', JSON.stringify(response.data));
@@ -83,7 +83,7 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/laligaStandings')
+            await axios.get('/laligaStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('laligaStandings', JSON.stringify(response.data));
@@ -111,7 +111,7 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/bundesligaStandings')
+            await axios.get('/bundesligaStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
@@ -139,7 +139,7 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/serieaStandings')
+            await axios.get('/serieaStandings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('serieaStandings', JSON.stringify(response.data));
@@ -167,7 +167,7 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/ligue1Standings')
+            await axios.get('/ligue1Standings')
             .then(response => {
                 if(response.data.length > 0) {
                     localStorage.setItem('ligue1Standings', JSON.stringify(response.data));

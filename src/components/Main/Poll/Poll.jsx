@@ -20,7 +20,7 @@ const Poll = () => {
                 }, 60000);
             }
     
-            await axios.get('https://legfootball.herokuapp.com/getPollYes')
+            await axios.get('/getPollYes')
             .then(response => {
                 setYes(response.data.length);
             })
@@ -28,7 +28,7 @@ const Poll = () => {
                 console.log(err);
             });
     
-            await axios.get('https://legfootball.herokuapp.com/getPollNo')
+            await axios.get('/getPollNo')
             .then(response => {
                 setNo(response.data.length);
             })
@@ -55,7 +55,7 @@ const Poll = () => {
 
         await axios.get('https://api.ipify.org/') // set & get poll choice
         .then(response => {
-            axios.post('https://legfootball.herokuapp.com/postPoll', {
+            axios.post('/postPoll', {
                 choiceVal: $('.poll form input[type="radio"]:checked').val(),
                 clientIP: response.data
             })
@@ -64,7 +64,7 @@ const Poll = () => {
             });
 
             setTimeout(() => {
-                axios.get('https://legfootball.herokuapp.com/getPollYes')
+                axios.get('/getPollYes')
                 .then(response => {
                     setYes(response.data.length);
                 })
@@ -74,7 +74,7 @@ const Poll = () => {
             }, 1000);
 
             setTimeout(() => {
-                axios.get('https://legfootball.herokuapp.com/getPollNo')
+                axios.get('/getPollNo')
                 .then(response => {
                     setNo(response.data.length);
                 })

@@ -276,7 +276,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
 
         if(location.pathname === '/admin') {
             if(cookies.get('adminAuth')) {
-                navigate('/Website-LF-Frontend/admin/dashboard');
+                navigate('/admin/dashboard');
             }
         }
 
@@ -285,7 +285,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 if(prompt('') === '123') {
                     setAdminAuth(true);
                     cookies.set('adminAuth', 'true', { expires: 7 });
-                    navigate('/Website-LF-Frontend/admin/dashboard');
+                    navigate('/admin/dashboard');
                 }
                 else {
                     alert('Отклонено');
@@ -312,7 +312,7 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
             <div id="progressBar"></div>
             <header> {/* ---------------Header--------------- */}
                 <div className="container">
-                    <Link to="/Website-LF-Frontend">
+                    <Link to="">
                         <LazyLoad offset={800}>
                             <img src={logo} alt="Logo" />
                         </LazyLoad>
@@ -482,10 +482,10 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                 <div className='container'>
                     <Suspense fallback={<Preloader />}>
                         <Routes>
-                            <Route path='/Website-LF-Frontend' element={<Main />} />
+                            <Route path='/' element={<Main />} />
                             <Route path='news/*' element={<News />} />
                             <Route path='news/read/:id' element={<ExtendedNews />} />
-                            {adminAuth ? <Route path='/Website-LF-Frontend/admin/*' element={<Admin />} /> : null}
+                            {adminAuth ? <Route path='admin/*' element={<Admin />} /> : null}
                             <Route path='transfers/*' element={<Transfers />} />
                             <Route path='other/*' element={<Other />} />
                             <Route path='league/*' element={<League leagues={leagues} />} />

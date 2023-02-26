@@ -27,7 +27,7 @@ const MatchesSlider = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('https://legfootball.herokuapp.com/matchesSlider')
+            await axios.get('/matchesSlider')
             .then(response => {
                 const uniqueIds = [];
                   

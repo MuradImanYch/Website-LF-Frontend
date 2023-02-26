@@ -13,7 +13,7 @@ const UEFACountryRank = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('https://legfootball.herokuapp.com/uefaCountryRankSeason')
+            await axios.get('/uefaCountryRankSeason')
             .then(response => {
                 setUefaCountryRankSeason(response.data && response.data.map((item, indx) => {
                     return <div key={'uefaCountryRankSeason' + indx}>

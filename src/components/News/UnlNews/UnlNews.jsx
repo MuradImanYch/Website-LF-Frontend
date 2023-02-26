@@ -14,7 +14,7 @@ const UnlNews = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('https://legfootball.herokuapp.com/news/unlNews')
+            await axios.get('/news/unlNews')
             .then(response => {
                 setNews(response.data && response.data.reverse().map((e) => {
                     let date = new Date(e.date);

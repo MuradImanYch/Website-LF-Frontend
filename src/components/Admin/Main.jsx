@@ -67,9 +67,9 @@ const Main = () => {
             </div>
             <div id="adminNav">
                 <ul>
-                    <li><Link to="/Website-LF-Frontend/admin/dashboard"><img src={homeIco} alt="ico" /> Главная панель</Link></li>
-                    <li><Link to="/Website-LF-Frontend/admin/news"><img src={newsIco} alt="ico" /> Все новости</Link></li>
-                    <li><Link to="/Website-LF-Frontend/admin/addnews"><img src={addIco} alt="ico" /> Добавить новость</Link></li>
+                    <li><Link to="/admin/dashboard"><img src={homeIco} alt="ico" /> Главная панель</Link></li>
+                    <li><Link to="/admin/news"><img src={newsIco} alt="ico" /> Все новости</Link></li>
+                    <li><Link to="/admin/addnews"><img src={addIco} alt="ico" /> Добавить новость</Link></li>
                 </ul>
             </div>
             <Routes>

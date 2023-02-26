@@ -14,7 +14,7 @@ const BundesligaNews = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('https://legfootball.herokuapp.com/news/bundesligaNews')
+            await axios.get('/news/bundesligaNews')
             .then(response => {
                 setNews(response.data && response.data.reverse().map((e) => {
                     let date = new Date(e.date);
