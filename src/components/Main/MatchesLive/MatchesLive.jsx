@@ -3,13 +3,26 @@ import './MatchesLive.css';
 import Tippy from '@tippyjs/react';
 import LazyLoad from 'react-lazy-load';
 import $ from 'jquery';
+import cookies from 'js-cookie';
+import axios from 'axios';
 
 import addFavorite from '../../../assets/ico/addFavorite.webp';
 
 const MatchesLive = () => {
     const addFavoriteTeam = () => {
-        $('.favoriteTeamPopUp').fadeIn();
-        $('body').css({overflow: 'hidden'});
+        cookies.get('auth') ? $('.favoriteTeamPopUp').fadeIn() && $('body').css({overflow: 'hidden'}) : $('.authWrap').fadeIn() && $('body').css({overflow: 'hidden'});
+        $('#auth input').val('');
+        $('#auth .error').text('');
+
+        axios.post('/profile/getFav', {
+            token: cookies.get('auth')
+        })
+        .then(response => {
+            localStorage.setItem('teamArr', JSON.stringify(response.data));
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     return (

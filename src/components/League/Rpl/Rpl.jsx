@@ -11,6 +11,9 @@ import rplLogo from '../../../assets/ico/rplLogo.webp';
 import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 
+import VideoNews from '../../Main/VideoNews/VideoNews';
+import Blogs from '../../Main/Blogs/Blogs';
+
 const Rpl = () => {
     const[season, setSeason] = useState();
     const[rplLastWinner, setRplLastWinner] = useState();
@@ -63,12 +66,9 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplStandings')
+            await axios.get('/standings/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplStandings', JSON.stringify(response.data));
-                }
-                setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
+                setRplStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'rplStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -292,7 +292,7 @@ const Rpl = () => {
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div className="dateTime"><span>{e.dateTime}</span></div>
+                                <div className="dateTime"><span>{e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -300,7 +300,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/uefaCountryRankSeason')
+            await axios.get('/standings/uefacountryrankseason')
             .then(response => {
                 setUefaCurrentSeason(response.data[0].seasonCurrent);
             })
@@ -308,7 +308,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/uefaCountryRank')
+            await axios.get('/standings/uefacountryrank')
             .then(response => {
                 setUefaRankName(response.data && response.data.filter(e => {
                     return e.name === 'Россия';
@@ -358,7 +358,7 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/transferListRpl')
+            await axios.get('/transfers/rpl')
             .then(response => {
                 setTransferList(response.data && response.data.splice(0, 10).map((e, i) => {
                     return <div className="col" key={'transferList' + i}>
@@ -511,6 +511,10 @@ const Rpl = () => {
                     </div>
                     <Link to="/transfers/list">Подробнее</Link>
                 </div>
+            </div>
+            <div id="videoBlogs">
+                <VideoNews />
+                <Blogs />
             </div>
         </div>
     );

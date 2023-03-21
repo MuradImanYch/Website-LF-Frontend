@@ -17,27 +17,36 @@ const Standings4 = () => {
     const [uclStandings2, setUclStandings2] = useState();
     const [uclStandings3, setUclStandings3] = useState();
 
-    let endpoints = ['/uclStandingsA', '/uclStandingsB', '/uclStandingsC', '/uclStandingsD', '/uclStandingsE', '/uclStandingsF', '/uclStandingsG', '/uclStandingsH'];
+    let endpoints = ['/standings/ucla', '/standings/uclb', '/standings/uclc', '/standings/ucld', '/standings/ucle', '/standings/uclf', '/standings/uclg', '/standings/uclh'];
+    let endpoints2 = [];
+    let endpoints3 = [];
+    let endpoints4 = [];
+
+    let selected1 = endpoints[Math.floor(Math.random() * endpoints.length)];
+    endpoints.splice(endpoints.indexOf(selected1), 1);
+    endpoints.map((e) => {
+        endpoints2.push(e);
+    });
+        
+    let selected2 = endpoints2[Math.floor(Math.random() * endpoints2.length)];
+    endpoints2.splice(endpoints2.indexOf(selected2), 1);
+    endpoints2.map((e) => {
+        endpoints3.push(e);
+    });
+
+    let selected3 = endpoints3[Math.floor(Math.random() * endpoints3.length)];
+    endpoints3.splice(endpoints3.indexOf(selected2), 1);
+    endpoints3.map((e) => {
+        endpoints4.push(e);
+    });
 
     useEffect(() => {
         const fetchData = async () => {
-            function getMultipleRandom(endpoints, num) {
-                const shuffled = [...endpoints].sort(() => 0.5 - Math.random());
-              
-                return shuffled.slice(0, num);
-            }
-            let selected1 = getMultipleRandom(endpoints, 3)[0];
-            let selected2 = getMultipleRandom(endpoints, 3)[1];
-            let selected3 = getMultipleRandom(endpoints, 3)[2];
-    
             await axios.get(selected1)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('uclStandings1', JSON.stringify(response.data));
-                }
-                setUclStandings1(JSON.parse(localStorage.getItem('uclStandings1')) && JSON.parse(localStorage.getItem('uclStandings1')).map((e, i) => {
-                    return <div className={'id' + e.group.split(' ')[1]} key={'uclStandings1' + i}>
-                        <div className="group">{e.group}</div>
+                setUclStandings1(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings1' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -63,12 +72,9 @@ const Standings4 = () => {
     
             await axios.get(selected2)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('uclStandings2', JSON.stringify(response.data));
-                }
-                setUclStandings2(JSON.parse(localStorage.getItem('uclStandings2')) && JSON.parse(localStorage.getItem('uclStandings2')).map((e, i) => {
-                    return <div className={'id' + e.group.split(' ')[1]} key={'uclStandings2' + i}>
-                        <div className="group">{e.group}</div>
+                setUclStandings2(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings2' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -94,12 +100,9 @@ const Standings4 = () => {
     
             await axios.get(selected3)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('uclStandings3', JSON.stringify(response.data));
-                }
-                setUclStandings3(JSON.parse(localStorage.getItem('uclStandings3')) && JSON.parse(localStorage.getItem('uclStandings3')).map((e, i) => {
-                    return <div className={'id' + e.group.split(' ')[1]} key={'uclStandings3' + i}>
-                        <div className="group">{e.group}</div>
+                setUclStandings3(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings3' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>

@@ -10,12 +10,9 @@ const Forecasts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/forecasts')
+            await axios.get('/forecasts/odds')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('forecasts', JSON.stringify(response.data));
-                }
-                setForecasts(JSON.parse(localStorage.getItem('forecasts')) && JSON.parse(localStorage.getItem('forecasts')).splice(0, 6).map((e, i) => {
+                setForecasts(response.data && response.data.splice(0, 6).map((e, i) => {
                     return  <div className="col" key={'forecasts' + i}>
                                 <div className="head"><span>{e.lCountryName}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>{e.lName}</span></div>
                                 <div className="center">
@@ -38,11 +35,11 @@ const Forecasts = () => {
                                     </div>
                                     <div className="w1">
                                         <Tippy content="Будет забито меньше 2-ух (включительно) мячей"><span>ТМ 2.5</span></Tippy>
-                                        <span>{e.tu === '' ? '-' : e.tu}</span>
+                                        <span>{e.totalU === '' ? '-' : e.totalU}</span>
                                     </div>
                                     <div className="w1">
                                         <Tippy content="Будет забито больше 3-ёх (включительно) мячей"><span>ТБ 2.5</span></Tippy>
-                                        <span>{e.to === '' ? '-' : e.to}</span>
+                                        <span>{e.totalO === '' ? '-' : e.totalO}</span>
                                     </div>
                                 </div>
                             </div>

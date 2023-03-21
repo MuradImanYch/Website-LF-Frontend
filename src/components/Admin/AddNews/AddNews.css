@@ -122,6 +122,47 @@
     width: 100% !important;
     margin: auto;
 }
+.fileText {
+    margin: 10px 0 0 0;
+}
+.fileText div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+.fileText div:last-child {
+    border: 2px solid #ffbf66;
+    height: 250px;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+.fileText div:last-child button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    background: rgb(151, 151, 151);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+    font-weight: bold;
+}
+.fileText div:last-child button:hover {
+    background: gray;
+    transition: 0.3s;
+}
+.fileText div img {
+    width: 100%;
+    display: block;
+    height: 250px;
+    object-fit: cover;
+}
 
 @media (min-width: 320px) {
     .preview .acceptBtn {
@@ -148,17 +189,39 @@
     .preview .popupTitle {
         font-size: 1.6em;
     }
+    .fileText div img {
+        height: 280px;
+    }
+    .fileText div:last-child {
+        height: 280px;
+    }
 }
 
 @media (min-width: 768px) {
     .preview .acceptBtn {
         right: 22%;
     }
+    .fileText div img {
+        height: 230px;
+        width: 360px;
+    }
+    .fileText div:last-child {
+        height: 230px;
+        width: 360px;
+    }
 }
 
 @media (min-width: 820px) {
     .preview .acceptBtn {
         right: 21%;
+    }
+    .fileText div img {
+        height: 240px;
+        width: 385px;
+    }
+    .fileText div:last-child {
+        height: 240px;
+        width: 385px;
     }
 }
 
@@ -169,6 +232,14 @@
     .preview .popupTitle {
         font-size: 2em;
         margin: 90px 0 30px 0;
+    }
+    .fileText div img {
+        height: 280px;
+        width: 426px;
+    }
+    .fileText div:last-child {
+        height: 280px;
+        width: 426px;
     }
 }
 
@@ -193,6 +264,22 @@
         margin: 30px auto;
         display: block;
     }
+    .fileText {
+        display: flex;
+        justify-content: space-between;
+    }
+    .fileText div img {
+        width: 320px;
+        height: 220px;
+    }
+    .fileText div:last-child {
+        width: 320px;
+        height: 220px;
+        margin: 0;
+    }
+    .fileText div input[type="text"] {
+        width: 400px;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -210,5 +297,13 @@
     }
     .preview .container {
         min-width: 1220px !important;
+    }
+    .fileText div img {
+        width: 385px;
+        height: 250px;
+    }
+    .fileText div:last-child {
+        width: 385px;
+        height: 250px;
     }
 }

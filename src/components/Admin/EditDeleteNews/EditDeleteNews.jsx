@@ -11,6 +11,7 @@ import LazyLoad from 'react-lazy-load';
 const EditDeleteNews = () => {
     const[news, setNews] = useState();
     const[delId, setDelId] = useState('');
+    const[delImgPath, setDelImgPath] = useState('');
     const[category, setCategory] = useState();
     const[title, setTitle] = useState('wqdwq');
     const[img, setImg] = useState('');
@@ -36,7 +37,7 @@ const EditDeleteNews = () => {
             alert('Введите заголовок');
         }
         else if(img === '') {
-            alert('Вставьте ссылку на изображение');
+            alert('Выберите изображение или вставьте ссылку на нее');
         }
         else if(content === '') {
             alert('Введите контент для новости');
@@ -79,15 +80,20 @@ const EditDeleteNews = () => {
 
                     const deleteNews = (e) => {
                         setDelId(e.target.id.match(/\d+/)[0]);
+                        setDelImgPath($(e.target).parent().parent().find('a .hover div img').attr('src'));
                         $('#delConfirm').fadeIn();
                         $('body').css({overflow: "hidden"});
                     }
                     const acceptDel = () => {
                         setDelId('');
+                        setDelImgPath('');
                         $('#delConfirm').fadeOut();
                         $('body').css({overflow: "auto"});
 
-                        axios.post('/admin/delNews', {id: delId && delId})
+                        axios.post('/admin/delNews', {
+                            id: delId && delId,
+                            path: delImgPath && delImgPath
+                        })
                         .catch(err => {
                             if(err) throw err;
                         });
@@ -102,6 +108,7 @@ const EditDeleteNews = () => {
                     }
                     const rejectDel = () => {
                         setDelId('');
+                        setDelImgPath('');
                         $('#delConfirm').fadeOut();
                         $('body').css({overflow: "auto"});
                     }
@@ -147,6 +154,9 @@ const EditDeleteNews = () => {
         const editNews = (e) => {
             $('.editPopup').fadeIn();
             $('body').css({overflow: "hidden"});
+            document.querySelector('.fileText div input[type="text"]').setAttribute('disabled', 'disabled');
+            document.querySelector('.fileText div input[type="file"]').setAttribute('disabled', 'disabled');
+            $('.fileText div:last-child button').css({display: 'flex'});
     
             axios.post('/admin/findEditedNews', {id: e.target.id.match(/\d+/)[0]})
             .then(response => {
@@ -161,6 +171,31 @@ const EditDeleteNews = () => {
             });
         }
     }, [delId, category, title, img, content, editId]);  // <-- deleted [news]
+
+    const selectImg = async (e) => {
+        const formData = new FormData();
+        formData.append('image', e.target.files[0]);
+        const {data} = await axios.post('/upload', formData);
+        
+        setImg(data.url);
+        document.querySelector('.fileText div input[type="text"]').value = data.url;
+        document.querySelector('.fileText div input[type="text"]').setAttribute('disabled', 'disabled');
+        document.querySelector('.fileText div input[type="file"]').setAttribute('disabled', 'disabled');
+        $('.fileText div:last-child button').css({display: 'flex'});
+    }
+
+    const delImg = (e) => {
+        e.preventDefault();
+    
+        axios.post('/delUpload', {
+            path: img
+        });
+        setImg('');
+        document.querySelector('.fileText div input[type="text"]').value = '';
+        $('.fileText div:last-child button').css({display: 'none'});
+        document.querySelector('.fileText div input[type="text"]').removeAttribute('disabled');
+        document.querySelector('.fileText div input[type="file"]').removeAttribute('disabled');
+    }
 
     return (
         <div id="editDeleteNews">
@@ -197,9 +232,21 @@ const EditDeleteNews = () => {
                                             setTitle(e.target.value);
                                         }} type="text" id='editNewsTitle' name='editNewsTitle' value={title} />
                                         <label htmlFor="editImg">Изображение:</label>
-                                        <input onChange={(e) => {
+                                        <div className='fileText'>
+                    <div>
+                        <input type="file" onChange={selectImg} />
+                        <input placeholder='Выберите изображение либо вставьте ссылку' onChange={(e) => {
+                        setImg(e.target.value);
+                    }} type="text" name='editImg' id='editImg' value={img} />
+                    </div>
+                    <div>
+                        {img && <img src={img} alt="preview" />}
+                        <button onClick={delImg}>⨯</button>
+                    </div>
+                </div>
+                                        {/* <input onChange={(e) => {
                                             setImg(e.target.value);
-                                        }} type="text" name='editImg' id='editImg' value={img} />
+                                        }} type="text" name='editImg' id='editImg' value={img} /> */}
                                         <label id='editNewsContentLabel' htmlFor="editNewsContent">Контент:</label>
                                         <CKEditor id="editNewsContent" data={content} editor={ClassicEditor} onChange={(e, editor) => {
                                             setContent(editor.getData());

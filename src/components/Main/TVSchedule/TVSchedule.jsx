@@ -8,12 +8,9 @@ const MatchesSchedule = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matchesSchedule')
+            await axios.get('/tv/schedule')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('matchesSchedule', JSON.stringify(response.data));
-                }
-                setMatchesSchedule(JSON.parse(localStorage.getItem('matchesSchedule')) && JSON.parse(localStorage.getItem('matchesSchedule')).splice(0, 12).map((e, i) => {
+                setMatchesSchedule(response.data && response.data.splice(0, 12).map((e, i) => {
                     return <div key={'matchesSchedule' + i} className="col">
                                 <div className="channel">
                                     <LazyLoad offset={800}>

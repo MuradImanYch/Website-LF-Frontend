@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
 import cookies from 'js-cookie';
+import axios from 'axios';
 
 import logo from './assets/ico/logo.webp';
 import $ from 'jquery';
@@ -27,6 +28,8 @@ import tvProgram from './assets/ico/tvProgram.webp';
 import forecasts from './assets/ico/forecasts.webp';
 import unlLogo from './assets/ico/unlLogo.webp';
 import topScores from './assets/ico/topScores.webp';
+import login from './assets/ico/login.webp';
+import defaultProfile from './assets/ico/defaultProfile.webp';
 
 import Preloader from './components/Preloader/Preloader';
 import HotBoard from './components/HotBoard/HotBoard';
@@ -36,6 +39,7 @@ import AdVerticalRight from './components/Main/AdVerticalRight/AdVerticalRight';
 import AdVerticalRight2 from './components/Main/AdVerticalRight2/AdVerticalRight2';
 import Poll from './components/Main/Poll/Poll';
 import SearchTeam from './components/Main/SearchTeam/SearchTeam';
+import Auth from './components/Auth/Auth';
 
 const Error = React.lazy(() => import('./components/Error/Error'));
 const Main = React.lazy(() => import('./components/Main/Main'));
@@ -46,24 +50,15 @@ const Admin = React.lazy(() => import('./components/Admin/Main'));
 const Other = React.lazy(() => import('./components/Other/Main'));
 const League = React.lazy(() => import('./components/League/Main'));
 
-function App(props) {
-    // localstorage busy memory calc
-    var _lsTotal = 0,
-    _xLen, _x;
-for (_x in localStorage) {
-    if (!localStorage.hasOwnProperty(_x)) {
-        continue;
-    }
-    _xLen = ((localStorage[_x].length + _x.length) * 2);
-    _lsTotal += _xLen;
-    console.log(_x.substr(0, 50) + " = " + (_xLen / 1024).toFixed(2) + " KB")
-};
-console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
-
+function App() {
     const[barState, setBarstate] = useState(true); 
     const location = useLocation();
     const[adminAuth, setAdminAuth] = useState(false);
     const navigate = useNavigate();
+    const[logToggle, setLogToggle] = useState(true);
+    const[auth, setAuth] = useState();
+    const[username, setUsername] = useState();
+    const[profileToggle, setProfileToggle] = useState(true);
 
     const progressBar = () => { // scroll progressBar func
         let windScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -306,6 +301,76 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
         $('.favoriteTeamPopUp').fadeOut();
         $('body').css({overflow: 'scroll'});
     }
+
+    const loginToggle = () => {
+        setLogToggle(!logToggle);
+        logToggle ? $('.authWrap').fadeIn() && $('body').css({overflow: 'hidden'}) : $('.authWrap').fadeOut() && $('body').css({overflow: 'auto'});
+        $('#auth input').val('');
+        $('#auth .error').text('');
+    }
+    const close = () => {
+        setLogToggle(true);
+        $('.authWrap').fadeOut();
+        $('body').css({overflow: 'auto'});
+        $('#auth input').val('');
+        $('#auth .error').text('');
+    }
+
+    if(cookies.get('auth')) { // check is auth and get username by token
+        axios.post('/profile/username', {
+            token: cookies.get('auth')
+        })
+        .then(response => {
+            setUsername(response.data);
+            setAuth(cookies.get('auth'));
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    const getToken = async (e) => { // get token while login
+        setAuth(e);
+        setLogToggle(true);
+        await axios.post('/profile/username', {
+            token: cookies.get('auth')
+        })
+        .then(response => {
+            setUsername(response.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+        await axios.post('/profile/getFav', {
+            token: cookies.get('auth')
+        })
+        .then(response => {
+            localStorage.setItem('teamArr', JSON.stringify(response.data));
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    const logOut = () => {
+        cookies.remove('auth');
+        setAuth();
+        $('.favoriteTeamPopUp').fadeOut();
+        $('body').css({overflow: 'scroll'});
+        localStorage.removeItem('teamArr');
+    }
+
+    useEffect(() => {
+        if(auth) {
+            cookies.set('auth', auth, {expires: 30});
+        }
+    }, [auth]);
+
+    const profileToggleFunc = () => {
+        setProfileToggle(!profileToggle);
+        profileToggle ? $('#profile .subMenu').css({display: 'flex'}) : $('#profile .subMenu').css({display: 'none'});
+    }
     
     return (
         <div id='app'>
@@ -318,7 +383,6 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         </LazyLoad>
                     </Link>
                     <nav> {/* --------------Nav----------------*/}
-                    <Link className='adm' to='/admin'>admin</Link>
                         <div id="dNavWrap">
                             <ul className='menuWrap'>
                                 <li onMouseEnter={dNewsEnter} onMouseLeave={dNewsOut}>
@@ -462,6 +526,14 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
                         <a title="Telegram" href="https://t.me/legendarniy_football" target="__blank"><i onMouseEnter={tgMouseEnter} onMouseLeave={tgMouseLeave} className="fab fa-telegram-plane"></i></a>
                         <a title="Instagram" href="https://www.instagram.com/legendary___football/" target="__blank"><i onMouseEnter={igMouseEnter} onMouseLeave={igMouseLeave} className="fab fa-instagram"></i></a>
                     </div>
+                    {auth || cookies.get('auth') ? <div onClick={profileToggleFunc} id="profile">
+                        <Tippy content='Профиль'><img src={defaultProfile} alt="profilePic" /></Tippy>
+                        <ul className="subMenu">
+                            <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <button onClick={logOut}>Выйти</button>
+                        </ul>
+                        </div> : <Tippy content='Вход/Регистрация'><img className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
                     <div id="menuToggleMobDiv" onClick={menuToggle}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>
@@ -503,6 +575,10 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
             <div className="favoriteTeamPopUp">
                 <SearchTeam />
                 <div className="close" onClick={closeAddFavorite}>⨯</div>
+            </div>
+            <div className='authWrap'>
+                <Auth token={getToken} />
+                <button title='Отклонить' type='submit' className='close' onClick={close}>⨯</button>
             </div>
         </div>
     );

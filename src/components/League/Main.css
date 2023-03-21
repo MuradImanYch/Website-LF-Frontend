@@ -7,3 +7,6 @@
 #league .pageName {
     margin: 0 !important;
 }
+#league #videoNews, #league #blogs {
+    margin: 0;
+}

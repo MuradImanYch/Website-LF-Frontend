@@ -26,7 +26,7 @@ const AddNews = () => {
             alert('Введите заголовок');
         }
         else if(img === '') {
-            alert('Вставьте ссылку на изображение');
+            alert('Выберите изображение или вставьте ссылку на нее');
         }
         else if(content === '') {
             alert('Введите контент для новости');
@@ -58,7 +58,7 @@ const AddNews = () => {
         document.querySelector('#newsSubmit').setAttribute('disabled', 'disabled');
         document.querySelector('#newsCategory').setAttribute('disabled', 'disabled');
         document.querySelector('#newsTitle').setAttribute('disabled', 'disabled');
-        document.querySelector('#newsImg').setAttribute('disabled', 'disabled');
+        document.querySelector('.fileText input[type="file"]').setAttribute('disabled', 'disabled');
         document.querySelector('#newsSubmit').style.background = '#18ba20';
         $('.preview').fadeOut();
         $('body').css({overflow: "auto"});
@@ -68,6 +68,7 @@ const AddNews = () => {
         setContent('');
         setCategory('none');
         $('input').val('');
+        $('.fileText div:last-child button').css({display: 'none'});
 
         setTimeout(() => {
             document.querySelector('#newsSubmit').innerHTML = '+';
@@ -75,9 +76,35 @@ const AddNews = () => {
             document.querySelector('#newsCategory').removeAttribute('disabled');
             document.querySelector('#newsTitle').removeAttribute('disabled');
             document.querySelector('#newsImg').removeAttribute('disabled');
+            document.querySelector('.fileText input[type="file"]').removeAttribute('disabled');
             document.querySelector('#newsSubmit').style.background = 'rgba(204, 135, 45, 0.9)';
             setDisabled(false);
         }, 10000);
+    }
+
+    const selectImg = async (e) => {
+        const formData = new FormData();
+        formData.append('image', e.target.files[0]);
+        const {data} = await axios.post('/upload', formData);
+        
+        setImg(data.url);
+        document.querySelector('.fileText div input[type="text"]').value = data.url;
+        document.querySelector('.fileText div input[type="text"]').setAttribute('disabled', 'disabled');
+        document.querySelector('.fileText div input[type="file"]').setAttribute('disabled', 'disabled');
+        $('.fileText div:last-child button').css({display: 'flex'});
+    }
+
+    const delImg = (e) => {
+        e.preventDefault();
+    
+        axios.post('/delUpload', {
+            path: img
+        });
+        setImg('');
+        document.querySelector('.fileText div input[type="text"]').value = '';
+        $('.fileText div:last-child button').css({display: 'none'});
+        document.querySelector('.fileText div input[type="text"]').removeAttribute('disabled');
+        document.querySelector('.fileText div input[type="file"]').removeAttribute('disabled');
     }
 
     return (
@@ -110,9 +137,18 @@ const AddNews = () => {
                     setTitle(e.target.value);
                 }} type="text" id='newsTitle' name='newsTitle' />
                 <label htmlFor="newsImg">Изображение:</label>
-                <input placeholder='Вставьте ссылку на изображение' onChange={(e) => {
-                    setImg(e.target.value);
-                }} type="text" name='newsImg' id='newsImg' />
+                <div className='fileText'>
+                    <div>
+                        <input type="file" onChange={selectImg} />
+                        <input placeholder='Выберите изображение либо вставьте ссылку' onChange={(e) => {
+                        setImg(e.target.value);
+                    }} type="text" name='newsImg' id='newsImg' />
+                    </div>
+                    <div>
+                        {img && <img src={img} alt="preview" />}
+                        <button onClick={delImg}>⨯</button>
+                    </div>
+                </div>
                 <label id='newsContentLabel' htmlFor="newsContent">Контент:</label>
                 <CKEditor config={{placeholder: "Введите описание новости", mediaEmbed: {previewsInData: true}}} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
                     setContent(editor.getData());

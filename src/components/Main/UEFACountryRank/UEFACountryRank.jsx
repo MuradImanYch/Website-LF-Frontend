@@ -17,7 +17,7 @@ const UEFACountryRank = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/uefaCountryRankSeason')
+            await axios.get('/standings/uefacountryrankseason')
             .then(response => {
                 setUefaCountryRankSeason(response.data && response.data.map((item, indx) => {
                     return <div key={'uefaCountryRankSeason' + indx}>
@@ -33,7 +33,7 @@ const UEFACountryRank = () => {
                 console.log(err);
             });
     
-            await axios.get('/uefaCountryRank')
+            await axios.get('/standings/uefacountryrank')
             .then(response => {
                 setUefaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
                     return <div className="col wrap" key={'uefaCountryRank' + indx}>

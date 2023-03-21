@@ -11,6 +11,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
 import $ from 'jquery';
+import cookies from 'js-cookie';
 
 import friendly from '../../../assets/ico/friendly.webp';
 import stadium from '../../../assets/ico/stadium.webp';
@@ -27,7 +28,7 @@ const MatchesSlider = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matchesSlider')
+            await axios.get('/matches/expected')
             .then(response => {
                 const uniqueIds = [];
                   
@@ -40,9 +41,6 @@ const MatchesSlider = () => {
                   
                     return false;
                 });
-                /* if(response.data.length > 0) {
-                    localStorage.setItem('matchesSlider', JSON.stringify(unique));
-                } */
                 setMatchesSlider(unique && unique.map((e, i) => {
                     return <SwiperSlide key={'matchesSlider' + i}>
                                 <div className="top">
@@ -53,7 +51,7 @@ const MatchesSlider = () => {
                                             </Tippy>
                                         </LazyLoad>
                                         <LazyLoad offset={800}>
-                                            <Tippy content={e.lNameRoundDateTime[0].indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
+                                            <Tippy content={e.lName.indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lName + ' | ' + e.round + ', ' + (e.roundInfo?.match(/\d+/) ? '' : e.roundInfo)}>
                                                 <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                             </Tippy>
                                         </LazyLoad>
@@ -89,7 +87,7 @@ const MatchesSlider = () => {
                                             <img src={whistle} alt="судья" />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span>{e.lNameRoundDateTime[e.lNameRoundDateTime.length - 1]}</span>
+                                    <span>{e.dateTime}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.weatherDescr.length < 5 ? 'Информация появится позже' : e.weatherDescr}>
                                             {e.weatherDescr.length < 5 ? <span style={{fontWeight: 'bold', color: 'blue'}}>?</span> : <img src={e.weatherIco} alt="погода" />}
@@ -108,8 +106,9 @@ const MatchesSlider = () => {
     }, []);
 
     const addFavoriteTeam = () => {
-        $('.favoriteTeamPopUp').fadeIn();
-        $('body').css({overflow: 'hidden'});
+        cookies.get('auth') ? $('.favoriteTeamPopUp').fadeIn() && $('body').css({overflow: 'hidden'}) : $('.authWrap').fadeIn() && $('body').css({overflow: 'hidden'});
+        $('#auth input').val('');
+        $('#auth .error').text('');
     }
 
     return (

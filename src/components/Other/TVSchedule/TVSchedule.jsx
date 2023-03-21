@@ -8,12 +8,9 @@ const TVSchedule = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matchesSchedule')
+            await axios.get('/tv/schedule')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('matchesSchedule', JSON.stringify(response.data));
-                }
-                setMatchesSchedule(JSON.parse(localStorage.getItem('matchesSchedule')) && JSON.parse(localStorage.getItem('matchesSchedule')).map((e, i) => {
+                setMatchesSchedule(response.data && response.data.map((e, i) => {
                     return <div key={'matchesSchedule' + i} className="col">
                                 <div className="channel"><LazyLoad offset={800}><img src={e.channel} alt="channel" /></LazyLoad></div>
                                 <div className="timeProgramme">

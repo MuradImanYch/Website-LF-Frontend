@@ -10,12 +10,9 @@ const Forecasts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/forecasts')
+            await axios.get('/forecasts/odds')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('forecasts', JSON.stringify(response.data));
-                }
-                setForecasts(JSON.parse(localStorage.getItem('forecasts')) && JSON.parse(localStorage.getItem('forecasts')).map((e, i) => {
+                setForecasts(response.data && response.data.map((e, i) => {
                     return  <div className="col" key={'forecasts' + i}>
                                 <div>
                                     <div className="head"><span>{e.lCountryName}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>{e.lName}</span></div>

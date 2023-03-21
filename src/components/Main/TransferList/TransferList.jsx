@@ -14,12 +14,9 @@ const TransferList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/transferList')
+            await axios.get('/transfers/all')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('transferList', JSON.stringify(response.data));
-                }
-                setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
+                setTransferList(response.data && response.data.splice(0, expandToggle).map((e, i) => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
                         <LazyLoad offset={800}>

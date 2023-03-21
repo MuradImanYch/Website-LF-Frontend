@@ -27,12 +27,9 @@ const StandingsSlider = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/rplStandings')
+            await axios.get('/standings/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplStandings', JSON.stringify(response.data));
-                }
-                setRplStandings(JSON.parse(localStorage.getItem('rplStandings')) && JSON.parse(localStorage.getItem('rplStandings')).splice(0, 8).map((e, i) => {
+                setRplStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'rplStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -55,12 +52,9 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/eplStandings')
+            await axios.get('/standings/epl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('eplStandings', JSON.stringify(response.data));
-                }
-                setEplStandings(JSON.parse(localStorage.getItem('eplStandings')) && JSON.parse(localStorage.getItem('eplStandings')).splice(0, 8).map((e, i) => {
+                setEplStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'eplStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -83,12 +77,9 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/laligaStandings')
+            await axios.get('/standings/laliga')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('laligaStandings', JSON.stringify(response.data));
-                }
-                setLaligaStandings(JSON.parse(localStorage.getItem('laligaStandings')) && JSON.parse(localStorage.getItem('laligaStandings')).splice(0, 8).map((e, i) => {
+                setLaligaStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'laligaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -111,12 +102,9 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/bundesligaStandings')
+            await axios.get('/standings/bundesliga')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('bundesligaStandings', JSON.stringify(response.data));
-                }
-                setBundesligaStandings(JSON.parse(localStorage.getItem('bundesligaStandings')) && JSON.parse(localStorage.getItem('bundesligaStandings')).splice(0, 8).map((e, i) => {
+                setBundesligaStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'bundesligaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -139,12 +127,9 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/serieaStandings')
+            await axios.get('/standings/seriea')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('serieaStandings', JSON.stringify(response.data));
-                }
-                setSerieaStandings(JSON.parse(localStorage.getItem('serieaStandings')) && JSON.parse(localStorage.getItem('serieaStandings')).splice(0, 8).map((e, i) => {
+                setSerieaStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'serieaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
@@ -167,12 +152,9 @@ const StandingsSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/ligue1Standings')
+            await axios.get('/standings/ligue1')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('ligue1Standings', JSON.stringify(response.data));
-                }
-                setLigue1Standings(JSON.parse(localStorage.getItem('ligue1Standings')) && JSON.parse(localStorage.getItem('ligue1Standings')).splice(0, 8).map((e, i) => {
+                setLigue1Standings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'ligue1Standings' + i} className="col">
                             <div className="left">
                                 <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>

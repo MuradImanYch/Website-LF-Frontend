@@ -20,7 +20,7 @@ const Poll = () => {
                 }, 60000);
             }
     
-            await axios.get('/getPollYes')
+            await axios.get('/poll/yes')
             .then(response => {
                 setYes(response.data.length);
             })
@@ -28,7 +28,7 @@ const Poll = () => {
                 console.log(err);
             });
     
-            await axios.get('/getPollNo')
+            await axios.get('/poll/no')
             .then(response => {
                 setNo(response.data.length);
             })
@@ -55,7 +55,7 @@ const Poll = () => {
 
         await axios.get('https://api.ipify.org/') // set & get poll choice
         .then(response => {
-            axios.post('/postPoll', {
+            axios.post('/poll/post', {
                 choiceVal: $('.poll form input[type="radio"]:checked').val(),
                 clientIP: response.data
             })
@@ -64,7 +64,7 @@ const Poll = () => {
             });
 
             setTimeout(() => {
-                axios.get('/getPollYes')
+                axios.get('/poll/yes')
                 .then(response => {
                     setYes(response.data.length);
                 })
@@ -74,7 +74,7 @@ const Poll = () => {
             }, 1000);
 
             setTimeout(() => {
-                axios.get('/getPollNo')
+                axios.get('/poll/no')
                 .then(response => {
                     setNo(response.data.length);
                 })

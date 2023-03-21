@@ -18,12 +18,9 @@ const TransferList = () => {
         const fetchData = async () => {
             $('#transferListPage .other').hide();
 
-            await axios.get('/transferList')
+            await axios.get('/transfers/all')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('transferList', JSON.stringify(response.data));
-                }
-                setTransferList(JSON.parse(localStorage.getItem('transferList')) && JSON.parse(localStorage.getItem('transferList')).splice(0, expandToggle).map((e, i) => {
+                setTransferList(response.data && response.data.splice(0, expandToggle).map((e, i) => {
     
                     return <div className="col" key={`transferListOther` + i}>
                                 <div>
@@ -143,13 +140,13 @@ const TransferList = () => {
         <div id="transferListPage">
             <h1 className="pageName">Трансферный список 
             <select onChange={selectleague} name="leagueSelection">
-                <option value="/transferList">Все лиги</option>
-                <option value="/transferListRpl">РПЛ</option>
-                <option value="/transferListEpl">АПЛ</option>
-                <option value="/transferListLaliga">Ла Лига</option>
-                <option value="/transferListSeriea">Серия А</option>
-                <option value="/transferListBundesliga">Бундеслига</option>
-                <option value="/transferListLigue1">Лига 1</option>
+                <option value="/transfers/all">Все лиги</option>
+                <option value="/transfers/rpl">РПЛ</option>
+                <option value="/transfers/epl">АПЛ</option>
+                <option value="/transfers/laliga">Ла Лига</option>
+                <option value="/transfers/seriea">Серия А</option>
+                <option value="/transfers/bundesliga">Бундеслига</option>
+                <option value="/transfers/ligue1">Лига 1</option>
             </select></h1>
             <div className="listWrap">
                 <div className="head">
