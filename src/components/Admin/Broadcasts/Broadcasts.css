@@ -1,0 +1,131 @@
+.adminBroadcasts [aria-describedby]:hover {
+    transform: scale(1);
+}
+.adminBroadcasts [aria-describedby] {
+    cursor: pointer;
+}
+.adminBroadcasts .wrap a .col {
+    background: rgb(255, 191, 102);
+    margin: 20px 0 0 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.adminBroadcasts .wrap .col div {
+    display: flex;
+    align-items: center;
+}
+.adminBroadcasts .wrap .col div span {
+    font-size: 0.9em;
+    margin: 0 8px;
+    color: #000;
+}
+.adminBroadcasts .wrap .col div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+}
+.adminBroadcasts .wrap .col div:nth-child(2) span {
+    font-size: 0.8em;
+    margin: 5px 0 0 0;
+}
+.adminBroadcasts .wrap a:hover .col {
+    transition: 0.3s;
+    background: #2098f7;
+}
+.adminBroadcasts .wrap a:hover .col span {
+    color: #fff;
+    transition: 0.3s;
+}
+.adminBroadcasts .wrap .col img {
+    width: 16px;
+}
+.adminBroadcasts .btnWrap {
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(255, 191, 102);
+    flex-direction: column;
+    align-items: center;
+}
+.adminBroadcasts .btnWrap span {
+    color: #000;
+    font-size: 0.8em;
+    padding: 0 0 5px 0;
+}
+.adminBroadcasts .btnWrap button {
+    margin: 20px 50px;
+    color: #000;
+    font-size: 1.4em;
+    min-width: 45px;
+    min-height: 45px;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 191, 102);
+    font-weight: bold;
+    outline: none;
+    transition: 0.2s;
+    cursor: pointer;
+    background: #fff;
+}
+.adminBroadcasts .btnWrap button:first-child {
+    color: rgb(21, 104, 172);
+}
+.adminBroadcasts .btnWrap button:first-child:hover {
+    background: rgb(149, 207, 255);
+}
+.adminBroadcasts .btnWrap button:last-child {
+    color: red;
+}
+.adminBroadcasts .btnWrap button:last-child:hover {
+    background: rgb(255, 192, 192);
+}
+.adminBroadcasts form div {
+    display: flex;
+    flex-direction: column;
+}
+.adminBroadcasts form div label {
+    color: #000;
+    margin: 6px 0;
+}
+.adminBroadcasts form div:not(.adminBroadcasts form div:first-child) {
+    margin: 20px 0 0 0;
+}
+.adminBroadcasts form div input {
+    min-height: 35px;
+    outline: none;
+    font-size: 1em;
+}
+.adminBroadcasts form button {
+    position: fixed;
+    background: rgba(204, 135, 45, 0.9);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 5%;
+    right: 8%;
+    color: #fff !important;
+    font-size: 2em;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+.adminBroadcasts .editPopup {
+    padding: 100px 0 0 0;
+}
+
+@media (min-width: 1024px) { /* >= 1024px */
+    .adminBroadcasts .wrap a .col { 
+        width: 320px;
+    }
+    .adminBroadcasts .wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1680px) {
+    .adminBroadcasts .wrap a .col { 
+        width: 386px;
+    }
+}

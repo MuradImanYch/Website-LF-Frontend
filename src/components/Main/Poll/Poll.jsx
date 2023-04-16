@@ -3,12 +3,15 @@ import './Poll.css';
 import $ from 'jquery';
 import axios from 'axios';
 
+import loadSpiner from '../../../assets/ico/loadSpiner.gif';
+
 const Poll = () => {
     const[yes, setYes] = useState();
     const[no, setNo] = useState();
     const[total, setTotal] = useState();
     const[yesWidth, setYesWidth] = useState(0);
     const[noWidth, setNoWidth] = useState(0);
+    const[pollLoading, setPollLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,6 +54,8 @@ const Poll = () => {
     const sendPoll = async (e) => {
         e.preventDefault();
 
+        setPollLoading(true);
+
         $('.poll form input[type="radio"]:checked').val() === undefined ? alert('Выберите вариант') :
 
         await axios.get('https://api.ipify.org/') // set & get poll choice
@@ -67,6 +72,7 @@ const Poll = () => {
                 axios.get('/poll/yes')
                 .then(response => {
                     setYes(response.data.length);
+                    setPollLoading(false);
                 })
                 .catch(err => {
                     console.log(err);
@@ -77,6 +83,7 @@ const Poll = () => {
                 axios.get('/poll/no')
                 .then(response => {
                     setNo(response.data.length);
+                    setPollLoading(false);
                 })
                 .catch(err => {
                     console.log(err);
@@ -102,7 +109,7 @@ const Poll = () => {
         <div className='poll'>
             <div className="wrap">
                 <button onClick={closePoll} className="close">X</button>
-                <h4>Оцени наш сайт👇</h4>
+                <h2>Оцени наш сайт👇</h2>
                 <form>
                     <div>
                         <div><input value={'yes'} type="radio" name='poll' id='likeYes' /><label htmlFor="likeYes">👍</label></div><div className="progress" style={{width: `${yesWidth}%`}}><span>{yes}</span></div>
@@ -110,7 +117,7 @@ const Poll = () => {
                     <div>
                         <div><input value={'no'} type="radio" name='poll' id='likeNo' /><label htmlFor="likeNo">👎</label></div><div className="progress" style={{width: `${noWidth}%`}}><span>{no}</span></div>
                     </div>
-                    <button onClick={sendPoll}><span className='total'>Голосовать</span></button>
+                    {pollLoading ? <img className='loadSpiner' src={loadSpiner} alt='загрузка' /> : <button onClick={sendPoll}><span className='total'>Голосовать</span></button>}
                 </form>
             </div>
         </div>

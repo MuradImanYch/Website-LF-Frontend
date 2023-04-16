@@ -8,6 +8,31 @@
     margin: 20% auto;
     width: 90%;
 }
+#searchTeam form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#searchTeam form button {
+    position: absolute;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+#searchTeam form button img {
+    width: 25px;
+    height: 25px;
+}
+#searchTeam form button img:hover {
+    opacity: 0.6;
+    transition: 0.1s;
+}
 #searchTeam .wrap input {
     width: 100%;
     height: 50px;
@@ -28,7 +53,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 350px;
+    max-height: 250px;
     overflow: scroll;
     background: #fff;
     border-radius: 8px;
@@ -94,6 +119,10 @@
 #searchTeam .selected div button:hover {
     transition: 0.3s;
     background: rgb(231, 23, 23);
+}
+#searchTeam > div.wrap > div > div > img:nth-child(3) {
+    width: 25px;
+    height: 25px;
 }
 
 @media (min-width: 1024px) {

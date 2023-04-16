@@ -47,12 +47,12 @@
     color: gray;
     font-size: 12px;
   }
-  #auth .form .message a {
+  #auth .form .message span {
     color: rgba(255, 162, 0, 1);
     text-decoration: none;
     cursor: pointer;
   }
-  #auth .form .message a:hover {
+  #auth .form .message span:hover {
     color: rgba(255, 190, 0, 1);
   }
   #auth .form .register-form {
@@ -72,13 +72,6 @@
   #auth .container .info {
     margin: 50px auto;
     text-align: center;
-  }
-  #auth .container .info h1 {
-    margin: 0 0 15px;
-    padding: 0;
-    font-size: 36px;
-    font-weight: 300;
-    color: #1a1a1a;
   }
   #auth .container .info span {
     color: #4d4d4d;

@@ -33,34 +33,25 @@ const Rpl = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/rplSeasonInfo')
+            await axios.get('/leagueinfo/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplSeasonInfo', JSON.stringify(response.data));
-                }
-                setSeason(JSON.parse(localStorage.getItem('rplSeasonInfo')).split('-')[1].split(':')[0]);
+                setSeason(response.data[0].seasonInfo.split('-')[1].split(':')[0]);
             })
             .catch(err => {
                 console.log(err);
             });
     
-            await axios.get('/rplLastWinner')
+            await axios.get('/leagueinfo/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplLastWinner', JSON.stringify(response.data));
-                }
-                setRplLastWinner(JSON.parse(localStorage.getItem('rplLastWinner')));
+                setRplLastWinner(response.data[0].lastWinner);
             })
             .catch(err => {
                 console.log(err);
             });
     
-            await axios.get('/rplMostWinner')
+            await axios.get('/leagueinfo/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplMostWinner', JSON.stringify(response.data));
-                }
-                setRplMostWinner(JSON.parse(localStorage.getItem('rplMostWinner')).split('(')[0]);
+                setRplMostWinner(response.data[0].mostWinner.split('(')[0]);
             })
             .catch(err => {
                 console.log(err);
@@ -91,12 +82,9 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplTopScores')
+            await axios.get('/standings/rplTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplTopScores', JSON.stringify(response.data));
-                }
-                setRplTopScores(JSON.parse(localStorage.getItem('rplTopScores')) && JSON.parse(localStorage.getItem('rplTopScores')).splice(1, 8).map((e, i) => {
+                setRplTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'rplTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -108,7 +96,7 @@ const Rpl = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -154,17 +142,14 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplResults')
+            await axios.get('/results/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplResults', JSON.stringify(response.data));
-                }
-                let filtered = JSON.parse(localStorage.getItem('rplResults')).filter(e => {
-                    return e.round === JSON.parse(localStorage.getItem('rplResults'))[0].round;
+                let filtered = response.data.filter(e => {
+                    return e.round === response.data[0].round;
                 });
                 setRplResults(filtered && filtered.map((e, i) => {
                     return <div className="col" key={'rpl' + i}>
-                                <div className="round"><span>{e.round}</span></div>
+                                <div className="round" style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}}><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
@@ -172,9 +157,9 @@ const Rpl = () => {
                                             <img src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='hScore'>{e.hScore}</span>
+                                    <span className='hScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
                                     -
-                                    <span className='aScore'>{e.aScore}</span>
+                                    <span className='aScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.aName}>
@@ -183,7 +168,7 @@ const Rpl = () => {
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div className="dateTime"><span>{e.dateTime}</span></div>
+                                <div style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? {color: '#000'} : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime : e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -263,17 +248,14 @@ const Rpl = () => {
                 console.log(err);
             });
     
-            await axios.get('/rplFixtures')
+            await axios.get('/fixtures/rpl')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplFixtures', JSON.stringify(response.data));
-                }
-                let filtered = JSON.parse(localStorage.getItem('rplFixtures')).filter(e => {
-                    return e.round === JSON.parse(localStorage.getItem('rplFixtures'))[0].round;
+                let filtered = response.data.filter(e => {
+                    return e.round === response.data[0].round;
                 });
                 setRplFixtures(filtered && filtered.map((e, i) => {
                     return <div className="col" key={'rpl' + i}>
-                                <div className="round"><span>{e.round}</span></div>
+                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="round"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
@@ -281,9 +263,9 @@ const Rpl = () => {
                                             <img src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='hScore'>{e.hScore}</span>
+                                    <span className='hScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
                                     -
-                                    <span className='aScore'>{e.aScore}</span>
+                                    <span className='aScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.aName}>
@@ -292,7 +274,7 @@ const Rpl = () => {
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div className="dateTime"><span>{e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime}</span></div>
+                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime : e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -317,10 +299,16 @@ const Rpl = () => {
             .catch(err => {
                 console.log(err);
             });
-    
-            setFifaRankName(JSON.parse(localStorage.getItem('fifaRanking')) && JSON.parse(localStorage.getItem('fifaRanking')).filter(e => {
-                return e.name === 'Россия';
-            }));  
+
+            await axios.get('/standings/fifaranking')
+            .then(response => {
+                setFifaRankName(response.data && response.data.filter(e => {
+                    return e.name === 'Россия';
+                }));  
+            })
+            .catch(err => {
+                console.log(err);
+            });
     
             await axios.get('/news/rplNews')
             .then(response => {
@@ -404,7 +392,7 @@ const Rpl = () => {
             </div>
             <div className="standingsTopScores">
                 <div className="standingsWrap">
-                    <h3 className="sectionName">Турнирная таблица</h3>
+                    <h2 className="sectionName">Турнирная таблица</h2>
                     <div className="table5xn standings">
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -414,14 +402,14 @@ const Rpl = () => {
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {rplStandings}
-                        <Link to="#">Подробнее</Link>
+                        <Link to="/league/rpl/standings">Подробнее</Link>
                     </div>
                 </div>
                 <div className="newsWrap newsVr leagueNews">
                     {news}
                 </div>
                 <div className="topScoresWrap">
-                    <h3 className="sectionName">Бомбардиры</h3>
+                    <h2 className="sectionName">Бомбардиры</h2>
                     <div className="table6xn topScores">
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -438,7 +426,7 @@ const Rpl = () => {
             </div>
             <div className="matchesResultNews">
                 <div className="resultsWrap">
-                    <h3 className="sectionName">Ближайшие матчи</h3>
+                    <h2 className="sectionName">Ближайшие матчи</h2>
                     <div className="wrap">
                         {rplFixtures}
                     </div>
@@ -452,7 +440,7 @@ const Rpl = () => {
                     {news3}
                 </div>
                 <div className="resultsWrap">
-                    <h3 className="sectionName">Последние результаты</h3>
+                    <h2 className="sectionName">Последние результаты</h2>
                     <div className="wrap">
                         {rplResults}
                     </div>
@@ -461,7 +449,7 @@ const Rpl = () => {
             <div className="ranksNewsTransfers">
                 <div className="ranksWrap">
                     <div className="ranks">
-                        <h3 className="sectionName">Рейтинг в УЕФА</h3>
+                        <h2 className="sectionName">Рейтинг в УЕФА</h2>
                         <div className="wrap">
                             <div className="logoWrap">
                                 <LazyLoad offset={800}><Tippy content='UEFA'><img src={uefaLogo} alt="uefaLogo" /></Tippy></LazyLoad>
@@ -482,7 +470,7 @@ const Rpl = () => {
                         </div>
                     </div>
                     <div className="ranks">
-                        <h3 className="sectionName">Рейтинг в ФИФА</h3>
+                        <h2 className="sectionName">Рейтинг в ФИФА</h2>
                         <div className="wrap">
                             <div className="logoWrap">
                                 <LazyLoad offset={800}><Tippy content='FIFA'><img src={fifaLogo} alt="fifaLogo" /></Tippy></LazyLoad>
@@ -505,7 +493,7 @@ const Rpl = () => {
                     {news4}
                 </div>
                 <div id='transferList'>
-                    <h3 className="sectionName">Список популярных трансферов</h3>
+                    <h2 className="sectionName">Список популярных трансферов</h2>
                     <div className="listWrap">
                         {transferList}
                     </div>

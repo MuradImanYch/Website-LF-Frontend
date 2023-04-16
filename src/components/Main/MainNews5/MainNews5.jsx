@@ -11,7 +11,7 @@ const MainNews5 = () => {
         const fetchData = async () => {
             await axios.get('/news/mainNews')
             .then(response => {
-                setMainNews(response.data && response.data.reverse().splice(38, 6).map((e) => {
+                setMainNews(response.data && response.data.reverse().splice(40, 6).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
                     let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);

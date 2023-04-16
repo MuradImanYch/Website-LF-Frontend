@@ -64,7 +64,7 @@ const SerieaNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='Серия А'><img src={serieaLogo} alt="serieaLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Серия А</h1>
+                <h1 className="pageName">Новости - Серия А</h1>
             </div>
             <section>
                 {news}

@@ -13,7 +13,7 @@ const VideoNews = () => {
         const fetchData = async () => {
             await axios.get('/news/videoNews')
             .then(response => {
-                setVideoNews(response.data && response.data.splice(0, 8).reverse().map((e, i) => {
+                setVideoNews(response.data && response.data.reverse().splice(0, 6).map((e, i) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
                     let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
@@ -61,8 +61,8 @@ const VideoNews = () => {
 
     return (
         <div className="newsVr" id='videoNews'>
-            <section>
-                <h3 className="sectionName">Видео</h3>
+            <section id='videoQckNav'>
+                <h2 className="sectionName">Видео</h2>
                 {videoNews}
             </section>
         </div>

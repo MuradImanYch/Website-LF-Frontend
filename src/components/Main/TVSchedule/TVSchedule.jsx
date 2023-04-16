@@ -34,8 +34,8 @@ const MatchesSchedule = () => {
 
     return (
         <div id='matchesSchedule'>
-            <section>
-                <h3 className="sectionName">Телепрограмма</h3>
+            <section id='tvScheduleQckNav'>
+                <h2 className="sectionName">ТВ расписание</h2>
                 <div className="wrap">
                     {matchesSchedule}
                 </div>

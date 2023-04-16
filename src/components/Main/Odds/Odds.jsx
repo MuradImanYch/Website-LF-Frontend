@@ -56,7 +56,7 @@ const Forecasts = () => {
     return (
         <div className='forecasts'>
             <section>
-                <h3 className="sectionName">Котировки на матчи</h3>
+                <h2 className="sectionName">Котировки на матчи</h2>
                 <div className="wrap">
                     {forecasts}
                 </div>

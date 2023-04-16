@@ -1,20 +1,134 @@
+#uefaCountryRankOther {
+    width: 100%;
+}
+.uefaTable {
+    width: 100%;
+    border: 2px solid rgb(255, 191, 102);
+    margin: 25px 0 0 0;
+    padding: 0 5px;
+    overflow: hidden;
+}
 #uefaCountryRankOther > section > div > div:nth-child(3) {
     display: none;
 }
+.uefaTable .logoWrap {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+.uefaTable .logoWrap img {
+    width: 40px;
+    height: 40px;
+}
+.uefaTable .col {
+    display: flex;
+    background: rgb(226, 226, 226);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.uefaTable .col div {
+    margin: 5px 0 0 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.uefaTable .col div span {
+    color: #000;
+}
+.uefaTable .col:not(.uefaTable .col:nth-child(2)) {
+    font-size: 0.8em;
+    background: #fff;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    min-height: 60px;
+    padding: 5px 0 0 0;
+}
+.uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
+    padding: 0 10px 0 0;
+}
+.uefaTable .flagName {
+    max-width: 0;
+}
+.uefaTable .flagName img {
+    width: 20px;
+    margin: 0 10px 0 0;
+    height: 11px;
+}
+.uefaTable .place {
+    font-weight: bold;
+    font-family: 'Graduate';
+    font-size: 0.8em;
+}
+.uefaTable .total,  .uefaTable .current {
+    font-weight: bold;
+}
+.uefaTable .more {
+    padding: 30px 0;
+    text-align: center;
+}
+.uefaTable .more span {
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+.uefaTable .more span:hover {
+    color: rgb(255, 191, 102);
+}
+.uefaTable [aria-describedby]:hover {
+    transform: scale(1.12) !important;
+}
 #uefaCountryRankOther > section > div > div > div:nth-child(1) > div > span {
-    padding: 0 40px 0 10px;
+    padding: 0 30px 0 10px;
 }
 
-@media (min-width: 1024px) { 
-    #uefaCountryRankOther span, #uefaCountryRankOther .flagName {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+@media (min-width: 360px) {
+    .uefaTable .col:not(.uefaTable .col:nth-child(2)) {
+        font-size: 0.9em;
     }
-    #uefaCountryRankOther > section > div > div:nth-child(2) > div:nth-child(1) > span:nth-child(2) {
-        margin: 0 0 0 30px;
+    .uefaTable .place {
+        font-weight: bold;
+        font-family: 'Graduate';
+        font-size: 0.9em;
+    }
+    .uefaTable .flagName img {
+        width: 30px;
+        margin: 0 10px 0 0;
+    }
+}
+
+@media (min-width: 1024px) { /* > 1024px */
+    .uefaTable {
+        padding: 0 20px;
+    }
+    .uefaTable .col {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .uefaTable .col div {
+        margin: 0;
+    }
+    .uefaTable .col:not(.uefaTable .col:nth-child(2)) {
+        min-height: 50px;
+        padding: 0;
+    }
+    .uefaTable .flagName img {
+        height: 14px;
+        width: auto;
+    }
+    .uefaTable .flagName {
+        min-width: 120px !important;
+        display: flex !important;
+        justify-content: flex-start !important;
     }
     #uefaCountryRankOther > section > div > div:nth-child(2) > div:nth-child(1) > span:nth-child(3) {
-        margin: 0 0 0 60px;
+        margin: 0 -30px 0 55px;
+    }
+    #uefaCountryRankOther > section > div > div > div:nth-child(1) > div > span {
+        padding: 0 40px 0 10px !important;
     }
 }

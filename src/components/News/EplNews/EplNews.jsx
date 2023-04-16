@@ -64,7 +64,7 @@ const EplNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='АПЛ'><img src={eplLogo} alt="eplLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Английская Премьер-Лига</h1>
+                <h1 className="pageName">Новости - Английская Премьер-Лига</h1>
             </div>
             <section>
                 {news}

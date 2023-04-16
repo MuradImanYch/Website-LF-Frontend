@@ -19,10 +19,7 @@ const EndedMatches = () => {
         const fetchData = async () => {
             await axios.get('/matches/ended')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('endedMatches', JSON.stringify(response.data));
-                }
-                setEndedMatches(JSON.parse(localStorage.getItem('endedMatches')) && JSON.parse(localStorage.getItem('endedMatches')).map((e, i) => {
+                setEndedMatches(response.data && response.data.map((e, i) => {
                     return  <Tippy key={'endedMatches' + i} offset={[0, 15]} className='endedMatchesTippy' content={e.lName.indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
                         <div className="col">
                                 <div className="rcWrap">
@@ -152,7 +149,7 @@ const EndedMatches = () => {
                                     </div>
                                 </div>
                                 <span className="hName">{e.hName}</span>
-                                <span className="hLogo">{e.hLogo === undefined ? <LazyLoad offset={800}><Tippy content={e.hName}><img width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.hName}><img src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
+                                <span className="hLogo">{e.hLogo === null ? <LazyLoad offset={800}><Tippy content={e.hName}><img width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.hName}><img src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
                                 <span className="hScore">{e.hScore}</span>
                                 <span className='lLogo'>
                                     <LazyLoad offset={800}>
@@ -160,7 +157,7 @@ const EndedMatches = () => {
                                     </LazyLoad>
                                 </span>
                                 <span className="aScore">{e.aScore}</span>
-                                <span className="aLogo">{e.aLogo === undefined ? <LazyLoad offset={800}><Tippy content={e.aName}><img width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.aName}><img src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
+                                <span className="aLogo">{e.aLogo === null ? <LazyLoad offset={800}><Tippy content={e.aName}><img width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.aName}><img src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
                                 <span className="aName">{e.aName}</span>
                             </div>
                     </Tippy>
@@ -176,8 +173,8 @@ const EndedMatches = () => {
 
     return (
         <div id='endedMatches'>
-            <section>
-                <h3 className="sectionName">Завершенные матчи</h3>
+            <section id='oddsQckNav'>
+                <h2 className="sectionName">Завершенные матчи</h2>
                 <div className="wrap">
                     {endedMatches}
                 </div>

@@ -90,13 +90,17 @@ const EditDeleteNews = () => {
                         $('#delConfirm').fadeOut();
                         $('body').css({overflow: "auto"});
 
-                        axios.post('/admin/delNews', {
-                            id: delId && delId,
-                            path: delImgPath && delImgPath
-                        })
-                        .catch(err => {
-                            if(err) throw err;
-                        });
+                        $('#news' + delId).hide('slow');
+
+                        setTimeout(() => {
+                            axios.post('/admin/delNews', {
+                                id: delId && delId,
+                                path: delImgPath && delImgPath
+                            })
+                            .catch(err => {
+                                if(err) throw err;
+                            });
+                        }, 1000);
 
                         $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
                         $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
@@ -113,7 +117,7 @@ const EditDeleteNews = () => {
                         $('body').css({overflow: "auto"});
                     }
 
-                    return  <div key={'news' + e.id} className="newsCart">
+                    return  <div key={'news' + e.id} className="newsCart" id={'news' + e.id}>
                                 <Link to={'/news/read/' + e.id}>
                                     <div className='hover'>
                                         <LazyLoad offset={800}>
@@ -244,9 +248,6 @@ const EditDeleteNews = () => {
                         <button onClick={delImg}>⨯</button>
                     </div>
                 </div>
-                                        {/* <input onChange={(e) => {
-                                            setImg(e.target.value);
-                                        }} type="text" name='editImg' id='editImg' value={img} /> */}
                                         <label id='editNewsContentLabel' htmlFor="editNewsContent">Контент:</label>
                                         <CKEditor id="editNewsContent" data={content} editor={ClassicEditor} onChange={(e, editor) => {
                                             setContent(editor.getData());

@@ -1,0 +1,47 @@
+#quickNav {
+    position: fixed;
+    background: rgba(32, 152, 247, 0.94);
+    width: 30%;
+    justify-content: space-between;
+    padding: 10px 0 0 10px;
+    z-index: 2021;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#quickNav div:first-child {
+    width: 100%;
+    text-align: center;
+    padding: 0px 0 10px 0;
+    font-size: 1.2em;
+    transition: 0.3s;
+}
+#quickNav ul {
+    height: 100%;
+    overflow: scroll;
+    width: 100%;
+    text-align: center;
+    height: 200px;
+    display: none;
+    margin: 10px 0 0 0;
+}
+#quickNav ul li {
+    margin: 15px 0 0 0;
+    display: flex;
+}
+#quickNav ul li a {
+    padding: 0 5px;
+}
+#quickNav ul li hr {
+    width: 38%;
+    border: 0;
+    height: 2px;
+}
+
+@media (min-width: 1024px) {
+    #quickNav {
+        display: none;
+    }
+}

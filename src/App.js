@@ -22,7 +22,7 @@ import wcLogo from './assets/ico/wcLogo.webp';
 import ecLogo from './assets/ico/ecLogo.webp';
 import newspaperIco from './assets/ico/newspaperIco.webp';
 import transferIco from './assets/ico/transferIco.webp';
-import videoReviews from './assets/ico/videoReviews.webp';
+import video from './assets/ico/video.webp';
 import rank from './assets/ico/rank.webp';
 import tvProgram from './assets/ico/tvProgram.webp';
 import forecasts from './assets/ico/forecasts.webp';
@@ -30,6 +30,7 @@ import unlLogo from './assets/ico/unlLogo.webp';
 import topScores from './assets/ico/topScores.webp';
 import login from './assets/ico/login.webp';
 import defaultProfile from './assets/ico/defaultProfile.webp';
+import broadcasts from './assets/ico/broadcasts.webp';
 
 import Preloader from './components/Preloader/Preloader';
 import HotBoard from './components/HotBoard/HotBoard';
@@ -49,6 +50,8 @@ const Transfers = React.lazy(() => import('./components/Transfers/Main'));
 const Admin = React.lazy(() => import('./components/Admin/Main'));
 const Other = React.lazy(() => import('./components/Other/Main'));
 const League = React.lazy(() => import('./components/League/Main'));
+const QuickNav = React.lazy(() => import('./components/QuickNav/QuickNav'));
+const ExtendedBroadcast = React.lazy(() => import('./components/Main/ExtendedBroadcast/ExtendedBroadcast'));
 
 function App() {
     const[barState, setBarstate] = useState(true); 
@@ -266,31 +269,6 @@ function App() {
                 $('#dNavWrap .ecLeagueMenu .subSubMenuWrap').hide();
             });
         }   
-
-        location.pathname.indexOf('/admin') !== -1 ? $('.hotBoard').hide() : $('.hotBoard').show(); // path handler for delete smth
-
-        if(location.pathname === '/admin') {
-            if(cookies.get('adminAuth')) {
-                navigate('/admin/dashboard');
-            }
-        }
-
-        if(!cookies.get('adminAuth')) { // auth path handler
-            if(location.pathname.indexOf('/admin') !== -1) {
-                if(prompt('') === '123') {
-                    setAdminAuth(true);
-                    cookies.set('adminAuth', 'true', { expires: 7 });
-                    navigate('/admin/dashboard');
-                }
-                else {
-                    alert('Отклонено');
-                }
-            }
-        }
-        else {
-            setAdminAuth(true);
-        }
-        
     }, [location]);
 
     const mMenuDownUp = (e) => { // mobile menu news arrow toggle
@@ -359,13 +337,52 @@ function App() {
         $('.favoriteTeamPopUp').fadeOut();
         $('body').css({overflow: 'scroll'});
         localStorage.removeItem('teamArr');
+        setAdminAuth(false);
     }
 
     useEffect(() => {
         if(auth) {
             cookies.set('auth', auth, {expires: 30});
         }
+        
+        if(cookies.get('auth')) {
+            axios.post('/admin/check', {
+                token: cookies.get('auth')
+            })
+            .then(response => {
+                if(response.data === 'viewer') {
+                    setAdminAuth(false);
+                }
+                else {
+                    setAdminAuth(true);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
     }, [auth]);
+
+    const adminEnter = () => {
+        if(cookies.get('auth')) {
+            axios.post('/admin/check', {
+                token: cookies.get('auth')
+            })
+            .then(response => {
+                if(response.data === 'viewer') {
+                    setAdminAuth(false);
+                    navigate('/');
+                }
+                else {
+                    setAdminAuth(true);
+                    navigate('/admin');
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+    }
 
     const profileToggleFunc = () => {
         setProfileToggle(!profileToggle);
@@ -414,7 +431,7 @@ function App() {
                                                     </Tippy>
                                                     <Tippy placement='right' content={`Таблица ${e.name}`}>
                                                         <li>
-                                                            <Link to=""><i className="fas fa-list-ol"></i> Таблица</Link>
+                                                            <Link to={`/league/${e.id}/standings`}><i className="fas fa-list-ol"></i> Таблица</Link>
                                                         </li>
                                                     </Tippy>
                                                     <Tippy placement='right' content={`Результаты ${e.name}`}>
@@ -446,11 +463,12 @@ function App() {
                                     <ul className='subMenuWrap oТВ расписаниеthersSubMenu'>
                                         <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
                                         <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to="/other/video"><img src={videoReviews} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/video"><img src={video} alt="video news" /> Видео</Link></li>
                                         <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
                                         <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
                                         <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
+                                        <li><Link to="/other/broadcasts"><img src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -483,7 +501,7 @@ function App() {
                                                     <Link to=""><i className="fas fa-calendar-alt"></i> Календарь</Link>
                                                 </li>
                                                 <li title={`Таблица ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-list-ol"></i> Таблица</Link>
+                                                    <Link to={`/league/${e.id}/standings`}><i className="fas fa-list-ol"></i> Таблица</Link>
                                                 </li>
                                                 <li title={`Результаты ${e.name}`}>
                                                     <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
@@ -508,11 +526,12 @@ function App() {
                                     <ul className='othersSubMenu'>
                                         <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
                                         <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to="/other/video"><img src={videoReviews} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/video"><img src={video} alt="video news" /> Видео</Link></li>
                                         <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
                                         <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
                                         <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
+                                        <li><Link to="/other/broadcasts"><img src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -531,6 +550,7 @@ function App() {
                         <ul className="subMenu">
                             <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
                             <li><a href="#">Настройки</a></li>
+                            {adminAuth ? <li style={{marginTop: '30px'}}><Link to='/admin' onClick={adminEnter} style={{color: 'yellow', fontWeight: 'bold'}}>Админ панель</Link></li> : null}
                             <button onClick={logOut}>Выйти</button>
                         </ul>
                         </div> : <Tippy content='Вход/Регистрация'><img className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
@@ -561,6 +581,7 @@ function App() {
                             <Route path='transfers/*' element={<Transfers />} />
                             <Route path='other/*' element={<Other />} />
                             <Route path='league/*' element={<League leagues={leagues} />} />
+                            <Route path='broadcast/watch/:id' element={<ExtendedBroadcast />} />
                             <Route path='*' element={<Error />} />
                         </Routes>
                     </Suspense>
@@ -580,6 +601,7 @@ function App() {
                 <Auth token={getToken} />
                 <button title='Отклонить' type='submit' className='close' onClick={close}>⨯</button>
             </div>
+            <QuickNav />
         </div>
     );
 }

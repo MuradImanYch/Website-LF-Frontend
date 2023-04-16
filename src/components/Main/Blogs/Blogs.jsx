@@ -65,12 +65,11 @@ const Blogs = () => {
 
     return (
         <div id='blogs' className='newsVr'>
-            <section>
-                <h3 className="sectionName">Блоги</h3>
+            <section id='blogsQckNav'>
+                <h2 className="sectionName">Блоги</h2>
                 <Swiper lazy={true} navigation grabCursor={true} breakpoints={{280: {slidesPerView: 1, direction: 'horizontal'}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3, direction: 'vertical'}}} pagination={{type: "progressbar", clickable: true}}>
                     {blogs}
                 </Swiper>
-                <Link to="#">Подробнее</Link>
             </section>
         </div>
     );

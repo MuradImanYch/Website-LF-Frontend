@@ -138,7 +138,7 @@ const TransferList = () => {
 
     return (
         <div id="transferListPage">
-            <h1 className="pageName">Трансферный список 
+            <h1 className="pageName">Список трансферов 
             <select onChange={selectleague} name="leagueSelection">
                 <option value="/transfers/all">Все лиги</option>
                 <option value="/transfers/rpl">РПЛ</option>

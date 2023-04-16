@@ -64,7 +64,7 @@ const WcNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='ЧМ 2022'><img src={wcLogo} alt="wcLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Чемпионат мира 2022</h1>
+                <h1 className="pageName">Новости - Чемпионат мира 2022</h1>
             </div>
             <section>
                 {news}

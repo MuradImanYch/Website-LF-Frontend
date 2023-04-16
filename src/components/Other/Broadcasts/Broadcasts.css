@@ -1,0 +1,63 @@
+.otherBroadcasts [aria-describedby]:hover {
+    transform: scale(1);
+}
+.otherBroadcasts [aria-describedby] {
+    cursor: pointer;
+}
+.otherBroadcasts .wrap a .col {
+    background: rgb(255, 191, 102);
+    margin: 20px 0 0 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.otherBroadcasts .wrap .col div {
+    display: flex;
+    align-items: center;
+}
+.otherBroadcasts .wrap .col div span {
+    font-size: 0.9em;
+    margin: 0 8px;
+    color: #000;
+}
+.otherBroadcasts .wrap .col div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+}
+.otherBroadcasts .wrap .col div:nth-child(2) span {
+    font-size: 0.8em;
+    margin: 5px 0 0 0;
+}
+.otherBroadcasts .wrap a:hover .col {
+    transition: 0.3s;
+    background: #2098f7;
+}
+.otherBroadcasts .wrap a:hover .col span {
+    color: #fff;
+    transition: 0.3s;
+}
+.otherBroadcasts .wrap .col img {
+    width: 16px;
+}
+
+@media (min-width: 1024px) { /* >= 1024px */
+    .otherBroadcasts .pageName {
+        margin: 0;
+    }
+    .otherBroadcasts .wrap a .col { 
+        width: 320px;
+    }
+    .otherBroadcasts .wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1680px) {
+    .otherBroadcasts .wrap a .col { 
+        width: 386px;
+    }
+}

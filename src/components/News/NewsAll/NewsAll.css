@@ -1,9 +1,9 @@
-/*---------------Mobile--------------*/
-/*-------------------Mobile------------------*/
+.newsHr .category {
+    right: 0;
+}
 .newsHr h1, .newsHr h2, .newsHr h3, .newsHr h4, .newsHr h5, .newsHr h6, .newsHr p {
     margin: 0 !important;
 }
-
 .newsHr {
     max-width: 100%;
     padding: 0 0 0 0;
@@ -56,6 +56,34 @@
     transition: 0.6s;
     font-weight: bold;
 }
+.pagination {
+    margin: 60px auto 0 auto;
+    display: flex;
+    overflow: scroll;
+    max-width: 100%;
+    padding: 0 0 20px 0;
+    justify-content: center;
+}
+.pagination a {
+    margin: 0 10px;
+    border: 2px solid rgb(204, 135, 45);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+}
+.pagination li:first-child a {
+    background: rgb(204, 135, 45);
+    color: #fff;
+}
+.pagination a.selected {
+    background: rgb(204, 135, 45) !important;
+    color: #fff !important;
+}
 
 @media (min-width: 540px) { /* >= 540px */
     .newsHr .cart {
@@ -99,6 +127,9 @@
         width: 320px;
         height: 220px;
         margin: 20px 0 0 0;
+    }
+    .pagination {
+        max-width: 50%;
     }
 }
 

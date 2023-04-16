@@ -113,10 +113,10 @@ const MatchesSlider = () => {
 
     return (
         <div id="matchesSlider">
-            <section>
+            <section id='endedQckNav'>
                 <div className="title">
-                    <h3 className="sectionName">Расписание матчей избранных команд</h3>
-                    <Tippy content="Добавить команду"><img src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy>
+                    <h2 className="sectionName">Расписание матчей избранных команд</h2>
+                    <LazyLoad offset={800}><Tippy content="Добавить команду"><img src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy></LazyLoad>
                 </div>
                 <div className="matchesSliderWrap">
                     <Swiper pagination={{type: "progressbar"}} spaceBetween={20} grabCursor={true} slidesPerView={1} breakpoints={{360: {slidesPerView: 2}, 540: {slidesPerView: 3}, 768: {slidesPerView: 4}, 1024: {slidesPerView: 5, spaceBetween: 30}}}>

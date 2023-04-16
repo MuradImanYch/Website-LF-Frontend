@@ -132,8 +132,8 @@ const Standings4 = () => {
 
     return (
         <div className='table5xn standingsEurocups' id="standings4">
-                <section>
-                    <h3 className="sectionName">Турнирная таблица - Лига чемпионов</h3>
+                <section id='standings4QckNav'>
+                    <h2 className="sectionName">Турнирная таблица - Лига чемпионов</h2>
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">

@@ -87,7 +87,7 @@
 .poll form input[type="radio"] {
     margin: 0 5px 0 0;
 }
-.poll h4 {
+.poll h2 {
     color: #000;
     font-weight: bold;
     font-size: 0.8em;
@@ -95,6 +95,11 @@
 }
 .poll .total {
     color: #000;
+}
+.poll .loadSpiner {
+    width: 25px;
+    height: 25px;
+    margin: 0 0 0 40px;
 }
 
 @media (min-width: 1280px) {
@@ -107,7 +112,7 @@
         background: transparent;
         padding: 0;
     }
-    .poll h4 {
+    .poll h2 {
         text-align: left;
     }
     .poll .wrap {

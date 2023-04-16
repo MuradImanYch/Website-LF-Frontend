@@ -64,7 +64,7 @@ const LaligaNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='Ла Лига'><img src={laligaLogo} alt="laligaLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Ла Лига</h1>
+                <h1 className="pageName">Новости - Ла Лига</h1>
             </div>
             <section>
                 {news}

@@ -12,6 +12,9 @@
 body {
 	position: relative;
 }
+html {
+	scroll-behavior: smooth;
+}
 /*--reset--*/
 * {
 	box-sizing: border-box;

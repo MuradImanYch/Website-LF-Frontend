@@ -1,3 +1,7 @@
+#topScores3 .col img {
+    height: auto !important;
+}
+
 @media (min-width: 1024px) {
     #topScores3 .swiper-slide .head span:nth-child(3) {
         margin: 0 0 0 130px;

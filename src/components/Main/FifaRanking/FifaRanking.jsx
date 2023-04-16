@@ -16,12 +16,9 @@ const FifaRanking = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/fifaRanking')
+            await axios.get('/standings/fifaranking')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('fifaRanking', JSON.stringify(response.data));
-                }
-                setFifaCountryRank(JSON.parse(localStorage.getItem('fifaRanking')) && JSON.parse(localStorage.getItem('fifaRanking')).splice(0, expandToggle).map((item, indx) => {
+                setFifaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
                     return <div className="col wrap" key={'fifaRanking' + indx}>
                     <div>
                         <span className='place'>{item.place}.<span></span></span>
@@ -52,8 +49,8 @@ const FifaRanking = () => {
 
     return (
         <div id='fifaRank'>
-            <section>
-                <h3 className="sectionName">Рейтинг ассоциаций ФИФА</h3>
+            <section id='fifaRankingQckNav'>
+                <h2 className="sectionName">Рейтинг ассоциаций ФИФА</h2>
                 <div className="uefaTable">
                     <div className="logoWrap">
                         <LazyLoad offset={800}>

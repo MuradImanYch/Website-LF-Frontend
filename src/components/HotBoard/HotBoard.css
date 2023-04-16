@@ -107,7 +107,9 @@
 .hotBoard .swiper-slide .slideWrap .hScore, .hotBoard .swiper-slide .slideWrap .aScore {
     font-family: Graduate;
 }
-
+.hotBoard .swiper-wrapper {
+    display: flex;
+}
 @media (min-width: 360px) {
     .hotBoard .swiper-slide .slideWrap {
         width: 300px;

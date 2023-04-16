@@ -21,12 +21,9 @@ const TopScores = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/uclTopScores')
+            await axios.get('/standings/uclTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('uclTopScores', JSON.stringify(response.data));
-                }
-                setUclTopScores(JSON.parse(localStorage.getItem('uclTopScores')) && JSON.parse(localStorage.getItem('uclTopScores')).splice(0, 8).map((e, i) => {
+                setUclTopScores(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'uclTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -38,7 +35,7 @@ const TopScores = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -48,12 +45,9 @@ const TopScores = () => {
                 console.log(err);
             });
     
-            await axios.get('/uelTopScores')
+            await axios.get('/standings/uelTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('uelTopScores', JSON.stringify(response.data));
-                }
-                setUelTopScores(JSON.parse(localStorage.getItem('uelTopScores')) && JSON.parse(localStorage.getItem('uelTopScores')).splice(0, 8).map((e, i) => {
+                setUelTopScores(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'uelTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -65,7 +59,7 @@ const TopScores = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -75,12 +69,9 @@ const TopScores = () => {
                 console.log(err);
             });
     
-            await axios.get('/ueclTopScores')
+            await axios.get('/standings/ueclTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('ueclTopScores', JSON.stringify(response.data));
-                }
-                setUeclTopScores(JSON.parse(localStorage.getItem('ueclTopScores')) && JSON.parse(localStorage.getItem('ueclTopScores')).splice(0, 8).map((e, i) => {
+                setUeclTopScores(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'ueclTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -92,7 +83,7 @@ const TopScores = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -108,8 +99,8 @@ const TopScores = () => {
 
     return (
         <div className='table6xn' id='topScores2'>
-            <section>
-                <h3 className="sectionName">Бомбардиры - Еврокубки</h3>
+            <section id='topScores2QckNav'>
+                <h2 className="sectionName">Бомбардиры - Еврокубки</h2>
                 <Swiper navigation grabCursor={true} slidesPerView={1}>
                     <SwiperSlide>
                         <div className="lLogo">

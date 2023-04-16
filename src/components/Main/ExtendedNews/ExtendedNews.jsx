@@ -11,6 +11,8 @@ const ExtendedNews = () => {
     const[selected, setSelected] = useState();
 
     useEffect(() => {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+
         const fetchData = async () => {
             await axios.get('/news/allNews')
             .then(response => {
@@ -24,7 +26,6 @@ const ExtendedNews = () => {
     
             $('.extendedNews').hide();
             $('.extendedNews').fadeIn('slow');
-            $("html, body").animate({ scrollTop: 0 }, "slow");
         }
         
         fetchData();

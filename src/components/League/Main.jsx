@@ -7,6 +7,7 @@ import Rpl from './Rpl/Rpl';
 import Error from '../Error/Error';
 
 import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
+import RplStandings from './Rpl/RplStandings/RplStandings';
 
 const Main = (props) => {
     return (
@@ -16,6 +17,7 @@ const Main = (props) => {
             <Routes>
                 <Route path="/" element={<LeagueAll leagues={props.leagues} />} />
                 <Route path="/rpl" element={<Rpl />} />
+                <Route path="/rpl/standings" element={<RplStandings />} />
 
                 <Route path='*' element={<Error />} />
             </Routes>

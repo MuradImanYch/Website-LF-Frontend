@@ -37,11 +37,11 @@ const Forecasts = () => {
                                     </div>
                                     <div className="w1">
                                         <Tippy content="Будет забито меньше 2-ух (включительно) мячей"><span>ТМ 2.5</span></Tippy>
-                                        <span>{e.tu === '' ? '-' : e.tu}</span>
+                                        <span>{e.totalU === '' ? '-' : e.totalU}</span>
                                     </div>
                                     <div className="w1">
                                         <Tippy content="Будет забито больше 3-ёх (включительно) мячей"><span>ТБ 2.5</span></Tippy>
-                                        <span>{e.to === '' ? '-' : e.to}</span>
+                                        <span>{e.totalO === '' ? '-' : e.totalO}</span>
                                     </div>
                                 </div>
                             </div>

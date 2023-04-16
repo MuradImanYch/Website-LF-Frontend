@@ -1,0 +1,62 @@
+.broadcasts {
+    margin: 50px 0 0 0;
+}
+.broadcasts [aria-describedby] {
+    cursor: pointer;
+}
+.broadcasts .wrap {
+    height: 300px;
+    max-height: 300px;
+    overflow: scroll;
+}
+.broadcasts .wrap a .col {
+    background: rgb(255, 191, 102);
+    margin: 20px 0 0 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.broadcasts .wrap .col div {
+    display: flex;
+    align-items: center;
+}
+.broadcasts .wrap .col div span {
+    font-size: 0.9em;
+    margin: 0 8px;
+    color: #000;
+}
+.broadcasts .wrap .col div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+}
+.broadcasts .wrap .col div:nth-child(2) span {
+    font-size: 0.8em;
+    margin: 5px 0 0 0;
+}
+.broadcasts .wrap a:hover .col {
+    transition: 0.3s;
+    background: #2098f7;
+}
+.broadcasts .wrap a:hover .col span {
+    color: #fff;
+    transition: 0.3s;
+}
+.broadcasts .wrap .col img {
+    width: 16px;
+}
+
+@media (min-width: 1024px) {
+    .broadcasts .wrap {
+        max-height: 380px;
+        height: 380px;
+    }
+}
+
+@media (min-width: 1680px) {
+    .broadcasts .wrap {
+        max-height: 500px;
+        height: 500px;
+    }
+}

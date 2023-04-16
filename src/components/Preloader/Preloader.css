@@ -8,6 +8,7 @@
 	z-index: 9999;
 	transition: 2s;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -35,4 +36,7 @@
 	right: 65px;
 	top: 45px;
 	animation: logoF 2s infinite;
+}
+#preloader span {
+	color: #000;
 }

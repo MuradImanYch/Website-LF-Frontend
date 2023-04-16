@@ -1,0 +1,39 @@
+.extendedBroadcast h1 {
+    color: #000;
+    border-bottom: 2px solid #18338a;
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+}
+.extendedBroadcast #myVid {
+    width: 100% !important;
+    height: auto !important;
+}
+.extendedBroadcast .nav ul {
+    display: flex;
+    margin: 15px 0 10px 0;
+    flex-wrap: wrap;
+}
+.extendedBroadcast .nav ul li {
+    color: #000;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 10px 0 0;
+}
+.extendedBroadcast .nav ul li:first-child {
+    background: rgb(204, 135, 45);
+    color: #fff;
+}
+.extendedBroadcast .nav ul li:hover {
+    transition: 0.3s;
+    background: rgb(255, 223, 181);
+}
+@media (min-width: 1024px) {
+    .extendedBroadcast #myVid {
+        width: 600px !important;
+        height: 350px !important;
+    }
+    .extendedBroadcast .nav ul {
+        margin: 25px 0 10px 0;
+    }
+}

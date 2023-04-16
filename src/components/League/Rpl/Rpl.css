@@ -38,9 +38,6 @@
 #league div div .sectionName {
     margin: 30px 0 0 0 !important;
 }
-#league div div .pageName {
-    -webkit-text-stroke: 0.3px #ffbf66;
-}
 #league .standings, #league .topScores {
     border: 2px solid #ffbf66;
     margin: 15px 0 0 0;
@@ -199,6 +196,412 @@
     width: 25px;
     height: 20px;
 }
+.table5xn .idB:nth-child(3), .table5xn .idC:nth-child(3), .table5xn .idD:nth-child(3), .table5xn .idE:nth-child(3), .table5xn .idF:nth-child(3), .table5xn .idG:nth-child(3), .table5xn .idH:nth-child(3) {
+    display: none;
+}
+.table5xn .swiper-slide {
+    width: 100%;
+    border: 2px solid #ffbf66;
+    margin: 20px 0 0 0;
+    padding: 0 5px 17px 5px;
+    position: relative;
+}
+.table5xn .group {
+   color: #000;
+   margin: 5px 0 0 0;
+   position: absolute;
+   top: 0;
+}
+.table5xn .swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    top: 70px;
+}
+.table5xn .swiper-slide .lLogo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+.table5xn .swiper-slide img {
+    width: 40px;
+    height: 40px;
+}
+.table5xn .head {
+    width: 100%;
+    height: 30px;
+    background: #e2e2e2;
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.table5xn .head span {
+    color: #000;
+}
+.table5xn .head span:first-child {
+    margin: 0 0 0 10px;
+}
+.table5xn .head span:nth-child(2) {
+    margin: 0 0 0 20px;
+}
+.table5xn .head span:nth-child(3) {
+    margin: 0 0 0 55px;
+}
+.table5xn .head span:nth-child(4) {
+    margin: 0 0 0 15px;
+}
+.table5xn .head span:nth-child(5) {
+    margin: 0 0 0 15px;
+}
+.table5xn .col {
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+}
+.table5xn a {
+    color: #000;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.table5xn a:hover {
+    color: #ffbf66;
+}
+.table5xn .col .place {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: .75em;
+    font-weight: 700;
+    font-family: "Graduate";
+    margin: 0 0 0 2px;
+    color: #000;
+}
+.table5xn .col img {
+    max-width: 20px;
+    height: auto;
+    max-height: 20px;
+    width: auto;
+}
+.table5xn .col .name, .table5xn .col .games, .table5xn .col .forAgainst span, .table5xn .col .points {
+    font-size: .75em;
+    color: #000;
+}
+.table5xn .col .points, .table5xn .head span:last-child {
+    font-weight: bold;
+}
+.table5xn .nums {
+    display: flex;
+    margin: 0 8px 0 0;
+    width: 85px;
+    justify-content: space-between;
+}
+.standingsEurocups .nums {
+    margin: 0 13px 0 0;
+}
+.table5xn .left {
+    display: flex;
+    align-items: center;
+}
+.table5xn .left img {
+    margin: 0 0 0 10px;
+}
+.table5xn .left .name {
+    margin: 0 0 0 4px;
+}
+.table5xn .col .games {
+    min-width: 16px;
+    display: flex;
+    justify-content: center;
+}
+.table5xn .col .forAgainst {
+    display: flex;
+    min-width: 54px;
+    justify-content: center;
+}
+.table5xn .col .forAgainst span {
+    margin: 0 0 0 3px;
+}
+.table5xn .col .points {
+    font-size: 0.9em;
+    font-family: 'Graduate';
+    min-width: 30px;
+    display: flex;
+    justify-content: center;
+}
+.newsVr h1, .newsVr h2, .newsVr h3, .newsVr h4, .newsVr h5, .newsVr h6, .newsVr p {
+    margin: 0 !important;
+}
+.newsVr {
+    max-width: 100%;
+    padding: 15px 0 0 0;
+}
+.newsVr .cart span {
+    position: absolute;
+    font-size: 0.7em;
+    background: rgb(0, 0, 0, 0.5);
+    padding: 4px 6px;
+    font-weight: bold;
+    top: 0;
+}
+.newsVr .cart:hover span {
+    background: rgb(0, 0, 0, 0.7);
+    transition: 0.4s;
+    color: rgb(224, 164, 79);
+}
+.newsVr .cart {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    transition: 0.6s;
+    margin: 20px 0 0 0;
+}
+.newsVr .cart .img {
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px -80px 100px 1px #000;
+    background: linear-gradient(to right, transparent, #000, transparent);
+    transition: 0.6s;
+    overflow: hidden;
+}
+.newsVr .cart .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.6s;
+}
+.newsVr .cart h3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 1em;
+    line-height: 1.1;
+    min-width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-shadow: inset 0px -50px 100px 1px #000;
+    transition: 0.6s;
+    font-weight: bold;
+}
+.newsVr .category {
+    position: absolute;
+    right: 0;
+}
+.table6xn .swiper-slide {
+    width: 100%;
+    border: 2px solid #ffbf66;
+    height: 500px;
+    margin: 20px 0 0 0;
+    padding: 0 5px;
+    position: relative;
+}
+.table6xn .lLogo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+}
+.table6xn img {
+    width: 40px;
+    height: 40px;
+}
+.table6xn .head {
+    width: 100%;
+    height: 30px;
+    background: #e2e2e2;
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.table6xn .head span {
+    color: #000;
+}
+.table6xn .head span:first-child {
+    margin: 0 0 0 10px;
+}
+.table6xn .head span:nth-child(2) {
+    margin: 0 0 0 20px;
+}
+.table6xn .head span:nth-child(3) {
+    margin: 0 0 0 45px;
+}
+.table6xn .head span:nth-child(4) {
+    margin: 0 0 0 35px;
+}
+.table6xn .head span:nth-child(5) {
+    margin: 0 0 0 20px;
+}
+.table6xn .head span:nth-child(6) {
+    margin: 0 0 0 15px;
+}
+.table6xn .col {
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+}
+.table6xn a {
+    color: #000;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.table6xn a:hover {
+    color: #ffbf66;
+}
+.table6xn .col .place {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: .75em;
+    font-weight: 700;
+    font-family: "Graduate";
+    margin: 0 0 0 2px;
+    color: #000;
+}
+.table6xn .col img {
+    width: 20px;
+    height: 20px;
+}
+.table6xn .tLogoName {
+    margin: 0 0 0 30px;
+    display: flex;
+    align-items: center;
+}
+.table6xn .col .goals, .table6xn .head span:nth-child(4) {
+    font-weight: bold;
+}
+.table6xn .col .goals {
+    font-size: 0.9em;
+    font-family: 'Graduate';
+    min-width: 65px;
+    display: flex;justify-content: center;
+}
+.table6xn .nums {
+    display: flex;
+    margin: 0 45px 0 0;
+    width: 85px;
+    justify-content: space-between;
+}
+.table6xn .nums span {
+    color: #000;
+    font-size: 0.75em;
+}
+.table6xn .left {
+    display: flex;
+    align-items: center;
+}
+.table6xn .left img {
+    margin: 0 0 0 10px;
+}
+.table6xn .left .name {
+    margin: 0 0 0 6px;
+    width: 30px;
+    color: #000;
+    font-size: 0.8em;
+}
+.table6xn .nums span:nth-child(2) {
+    min-width: 3px;
+    display: flex;
+    justify-content: center;
+}
+.table6xn .nums span:nth-child(3) {
+    min-width: 45px;
+    display: flex;
+    justify-content: center;
+}
+.table6xn .nums span:nth-child(4) {
+    min-width: 45px;
+    display: flex;
+    justify-content: center;
+}
+#transferList a {
+    text-decoration: underline;
+    color: #000;
+    text-underline-offset: 2px;
+    display: block;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+#transferList a:hover {
+    color: #ffbf66;
+}
+#transferList {
+    margin: 20px 0 0 0;
+    width: 100%;
+}
+#transferList .col:nth-child(1) {
+    margin: 20px 0 0 0;
+}
+#transferList .col {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+#transferList .col div {
+    height: 40px;
+    width: 100px;
+}
+#transferList .col .player {
+    display: flex;
+    align-items: center;
+}
+#transferList .col .player img {
+    width: 35px;
+    height: 35px;
+}
+#transferList .col .player span {
+    font-size: 0.75em;
+    color: #000;
+    padding: 0 0 0 10px;
+    line-height: 15px;
+}
+#transferList .col .outIn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 0 0 10px;
+    margin: 0 0 0 0;
+}
+#transferList .col .outIn span {
+    color: #000;
+}
+#transferList .col .price {
+    font-size: 0.75em;
+    color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -5px 0 0;
+    font-weight: bold;
+    font-family: 'Graduate';
+}
+
+@media (max-width: 280px) {
+    #league .table6xn .nums span:nth-child(3) {
+        min-width: 40px;
+    }
+}
 
 @media (min-width: 320px) {
     #league .standings .head span:nth-child(3) {
@@ -212,6 +615,84 @@
     }
     #league .resultsWrap .col span {
         font-size: 0.8em;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 10px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .nums {
+        margin: 0 10px 0 0;
+        width: 105px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 13px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 12px;
+    }
+    .table5xn .left .name {
+        margin: 0 0 0 6px;
+    }
+    .table5xn .col .games {
+        min-width: 10px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 80px;
+    }
+    .table5xn .col .points {
+        min-width: 26px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 10px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 60px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 45px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 45px;
+    }
+    .table6xn .nums {
+        margin: 0 50px 0 0;
+        width: 105px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 12px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 0px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 55px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 20px;
+    }
+    .table6xn .col .goals {
+        min-width: 75px;
+        margin: 0 0 0 5px;
     }
 }
 
@@ -227,6 +708,93 @@
     }
     #league .col .round, #league .col .dateTime {
         padding: 0 10px;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .col .place { 
+        margin: 0 0 0 14px;
+    }
+    .table5xn .nums {
+        margin: 0 20px 0 0;
+        width: 115px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 23px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .left .name {
+        margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 13px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 88px;
+    }
+    .table5xn .col .points {
+        min-width: 26px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .col .place { 
+        margin: 0 0 0 14px;
+    }
+    .table6xn .nums {
+        margin: 0 50px 0 0;
+        width: 115px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .left .name {
+        margin: 0 0 0 8px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 70px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 10px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 30px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 52px;
+    }
+    .table6xn .col .goals {
+        min-width: 10px;
+        margin: 0 0 0 35px;
     }
 }
 
@@ -244,6 +812,84 @@
         height: 20px;
         width: 20px;
     }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 50px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 8px;
+    }
+    .table5xn .nums {
+        margin: 0 16px 0 0;
+        width: 105px;
+    }
+    .table5xn .nums {
+        margin: 0 17px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 40px;
+    }
+    .table5xn .col .games {
+        min-width: 11px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 82px;
+    }
+    .table5xn .col .points {
+        min-width: 20px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 50px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 84px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 8px;
+    }
+    .table6xn .nums {
+        margin: 0 43px 0 0;
+        width: 105px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 56px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 15px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 66px;
+    }
+    .table6xn .col .goals {
+        min-width: 15px;
+        margin: 0 0 0 33px;
+    }
 }
 
 @media (min-width: 393px) {
@@ -256,6 +902,12 @@
     #league .table6xn .tLogoName {
         margin: 0 0 0 82px;
     }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 100px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
 }
 
 @media (min-width: 412px) {
@@ -265,11 +917,78 @@
     #league .table6xn .head span:nth-child(3) {
         margin: 0 0 0 100px;
     }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 95px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 18px;
+    }
+    .table5xn .nums {
+        margin: 0 20px 0 0;
+        width: 106px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 22px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 52px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 85px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 42px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 18px;
+    }
+    .table6xn .nums {
+        margin: 0 47px 0 0;
+        width: 106px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 52px;
+    }
 }
 
 @media (min-width: 414px) {
     #league .standings .head span:nth-child(3) {
         margin: 0 0 0 92px;
+    }
+    .table5xn .nums {
+        margin: 0 22px 0 0;
+        width: 105px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 24px 0 0;
+    }
+    .table6xn .nums {
+        margin: 0 49px 0 0;
+        width: 105px;
     }
 }
 
@@ -296,6 +1015,97 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 45px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 65px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 118px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 50px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 50px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 37px;
+    }
+    .table5xn .nums {
+        margin: 0 44px 0 0;
+        width: 157px;
+    }
+    .table5xn .nums {
+        margin: 0 46px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 58px;
+    }
+    .table5xn .left .name {
+        margin: 0 0 0 12px;
+    }
+    .table5xn .col .games {
+        min-width: 14px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 128px;
+    }
+    .table5xn .col .points {
+        min-width: 25px;
+    }
+    .newsVr .cart {
+        height: 280px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 45px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 60px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 94px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 70px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 50px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 45px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 37px;
+    }
+    .table6xn .nums {
+        margin: 0 95px 0 0;
+        width: 154px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 58px;
+    }
+    .table6xn .left .name {
+        margin: 0 0 0 12px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 92px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 20px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 15px;
+    }
+    .table6xn .col .goals {
+        min-width: 30px;
+        margin: 0 0 0 53px;
+    }
+    #transferList .listWrap {
+        width: 400px;
+        margin: auto;
     }
 }
 
@@ -349,6 +1159,101 @@
     #league .ranks {
         width: 350px;
     }
+    .table5xn {
+        width: 340px;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 13px;
+        min-width: 22px;
+    }
+    .table5xn .nums {
+        margin: 0 12px 0 0;
+        width: 115px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 15px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 22px;
+    }
+    .table5xn .col .games {
+        min-width: 7px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 94px;
+    }
+    .table5xn .col .points {
+        min-width: 18px;
+    }
+    .newsVr section {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .newsVr .cart {
+        height: 230px;
+        width: 360px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 30px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 13px;
+        min-width: 22px;
+    }
+    .table6xn .nums {
+        margin: 0 55px 0 0;
+        width: 115px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 22px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 65px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 16px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 25px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 48px;
+    }
+    .table6xn .col .goals {
+        min-width: 17px;
+        margin: 0 0 0 28px;
+    }
 }
 
 @media (min-width: 820px) {
@@ -364,6 +1269,63 @@
     #league .table6xn .tLogoName {
         margin: 0 0 0 71px;
     }
+    .table5xn {
+        width: 360px;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table5xn .nums {
+        margin: 0 26px 0 0;
+        width: 113px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 27px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 32px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 95px;
+    }
+    .newsVr .cart {
+        height: 240px;
+        width: 385px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 80px;
+    }
+    .table6xn .nums {
+        margin: 0 54px 0 0;
+        width: 113px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 32px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 66px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 17px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 56px;
+    }
+    .table6xn .col .goals {
+        margin: 0 0 0 30px;
+    }
 }
 
 @media (min-width: 912px) {
@@ -378,6 +1340,46 @@
     }
     #league .ranks {
         width: 400px;
+    }
+    .table5xn {
+        width: 410px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 120px;
+    }
+    .table5xn .col .games {
+        min-width: 8px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 94px;
+    }
+    .table5xn .col .points {
+        min-width: 18px;
+    }
+    .newsVr .cart {
+        height: 280px;
+        width: 426px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 91px;
+    }
+    .table6xn .nums {
+        margin: 0 57px 0 0;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 65px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 16px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 25px;
+    }
+    .table6xn .col .goals {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .swiper-slide .head span:nth-child(4) {
+        margin: 0 0 0 63px;
     }
 }
 
@@ -442,6 +1444,120 @@
         flex-direction: column;
         width: auto;
     }
+    .table5xn {
+        width: 310px;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 72px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 20px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 8px;
+    }
+    .table5xn .nums {
+        margin: 0 10px 0 0;
+        width: 95px;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 18px;
+    }
+    .table5xn .left .name {
+        margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 3px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 78px;
+    }
+    .table5xn .col .points {
+        min-width: 16px;
+    }
+    .newsVr {
+        width: 95.5%;
+        padding: 35px 0 0 0;
+    }
+    .newsVr .cart {
+        width: 320px;
+        height: 220px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 15px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 60px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 35px !important;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 20px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 8px;
+    }
+    .table6xn .nums {
+        margin: 0 38px 0 0;
+        width: 95px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 18px;
+    }
+    .table6xn .left .name {
+        margin: 0 0 0 8px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 45px;
+    }
+    .table6xn .nums span:nth-child(4) {
+        min-width: 30px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .col .goals {
+        margin: 0 0 0 25px;
+    }
+    #transferList {
+        width: 300px;
+        margin: 0;
+    }
+    #transferList .listWrap {
+        width: 100%;
+    }
+    #transferList .col .price {
+        margin: 0 -10px 0 0;
+    }
+    #videoBlogs {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1280px) {
+    .standingsEurocups .nums {
+        margin: 0 11px 0 0;
+    }
+    .table6xn .swiper-wrapper {
+        width: 300px !important;
+    }
 }
 
 @media (min-width: 1680px) {
@@ -457,10 +1573,98 @@
     #league .table6xn .tLogoName {
         margin: 0 0 0 55px;
     }
-}
-
-@media (max-width: 280px) {
-    #league .table6xn .nums span:nth-child(3) {
-        min-width: 40px;
+    .table5xn {
+        width: 360px;
+    }
+    .table5xn .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    .table5xn .head span:nth-child(3) {
+        margin: 0 0 0 90px;
+    }
+    .table5xn .head span:nth-child(4) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table5xn .col .place {
+        margin: 0 0 0 18px;
+    }
+    .table5xn .nums {
+        margin: 0 12px 0 0;
+        width: 104px;
+    }
+    .standingsEurocups .nums {
+        margin: 0 10px 0 0;
+    }
+    .table5xn .left img {
+        margin: 0 0 0 31px;
+    }
+    .table5xn .left .name {
+        margin: 0 0 0 8px;
+    }
+    .table5xn .col .games {
+        min-width: 7px;
+    }
+    .table5xn .col .forAgainst {
+        min-width: 85px;
+    }
+    .table5xn .col .points {
+        min-width: 15px;
+    }
+    .newsVr {
+        width: 94%;
+        padding: 40px 0 0 0;
+    }
+    .newsVr .cart {
+        width: 385px;
+        height: 250px;
+    }
+    .table6xn .head span:first-child {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(2) {
+        margin: 0 0 0 40px;
+    }
+    .table6xn .head span:nth-child(3) {
+        margin: 0 0 0 70px;
+    }
+    .table6xn .head span:nth-child(4) {
+        margin: 0 0 0 45px !important;
+    }
+    .table6xn .head span:nth-child(5) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .head span:nth-child(6) {
+        margin: 0 0 0 25px;
+    }
+    .table6xn .col .place {
+        margin: 0 0 0 18px;
+    }
+    .table6xn .nums {
+        margin: 0 56px 0 0;
+        width: 104px;
+    }
+    .table6xn .left img {
+        margin: 0 0 0 31px;
+    }
+    .table6xn .nums span:nth-child(2) {
+        min-width: 55px;
+    }
+    .table6xn .nums span:nth-child(3) {
+        min-width: 17px;
+    }
+    .table6xn .tLogoName {
+        margin: 0 0 0 52px;
+    }
+    .table6xn .col .goals {
+        margin: 0 0 0 35px;
+    }
+    #transferList {
+        width: 365px;
     }
 }

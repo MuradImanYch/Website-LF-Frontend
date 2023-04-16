@@ -4,15 +4,18 @@ import { Link, Route, Routes } from 'react-router-dom';
 import $ from 'jquery';
 import { useState, useEffect } from 'react';
 
-import Auth from './Auth/Auth';
 import Dashboard from './Dashboard/Dashboard';
 import AddNews from './AddNews/AddNews';
 import EditDeleteNews from './EditDeleteNews/EditDeleteNews';
+import Broadcasts from './Broadcasts/Broadcasts';
+import AddBroadcasts from './AddBroadcasts/AddBroadcasts';
 import Error from '../Error/Error';
 
 import homeIco from '../../assets/ico/homeIco.webp';
 import newsIco from '../../assets/ico/newspaperIco.webp';
 import addIco from '../../assets/ico/add.webp';
+import broadcasts from '../../assets/ico/broadcasts.webp';
+import addBroadcasts from '../../assets/ico/addBroadcasts.webp';
 
 const Main = () => {
     const[barState, setBarstate] = useState(true); 
@@ -67,16 +70,19 @@ const Main = () => {
             </div>
             <div id="adminNav">
                 <ul>
-                    <li><Link to="/admin/dashboard"><img src={homeIco} alt="ico" /> Главная панель</Link></li>
+                    <li><Link to="/admin"><img src={homeIco} alt="ico" /> Главная панель</Link></li>
                     <li><Link to="/admin/news"><img src={newsIco} alt="ico" /> Все новости</Link></li>
                     <li><Link to="/admin/addnews"><img src={addIco} alt="ico" /> Добавить новость</Link></li>
+                    <li><Link to="/admin/broadcasts"><img src={broadcasts} alt="ico" /> Все трансляции</Link></li>
+                    <li><Link to="/admin/addbroadcasts"><img src={addBroadcasts} alt="ico" /> Добавить трансляцию</Link></li>
                 </ul>
             </div>
             <Routes>
-                <Route path="/" element={<Auth />} />
-                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="news" element={<EditDeleteNews />} />
                 <Route path="addnews" element={<AddNews />} />
+                <Route path="broadcasts" element={<Broadcasts />} />
+                <Route path="addbroadcasts" element={<AddBroadcasts />} />
                 <Route path='*' element={<Error />} />
             </Routes>
         </div>

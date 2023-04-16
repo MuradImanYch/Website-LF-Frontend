@@ -52,7 +52,7 @@ const News = () => {
 
     return (
         <div id='transferNews' className='newsHr'>
-            <h1 className="pageName">Трансферные новости</h1>
+            <h1 className="pageName">Новости трансферов</h1>
             <section>
                 {news}
             </section>

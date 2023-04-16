@@ -69,8 +69,8 @@ const UEFACountryRank = () => {
 
     return (
         <div id='uefaCountryRank'>
-            <section>
-                <h3 className="sectionName">Рейтинг ассоциаций УЕФА</h3>
+            <section id='uefaCountryRankQckNav'>
+                <h2 className="sectionName">Рейтинг ассоциаций УЕФА</h2>
                 <div className="uefaTable">
                     <div className="logoWrap">
                         <LazyLoad offset={800}>

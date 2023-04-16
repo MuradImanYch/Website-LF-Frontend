@@ -17,27 +17,36 @@ const Standings4 = () => {
     const [euroQualStandings2, setEuroQualStandings2] = useState();
     const [euroQualStandings3, setEuroQualStandings3] = useState();
 
-    let endpoints = ['/euroQualStandingsA', '/euroQualStandingsB', '/euroQualStandingsC', '/euroQualStandingsD', '/euroQualStandingsE', '/euroQualStandingsF', '/euroQualStandingsG', '/euroQualStandingsH', '/euroQualStandingsI', '/euroQualStandingsJ'];
+    let endpoints = ['/standings/euroquala', '/standings/euroqualb', '/standings/euroqualc', '/standings/euroquald', '/standings/euroquale', '/standings/euroqualf', '/standings/euroqualg', '/standings/euroqualh', '/standings/euroquali', '/standings/euroqualj'];
+    let endpoints2 = [];
+    let endpoints3 = [];
+    let endpoints4 = [];
+
+    let selected1 = endpoints[Math.floor(Math.random() * endpoints.length)];
+    endpoints.splice(endpoints.indexOf(selected1), 1);
+    endpoints.map((e) => {
+        endpoints2.push(e);
+    });
+        
+    let selected2 = endpoints2[Math.floor(Math.random() * endpoints2.length)];
+    endpoints2.splice(endpoints2.indexOf(selected2), 1);
+    endpoints2.map((e) => {
+        endpoints3.push(e);
+    });
+
+    let selected3 = endpoints3[Math.floor(Math.random() * endpoints3.length)];
+    endpoints3.splice(endpoints3.indexOf(selected2), 1);
+    endpoints3.map((e) => {
+        endpoints4.push(e);
+    });
 
     useEffect(() => {
         const fetchData = async () => {
-            function getMultipleRandom(endpoints, num) {
-                const shuffled = [...endpoints].sort(() => 0.5 - Math.random());
-              
-                return shuffled.slice(0, num);
-            }
-            let selected1 = getMultipleRandom(endpoints, 3)[0];
-            let selected2 = getMultipleRandom(endpoints, 3)[1];
-            let selected3 = getMultipleRandom(endpoints, 3)[2];
-    
             await axios.get(selected1)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('euroQualStandings1', JSON.stringify(response.data));
-                }
-                setEuroQualStandings1(JSON.parse(localStorage.getItem('euroQualStandings1')) && JSON.parse(localStorage.getItem('euroQualStandings1')).map((e, i) => {
-                    return <div className={'id' + e.group} key={'euroQualStandings1' + i}>
-                        <div className="group">{e.group}</div>
+                setEuroQualStandings1(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup} key={'euroQualStandings1' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
@@ -63,12 +72,9 @@ const Standings4 = () => {
     
             await axios.get(selected2)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('euroQualStandings2', JSON.stringify(response.data));
-                }
-                setEuroQualStandings2(JSON.parse(localStorage.getItem('euroQualStandings2')) && JSON.parse(localStorage.getItem('euroQualStandings2')).map((e, i) => {
-                    return <div className={'id' + e.group} key={'euroQualStandings2' + i}>
-                        <div className="group">{e.group}</div>
+                setEuroQualStandings2(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup} key={'euroQualStandings2' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
@@ -94,12 +100,9 @@ const Standings4 = () => {
     
             await axios.get(selected3)
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('euroQualStandings3', JSON.stringify(response.data));
-                }
-                setEuroQualStandings3(JSON.parse(localStorage.getItem('euroQualStandings3')) && JSON.parse(localStorage.getItem('euroQualStandings3')).map((e, i) => {
-                    return <div className={'id' + e.group} key={'euroQualStandings3' + i}>
-                        <div className="group">{e.group}</div>
+                setEuroQualStandings3(response.data && response.data.map((e, i) => {
+                    return <div className={'id' + e.standingsGroup} key={'euroQualStandings3' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
@@ -129,8 +132,8 @@ const Standings4 = () => {
 
     return (
         <div className='table5xn standingsEurocups' id="standings3">
-                <section>
-                    <h3 className="sectionName">Турнирная таблица - Европейская квалификация</h3>
+                <section id='standings3QckNav'>
+                    <h2 className="sectionName">Турнирная таблица - Европейская квалификация</h2>
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">

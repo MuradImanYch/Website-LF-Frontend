@@ -183,8 +183,8 @@ const StandingsSlider = () => {
 
     return (
         <div className='table5xn' id='standings'>
-            <section>
-                <h3 className="sectionName">Турнирная таблица - Чемпионаты</h3>
+            <section id='standingsQckNav'>
+                <h2 className="sectionName">Турнирная таблица - Чемпионаты</h2>
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -202,7 +202,7 @@ const StandingsSlider = () => {
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
                         {rplStandings}
-                        <Link to="#">Подробнее</Link>
+                        <Link to="/league/rpl/standings">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">

@@ -27,6 +27,7 @@ import Blogs from './Blogs/Blogs';
 import TVSchedule from './TVSchedule/TVSchedule';
 import FifaRanking from './FifaRanking/FifaRanking';
 import MatchesLive from './MatchesLive/MatchesLive';
+import Broadcasts from './Broadcasts/Broadcasts';
 
 const Main = (props) => {
 
@@ -44,7 +45,10 @@ const Main = (props) => {
             </div>
             <div className="transfers">
                 <MainNews6 />
-                <TransferList />
+                <div className="transfersBroadcasts">
+                    <TransferList />
+                    <Broadcasts />
+                </div>
             </div>
             <div id="videoBlogs">
                 <VideoNews />

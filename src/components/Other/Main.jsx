@@ -9,6 +9,7 @@ import UEFACountryRank from './UEFACountryRank/UEFACountryRank';
 import FifaRanking from './FifaRanking/FifaRanking';
 import TVSchedule from './TVSchedule/TVSchedule';
 import Odds from './Odds/Odds';
+import Broadcasts from './Broadcasts/Broadcasts';
 import Error from '../Error/Error';
 
 import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
@@ -26,6 +27,7 @@ const Main = () => {
                 <Route path="/fifa-ranking" element={<FifaRanking />} />
                 <Route path="/tvschedule" element={<TVSchedule />} />
                 <Route path="/odds" element={<Odds />} />
+                <Route path="/broadcasts" element={<Broadcasts />} />
 
                 <Route path='*' element={<Error />} />
             </Routes>

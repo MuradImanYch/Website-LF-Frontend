@@ -7,7 +7,6 @@ import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
 
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
-import { Link } from 'react-router-dom';
 
 const FifaRanking = () => {
     const[fifaCountryRank, setFifaCountryRank] = useState();
@@ -15,12 +14,9 @@ const FifaRanking = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/fifaRanking')
+            await axios.get('/standings/fifaranking')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('fifaRanking', JSON.stringify(response.data));
-                }
-                setFifaCountryRank(JSON.parse(localStorage.getItem('fifaRanking')) && JSON.parse(localStorage.getItem('fifaRanking')).splice(0, expandToggle).map((item, indx) => {
+                setFifaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
                     return <div className="col wrap" key={'fifaRanking' + indx}>
                     <div>
                         <span className='place'>{item.place}.<span></span></span>
@@ -70,7 +66,7 @@ const FifaRanking = () => {
                     </div>
                     {fifaCountryRank}
                     <div className="more">
-                        <Link to=""><span onClick={fifaCountryRankToggle}>Развернуть список</span></Link>
+                        <span onClick={fifaCountryRankToggle}>Развернуть список</span>
                     </div>
                 </div>
             </section>

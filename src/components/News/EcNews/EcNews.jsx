@@ -64,7 +64,7 @@ const EcNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='ЧЕ 2024'><img src={ecLogo} alt="ecLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Чемпионат Европы 2024</h1>
+                <h1 className="pageName">Новости - Чемпионат Европы 2024</h1>
             </div>
             <section>
                 {news}

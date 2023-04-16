@@ -17,21 +17,18 @@ const Standings4 = () => {
     const [unlStandingsC, setUnlStandingsC] = useState();
     const [unlStandingsD, setUnlStandingsD] = useState();
 
-    let endpointsA = ['/unlStandingsA1', '/unlStandingsA2', '/unlStandingsA3', '/unlStandingsA4'];
-    let endpointsB = ['/unlStandingsB1', '/unlStandingsB2', '/unlStandingsB3', '/unlStandingsB4'];
-    let endpointsC = ['/unlStandingsC1', '/unlStandingsC2', '/unlStandingsC3', '/unlStandingsC4'];
-    let endpointsD = ['/unlStandingsD1', '/unlStandingsD2'];
+    let endpointsA = ['/standings/unla1', '/standings/unla2', '/standings/unla3', '/standings/unla4'];
+    let endpointsB = ['/standings/unlb1', '/standings/unlb2', '/standings/unlb3', '/standings/unlb4'];
+    let endpointsC = ['/standings/unlc1', '/standings/unlc2', '/standings/unlc3', '/standings/unlc4'];
+    let endpointsD = ['/standings/unld1', '/standings/unld2'];
 
     useEffect(() => {
         const fetchData = async () => {
             await axios.get(endpointsA[Math.floor(Math.random() * endpointsA.length)])
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('unlStandingsA', JSON.stringify(response.data));
-                }
-                setUnlStandingsA(JSON.parse(localStorage.getItem('unlStandingsA')) && JSON.parse(localStorage.getItem('unlStandingsA')).map((e, i) => {
-                    return <div className={'unlStandingsA' + e.group.split(' ')[1]} key={'unlStandingsA' + i}>
-                        <div className="group">{e.group}</div>
+                setUnlStandingsA(response.data && response.data.map((e, i) => {
+                    return <div className={'unlStandingsA' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsA' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
@@ -57,12 +54,9 @@ const Standings4 = () => {
     
             await axios.get(endpointsB[Math.floor(Math.random() * endpointsB.length)])
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('unlStandingsB', JSON.stringify(response.data));
-                }
-                setUnlStandingsB(JSON.parse(localStorage.getItem('unlStandingsB')) && JSON.parse(localStorage.getItem('unlStandingsB')).map((e, i) => {
-                    return <div className={'unlStandingsB' + e.group.split(' ')[1]} key={'unlStandingsB' + i}>
-                        <div className="group">{e.group}</div>
+                setUnlStandingsB(response.data && response.data.map((e, i) => {
+                    return <div className={'unlStandingsB' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsB' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
@@ -88,12 +82,9 @@ const Standings4 = () => {
     
             await axios.get(endpointsC[Math.floor(Math.random() * endpointsC.length)])
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('unlStandingsC', JSON.stringify(response.data));
-                }
-                setUnlStandingsC(JSON.parse(localStorage.getItem('unlStandingsC')) && JSON.parse(localStorage.getItem('unlStandingsC')).map((e, i) => {
-                    return <div className={'unlStandingsC' + e.group.split(' ')[1]} key={'unlStandingsC' + i}>
-                        <div className="group">{e.group}</div>
+                setUnlStandingsC(response.data && response.data.map((e, i) => {
+                    return <div className={'unlStandingsC' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsC' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
@@ -119,12 +110,9 @@ const Standings4 = () => {
     
             await axios.get(endpointsD[Math.floor(Math.random() * endpointsD.length)])
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('unlStandingsD', JSON.stringify(response.data));
-                }
-                setUnlStandingsD(JSON.parse(localStorage.getItem('unlStandingsD')) && JSON.parse(localStorage.getItem('unlStandingsD')).map((e, i) => {
-                    return <div className={'unlStandingsD' + e.group.split(' ')[1]} key={'unlStandingsD' + i}>
-                        <div className="group">{e.group}</div>
+                setUnlStandingsD(response.data && response.data.map((e, i) => {
+                    return <div className={'unlStandingsD' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsD' + i}>
+                        <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
@@ -154,8 +142,8 @@ const Standings4 = () => {
 
     return (
         <div className='table5xn standingsEurocups' id="standings2">
-                <section>
-                    <h3 className="sectionName">Турнирная таблица - Лига наций</h3>
+                <section id='standings2QckNav'>
+                    <h2 className="sectionName">Турнирная таблица - Лига наций</h2>
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">

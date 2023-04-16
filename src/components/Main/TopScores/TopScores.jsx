@@ -28,12 +28,9 @@ const TopScoresSlider = () => {
 
     useEffect(() => { 
         const fetchData = async () => {
-            await axios.get('/rplTopScores')
+            await axios.get('/standings/rplTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('rplTopScores', JSON.stringify(response.data));
-                }
-                setRplTopScores(JSON.parse(localStorage.getItem('rplTopScores')) && JSON.parse(localStorage.getItem('rplTopScores')).splice(1, 8).map((e, i) => {
+                setRplTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'rplTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -45,7 +42,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -55,12 +52,9 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/eplTopScores')
+            await axios.get('/standings/eplTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('eplTopScores', JSON.stringify(response.data));
-                }
-                setEplTopScores(JSON.parse(localStorage.getItem('eplTopScores')) && JSON.parse(localStorage.getItem('eplTopScores')).splice(1, 8).map((e, i) => {
+                setEplTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'eplTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -72,7 +66,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -82,12 +76,9 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/laligaTopScores')
+            await axios.get('/standings/laligaTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('laligaTopScores', JSON.stringify(response.data));
-                }
-                setLaligaTopScores(JSON.parse(localStorage.getItem('laligaTopScores')) && JSON.parse(localStorage.getItem('laligaTopScores')).splice(1, 8).map((e, i) => {
+                setLaligaTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'laligaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -99,7 +90,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -109,12 +100,9 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/bundesligaTopScores')
+            await axios.get('/standings/bundesligaTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('bundesligaTopScores', JSON.stringify(response.data));
-                }
-                setBundesligaTopScores(JSON.parse(localStorage.getItem('bundesligaTopScores')) && JSON.parse(localStorage.getItem('bundesligaTopScores')).splice(1, 8).map((e, i) => {
+                setBundesligaTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'bundesligaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -126,7 +114,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -136,12 +124,9 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/serieaTopScores')
+            await axios.get('/standings/serieaTS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('serieaTopScores', JSON.stringify(response.data));
-                }
-                setSerieaTopScores(JSON.parse(localStorage.getItem('serieaTopScores')) && JSON.parse(localStorage.getItem('serieaTopScores')).splice(1, 8).map((e, i) => {
+                setSerieaTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'serieaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -153,7 +138,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -163,12 +148,9 @@ const TopScoresSlider = () => {
                 console.log(err);
             });
     
-            await axios.get('/ligue1TopScores')
+            await axios.get('/standings/ligue1TS')
             .then(response => {
-                if(response.data.length > 0) {
-                    localStorage.setItem('ligue1TopScores', JSON.stringify(response.data));
-                }
-                setLigue1TopScores(JSON.parse(localStorage.getItem('ligue1TopScores')) && JSON.parse(localStorage.getItem('ligue1TopScores')).splice(1, 8).map((e, i) => {
+                setLigue1TopScores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'ligue1TopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
@@ -180,7 +162,7 @@ const TopScoresSlider = () => {
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.assists === '(undefined' ? '(0)' : e.assists}</span>
+                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
                                     <span>{e.games}</span>
                                 </div>
                             </div>
@@ -196,8 +178,8 @@ const TopScoresSlider = () => {
 
     return (
         <div className='table6xn'>
-            <section>
-                <h3 className="sectionName">Бомбардиры - Чемпионаты</h3>
+            <section id='topScoresQckNav'>
+                <h2 className="sectionName">Бомбардиры - Чемпионаты</h2>
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">

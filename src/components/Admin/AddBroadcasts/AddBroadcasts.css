@@ -1,0 +1,30 @@
+#addBroadcast form div {
+    display: flex;
+    flex-direction: column;
+}
+#addBroadcast form div label {
+    color: #000;
+    margin: 6px 0;
+}
+#addBroadcast form div:not(#addBroadcast form div:first-child) {
+    margin: 20px 0 0 0;
+}
+#addBroadcast form div input {
+    min-height: 35px;
+    outline: none;
+    font-size: 1em;
+}
+#addBroadcast form button {
+    position: fixed;
+    background: rgba(204, 135, 45, 0.9);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 8%;
+    color: #fff !important;
+    font-size: 2em;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}

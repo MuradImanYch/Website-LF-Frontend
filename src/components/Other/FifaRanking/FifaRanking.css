@@ -1,11 +1,66 @@
+#fifaRankOther {
+    margin: 50px 0 0 0;
+}
+#fifaRankOther .uefaTable .logoWrap img, #fifaRankOtherOther .uefaTable .logoWrap img {
+    height: auto;
+    width: 50px;
+}
+#fifaRankOther .uefaTable .flagName img, #fifaRankOtherOther .uefaTable .flagName img {
+    min-width: 18px;
+    height: 17px;
+}
+#fifaRankOther .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1), #fifaRankOtherOther .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
+    margin: 0 0 0 -14px;
+}   
+#fifaRankOther .flagName, #fifaRankOtherOther .flagName {
+    margin-left: 15px;
+    align-items: center;
+}
+#fifaRankOther > section > div > div > div:nth-child(2) > span:nth-child(2), #fifaRankOtherOther > section > div > div > div:nth-child(2) > span:nth-child(2) {
+    width: 100px;
+    text-align: center;
+}
+#fifaRankOther > section > div > .col:not(#fifaRankOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3), #fifaRankOtherOther > section > div > .col:not(#fifaRankOtherOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3) {
+    margin-right: -20px;
+}
+#fifaRankOther > section > div > .col:not(#fifaRankOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total, #fifaRankOtherOther > section > div > .col:not(#fifaRankOtherOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total {
+    margin-right: -20px;
+    padding-left: 10px;
+}
+#fifaRankOther .diffEqual, #fifaRankOtherOther .diffEqual {
+    color: gray;
+}
+#fifaRankOther .diffUp, #fifaRankOtherOther .diffUp {
+    color: green;
+}
+#fifaRankOther .diffDown, #fifaRankOtherOther .diffDown {
+    color: red;
+}
+#fifaRankOther [aria-describedby]:hover, #fifaRankOtherOther [aria-describedby]:hover {
+    transform: scale(1.12) !important;
+}
 #fifaRankOther > section > div > div > div:nth-child(1) > div > span {
-    padding: 0 40px 0 10px;
+    padding: 0 30px 0 10px;
 }
 
-@media (min-width: 1024px) { 
-    #fifaRankOther span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+@media (min-width: 1024px) {
+    #fifaRankOther .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1), #fifaRankOtherOther .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
+        margin: 0 0 0 15px;
+    }   
+    #fifaRankOther .flagName, #fifaRankOtherOther .flagName {
+        margin-left: -10px;
+    }
+    #fifaRankOther > section > div > .col:not(#fifaRankOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3), #fifaRankOtherOther > section > div > .col:not(#fifaRankOtherOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span:nth-child(3) {
+        margin-right: 50px;
+    }
+    #fifaRankOther > section > div > .col:not(#fifaRankOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total, #fifaRankOtherOther > section > div > .col:not(#fifaRankOtherOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total {
+        padding-right: 20px;
+    }
+    #fifaRankOther .uefaTable .flagName img, #fifaRankOtherOther .uefaTable .flagName img {
+        min-width: 25px;
+        height: 22px;
+    }
+    #fifaRankOther > section > div > div > div:nth-child(1) > div > span {
+        padding: 0 40px 0 10px;
     }
 }

@@ -89,13 +89,13 @@ const Auth = ({token}) => {
                         <input type="password" name="password" placeholder="Пароль" className="regPassword" onChange={(e) => {setPassword(e.target.value)}} />
                         <input type="password" name="rePassword" placeholder="Повтор пароля" className="regRePassword" />
                         <button type="submit" name="regBtn" onClick={regBtn}>создать</button>
-                        <p className="message">Уже зарегистрированы? <a onClick={toggle}>Войти</a></p>
+                        <p className="message">Уже зарегистрированы? <span onClick={toggle}>Войти</span></p>
                     </form>
                     <form className="login-form">
                         <input type="text" name="login" placeholder="Имя пользователя" className="logLogin" onChange={(e) => {setUserName(e.target.value)}} />
                         <input type="password" name="password" placeholder="Пароль" className="logPassword" onChange={(e) => {setPassword(e.target.value)}} />
                         <button type="submit" name="logBtn" onClick={logBtn}>войти</button>
-                        <p className="message">Ещё не зарегистрировались? <a onClick={toggle}>Создать аккаунт</a></p>
+                        <p className="message">Ещё не зарегистрировались? <span onClick={toggle}>Создать аккаунт</span></p>
                     </form>
                 </div>
             </div>

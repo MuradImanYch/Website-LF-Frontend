@@ -7,12 +7,16 @@ import LazyLoad from 'react-lazy-load';
 
 const NewsAll = () => {
     const[news, setNews] = useState();
+    const[currentPage, setCurrentPage] = useState(1);
+    const[newsCount, setNewsCount] = useState();
+    const[pagination, setPagination] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
             await axios.get('/news/allNews')
             .then(response => {
-                setNews(response.data && response.data.reverse().map((e) => {
+                setNewsCount(response.data.length);
+                setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
                     let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
@@ -52,14 +56,25 @@ const NewsAll = () => {
         }
 
         fetchData();
-    }, []);
+    }, [currentPage]);
+
+    const selectPagPage = (e) => {
+        setCurrentPage($(e.target).text());
+        $('.pagination a').css({background: '#fff', color: '#000'}).removeClass('selected');
+        $(e.target).addClass('selected');
+        $('#news .newsHr section').hide();
+        $('#news .newsHr section').fadeIn();
+    }
 
     return (
-        <div id='newsAll' className='newsHr'>
+        <div className='newsHr'>
             <section>
-                <h1 className="pageName">Новости</h1>
+                <h1 className="pageName">Все новости</h1>
                 {news}
             </section>
+            <ul className='pagination'>
+                {newsCount && Array(Math.ceil(newsCount / 30)).fill(1).map((value, index) => <li key={`page${value + index}`}><a onClick={selectPagPage} href='#'>{value + index}</a></li>)}
+            </ul>
         </div>
     );
 };

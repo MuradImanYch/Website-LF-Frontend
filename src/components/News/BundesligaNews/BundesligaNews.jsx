@@ -64,7 +64,7 @@ const BundesligaNews = () => {
                 <LazyLoad offset={800}>
                     <Tippy content='Бундеслига'><img src={bundesligaLogo} alt="bundesligaLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Бундеслига</h1>
+                <h1 className="pageName">Новости - Бундеслига</h1>
             </div>
             <section>
                 {news}

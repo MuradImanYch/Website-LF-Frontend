@@ -33,7 +33,7 @@ const NewsSlider = () => {
                             </div>
                             <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
                                 <img src={e.img} className='swiper-lazy' alt="img" />
-                            <h2>{e.title}</h2>
+                            <h3>{e.title}</h3>
                             <span className='category'>{`#${e.category}`}</span>
                         </Link>
                     </SwiperSlide>
@@ -49,7 +49,7 @@ const NewsSlider = () => {
 
     return (
         <div id="newsSlider">
-                <section>
+                <section id='onlineFav'>
                     <Swiper lazy={true} pagination={{clickable: true}} autoplay={{delay: 5000, disableOnInteraction: false}}>
                         {newsSlider}
                     </Swiper>

@@ -4,10 +4,14 @@ import axios from 'axios';
 import $ from 'jquery';
 import cookies from 'js-cookie';
 
+import search from '../../../assets/ico/search.png';
+import loadSpiner from '../../../assets/ico/loadSpiner.gif';
+
 const SearchTeam = () => {
     const[searchingTeams, setSearchingTeams] = useState([]);
     const[teamArr, setTeamArr] = useState([]);
     const[myTeams, setMyTeams] = useState();
+    const[searchLoading, setSearchLoading] = useState(false);
 
     const uniqueIds = [];
                   
@@ -21,17 +25,20 @@ const SearchTeam = () => {
         return false;
     });
 
-    useEffect(() => {
-        axios.post('/profile/getFav', {
-            token: cookies.get('auth')
-        })
-        .then(response => {
-            localStorage.setItem('teamArr', JSON.stringify(response.data));
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const addFav = (e) => {
+        setTeamArr([...JSON.parse(localStorage.getItem('teamArr')), {
+            name: $(e.target).prev().text(), 
+            img: $(e.target).prev().prev().attr('src')
+        }]);
+    }
 
+    const delFavorite = (e) => {
+        let deletedUpd = JSON.parse(localStorage.getItem('teamArr'));
+        deletedUpd.splice(JSON.parse(localStorage.getItem('teamArr')).map((e) => {return e.name}).indexOf($(e.target).prev().text()), 1);
+        setTeamArr(deletedUpd);
+    }
+
+    useEffect(() => {
         setInterval(() => {
             setMyTeams(JSON.parse(localStorage.getItem('teamArr')) && JSON.parse(localStorage.getItem('teamArr')).reverse().map((e, i) => {
                 return <div key={'myTeams' + e.name + i}>
@@ -44,41 +51,31 @@ const SearchTeam = () => {
 
         if(unique.length > 0) {
             localStorage.setItem('teamArr', JSON.stringify(unique));
-        }
 
-        axios.post('/profile/setFav', {
-            token: cookies.get('auth'),
-            team: localStorage.getItem('teamArr')
-        });
+            axios.post('/profile/setFav', {
+                token: cookies.get('auth'),
+                team: localStorage.getItem('teamArr')
+            });
+        }
     }, [teamArr]);
 
-    const searchTeam = () => {        
+    const searchTeam = (e) => {        
+        e.preventDefault();
+        setSearchLoading(true);
+
         axios.post('/searchTeam', {
             team: document.querySelector('#searchTeam input').value        
         })
         .then(response => {
             setSearchingTeams(response.data);
+            setSearchLoading(false);
             $('#searchTeam .finded').hide();
             $('#searchTeam .finded').slideDown().css({display: 'flex'});
         })
         .catch(err => {
             console.log(err);
+            setSearchLoading(false);
         });
-    }
-
-    const addFavorite = (e) => {        
-        setTeamArr([...JSON.parse(localStorage.getItem('teamArr')), {
-            name: $(e.target).prev().text(), 
-            img: $(e.target).prev().prev().attr('src')
-        }]);
-    }
-
-    const delFavorite = (e) => {
-        let deletedUpd = JSON.parse(localStorage.getItem('teamArr'));
-        deletedUpd.splice(JSON.parse(localStorage.getItem('teamArr')).map((e) => {return e.name}).indexOf($(e.target).prev().text()), 1);
-        setTeamArr(deletedUpd);
-
-        localStorage.setItem('teamArr', JSON.stringify(deletedUpd));
     }
 
     return (
@@ -86,14 +83,15 @@ const SearchTeam = () => {
             <div className="wrap">
                 <p>Добавить команду в избранные</p>
                 <form>
-                    <input onChange={searchTeam} type='text' placeholder='Введите название команды' />
+                    <input type='text' placeholder='Введите название команды' />
+                    {!searchLoading ? <button onClick={searchTeam}><img src={search} alt="поиск" /></button> : <button onClick={(e) => {e.preventDefault()}}><img src={loadSpiner} alt="загрузка" /></button>}
                 </form>
                 <div className="finded">
                     {searchingTeams.map((e) => {
                         return <div key={'finded' + e.name}>
                                     <img src={e.img[1]} alt={e.name} />
                                     <span>{e.name}</span>
-                                    <button onClick={addFavorite}>+</button>
+                                    <button onClick={addFav}>+</button>
                                 </div>
                     })}
                 </div>
