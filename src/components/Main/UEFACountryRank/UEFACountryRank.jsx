@@ -86,7 +86,7 @@ const UEFACountryRank = () => {
                         </div>
                         {uefaCountryRankSeason}
                     </div>
-                    {uefaCountryRank}
+                    {uefaCountryRank && uefaCountryRank.length > 0 ? uefaCountryRank : <div className='noData'>Данных нет</div>}
                     <div className="more">
                         <Link to={linkToggle}><span onClick={uefaCountryRankToggle}>Развернуть список</span></Link>
                     </div>

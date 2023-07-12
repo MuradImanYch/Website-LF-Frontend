@@ -30,12 +30,34 @@ const SearchTeam = () => {
             name: $(e.target).prev().text(), 
             img: $(e.target).prev().prev().attr('src')
         }]);
+
+        $('#searchTeam .add, #searchTeam .del').attr('disabled', 'disabled');
+        setTimeout(() => {
+            $('#searchTeam .add, #searchTeam .del').removeAttr('disabled');
+        }, 5000);
     }
 
     const delFavorite = (e) => {
         let deletedUpd = JSON.parse(localStorage.getItem('teamArr'));
-        deletedUpd.splice(JSON.parse(localStorage.getItem('teamArr')).map((e) => {return e.name}).indexOf($(e.target).prev().text()), 1);
-        setTeamArr(deletedUpd);
+        if(JSON.parse(localStorage.getItem('teamArr')).length === 1) {
+            localStorage.setItem('teamArr', '[]');
+        }
+        else {
+            deletedUpd.splice(JSON.parse(localStorage.getItem('teamArr')).map((e) => {return e.name}).indexOf($(e.target).prev().text()), 1);
+            setTeamArr(deletedUpd);
+        }
+
+        $('#searchTeam .add, #searchTeam .del').attr('disabled', 'disabled');
+        setTimeout(() => {
+            $('#searchTeam .add, #searchTeam .del').removeAttr('disabled');
+        }, 5000);
+        axios.post('/profile/setFav', {
+            token: cookies.get('auth'),
+            team: localStorage.getItem('teamArr')
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     useEffect(() => {
@@ -44,7 +66,7 @@ const SearchTeam = () => {
                 return <div key={'myTeams' + e.name + i}>
                             <img src={e.img} alt={e.name} />
                             <span>{e.name}</span>
-                            <button onClick={delFavorite}>⨯</button>
+                            <button className='del' onClick={delFavorite}>⨯</button>
                         </div>
             }));
         }, 1000);
@@ -55,6 +77,9 @@ const SearchTeam = () => {
             axios.post('/profile/setFav', {
                 token: cookies.get('auth'),
                 team: localStorage.getItem('teamArr')
+            })
+            .catch(err => {
+                console.log(err);
             });
         }
     }, [teamArr]);
@@ -91,14 +116,14 @@ const SearchTeam = () => {
                         return <div key={'finded' + e.name}>
                                     <img src={e.img[1]} alt={e.name} />
                                     <span>{e.name}</span>
-                                    <button onClick={addFav}>+</button>
+                                    <button className='add' onClick={addFav}>+</button>
                                 </div>
                     })}
                 </div>
             </div>
             <div className="selected">
                 <p>Избранные команды:</p>
-                {myTeams}
+                {myTeams && myTeams.length > 0 ? myTeams : <div className='noData'>Данных нет</div>}
             </div>
         </div>
     );

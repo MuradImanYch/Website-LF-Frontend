@@ -37,7 +37,7 @@ const MatchesSchedule = () => {
             <section id='tvScheduleQckNav'>
                 <h2 className="sectionName">ТВ расписание</h2>
                 <div className="wrap">
-                    {matchesSchedule}
+                    {matchesSchedule && matchesSchedule.length > 0 ? matchesSchedule : <div className='noData'>Данных нет</div>}
                 </div>
             </section>
         </div>

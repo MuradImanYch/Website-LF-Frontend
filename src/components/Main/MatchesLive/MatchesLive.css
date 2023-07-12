@@ -4,9 +4,6 @@
 .matchesLive h2 {
     margin: 0;
 }
-.matchesLive .col span {
-    color: #000;
-}
 .matchesLive .col {
     display: flex;
     justify-content: space-between;
@@ -45,16 +42,17 @@
 .matchesLive .hScore, .matchesLive .aScore {
     font-size: 0.8em !important;
     margin: 0 5px;
-    border: 1px solid #ffbf66;
+    border: 1px solid rgb(240, 45, 84);
     height: 18px;
     width: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Graduate';
+    background: rgb(240, 45, 84);
 }
 .matchesLive .col .round, .matchesLive .col .dateTime {
-    background: #ffbf66;
+    background: rgb(240, 45, 84);
     padding: 0 5px;
 } 
 .matchesLive .col .round {

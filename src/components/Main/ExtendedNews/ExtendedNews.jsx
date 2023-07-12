@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './ExtendedNews.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import $ from 'jquery';
+import Helmet from 'react-helmet';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
+
+import unliked from '../../../assets/ico/unliked.png';
+import liked from '../../../assets/ico/liked.png';
 
 const parse = require('html-react-parser');
 
 const ExtendedNews = () => {
     const {id} = useParams();
     const[selected, setSelected] = useState();
+    const location = useLocation();
+    const[isLiked, setIsLiked] = useState();
+    const[likeBtn, setLikeBtn] = useState();
+    const[isViewed, setIsViewed] = useState();
 
     useEffect(() => {
         $("html, body").animate({ scrollTop: 0 }, "fast");
@@ -17,7 +26,7 @@ const ExtendedNews = () => {
             await axios.get('/news/allNews')
             .then(response => {
                 setSelected(response.data.find((obj) => {
-                    return obj.id === +id;
+                    return obj.id + '-' + cyrillicToTranslit().transform(obj.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase() === id;
                 }));
             })
             .catch(err => {
@@ -26,10 +35,83 @@ const ExtendedNews = () => {
     
             $('.extendedNews').hide();
             $('.extendedNews').fadeIn('slow');
+
+            location.pathname.includes('/read') && await axios.get('https://api.ipify.org/')
+            .then(response => {
+                axios.post('/like/checkIP', {
+                    clientIP: response.data,
+                    id: id.split('-')[0]
+                })
+                .then(response => {
+                    setIsLiked(response.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+            location.pathname.includes('/read') && await axios.get('https://api.ipify.org/')
+            .then(response => {
+                axios.post('/views/post', {
+                    clientIP: response.data,
+                    id: id.split('-')[0]
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+            location.pathname.includes('/read') && await axios.get('https://api.ipify.org/')
+            .then(response => {
+                axios.post('/views/checkIP', {
+                    clientIP: response.data,
+                    id: id.split('-')[0]
+                })
+                .then(response => {
+                    setIsViewed(response.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
         }
         
         fetchData();
     }, [id]);
+
+    useEffect(() => {
+        setLikeBtn(
+            isLiked && isLiked === -1 || isLiked === false ? <img title='Нравится' onClick={like} className='unliked' src={unliked} /> : <img title='Нравится' className='liked' src={liked} />
+        );
+    }, [isLiked]);
+
+    const like = async (e) => {
+        await axios.get('https://api.ipify.org/')
+        .then(response => {
+            axios.post('/like/post', {
+                clientIP: response.data,
+                id: id
+            })
+            .catch(err => {
+                if(err) throw err;
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+        setLikeBtn(<img className='liked' src={liked} />);
+        $('.likes .likeNum').html(+$('.likes').val() + 1);
+    }
     
     function convertDate(str) { // convert date & time
         let date = new Date(str);
@@ -47,6 +129,11 @@ const ExtendedNews = () => {
 
     return (
         <div className='extendedNews'>
+            <Helmet>
+                <title>{selected && selected.title + ' - Legendary Football'}</title>
+                <meta name="description" content={selected && selected.meta_description} />
+                <meta name="keywords" content={selected && selected.meta_keywords} />
+            </Helmet>
             <section>
                 <div className="container">
                     <div className="postWrap">
@@ -59,7 +146,11 @@ const ExtendedNews = () => {
                                 <span className="date">{selected && convertDate(selected.date)}</span>
                             </div>
                             <img id='mainImg' src={selected && selected.img} alt="newsImg" />
-                            <div className='textWrap'>{selected && parse(selected.content)}</div>
+                            <div className='textWrap'>
+                                <p><strong>{selected && selected.meta_description}</strong></p>
+                                {selected && parse(selected.content)}
+                            </div>
+                            <div className="likes"><span title='Просмотры' className='views'>👁 {isViewed && isViewed}</span> {likeBtn} <span title='Нравится' className='likeNum'>{selected && selected.likes?.split(',').length > 0 ? selected.likes?.split(',').length : '0'}</span></div>
                         </article>
                     </div>
                 </div>

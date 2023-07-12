@@ -162,9 +162,13 @@ header .active:nth-child(1) {
 #mNavWrap .menuWrap li ul li img {
     width: 25px;
     height: 25px;
+    margin-top: 0;
+    margin-right: 50px;
 }
 #mNavWrap .menuWrap li ul li a {
     font-size: 0.9em;
+    display: flex;
+    align-items: center;
 }
 #mNavWrap .menuWrap li:nth-child(2) ul li div i {
     padding: 0 0 0 15px;
@@ -326,6 +330,15 @@ header .login {
 #profile .subMenu li a span {
     color: #f02d54;
     font-weight: bold;
+}
+#mNavWrap > ul > li:nth-child(2) > ul > li > ul > li:nth-child(4) {
+    margin: 10px 0 25px 0;
+}
+#mNavWrap > ul > li:nth-child(2) > ul > li > ul {
+    margin: 20px 0 10px 0;
+}
+#mNavWrap > ul > li > ul {
+    margin: 20px 0;
 }
 
 /*------------------Desctop-------------------*/

@@ -61,7 +61,7 @@ function HotBoard() {
     return (
         <div className="hotBoard">
             <Swiper centeredSlides={true} grabCursor={true} speed={5000} autoplay={{delay: 1, disableOnInteraction: false}} slidesPerView={2} breakpoints={{280: {slidesPerView: 1}, 540: {slidesPerView: 2}, 768: {slidesPerView: 3}, 1200: {slidesPerView: 5},  1920: {slidesPerView: 6}}} freeMode={true}>
-                {liveMatches}
+                {liveMatches && liveMatches.length > 0 ? liveMatches : <div className='noData'>Данных нет</div>}
             </Swiper>
             <div className="liveWrap">
                 <Tippy placement='bottom' content='Количество матчей'>

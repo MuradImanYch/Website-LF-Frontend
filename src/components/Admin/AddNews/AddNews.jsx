@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './AddNews.css';
 import axios from 'axios';
 import { useState } from 'react';
@@ -15,6 +15,12 @@ const AddNews = () => {
     const[img, setImg] = useState('');
     const[content, setContent] = useState('');
     const[disabled, setDisabled] = useState(false);
+    const[metaDescr, setMetaDescr] = useState('');
+    const[metaKeywords, setMetaKeywords] = useState('');
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     const addNews = (e) => {
         e.preventDefault();
@@ -27,6 +33,12 @@ const AddNews = () => {
         }
         else if(img === '') {
             alert('Выберите изображение или вставьте ссылку на нее');
+        }
+        else if(metaDescr === '') {
+            alert('Введите поле для мета тега: description');
+        }
+        else if(metaKeywords === '') {
+            alert('Введите поле для мета тега: keywords');
         }
         else if(content === '') {
             alert('Введите контент для новости');
@@ -47,7 +59,9 @@ const AddNews = () => {
             category,
             title,
             img,
-            content
+            content,
+            metaDescr,
+            metaKeywords
         })
         .catch(err => {
             if(err) throw err;
@@ -67,6 +81,8 @@ const AddNews = () => {
         setTitle('');
         setContent('');
         setCategory('none');
+        setMetaDescr('');
+        setMetaKeywords('');
         $('input').val('');
         $('.fileText div:last-child button').css({display: 'none'});
 
@@ -124,6 +140,7 @@ const AddNews = () => {
                     <option value="ucl">ЛЧ</option>
                     <option value="uel">ЛЕ</option>
                     <option value="uecl">ЛК</option>
+                    <option value="eu-qualification">Евр. квлф.</option>
                     <option value="unl">ЛН</option>
                     <option value="wc">ЧМ</option>
                     <option value="ec">ЧЕ</option>
@@ -149,6 +166,10 @@ const AddNews = () => {
                         <button onClick={delImg}>⨯</button>
                     </div>
                 </div>
+                <label htmlFor="meta_description">Мета-тэг: description</label>
+                <input onChange={(e) => {setMetaDescr(e.target.value)}} placeholder='Мета-тэг: description' type="text" id='meta_description' name='meta_description' />
+                <label htmlFor="meta_keywords">Мета-тэг: keywords</label>
+                <input onChange={(e) => {setMetaKeywords(e.target.value)}} placeholder='Мета-тэг: keywords' type="text" id='meta_keywords' name='meta_keywords' />
                 <label id='newsContentLabel' htmlFor="newsContent">Контент:</label>
                 <CKEditor config={{placeholder: "Введите описание новости", mediaEmbed: {previewsInData: true}}} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
                     setContent(editor.getData());

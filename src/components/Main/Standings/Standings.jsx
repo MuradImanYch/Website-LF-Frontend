@@ -32,7 +32,7 @@ const StandingsSlider = () => {
                 setRplStandings(response.data && response.data.splice(0, 8).map((e, i) => {
                     return <div key={'rplStandings' + i} className="col">
                                 <div className="left">
-                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <Tippy content={e.description && e.description.includes('Лиги') ? e.description + ' (?)*' : e.description}><span className={`place ${e.descrLat && e.descrLat.includes('Ligi') ? null : e.descrLat}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
@@ -201,7 +201,7 @@ const StandingsSlider = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {rplStandings}
+                        {rplStandings && rplStandings.length > 0 ? rplStandings : <div className='noData'>Данных нет</div>}
                         <Link to="/league/rpl/standings">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
@@ -215,8 +215,8 @@ const StandingsSlider = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {eplStandings}
-                        <Link to="#">Подробнее</Link>
+                        {eplStandings && eplStandings.length > 0 ? eplStandings : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/epl/standings">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -229,22 +229,8 @@ const StandingsSlider = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {laligaStandings}
-                        <Link to="#">Подробнее</Link>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
-                        </div>
-                        <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                            <Tippy content="Название"><span>Команда</span></Tippy>
-                            <Tippy content="Количество игр"><span>И</span></Tippy>
-                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                            <Tippy content="Очки"><span>О</span></Tippy>
-                        </div>
-                        {bundesligaStandings}
-                        <Link to="#">Подробнее</Link>
+                        {laligaStandings && laligaStandings.length > 0 ? laligaStandings : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/laliga/standings">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -257,8 +243,22 @@ const StandingsSlider = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {serieaStandings}
-                        <Link to="#">Подробнее</Link>
+                        {serieaStandings && serieaStandings.length > 0 ? serieaStandings : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/seriea/standings">Подробнее</Link>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="lLogo">
+                            <LazyLoad offset={800} height={40}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
+                        </div>
+                        <div className="head">
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Название"><span>Команда</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy content="Очки"><span>О</span></Tippy>
+                        </div>
+                        {bundesligaStandings && bundesligaStandings.length > 0 ? bundesligaStandings : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/bundesliga/standings">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -271,8 +271,8 @@ const StandingsSlider = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {ligue1Standings}
-                        <Link to="#">Подробнее</Link>
+                        {ligue1Standings && ligue1Standings.length > 0 ? ligue1Standings : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/ligue1/standings">Подробнее</Link>
                     </SwiperSlide>
                 </Swiper>
             </section>

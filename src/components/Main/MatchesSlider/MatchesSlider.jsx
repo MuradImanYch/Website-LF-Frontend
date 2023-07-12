@@ -23,12 +23,14 @@ import addFavorite from '../../../assets/ico/addFavorite.webp';
 
 SwiperCore.use([Pagination]);
 
-const MatchesSlider = () => { 
+const MatchesSlider = (props) => { 
     const[matchesSlider, setMatchesSlider] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matches/expected')
+            cookies.get('auth') && axios.post('/matches/expected', {
+                token: cookies.get('auth')
+            })
             .then(response => {
                 const uniqueIds = [];
                   
@@ -51,7 +53,7 @@ const MatchesSlider = () => {
                                             </Tippy>
                                         </LazyLoad>
                                         <LazyLoad offset={800}>
-                                            <Tippy content={e.lName.indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lName + ' | ' + e.round + ', ' + (e.roundInfo?.match(/\d+/) ? '' : e.roundInfo)}>
+                                            <Tippy content={e.lNameRoundDateTime[0] && e.lNameRoundDateTime[0].indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lNameRoundDateTime[0] && e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}>
                                                 <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                             </Tippy>
                                         </LazyLoad>
@@ -87,7 +89,7 @@ const MatchesSlider = () => {
                                             <img src={whistle} alt="судья" />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span>{e.dateTime}</span>
+                                    <span>{e.lNameRoundDateTime[3] && e.lNameRoundDateTime[3]}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.weatherDescr.length < 5 ? 'Информация появится позже' : e.weatherDescr}>
                                             {e.weatherDescr.length < 5 ? <span style={{fontWeight: 'bold', color: 'blue'}}>?</span> : <img src={e.weatherIco} alt="погода" />}
@@ -103,6 +105,9 @@ const MatchesSlider = () => {
         }
         
         fetchData();
+        setInterval(() => {
+            fetchData();
+        }, 30000);
     }, []);
 
     const addFavoriteTeam = () => {
@@ -115,12 +120,12 @@ const MatchesSlider = () => {
         <div id="matchesSlider">
             <section id='endedQckNav'>
                 <div className="title">
-                    <h2 className="sectionName">Расписание матчей избранных команд</h2>
+                    <h2 className="sectionName">Ближайщие матчи избранных команд</h2>
                     <LazyLoad offset={800}><Tippy content="Добавить команду"><img src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy></LazyLoad>
                 </div>
                 <div className="matchesSliderWrap">
                     <Swiper pagination={{type: "progressbar"}} spaceBetween={20} grabCursor={true} slidesPerView={1} breakpoints={{360: {slidesPerView: 2}, 540: {slidesPerView: 3}, 768: {slidesPerView: 4}, 1024: {slidesPerView: 5, spaceBetween: 30}}}>
-                        {matchesSlider}
+                        {matchesSlider && matchesSlider.length > 0 ? matchesSlider : <div className='noData'>Данных нет</div>}
                     </Swiper>
                 </div>
             </section>

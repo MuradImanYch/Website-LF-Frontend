@@ -49,7 +49,7 @@ const Standings4 = () => {
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
@@ -146,8 +146,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {euroQualStandings1}
-                            <Link to="#">Подробнее</Link>
+                            {euroQualStandings1 && euroQualStandings1.length > 0 ? euroQualStandings1 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -160,8 +160,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {euroQualStandings2}
-                            <Link to="#">Подробнее</Link>
+                            {euroQualStandings2 && euroQualStandings2.length > 0 ? euroQualStandings2 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -174,8 +174,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {euroQualStandings3}
-                            <Link to="#">Подробнее</Link>
+                            {euroQualStandings3 && euroQualStandings3.length > 0 ? euroQualStandings3 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

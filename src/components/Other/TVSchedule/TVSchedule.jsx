@@ -7,6 +7,10 @@ const TVSchedule = () => {
     const[matchesSchedule, setMatchesSchedule] = useState();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
             await axios.get('/tv/schedule')
             .then(response => {

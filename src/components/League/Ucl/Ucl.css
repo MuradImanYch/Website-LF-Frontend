@@ -1,0 +1,32 @@
+.Vilet.iz.yevrokubkov {
+    background: transparent !important;
+    color: #000 !important;
+}
+
+#league .ranks .summ {
+    font-weight: bold;
+}
+#league .ranks .inner {
+    display: flex;
+    justify-content: space-around;
+}
+#league .ranks .inner div span {
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+#league .ranks .inner div img {
+    width: auto;
+}
+#league .ranks .inner div .points {
+    font-weight: bold;
+}
+#league .ranks .countries {
+    display: flex;
+    align-items: center;
+}
+#league .ranks .countries .name {
+    font-size: 0.8em;
+    margin: 0 0 0 5px;
+}

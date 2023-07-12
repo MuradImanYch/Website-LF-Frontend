@@ -89,8 +89,8 @@ const TopScores3 = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {euroQualTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {euroQualTopScores && euroQualTopScores.length > 0 ? euroQualTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/eu-qualification/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -104,8 +104,8 @@ const TopScores3 = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {unlTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {unlTopScores && unlTopScores.length > 0 ? unlTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/unl/topscores">Подробнее</Link>
                     </SwiperSlide>
                 </Swiper>
             </section>

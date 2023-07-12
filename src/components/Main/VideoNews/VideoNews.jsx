@@ -3,6 +3,7 @@ import './VideoNews.css';
 import $ from 'jquery';
 import playIco from '../../../assets/ico/playIco.webp';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazy-load';
 
@@ -34,15 +35,15 @@ const VideoNews = () => {
                         $(`.newsVr #${'videoNews' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'videoNews' + e.id} id={'videoNews' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>  
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                     <LazyLoad offset={800}><p className='playWrap'>
                                         <img src={playIco} alt="playIco" />
                                     </p></LazyLoad>
@@ -63,7 +64,7 @@ const VideoNews = () => {
         <div className="newsVr" id='videoNews'>
             <section id='videoQckNav'>
                 <h2 className="sectionName">Видео</h2>
-                {videoNews}
+                {videoNews && videoNews.length > 0 ? videoNews : <div className='noData'>Данных нет</div>}
             </section>
         </div>
     );

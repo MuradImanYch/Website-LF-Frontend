@@ -59,6 +59,22 @@
     position: absolute;
     right: 0;
 }
+.newsVr .likes {
+    top: 100% !important;
+    right: 0;
+    font-family: Graduate;
+    position: absolute;
+    padding: 4px 6px !important;
+    height: 18px !important;
+    display: flex;
+    align-items: center;
+}
+.newsVr .views {
+    position: absolute;
+    font-family: Graduate;
+    left: 0;
+    top: 100% !important;
+}
 
 @media (min-width: 540px) { /* >= 540px */
     .newsVr .cart {

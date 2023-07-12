@@ -54,7 +54,7 @@ const Auth = ({token}) => {
         else if($('#auth .regRePassword').val().length <= 0) {
             return $('#auth .error').text('Введите повтор пароля').css({color: 'red'});
         }
-        if($('#auth .regPassword').val() != $('#auth .regRePassword').val()) {
+        if($('#auth .regPassword').val() !== $('#auth .regRePassword').val()) {
             return $('#auth .error').text('Пароли не совпадают').css({color: 'red'});
         }
         else {

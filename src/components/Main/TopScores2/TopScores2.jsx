@@ -114,8 +114,8 @@ const TopScores = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {uclTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {uclTopScores && uclTopScores.length > 0 ? uclTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/ucl/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -129,8 +129,8 @@ const TopScores = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {uelTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {uelTopScores && uelTopScores.length > 0 ? uelTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/ucl/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -144,8 +144,8 @@ const TopScores = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {ueclTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {ueclTopScores && ueclTopScores.length > 0 ? ueclTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/ucl/topscores">Подробнее</Link>
                     </SwiperSlide>
                 </Swiper>
             </section>

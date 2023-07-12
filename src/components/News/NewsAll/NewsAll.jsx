@@ -2,14 +2,20 @@ import React, {useState, useEffect} from 'react';
 import './NewsAll.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 const NewsAll = () => {
     const[news, setNews] = useState();
     const[currentPage, setCurrentPage] = useState(1);
     const[newsCount, setNewsCount] = useState();
     const[pagination, setPagination] = useState();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,15 +43,15 @@ const NewsAll = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -68,6 +74,11 @@ const NewsAll = () => {
 
     return (
         <div className='newsHr'>
+            <Helmet>
+                <title>Все новости АПЛ, РПЛ, Ла Лиги, Серии А, Лиги Чемпионов и другие топ лиги - на Legendary Football</title>
+                <meta name="description" content="Будьте в курсе всех новостей топ лиг как: Английской Премьер-лиге (АПЛ), Российской Премьер-лиге (РПЛ), Ла Лиге, Серии А, Лиге Чемпионов и других ведущих турниров европы и постсоветского пространства." />
+                <meta name="keywords" content="АПЛ, РПЛ, Ла Лига, Серия А, Лига Чемпионов, все новости, результаты матчей, трансферы, голы, клубы, игроки, анализ матчей" />
+            </Helmet>
             <section>
                 <h1 className="pageName">Все новости</h1>
                 {news}

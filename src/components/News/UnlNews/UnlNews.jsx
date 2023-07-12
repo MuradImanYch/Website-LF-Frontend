@@ -2,15 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './UnlNews.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 import unlLogo from '../../../assets/ico/unlLogo.webp';
 
 const UnlNews = () => {
     const[news, setNews] = useState();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,15 +43,15 @@ const UnlNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -60,6 +66,11 @@ const UnlNews = () => {
 
     return (
         <div id='unlNews' className='newsHr leagueNews'>
+            <Helmet>
+                <title>Новости Лиги Наций - на Legendary Football</title>
+                <meta name="description" content="Будьте в курсе всех новостей Лиги Наций, также европейских сборных." />
+                <meta name="keywords" content="уефа, лига наций, европейский футбол, футбол, сборная англии, сборная германии, сборная франции, сборная испании, новости, новости уефа" />
+            </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
                     <Tippy content='ЛН'><img src={unlLogo} alt="unlLogo" /></Tippy>

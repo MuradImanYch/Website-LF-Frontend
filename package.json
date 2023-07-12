@@ -19,6 +19,7 @@
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-lazy-load": "^4.0.1",
     "react-player": "^2.12.0",
     "react-router-dom": "^6.3.0",

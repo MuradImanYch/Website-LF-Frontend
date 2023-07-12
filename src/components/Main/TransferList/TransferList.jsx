@@ -43,7 +43,7 @@ const TransferList = () => {
             <section id='transferListQckNav'>
                 <h2 className="sectionName">Список популярных трансферов</h2>
                 <div className="listWrap">
-                    {transferList}
+                    {transferList && transferList.length > 0 ? transferList : <div className='noData'>Данных нет</div>}
                 </div>
                 <Link to="/transfers/list">Подробнее</Link>
             </section>

@@ -133,6 +133,14 @@ table {
     padding: 7px !important;
 	margin: 0 15px 0 0 !important;
 }
+.noData {
+	color: #000;
+	text-align: center;
+	background: #eee;
+	padding: 10px 0;
+	margin: 15px 0 0 0;
+	width: 100%;
+}
 
 @media (min-width: 1024px) {
 	#blogs .swiper-slide:nth-child(2) .swiper-lazy-preloader, #blogs .swiper-slide:nth-child(3) .swiper-lazy-preloader {

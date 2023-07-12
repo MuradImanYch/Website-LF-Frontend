@@ -8,6 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay, Lazy } from 'swiper';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
+
+import like from '../../../assets/ico/unliked.png';
 
 SwiperCore.use([Autoplay, Pagination, Lazy]);
 
@@ -27,14 +30,14 @@ const NewsSlider = () => {
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
     
                     return <SwiperSlide key={'mainSlider' + e.id}>
-                        <Link to={`/news/read/${e.id}`}>
+                        <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                             <div className="swiper-lazy-preloader">
                                 <div className="lds-dual-ring"></div>
                             </div>
-                            <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
+                            <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                 <img src={e.img} className='swiper-lazy' alt="img" />
                             <h3>{e.title}</h3>
-                            <span className='category'>{`#${e.category}`}</span>
+                            <span className='category'><span className="likes"> ❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                         </Link>
                     </SwiperSlide>
                 })); 
@@ -51,7 +54,7 @@ const NewsSlider = () => {
         <div id="newsSlider">
                 <section id='onlineFav'>
                     <Swiper lazy={true} pagination={{clickable: true}} autoplay={{delay: 5000, disableOnInteraction: false}}>
-                        {newsSlider}
+                        {newsSlider && newsSlider.length > 0 ? newsSlider : <div className='noData'>Данных нет</div>}
                     </Swiper>
                 </section>
         </div>

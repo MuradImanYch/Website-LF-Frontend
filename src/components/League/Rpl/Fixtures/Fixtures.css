@@ -1,0 +1,83 @@
+.leagueFixtures .logoPageName {
+    display: flex;
+}
+.leagueFixtures .logoPageName img {
+    width: 60px;
+    height: 60px;
+    border: #ffbf66 2px solid;
+    padding: 5px;
+    margin: 0 15px 0 0;
+}
+.leagueFixtures .logoPageName h1 {
+    display: flex;
+    align-items: flex-end;
+}
+.leagueFixtures .logoPageName {
+    margin: 0 0 20px 0;
+}
+.leagueFixtures [aria-describedby] {
+    transform: scale(1) !important;
+}
+.leagueFixtures .col {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 25px 0;
+}
+.leagueFixtures .col .center {
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+.leagueFixtures span {
+    color: #000;
+    font-size: 0.7em;
+}
+.leagueFixtures .center img {
+    margin: 0 6px;
+}
+.leagueFixtures hr {
+    margin: 30px 0;
+    border: 3px solid silver;
+}
+.leagueFixtures hr:nth-child(2) {
+    display: none;
+}
+
+@media (min-width: 360px) {
+    .leagueFixtures span {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 768px) {
+    .leagueFixtures .logoPageName img {
+        width: 80px;
+        height: auto;
+        padding: 7px;
+    }
+    .leagueFixtures span {
+        font-size: 0.9em;
+    }
+}   
+
+@media (min-width: 1024px) {
+    .leagueFixtures {
+        width: 568px;
+        margin: auto;
+    }
+    .leagueFixtures span {
+        font-size: 0.75em;
+    }
+    .leagueFixtures .center img {
+        margin: 0 5px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .leagueFixtures .logoPageName img {
+        width: 90px;
+    }
+} 

@@ -287,9 +287,9 @@
 }
 .table5xn .col img {
     max-width: 20px;
-    height: auto;
     max-height: 20px;
     width: auto;
+    height: auto;
 }
 .table5xn .col .name, .table5xn .col .games, .table5xn .col .forAgainst span, .table5xn .col .points {
     font-size: .75em;
@@ -595,6 +595,28 @@
     margin: 0 -5px 0 0;
     font-weight: bold;
     font-family: 'Graduate';
+}
+#league > div.leagueFixtures > div > div.center > span.hName, #league > div.leagueResults > div > div.center > span.hName {
+    text-align: right;
+}
+#league > div.leagueFixtures > div > div.center > span.aName, #league > div.leagueResults > div > div.center > span.aName {
+    text-align: left;
+}
+.newsVr .likes {
+    top: 100% !important;
+    right: 0;
+    font-family: Graduate;
+    position: absolute;
+    padding: 4px 6px !important;
+    height: 18px !important;
+    display: flex;
+    align-items: center;
+}
+.newsVr .views {
+    position: absolute;
+    font-family: Graduate;
+    left: 0;
+    top: 100% !important;
 }
 
 @media (max-width: 280px) {

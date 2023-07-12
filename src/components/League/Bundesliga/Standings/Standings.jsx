@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import './RplStandings.css';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
-import rplLogo from '../../../../assets/ico/rplLogo.webp';
+import logo from '../../../../assets/ico/bundesligaLogo.webp';
+import Helmet from 'react-helmet';
 
-const RplStandings = () => {
+const Standings = () => {
     const[standings, setStandings] = useState();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/standings/rpl')
+            await axios.get('/standings/bundesliga')
             .then(response => {
                 response.data && response.data.map((e) => {
                     setStandings(response.data);
@@ -27,13 +31,18 @@ const RplStandings = () => {
 
     return (
         <div className='leagueStandings'>
+            <Helmet>
+                <title>Бундеслига - Турнирная таблица - на Legendary Football</title>
+                <meta name="description" content="Турнирная таблица чемпионата германии (Бундеслиги)." />
+                <meta name="keywords" content="бундеслига, чемпионат германии, немецкий футбол, футбол, бавария, боррусия дортмунд, лейпциг, айнтрахт франкфурт, таблица бундеслиги, турнирная таблица бундеслиги" />
+            </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='РПЛ'><img src={rplLogo} alt="rplLogo" /></Tippy>
+                    <Tippy content='Бундеслига'><img src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Турнирная таблица - Российская Премьер-Лига</h1>
+                <h1 className="pageName">Турнирная таблица - Бундеслига</h1>
             </div>
-            <div className="wrap">
+            {standings && standings.length > 0 ? <div className="wrap">
                 <div className='col'>
                     <Tippy content="Позиция"><span className="head">#</span></Tippy>
                     {standings && standings.map((e, i) => {
@@ -93,9 +102,9 @@ const RplStandings = () => {
                         })}
                     </div>
                 </div>
-            </div>
+            </div> : <div className='noData'>Данных нет</div>}
         </div>
     );
 };
 
-export default RplStandings;
+export default Standings;

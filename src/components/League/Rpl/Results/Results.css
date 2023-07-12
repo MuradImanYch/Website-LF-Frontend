@@ -1,0 +1,83 @@
+.leagueResults .logoPageName {
+    display: flex;
+}
+.leagueResults .logoPageName img {
+    width: 60px;
+    height: 60px;
+    border: #ffbf66 2px solid;
+    padding: 5px;
+    margin: 0 15px 0 0;
+}
+.leagueResults .logoPageName h1 {
+    display: flex;
+    align-items: flex-end;
+}
+.leagueResults .logoPageName {
+    margin: 0 0 20px 0;
+}
+.leagueResults [aria-describedby] {
+    transform: scale(1) !important;
+}
+.leagueResults .col {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 25px 0;
+}
+.leagueResults .col .center {
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+.leagueResults span {
+    color: #000;
+    font-size: 0.7em;
+}
+.leagueResults .center img {
+    margin: 0 6px;
+}
+.leagueResults hr {
+    margin: 30px 0;
+    border: 3px solid silver;
+}
+.leagueResults hr:nth-child(2) {
+    display: none;
+}
+
+@media (min-width: 360px) {
+    .leagueResults span {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 768px) {
+    .leagueResults .logoPageName img {
+        width: 80px;
+        height: auto;
+        padding: 7px;
+    }
+    .leagueResults span {
+        font-size: 0.9em;
+    }
+}   
+
+@media (min-width: 1024px) {
+    .leagueResults {
+        width: 568px;
+        margin: auto;
+    }
+    .leagueResults span {
+        font-size: 0.75em;
+    }
+    .leagueResults .center img {
+        margin: 0 5px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .leagueResults .logoPageName img {
+        width: 90px;
+    }
+} 

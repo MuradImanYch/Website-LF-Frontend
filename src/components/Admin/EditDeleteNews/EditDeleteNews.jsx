@@ -17,6 +17,12 @@ const EditDeleteNews = () => {
     const[img, setImg] = useState('');
     const[content, setContent] = useState('');
     const[editId, setEditId] = useState('');
+    const[metaDescr, setMetaDescr] = useState('');
+    const[metaKeywords, setMetaKeywords] = useState('');
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     const rejectEdit = () => {
         setEditId('');
@@ -26,6 +32,8 @@ const EditDeleteNews = () => {
         setCategory('none');
         $('.editPopup').fadeOut();
         $('body').css({overflow: "auto"});
+        setMetaDescr('');
+        setMetaKeywords('');
     }
     const acceptEdit = (e) => {
         e.preventDefault();
@@ -39,6 +47,12 @@ const EditDeleteNews = () => {
         else if(img === '') {
             alert('Выберите изображение или вставьте ссылку на нее');
         }
+        else if(metaDescr === '') {
+            alert('Введите поле для мета тега: description');
+        }
+        else if(metaKeywords === '') {
+            alert('Введите поле для мета тега: keywords');
+        }
         else if(content === '') {
             alert('Введите контент для новости');
         }
@@ -48,13 +62,15 @@ const EditDeleteNews = () => {
             setTitle('');
             setContent('');
             setCategory('none');
+            setMetaDescr('');
+            setMetaKeywords('');
 
             $('.editPopup').fadeOut();
             $('body').css({overflow: "auto"});
             $('#editDeleteNews .newsCart .editDelWrap button').attr('disabled', 'disabled');
             $('#editDeleteNews .newsCart .editDelWrap button').css({background: 'silver'});
             
-            axios.post('/admin/editNews', {id: editId && editId, category, title, img, content})
+            axios.post('/admin/editNews', {id: editId && editId, category, title, img, content, metaDescr, metaKeywords})
             .catch(err => {
                 console.log(err);
             });
@@ -169,6 +185,8 @@ const EditDeleteNews = () => {
                 setTitle(response.data[0].title);
                 setImg(response.data[0].img);
                 setContent(response.data[0].content);
+                setMetaDescr(response.data[0].meta_description);
+                setMetaKeywords(response.data[0].meta_keywords);
             })
             .catch(err => {
                 console.log(err);
@@ -223,6 +241,7 @@ const EditDeleteNews = () => {
                                             <option value="ucl">ЛЧ</option>
                                             <option value="uel">ЛЕ</option>
                                             <option value="uecl">ЛК</option>
+                                            <option value="eu-qualification">Евр. квлф.</option>
                                             <option value="unl">ЛН</option>
                                             <option value="wc">ЧМ</option>
                                             <option value="ec">ЧЕ</option>
@@ -248,6 +267,10 @@ const EditDeleteNews = () => {
                         <button onClick={delImg}>⨯</button>
                     </div>
                 </div>
+                <label htmlFor="meta_description">Мета-тэг: description</label>
+                <input value={metaDescr} onChange={(e) => {setMetaDescr(e.target.value)}} placeholder='Мета-тэг: description' type="text" id='meta_description' name='meta_description' />
+                <label htmlFor="meta_keywords">Мета-тэг: keywords</label>
+                <input value={metaKeywords} onChange={(e) => {setMetaKeywords(e.target.value)}} placeholder='Мета-тэг: keywords' type="text" id='meta_keywords' name='meta_keywords' />
                                         <label id='editNewsContentLabel' htmlFor="editNewsContent">Контент:</label>
                                         <CKEditor id="editNewsContent" data={content} editor={ClassicEditor} onChange={(e, editor) => {
                                             setContent(editor.getData());

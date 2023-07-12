@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 const Broadcasts = () => {
     const[item, setItem] = useState();
 
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
     useEffect(() => { 
         const fetchData = async () => {
             await axios.get('/broadcasts/get')

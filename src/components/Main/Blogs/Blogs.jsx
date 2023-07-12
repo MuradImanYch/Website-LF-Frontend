@@ -5,6 +5,7 @@ import SwiperCore, {Navigation, Pagination, Lazy} from "swiper";
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import LazyLoad from 'react-lazy-load';
 
 SwiperCore.use([Navigation, Pagination, Lazy]);
@@ -38,7 +39,7 @@ const Blogs = () => {
                     }
                     return  <SwiperSlide key={'blog' + e.id}>
                         <div className="cart" id={'blogs' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="swiper-lazy-preloader">
                                         <div className="lds-dual-ring"></div>
                                     </div>
@@ -48,8 +49,8 @@ const Blogs = () => {
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                     </SwiperSlide>
@@ -68,7 +69,7 @@ const Blogs = () => {
             <section id='blogsQckNav'>
                 <h2 className="sectionName">Блоги</h2>
                 <Swiper lazy={true} navigation grabCursor={true} breakpoints={{280: {slidesPerView: 1, direction: 'horizontal'}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3, direction: 'vertical'}}} pagination={{type: "progressbar", clickable: true}}>
-                    {blogs}
+                    {blogs && blogs.length > 0 ? blogs : <div className='noData'>Данных нет</div>}
                 </Swiper>
             </section>
         </div>

@@ -13,6 +13,10 @@ const FifaRanking = () => {
     const[expandToggle, setExpandToggle] = useState(50);
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
             await axios.get('/standings/fifaranking')
             .then(response => {

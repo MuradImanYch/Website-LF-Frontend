@@ -1,0 +1,35 @@
+footer {
+    background: linear-gradient(to left, #18338a, #2098f7);
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+footer .container {
+    width: 96%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .container img {
+    width: 40px;
+}
+footer .container p {
+    font-size: 0.9em;
+}
+
+@media (min-width: 1024px) { 
+    footer .container {
+        width: 1000px;
+    }
+}
+@media (min-width: 1300px) { 
+    footer .container {
+        width: 1220px;
+    }
+}
+@media (min-width: 1600px) { 
+    footer .container {
+        width: 1400px;
+    }
+}

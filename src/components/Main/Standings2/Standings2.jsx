@@ -156,8 +156,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {unlStandingsA}
-                            <Link to="#">Подробнее</Link>
+                            {unlStandingsA && unlStandingsA.length > 0 ? unlStandingsA : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/unl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -170,8 +170,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {unlStandingsB}
-                            <Link to="#">Подробнее</Link>
+                            {unlStandingsB && unlStandingsB.length > 0 ? unlStandingsB : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/unl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -184,8 +184,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {unlStandingsC}
-                            <Link to="#">Подробнее</Link>
+                            {unlStandingsC && unlStandingsC.length > 0 ? unlStandingsC : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/unl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -198,8 +198,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {unlStandingsD}
-                            <Link to="#">Подробнее</Link>
+                            {unlStandingsD && unlStandingsD.length > 0 ? unlStandingsD : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/unl/standings">Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

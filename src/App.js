@@ -6,6 +6,7 @@ import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
 import cookies from 'js-cookie';
 import axios from 'axios';
+import Helmet from 'react-helmet';
 
 import logo from './assets/ico/logo.webp';
 import $ from 'jquery';
@@ -31,6 +32,7 @@ import topScores from './assets/ico/topScores.webp';
 import login from './assets/ico/login.webp';
 import defaultProfile from './assets/ico/defaultProfile.webp';
 import broadcasts from './assets/ico/broadcasts.webp';
+import euQualLogo from './assets/ico/euroQualLogo.webp';
 
 import Preloader from './components/Preloader/Preloader';
 import HotBoard from './components/HotBoard/HotBoard';
@@ -41,6 +43,7 @@ import AdVerticalRight2 from './components/Main/AdVerticalRight2/AdVerticalRight
 import Poll from './components/Main/Poll/Poll';
 import SearchTeam from './components/Main/SearchTeam/SearchTeam';
 import Auth from './components/Auth/Auth';
+import Footer from './components/Footer/Footer';
 
 const Error = React.lazy(() => import('./components/Error/Error'));
 const Main = React.lazy(() => import('./components/Main/Main'));
@@ -194,9 +197,10 @@ function App() {
         {name: 'ЛЧ', img: uclLogo, id: 'ucl', title: 'Лига Чемпионов'},
         {name: 'ЛЕ', img: uelLogo, id: 'uel', title: 'Лига Европы'},
         {name: 'ЛК', img: ueclLogo, id: 'uecl', title: 'Лига Конференций'},
+        {name: 'Евр. квлф.', img: euQualLogo, id: 'eu-qualification', title: 'Европейская квалификация'},
         {name: 'ЛН', img: unlLogo, id: 'unl', title: 'Лига наций УЕФА'},
-        {name: 'ЧМ 2022', img: wcLogo, id: 'wc', title: 'Чемпионат Мира'},
-        {name: 'ЧЕ 2024', img: ecLogo, id: 'ec', title: 'Чемпионат Европы'}
+        {name: 'ЧМ 2026', img: wcLogo, id: 'wc', title: 'Чемпионат Мира 2026'},
+        {name: 'ЧЕ 2024', img: ecLogo, id: 'ec', title: 'Чемпионат Европы 2024'}
     ]
 
     // desc sub sub menu enter/out events
@@ -250,11 +254,23 @@ function App() {
             $('#dNavWrap .subMenuWrap .uelLeagueMenu').mouseleave(() => {
                 $('#dNavWrap .uelLeagueMenu .subSubMenuWrap').hide();
             });
+            $('#dNavWrap .subMenuWrap .eu-qualificationLeagueMenu').mouseenter(() => {
+                $('#dNavWrap .eu-qualificationLeagueMenu .subSubMenuWrap').show();
+            });
+            $('#dNavWrap .subMenuWrap .eu-qualificationLeagueMenu').mouseleave(() => {
+                $('#dNavWrap .eu-qualificationLeagueMenu .subSubMenuWrap').hide();
+            });
             $('#dNavWrap .subMenuWrap .ueclLeagueMenu').mouseenter(() => {
                 $('#dNavWrap .ueclLeagueMenu .subSubMenuWrap').show();
             });
             $('#dNavWrap .subMenuWrap .ueclLeagueMenu').mouseleave(() => {
                 $('#dNavWrap .ueclLeagueMenu .subSubMenuWrap').hide();
+            });
+            $('#dNavWrap .subMenuWrap .unlLeagueMenu').mouseenter(() => {
+                $('#dNavWrap .unlLeagueMenu .subSubMenuWrap').show();
+            });
+            $('#dNavWrap .subMenuWrap .unlLeagueMenu').mouseleave(() => {
+                $('#dNavWrap .unlLeagueMenu .subSubMenuWrap').hide();
             });
             $('#dNavWrap .subMenuWrap .wcLeagueMenu').mouseenter(() => {
                 $('#dNavWrap .wcLeagueMenu .subSubMenuWrap').show();
@@ -269,6 +285,21 @@ function App() {
                 $('#dNavWrap .ecLeagueMenu .subSubMenuWrap').hide();
             });
         }   
+
+        if($(window).width() < 1024) {
+            $(window).scroll(function() {
+                let footer = $('footer');
+                let quickNav = $('#quickNav');
+                let footerPosition = footer.offset().top + footer.outerHeight();
+                let windowHeight = $(window).scrollTop() + $(window).height();
+              
+                if (footerPosition < windowHeight) {
+                  quickNav.css('display', 'none');
+                } else {
+                  quickNav.css('position', 'fixed');
+                }
+              });
+        }
     }, [location]);
 
     const mMenuDownUp = (e) => { // mobile menu news arrow toggle
@@ -391,6 +422,11 @@ function App() {
     
     return (
         <div id='app'>
+            <Helmet>
+                <title>Результаты матчей, новости, онлайн трансляции и много всего футбольного - на Legendary Football</title>
+                <meta name="description" content="Свежие новости, захватывающие трансляции матчей, подробные результаты и все, что нужно знать о мире футбола. Будьте в курсе всех событий как ведущих лиг так и лиг постсоветского пространства, будьте в сердце футбольной страсти с Legendary Football." />
+                <meta name="keywords" content="новости футбола, трансляции матчей, результаты футбольных матчей, футбольные новости, футбол, английская премьер лига, российская премьер лига, лига чемпионов, лига европы, лига конференции, чемпионат мира, чемпионат европы, ла лига, онлайн трансляция, серия а, футбол снг, российский футбол" />
+            </Helmet>
             <div id="progressBar"></div>
             <header> {/* ---------------Header--------------- */}
                 <div className="container">
@@ -424,24 +460,24 @@ function App() {
                                             <li className={`${e.id}LeagueMenu`}>
                                                 <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
                                                 <ul className='subSubMenuWrap'>
-                                                    <Tippy placement='right' content={`Календарь ${e.name}`}>
-                                                        <li>
-                                                            <Link to=""><i className="fas fa-calendar-alt"></i> Календарь</Link>
-                                                        </li>
-                                                    </Tippy>
                                                     <Tippy placement='right' content={`Таблица ${e.name}`}>
                                                         <li>
                                                             <Link to={`/league/${e.id}/standings`}><i className="fas fa-list-ol"></i> Таблица</Link>
                                                         </li>
                                                     </Tippy>
+                                                    <Tippy placement='right' content={`Календарь ${e.name}`}>
+                                                        <li>
+                                                            <Link to={`/league/${e.id}/fixtures`}><i className="fas fa-calendar-alt"></i> Календарь</Link>
+                                                        </li>
+                                                    </Tippy>
                                                     <Tippy placement='right' content={`Результаты ${e.name}`}>
                                                         <li>
-                                                            <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
+                                                            <Link to={`/league/${e.id}/results`}><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                         </li>
                                                     </Tippy>
                                                     <Tippy placement='right' content={`Бомбардиры ${e.name}`}>
                                                         <li>
-                                                            <Link to=""><img src={topScores} alt="topScores" /> Бомбардиры</Link>
+                                                            <Link to={`/league/${e.id}/topscores`}><img src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                         </li>
                                                     </Tippy>
                                                 </ul>
@@ -497,17 +533,17 @@ function App() {
                                                 <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
                                             </div>
                                             <ul className={e.id+'LeagueWrap'}>
-                                                <li title={`Календарь ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-calendar-alt"></i> Календарь</Link>
-                                                </li>
                                                 <li title={`Таблица ${e.name}`}>
                                                     <Link to={`/league/${e.id}/standings`}><i className="fas fa-list-ol"></i> Таблица</Link>
                                                 </li>
+                                                <li title={`Календарь ${e.name}`}>
+                                                    <Link to={`/league/${e.id}/fixtures`}><i className="fas fa-calendar-alt"></i> Календарь</Link>
+                                                </li>
                                                 <li title={`Результаты ${e.name}`}>
-                                                    <Link to=""><i className="fas fa-clipboard-list"></i> Результаты</Link>
+                                                    <Link to={`/league/${e.id}/results`}><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                 </li>
                                                 <li title={`Бомбардиры ${e.name}`}>
-                                                    <Link to=""><img src={topScores} alt="topScores" /> Бомбардиры</Link>
+                                                    <Link to={`/league/${e.id}/topscores`}><img src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -602,6 +638,7 @@ function App() {
                 <button title='Отклонить' type='submit' className='close' onClick={close}>⨯</button>
             </div>
             <QuickNav />
+            <Footer />
         </div>
     );
 }

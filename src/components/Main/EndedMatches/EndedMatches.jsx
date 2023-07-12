@@ -24,128 +24,32 @@ const EndedMatches = () => {
                         <div className="col">
                                 <div className="rcWrap">
                                     <div className="rcht">
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer}>
-                                                {e.hCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer}>
-                                                {e.hCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer2}>
-                                                {e.hCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer2}>
-                                                {e.hCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer3}>
-                                                {e.hCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer3}>
-                                                {e.hCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer4}>
-                                                {e.hCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer4}>
-                                                {e.hCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer5}>
-                                                {e.hCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer5}>
-                                                {e.hCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer6}>
-                                                {e.hCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.hCardPlayer6}>
-                                                {e.hCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
+                                        {e.hCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
                                     </div>
                                     <div className="rcat">
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer}>
-                                                {e.aCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer}>
-                                                {e.aCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer2}>
-                                                {e.aCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer2}>
-                                                {e.aCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer3}>
-                                                {e.aCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer3}>
-                                                {e.aCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer4}>
-                                                {e.aCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer4}>
-                                                {e.aCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer5}>
-                                                {e.aCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer5}>
-                                                {e.aCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer6}>
-                                                {e.aCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
-                                        <LazyLoad offset={800}>
-                                            <Tippy content={e.aCardPlayer6}>
-                                                {e.aCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                            </Tippy>
-                                        </LazyLoad>
+                                        {e.aCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
                                     </div>
                                 </div>
                                 <span className="hName">{e.hName}</span>
@@ -176,7 +80,7 @@ const EndedMatches = () => {
             <section id='oddsQckNav'>
                 <h2 className="sectionName">Завершенные матчи</h2>
                 <div className="wrap">
-                    {endedMatches}
+                    {endedMatches && endedMatches.length > 0 ? endedMatches : <div className='noData'>Данных нет</div>}
                 </div>
             </section>
         </div>

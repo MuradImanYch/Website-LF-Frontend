@@ -3,6 +3,7 @@ import './MainNews3.css';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import LazyLoad from 'react-lazy-load';
 
 const MainNews3 = () => {
@@ -33,15 +34,15 @@ const MainNews3 = () => {
                         $(`.newsVr #${'mainNews3' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'mainNews3' + e.id} className="cart" id={'mainNews3' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 })); 

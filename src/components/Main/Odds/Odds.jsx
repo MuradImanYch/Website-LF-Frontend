@@ -58,7 +58,7 @@ const Forecasts = () => {
             <section>
                 <h2 className="sectionName">Котировки на матчи</h2>
                 <div className="wrap">
-                    {forecasts}
+                    {forecasts && forecasts.length > 0 ? forecasts : <div className='noData'>Данных нет</div>}
                 </div>
             </section>
         </div>

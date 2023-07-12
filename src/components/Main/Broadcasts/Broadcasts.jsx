@@ -39,7 +39,7 @@ const Broadcasts = () => {
         <div id='broadcastsQckNav' className='broadcasts'>
             <h2 className="sectionName">Трансляция матчей</h2>
             <div className="wrap">
-                {item}
+                {item && item.length > 0 ? item : <div className='noData'>Данных нет</div>}
             </div>
         </div>
     );

@@ -69,7 +69,7 @@ const FifaRanking = () => {
                             <Tippy content="Ассоциация"><span>Ассоциация</span></Tippy>
                         </div>
                     </div>
-                    {fifaCountryRank}
+                    {fifaCountryRank && fifaCountryRank.length > 0 ? fifaCountryRank : <div className='noData'>Данных нет</div>}
                     <div className="more">
                         <Link to={linkToggle}><span onClick={fifaCountryRankToggle}>Развернуть список</span></Link>
                     </div>

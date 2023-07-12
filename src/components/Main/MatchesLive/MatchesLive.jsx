@@ -29,7 +29,9 @@ const MatchesLive = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/matches/favLive')
+            cookies.get('auth') && axios.post('/matches/favLive', {
+                token: cookies.get('auth')
+            })
             .then(response => {
                 const uniqueIds = [];
                   
@@ -43,8 +45,8 @@ const MatchesLive = () => {
                     return false;
                 });
                 setMatchesSlider(unique && unique.map((e, i) => {
-                    return <div className="col">
-                                <div className="round"><span>17-й тур</span></div>
+                    return <div className="col" key={'id' + i}>
+                                <div className="round"><span>{e.lNameRoundDateTime[1]}</span></div>
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
@@ -52,9 +54,9 @@ const MatchesLive = () => {
                                             <img src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='hScore'>{'0'}</span>
-                                    <LazyLoad offset={800}><Tippy content='league'><img src={'https://s.scr365.net/img/flags/16/Viet%20Nam.png'} alt={'league'} /></Tippy></LazyLoad>
-                                    <span className='aScore'>{'4'}</span>
+                                    <span className='hScore'>{e.hScore}</span>
+                                    <LazyLoad offset={800}><Tippy content={e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}><img src={e.lLogo} alt={e.lNameRoundDateTime[0]} /></Tippy></LazyLoad>
+                                    <span className='aScore'>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.aName}>
@@ -63,7 +65,7 @@ const MatchesLive = () => {
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div className="dateTime"><span>{'13.11.22, 20:30'}</span></div>
+                                <div className="dateTime"><span>{e.time === 'Перерыв' ? 'Перерыв' : e.time + '\''}</span></div>
                             </div>
                 }));
             })
@@ -73,7 +75,11 @@ const MatchesLive = () => {
         }
         
         fetchData();
+        setInterval(() => {
+            fetchData();
+        }, 30000);
     }, []);
+
 
     return (
         <div className="matchesLive" id='fixturesFav'>
@@ -82,7 +88,7 @@ const MatchesLive = () => {
                 <LazyLoad offset={800}><Tippy content="Добавить команду"><img src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy></LazyLoad>
             </div>
             <div className="wrap">
-                {matchesSlider}
+                {matchesSlider && matchesSlider.length > 0 ? matchesSlider : <div className='noData'>Данных нет</div>}
             </div>
         </div>
     );

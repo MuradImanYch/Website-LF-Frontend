@@ -145,8 +145,8 @@ const Standings5 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uelStandings1}
-                            <Link to="#">Подробнее</Link>
+                            {uelStandings1 && uelStandings1.length > 0 ? uelStandings1 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uel/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -159,8 +159,8 @@ const Standings5 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uelStandings2}
-                            <Link to="#">Подробнее</Link>
+                            {uelStandings2 && uelStandings2.length > 0 ? uelStandings2 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uel/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -173,8 +173,8 @@ const Standings5 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uelStandings3}
-                            <Link to="#">Подробнее</Link>
+                            {uelStandings3 && uelStandings3.length > 0 ? uelStandings3 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uel/standings">Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

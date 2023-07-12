@@ -10,7 +10,18 @@
     background: linear-gradient(135deg, rgba(25,199,120,1) 35%, rgba(0,0,0,1) 100%);
     color: #fff !important;
 }
+.Vilet {
+    background: rgb(231, 0, 0);
+    color: #fff !important;
+}
+.stikovie {
+    background: rgb(255, 53, 53);
+    color: #fff !important;
+}
 
+#league > div.leagueStandings > div > div:nth-child(3) {
+    min-width: 130px;
+}
 #league > div.leagueStandings > div > div:nth-child(2) {
     min-width: 120px;
 }
@@ -30,7 +41,6 @@
 }
 
 .leagueStandings .wrap {
-    border: 2px solid #ffbf66;
     display: flex;
 }
 .leagueStandings .wrap .col span {
@@ -60,7 +70,11 @@
     align-items: center;
     justify-content: flex-start;
     width: 50px;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 5px;
+}
+#league > div.leagueStandings > div.wrap > div:nth-child(2) > div > div, #league > div.leagueStandings > div.wrap > div:nth-child(3) > div > div {
+    display: flex;
+    align-items: center;
 }
 .leagueStandings .wrap .logoName img {
     max-width: 20px;
@@ -95,20 +109,19 @@
         height: auto;
         padding: 7px;
     }
+    .leagueStandings {
+        width: 568px;
+        margin: auto;
+    }
 }   
 
 @media (min-width: 1024px) {
     #league > div.leagueStandings > div > div:nth-child(2) {
         min-width: auto;
     }
-    .leagueStandings {
-        width: 568px;
-        margin: auto;
-    }
     .leagueStandings .wrap { 
         display: flex;
         justify-content: center;
-        padding: 3px 0 0 0;
     }
     .leagueStandings .wrap .col .head {
         border: 0;

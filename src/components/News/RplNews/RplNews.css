@@ -12,6 +12,12 @@
     display: flex;
     align-items: flex-end;
 }
+.newsHr .views {
+    position: absolute;
+    font-family: Graduate;
+    left: 0;
+    top: 100% !important;
+}
 
 @media (min-width: 768px) {
     .logoPageName img {

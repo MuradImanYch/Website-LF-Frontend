@@ -2,15 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './LaligaNews.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 import laligaLogo from '../../../assets/ico/laligaLogo.webp';
 
 const LaligaNews = () => {
     const[news, setNews] = useState();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,15 +43,15 @@ const LaligaNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -60,6 +66,11 @@ const LaligaNews = () => {
 
     return (
         <div id='laligaNews' className='newsHr leagueNews'>
+            <Helmet>
+                <title>Новости Испанской Премьер Лиги (Ла лига) - на Legendary Football</title>
+                <meta name="description" content="Будьте в курсе всех новостей Испанской Премьер Лиги (Ла лига) и испанском футболе в целом." />
+                <meta name="keywords" content="ла лига, испанская премьер лига, испанский футбол, футбол, реал мадрид, барселона, атлетико мадрид, севилья, новости, новости ла лиги" />
+            </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
                     <Tippy content='Ла Лига'><img src={laligaLogo} alt="laligaLogo" /></Tippy>

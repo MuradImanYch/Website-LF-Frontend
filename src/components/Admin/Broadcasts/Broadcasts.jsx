@@ -18,6 +18,10 @@ const Broadcasts = () => {
     const[time, setTime] = useState('');
     const[broadcastLink, setBroadcastLink] = useState();
 
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
     const rejectEdit = (e) => {
         e.preventDefault();
 

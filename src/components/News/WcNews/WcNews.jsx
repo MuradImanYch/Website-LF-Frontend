@@ -2,15 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './WcNews.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 import wcLogo from '../../../assets/ico/wcLogo.webp';
 
 const WcNews = () => {
     const[news, setNews] = useState();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,15 +43,15 @@ const WcNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -60,11 +66,16 @@ const WcNews = () => {
 
     return (
         <div id='wcNews' className='newsHr leagueNews'>
+            <Helmet>
+                <title>Новости Чемпионата мира 2026 - на Legendary Football</title>
+                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Мира, который пройдет в трёх странах: США, Канада, Мексика. Также следите за всеми сборными мира." />
+                <meta name="keywords" content="фифа, чемпионат мира, футбол, сборная бразилии, сборная германии, сборная франции, сборная испании, новости, новости фифа, новости чм, чм, чм 2026, чемпионат мира 2026" />
+            </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='ЧМ 2022'><img src={wcLogo} alt="wcLogo" /></Tippy>
+                    <Tippy content='ЧМ 2026'><img src={wcLogo} alt="wcLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Новости - Чемпионат мира 2022</h1>
+                <h1 className="pageName">Новости - Чемпионат мира 2026</h1>
             </div>
             <section>
                 {news}

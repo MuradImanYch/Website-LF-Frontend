@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddBroadcasts.css';
 import axios from 'axios';
 import $ from 'jquery';
@@ -12,6 +12,10 @@ const AddBroadcasts = (e) => {
     const[aLogo, setALogo] = useState('');
     const[time, setTime] = useState('');
     const[broadcastLink, setBroadcastLink] = useState();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     const add = (e) => {
         e.preventDefault();

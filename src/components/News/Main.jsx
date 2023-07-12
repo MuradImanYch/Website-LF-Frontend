@@ -12,6 +12,7 @@ import Ligue1News from '../News/Ligue1News/Ligue1News';
 import UclNews from '../News/UclNews/UclNews';
 import UelNews from '../News/UelNews/UelNews';
 import UeclNews from '../News/UeclNews/UeclNews';
+import EuQualNews from '../News/EuQualNews/EuroQualNews';
 import UnlNews from '../News/UnlNews/UnlNews';
 import WcNews from '../News/WcNews/WcNews';
 import EcNews from '../News/EcNews/EcNews';
@@ -35,6 +36,7 @@ const Main = () => {
                 <Route path="ucl" element={<UclNews />} />
                 <Route path="uel" element={<UelNews />} />
                 <Route path="uecl" element={<UeclNews />} />
+                <Route path="eu-qualification" element={<EuQualNews />} />
                 <Route path="unl" element={<UnlNews />} />
                 <Route path="wc" element={<WcNews />} />
                 <Route path="ec" element={<EcNews />} />

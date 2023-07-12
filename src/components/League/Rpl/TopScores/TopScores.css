@@ -1,0 +1,47 @@
+.leagueTopScores [aria-describedby] {
+    transform: scale(1) !important;
+}
+.leagueTopScores .logoPageName {
+    display: flex;
+}
+.leagueTopScores .logoPageName img {
+    width: 60px;
+    height: 60px;
+    border: #ffbf66 2px solid;
+    padding: 5px;
+    margin: 0 15px 0 0;
+}
+.leagueTopScores .logoPageName h1 {
+    display: flex;
+    align-items: flex-end;
+}
+.leagueTopScores .logoPageName {
+    margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+    .leagueTopScores .logoPageName img {
+        width: 80px;
+        height: auto;
+        padding: 7px;
+    }
+    .leagueTopScores {
+        width: 568px !important;
+        margin: auto;
+    }
+    #league > div.leagueTopScores.table6xn > div.head > span:nth-child(3) {
+        margin: 0 0 0 180px;
+    }
+    #league > div.leagueTopScores.table6xn > div.head > span:nth-child(4) {
+        margin: 0 0 0 140px;
+    }
+} 
+
+@media (min-width: 1024px) {
+    #league > div.leagueTopScores.table6xn > div.head > span:nth-child(3) {
+        margin: 0 0 0 210px;
+    }
+    #league > div.leagueTopScores.table6xn > div.head > span:nth-child(4) {
+        margin: 0 0 0 160px !important;
+    }
+} 

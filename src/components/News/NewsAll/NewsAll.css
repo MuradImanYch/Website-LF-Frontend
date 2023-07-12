@@ -84,6 +84,16 @@
     background: rgb(204, 135, 45) !important;
     color: #fff !important;
 }
+.newsHr .likes {
+    top: 100% !important;
+    right: 0;
+    font-family: Graduate;
+    position: absolute;
+    padding: 4px 6px !important;
+    height: 18px !important;
+    display: flex;
+    align-items: center;
+}
 
 @media (min-width: 540px) { /* >= 540px */
     .newsHr .cart {

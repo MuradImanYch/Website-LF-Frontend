@@ -146,8 +146,8 @@ const Standings6 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {ueclStandings1}
-                            <Link to="#">Подробнее</Link>
+                            {ueclStandings1 && ueclStandings1.length > 0 ? ueclStandings1 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uecl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -160,8 +160,8 @@ const Standings6 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {ueclStandings2}
-                            <Link to="#">Подробнее</Link>
+                            {ueclStandings2 && ueclStandings2.length > 0 ? ueclStandings2 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uecl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -174,8 +174,8 @@ const Standings6 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {ueclStandings3}
-                            <Link to="#">Подробнее</Link>
+                            {ueclStandings3 && ueclStandings3.length > 0 ? ueclStandings3 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/uecl/standings">Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

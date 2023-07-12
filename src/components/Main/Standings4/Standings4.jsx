@@ -45,7 +45,7 @@ const Standings4 = () => {
             await axios.get(selected1)
             .then(response => {
                 setUclStandings1(response.data && response.data.map((e, i) => {
-                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings1' + i}>
+                    return <div className={'id' + e.standingsGroup?.split(' ')[1]} key={'uclStandings1' + i}>
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
@@ -73,7 +73,7 @@ const Standings4 = () => {
             await axios.get(selected2)
             .then(response => {
                 setUclStandings2(response.data && response.data.map((e, i) => {
-                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings2' + i}>
+                    return <div className={'id' + e.standingsGroup?.split(' ')[1]} key={'uclStandings2' + i}>
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
@@ -101,7 +101,7 @@ const Standings4 = () => {
             await axios.get(selected3)
             .then(response => {
                 setUclStandings3(response.data && response.data.map((e, i) => {
-                    return <div className={'id' + e.standingsGroup.split(' ')[1]} key={'uclStandings3' + i}>
+                    return <div className={'id' + e.standingsGroup?.split(' ')[1]} key={'uclStandings3' + i}>
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
@@ -146,8 +146,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uclStandings1}
-                            <Link to="#">Подробнее</Link>
+                            {uclStandings1 && uclStandings1.length > 0 ? uclStandings1 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/ucl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -160,8 +160,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uclStandings2}
-                            <Link to="#">Подробнее</Link>
+                            {uclStandings2 && uclStandings2.length > 0 ? uclStandings2 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/ucl/standings">Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
@@ -174,8 +174,8 @@ const Standings4 = () => {
                                 <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                                 <Tippy content="Очки"><span>О</span></Tippy>
                             </div>
-                            {uclStandings3}
-                            <Link to="#">Подробнее</Link>
+                            {uclStandings3 && uclStandings3.length > 0 ? uclStandings3 : <div className='noData'>Данных нет</div>}
+                            <Link to="/league/ucl/standings">Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

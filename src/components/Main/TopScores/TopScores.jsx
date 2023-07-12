@@ -193,8 +193,8 @@ const TopScoresSlider = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {rplTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {rplTopScores && rplTopScores.length > 0 ? rplTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/rpl/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -208,8 +208,8 @@ const TopScoresSlider = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {eplTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {eplTopScores && eplTopScores.length > 0 ? eplTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/epl/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -223,23 +223,8 @@ const TopScoresSlider = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {laligaTopScores}
-                        <Link to="#">Подробнее</Link>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
-                        </div>
-                        <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
-                            <Tippy content="Команда"><span>К</span></Tippy>
-                            <Tippy content="Голы"><span>Г</span></Tippy>
-                            <Tippy content="С пенальти"><span>П</span></Tippy>
-                            <Tippy content="Количество игр"><span>И</span></Tippy>
-                        </div>
-                        {bundesligaTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {laligaTopScores && laligaTopScores.length > 0 ? laligaTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/laliga/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -253,8 +238,23 @@ const TopScoresSlider = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {serieaTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {serieaTopScores && serieaTopScores.length > 0 ? serieaTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/seriea/topscores">Подробнее</Link>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="lLogo">
+                            <LazyLoad offset={800}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
+                        </div>
+                        <div className="head">
+                            <Tippy content="Позиция"><span>#</span></Tippy>
+                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy content="Команда"><span>К</span></Tippy>
+                            <Tippy content="Голы"><span>Г</span></Tippy>
+                            <Tippy content="С пенальти"><span>П</span></Tippy>
+                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                        </div>
+                        {bundesligaTopScores && bundesligaTopScores.length > 0 ? bundesligaTopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/bundesliga/topscores">Подробнее</Link>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
@@ -268,8 +268,8 @@ const TopScoresSlider = () => {
                             <Tippy content="С пенальти"><span>П</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {ligue1TopScores}
-                        <Link to="#">Подробнее</Link>
+                        {ligue1TopScores && ligue1TopScores.length > 0 ? ligue1TopScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/ligue1/topscores">Подробнее</Link>
                     </SwiperSlide>
                 </Swiper>
             </section>

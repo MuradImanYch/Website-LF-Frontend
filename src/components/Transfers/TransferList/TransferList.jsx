@@ -15,6 +15,10 @@ const TransferList = () => {
     const[endpoint, setEndpoint] = useState();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
             $('#transferListPage .other').hide();
 

@@ -1,10 +1,14 @@
 import React from 'react';
 import './Error.css';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 const Error = (props) => {
     return (
         <div id='error'>
+            <Helmet>
+                <title>404 | Страница не найдена</title>
+            </Helmet>
             <LazyLoad offset={800}>
                 <img src={ require(`../../assets/img/error404${Math.ceil(Math.random() * 4)}.jpg`) } alt="img" />
             </LazyLoad>

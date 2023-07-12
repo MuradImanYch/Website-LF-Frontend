@@ -3,11 +3,13 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import './Rpl.css';
 import axios from 'axios';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
-import rplLogo from '../../../assets/ico/rplLogo.webp';
+import logo from '../../../assets/ico/rplLogo.webp';
 import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 
@@ -16,15 +18,15 @@ import Blogs from '../../Main/Blogs/Blogs';
 
 const Rpl = () => {
     const[season, setSeason] = useState();
-    const[rplLastWinner, setRplLastWinner] = useState();
-    const[rplMostWinner, setRplMostWinner] = useState();
-    const[rplStandings, setRplStandings] = useState();
-    const[rplTopScores, setRplTopScores] = useState();
+    const[lastWinner, setLastWinner] = useState();
+    const[mostWinner, setMostWinner] = useState();
+    const[standings, setStandings] = useState();
+    const[topScores, setTopScores] = useState();
     const[news, setNews] = useState();
-    const[rplResults, setRplResults] = useState();
+    const[results, setResults] = useState();
     const[news2, setNews2] = useState();
     const[news3, setNews3] = useState();
-    const[rplFixtures, setRplFixtures] = useState();
+    const[fixtures, setFixtures] = useState();
     const[uefaCurrentSeason, setUefaCurrentSeason] = useState();
     const[uefaRankName, setUefaRankName] = useState();
     const[fifaRankName, setFifaRankName] = useState();
@@ -32,10 +34,14 @@ const Rpl = () => {
     const[transferList, setTransferList] = useState();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
             await axios.get('/leagueinfo/rpl')
             .then(response => {
-                setSeason(response.data[0].seasonInfo.split('-')[1].split(':')[0]);
+                setSeason(response.data[0].seasonInfo);
             })
             .catch(err => {
                 console.log(err);
@@ -43,7 +49,7 @@ const Rpl = () => {
     
             await axios.get('/leagueinfo/rpl')
             .then(response => {
-                setRplLastWinner(response.data[0].lastWinner);
+                setLastWinner(response.data[0].lastWinner);
             })
             .catch(err => {
                 console.log(err);
@@ -51,7 +57,7 @@ const Rpl = () => {
     
             await axios.get('/leagueinfo/rpl')
             .then(response => {
-                setRplMostWinner(response.data[0].mostWinner.split('(')[0]);
+                setMostWinner(response.data[0].mostWinner.split('(')[0]);
             })
             .catch(err => {
                 console.log(err);
@@ -59,10 +65,10 @@ const Rpl = () => {
     
             await axios.get('/standings/rpl')
             .then(response => {
-                setRplStandings(response.data && response.data.splice(0, 8).map((e, i) => {
-                    return <div key={'rplStandings' + i} className="col">
+                setStandings(response.data && response.data.splice(0, 8).map((e, i) => {
+                    return <div key={'standings' + i} className="col">
                                 <div className="left">
-                                    <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
+                                    <Tippy content={e.description && e.description.includes('Лиги') ? e.description + ' (?)*' : e.description}><span className={`place ${e.descrLat && e.descrLat.includes('Ligi') ? null : e.descrLat}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
@@ -84,8 +90,8 @@ const Rpl = () => {
     
             await axios.get('/standings/rplTS')
             .then(response => {
-                setRplTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
-                    return <div key={'rplTopScores' + i} className="col">
+                setTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
+                    return <div key={'topScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
                                     <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player}/></Tippy></LazyLoad>
@@ -129,11 +135,11 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -147,7 +153,7 @@ const Rpl = () => {
                 let filtered = response.data.filter(e => {
                     return e.round === response.data[0].round;
                 });
-                setRplResults(filtered && filtered.map((e, i) => {
+                setResults(filtered && filtered.map((e, i) => {
                     return <div className="col" key={'rpl' + i}>
                                 <div className="round" style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}}><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
@@ -199,11 +205,11 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -235,11 +241,11 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -253,7 +259,7 @@ const Rpl = () => {
                 let filtered = response.data.filter(e => {
                     return e.round === response.data[0].round;
                 });
-                setRplFixtures(filtered && filtered.map((e, i) => {
+                setFixtures(filtered && filtered.map((e, i) => {
                     return <div className="col" key={'rpl' + i}>
                                 <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="round"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
@@ -333,11 +339,11 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
-                                    <span>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='category'>{`#${e.category}`}</span>
+                                    <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
+                                    <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
                             </div>
                 }));
@@ -373,11 +379,16 @@ const Rpl = () => {
 
     return (
         <div id='leagueRpl'>
+            <Helmet>
+                <title>Российская Премьер Лига (РПЛ) - новости, результаты, расписание матчей, турнирная таблица и много чего - на Legendary Football</title>
+                <meta name="description" content="Изучайте последние новости, результаты и турнирную таблицу РПЛ на нашем сайте. У нас вы найдете все необходимые материалы о главном российском футбольном чемпионате и в целом о российском футболе." />
+                <meta name="keywords" content="рпл, новости, результаты, турнирная таблица, футбол, российский футбол, чемпионат россии, зенит, спартак москва, цска, краснодар, список трансферов" />
+            </Helmet>
             <div className="logoPageName">
                 <div className="info">
                     <div className='left'>
                         <div>
-                            <LazyLoad offset={800}><Tippy content='РПЛ'><img src={rplLogo} alt="rplLogo" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='РПЛ'><img src={logo} alt="logo" /></Tippy></LazyLoad>
                         </div>
                         <div>
                             <h1 className="pageName">Российская Премьер-Лига <span>Сезон: {season}</span></h1>
@@ -385,8 +396,8 @@ const Rpl = () => {
                         </div>
                     </div>
                     <div className="right">
-                        <span>Действующий победитель: <span>{rplLastWinner}</span></span>
-                        <span>Наиболее титулован: <span>{rplMostWinner}</span></span>
+                        <span>Действующий победитель: <span>{lastWinner}</span></span>
+                        <span>Наиболее титулован: <span>{mostWinner}</span></span>
                     </div>
                 </div>
             </div>
@@ -401,7 +412,7 @@ const Rpl = () => {
                             <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
                             <Tippy content="Очки"><span>О</span></Tippy>
                         </div>
-                        {rplStandings}
+                        {standings && standings.length > 0 ? standings : <div className='noData'>Данных нет</div>}
                         <Link to="/league/rpl/standings">Подробнее</Link>
                     </div>
                 </div>
@@ -419,8 +430,8 @@ const Rpl = () => {
                             <Tippy content="Ассисты"><span>А</span></Tippy>
                             <Tippy content="Количество игр"><span>И</span></Tippy>
                         </div>
-                        {rplTopScores}
-                        <Link to="#">Подробнее</Link>
+                        {topScores && topScores.length > 0 ? topScores : <div className='noData'>Данных нет</div>}
+                        <Link to="/league/rpl/topscores">Подробнее</Link>
                     </div>
                 </div>
             </div>
@@ -428,7 +439,7 @@ const Rpl = () => {
                 <div className="resultsWrap">
                     <h2 className="sectionName">Ближайшие матчи</h2>
                     <div className="wrap">
-                        {rplFixtures}
+                        {fixtures && fixtures.length > 0 ? fixtures : <div className='noData'>Данных нет</div>}
                     </div>
                 </div>
                 <div className="newsWrap newsVr leagueNews">
@@ -442,7 +453,7 @@ const Rpl = () => {
                 <div className="resultsWrap">
                     <h2 className="sectionName">Последние результаты</h2>
                     <div className="wrap">
-                        {rplResults}
+                        {results && results.length > 0 ? results : <div className='noData'>Данных нет</div>}
                     </div>
                 </div>
             </div>
@@ -495,7 +506,7 @@ const Rpl = () => {
                 <div id='transferList'>
                     <h2 className="sectionName">Список популярных трансферов</h2>
                     <div className="listWrap">
-                        {transferList}
+                        {transferList && transferList.length > 0 ? transferList : <div className='noData'>Данных нет</div>}
                     </div>
                     <Link to="/transfers/list">Подробнее</Link>
                 </div>

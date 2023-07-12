@@ -12,6 +12,10 @@ const UEFACountryRank = () => {
     const[uefaCountryRank, setUefaCountryRank] = useState();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
+
+    useEffect(() => {
         const fetchData = async () => {
             await axios.get('/standings/uefacountryrankseason')
             .then(response => {

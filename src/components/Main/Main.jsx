@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Main.css';
 
 import MainSlider from './MainSlider/MainSlider';
@@ -30,6 +30,9 @@ import MatchesLive from './MatchesLive/MatchesLive';
 import Broadcasts from './Broadcasts/Broadcasts';
 
 const Main = (props) => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // scroll top, when open page
+    }, []);
 
     return (
         <div id='main'>
