@@ -137,7 +137,7 @@ const EditDeleteNews = () => {
                                 <Link to={'/news/read/' + e.id}>
                                     <div className='hover'>
                                         <LazyLoad offset={800}>
-                                            <img src={e.img} alt="newsimg" />
+                                            <img loading="lazy" src={e.img} alt="newsimg" />
                                         </LazyLoad>
                                         <p>{e.title}</p>
                                     </div>
@@ -221,7 +221,7 @@ const EditDeleteNews = () => {
 
     return (
         <div id="editDeleteNews">
-            {news}
+            {news && news.length > 0 ? news : <div className='noData'>Данных нет</div>}
             <div className="editPopup">
                                 <p className="popupTitle">Редактировать</p>
 
@@ -263,7 +263,7 @@ const EditDeleteNews = () => {
                     }} type="text" name='editImg' id='editImg' value={img} />
                     </div>
                     <div>
-                        {img && <img src={img} alt="preview" />}
+                        {img && <img loading="lazy" src={img} alt="preview" />}
                         <button onClick={delImg}>⨯</button>
                     </div>
                 </div>

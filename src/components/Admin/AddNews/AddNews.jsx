@@ -6,6 +6,7 @@ import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import LazyLoad from 'react-lazy-load';
+import { v4 as uuidv4 } from 'uuid';
 
 const parse = require('html-react-parser');
 
@@ -17,6 +18,8 @@ const AddNews = () => {
     const[disabled, setDisabled] = useState(false);
     const[metaDescr, setMetaDescr] = useState('');
     const[metaKeywords, setMetaKeywords] = useState('');
+
+    const uniqueId = uuidv4();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -61,7 +64,7 @@ const AddNews = () => {
             img,
             content,
             metaDescr,
-            metaKeywords
+            metaKeywords,
         })
         .catch(err => {
             if(err) throw err;
@@ -162,7 +165,7 @@ const AddNews = () => {
                     }} type="text" name='newsImg' id='newsImg' />
                     </div>
                     <div>
-                        {img && <img src={img} alt="preview" />}
+                        {img && <img loading="lazy" src={img} alt="preview" />}
                         <button onClick={delImg}>⨯</button>
                     </div>
                 </div>
@@ -185,7 +188,7 @@ const AddNews = () => {
                         <p className="pageName">{title}</p>
                         <span className="date">ДД-ММ-ГГГГ | ЧЧ:ММ</span>
                         <LazyLoad offset={800}>
-                            <img id='mainImg' src={img} alt="newsImg" />
+                            <img loading="lazy" id='mainImg' src={img} alt="newsImg" />
                         </LazyLoad>
                         <div className="textWrap">{parse(content)}</div>
                     </div>

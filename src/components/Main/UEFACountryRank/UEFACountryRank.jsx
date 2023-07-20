@@ -39,7 +39,7 @@ const UEFACountryRank = () => {
                     return <div className="col wrap" key={'uefaCountryRank' + indx}>
                     <div>
                         <span className='place'>{item.place}<span>.</span></span>
-                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img src={'https://terrikon.com' + item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img loading="lazy" src={'https://terrikon.com' + item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
                         <span>{item.quantity}</span>
                         <span className='total'>{item.total}</span>
                     </div>
@@ -74,7 +74,7 @@ const UEFACountryRank = () => {
                 <div className="uefaTable">
                     <div className="logoWrap">
                         <LazyLoad offset={800}>
-                            <Tippy content='UEFA'><img src={uefaLogo} alt="uefaLogo" /></Tippy>
+                            <Tippy content='UEFA'><img loading="lazy" src={uefaLogo} alt="uefaLogo" /></Tippy>
                         </LazyLoad>
                     </div>
                     <div className="col">

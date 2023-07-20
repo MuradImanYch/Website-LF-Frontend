@@ -16,7 +16,7 @@ const TVSchedule = () => {
             .then(response => {
                 setMatchesSchedule(response.data && response.data.map((e, i) => {
                     return <div key={'matchesSchedule' + i} className="col">
-                                <div className="channel"><LazyLoad offset={800}><img src={e.channel} alt="channel" /></LazyLoad></div>
+                                <div className="channel"><LazyLoad offset={800}><img loading="lazy" src={e.channel} alt="channel" /></LazyLoad></div>
                                 <div className="timeProgramme">
                                     <span>{e.time}</span>
                                     <span>{e.programme}</span>

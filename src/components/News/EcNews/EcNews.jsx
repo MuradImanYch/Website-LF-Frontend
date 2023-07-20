@@ -46,7 +46,7 @@ const EcNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const EcNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='ЧЕ 2024'><img src={ecLogo} alt="ecLogo" /></Tippy>
+                    <Tippy content='ЧЕ 2024'><img loading="lazy" src={ecLogo} alt="ecLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Чемпионат Европы 2024</h1>
             </div>

@@ -16,12 +16,12 @@ const Broadcasts = () => {
                     return <Tippy content='Смотреть' key={'broadcast' + e.id}>
                                 <Link to={`/broadcast/watch/${e.id}`} id={'broadcast' + e.id}>
                                     <div className="col">
-                                        <div><LazyLoad offset={800}><Tippy content={e.hName}><img src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad><span>{e.hName.slice(0, 8)}</span></div>
+                                        <div><LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad><span>{e.hName.slice(0, 8)}</span></div>
                                         <div className='timeLive'>
-                                            <LazyLoad offset={800}><Tippy content={e.lName}><img src={e.lLogo} alt={e.lName} /></Tippy></LazyLoad>
+                                            <LazyLoad offset={800}><Tippy content={e.lName}><img loading="lazy" src={e.lLogo} alt={e.lName} /></Tippy></LazyLoad>
                                             {e.broadcastLink === null ? <span>{e.time}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live</span>}
                                         </div>
-                                        <div><span>{e.aName.slice(0, 8)}</span><LazyLoad offset={800}><Tippy content={e.aName}><img src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad></div>
+                                        <div><span>{e.aName.slice(0, 8)}</span><LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad></div>
                                     </div>
                                 </Link>
                             </Tippy>

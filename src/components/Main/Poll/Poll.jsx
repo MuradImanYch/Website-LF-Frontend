@@ -117,7 +117,7 @@ const Poll = () => {
                     <div>
                         <div><input value={'no'} type="radio" name='poll' id='likeNo' /><label htmlFor="likeNo">👎</label></div><div className="progress" style={{width: `${noWidth}%`}}><span>{no}</span></div>
                     </div>
-                    {pollLoading ? <img className='loadSpiner' src={loadSpiner} alt='загрузка' /> : <button onClick={sendPoll}><span className='total'>Голосовать</span></button>}
+                    {pollLoading ? <img loading="lazy" className='loadSpiner' src={loadSpiner} alt='загрузка' /> : <button onClick={sendPoll}><span className='total'>Голосовать</span></button>}
                 </form>
             </div>
         </div>

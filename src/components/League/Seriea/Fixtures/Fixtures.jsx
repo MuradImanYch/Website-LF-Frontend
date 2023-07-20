@@ -53,7 +53,7 @@ const Fixtures = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Серия А'><img src={logo} alt="logo" /></Tippy>
+                    <Tippy content='Серия А'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Календарь - Серия А</h1>
             </div>
@@ -68,7 +68,7 @@ const Fixtures = () => {
               <span className="hName">{fixture.hName}</span>
               <LazyLoad offset={800}>
                 <Tippy content={fixture.hName}>
-                  <img src={fixture.hLogo} alt={fixture.hName} />
+                  <img loading="lazy" src={fixture.hLogo} alt={fixture.hName} />
                 </Tippy>
               </LazyLoad>
               <span className="hScore" style={fixture.dateTime.includes(':') ? null : { background: '#f02d54', color: '#fff', borderColor: '#f02d54' }}>
@@ -81,7 +81,7 @@ const Fixtures = () => {
               <span></span>
               <LazyLoad offset={800}>
                 <Tippy content={fixture.aName}>
-                  <img src={fixture.aLogo} alt={fixture.aName} />
+                  <img loading="lazy" src={fixture.aLogo} alt={fixture.aName} />
                 </Tippy>
               </LazyLoad>
               <span className="aName">{fixture.aName}</span>

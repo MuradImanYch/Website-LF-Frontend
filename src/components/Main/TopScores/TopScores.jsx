@@ -34,11 +34,11 @@ const TopScoresSlider = () => {
                     return <div key={'rplTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={e.img} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -58,11 +58,11 @@ const TopScoresSlider = () => {
                     return <div key={'eplTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -82,11 +82,11 @@ const TopScoresSlider = () => {
                     return <div key={'laligaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -106,11 +106,11 @@ const TopScoresSlider = () => {
                     return <div key={'bundesligaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -130,11 +130,11 @@ const TopScoresSlider = () => {
                     return <div key={'serieaTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -154,11 +154,11 @@ const TopScoresSlider = () => {
                     return <div key={'ligue1TopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -183,7 +183,7 @@ const TopScoresSlider = () => {
                 <Swiper navigation spaceBetween={50} grabCursor={true} breakpoints={{280: {slidesPerView: 1}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3}}}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='РПЛ'><img src={rplLogo} alt="РПЛ" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='РПЛ'><img loading="lazy" src={rplLogo} alt="РПЛ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -198,7 +198,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='АПЛ'><img loading="lazy" src={eplLogo} alt="АПЛ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -213,7 +213,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='Ла лига'><img src={laligaLogo} alt="Ла лига" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='Ла лига'><img loading="lazy" src={laligaLogo} alt="Ла лига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -228,7 +228,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='Серия А'><img loading="lazy" src={serieaLogo} alt="Серия А" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -243,7 +243,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='Бундеслига'><img loading="lazy" src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -258,7 +258,7 @@ const TopScoresSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='Лига 1'><img loading="lazy" src={ligue1Logo} alt="Лига 1" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>

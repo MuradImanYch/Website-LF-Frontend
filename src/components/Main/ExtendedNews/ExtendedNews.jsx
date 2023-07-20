@@ -90,7 +90,7 @@ const ExtendedNews = () => {
 
     useEffect(() => {
         setLikeBtn(
-            isLiked && isLiked === -1 || isLiked === false ? <img title='Нравится' onClick={like} className='unliked' src={unliked} /> : <img title='Нравится' className='liked' src={liked} />
+            isLiked && isLiked === -1 || isLiked === false ? <img loading="lazy" title='Нравится' onClick={like} className='unliked' src={unliked} /> : <img loading="lazy" title='Нравится' className='liked' src={liked} />
         );
     }, [isLiked]);
 
@@ -109,7 +109,7 @@ const ExtendedNews = () => {
             console.log(err);
         });
 
-        setLikeBtn(<img className='liked' src={liked} />);
+        setLikeBtn(<img loading="lazy" className='liked' src={liked} />);
         $('.likes .likeNum').html(+$('.likes').val() + 1);
     }
     
@@ -145,7 +145,7 @@ const ExtendedNews = () => {
                                 </ul>
                                 <span className="date">{selected && convertDate(selected.date)}</span>
                             </div>
-                            <img id='mainImg' src={selected && selected.img} alt="newsImg" />
+                            <img loading="lazy" id='mainImg' src={selected && selected.img} alt="newsImg" />
                             <div className='textWrap'>
                                 <p><strong>{selected && selected.meta_description}</strong></p>
                                 {selected && parse(selected.content)}

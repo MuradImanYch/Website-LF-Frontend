@@ -46,7 +46,7 @@ const UelNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const UelNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='ЛЕ'><img src={uelLogo} alt="uelLogo" /></Tippy>
+                    <Tippy content='ЛЕ'><img loading="lazy" src={uelLogo} alt="uelLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Лига европы УЕФА</h1>
             </div>

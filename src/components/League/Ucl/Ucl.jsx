@@ -50,7 +50,7 @@ const Ucl = () => {
                                     <span>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
                                     <span className='points'>{e.total}</span>
@@ -70,7 +70,7 @@ const Ucl = () => {
                                     <span>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
                                     <span className='points'>{e.points}</span>
@@ -114,7 +114,7 @@ const Ucl = () => {
                         <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -140,11 +140,11 @@ const Ucl = () => {
                     return <div key={'topScrores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -182,7 +182,7 @@ const Ucl = () => {
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
-                                    <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
+                                    <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
@@ -206,7 +206,7 @@ const Ucl = () => {
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.hName}>
-                                            <img src={e.hLogo} alt={e.hName} />
+                                            <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='hScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
@@ -215,7 +215,7 @@ const Ucl = () => {
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.aName}>
-                                            <img src={e.aLogo} alt={e.aName} />
+                                            <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
@@ -252,7 +252,7 @@ const Ucl = () => {
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
-                                    <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
+                                    <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
@@ -288,7 +288,7 @@ const Ucl = () => {
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
-                                    <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
+                                    <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
@@ -312,7 +312,7 @@ const Ucl = () => {
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.hName}>
-                                            <img src={e.hLogo} alt={e.hName} />
+                                            <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='hScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
@@ -321,7 +321,7 @@ const Ucl = () => {
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy content={e.aName}>
-                                            <img src={e.aLogo} alt={e.aName} />
+                                            <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
@@ -358,7 +358,7 @@ const Ucl = () => {
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
-                                    <div className="img"><LazyLoad offset={800}><img alt={e.title} src={e.img} /></LazyLoad></div>
+                                    <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
@@ -375,13 +375,13 @@ const Ucl = () => {
                 setTransferList(response.data && response.data.splice(0, 10).map((e, i) => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
-                        <LazyLoad offset={800}><Tippy offset={[0, 10]} content={e.name}><img src={e.img} alt={e.name} /></Tippy></LazyLoad>
+                        <LazyLoad offset={800}><Tippy offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy></LazyLoad>
                         <span>{e.name}</span>
                     </div>
                     <div className="outIn">
-                        <Tippy content={e.clubOutName}><img className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                        <Tippy content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
                         <span>→</span>
-                        <Tippy content={e.clubInName}><img className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
+                        <Tippy content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                     </div>
                     <div className="price">{e.price}</div>
                 </div>
@@ -406,7 +406,7 @@ const Ucl = () => {
                 <div className="info">
                     <div className='left'>
                         <div>
-                            <LazyLoad offset={800}><Tippy content='ЛЧ'><img src={logo} alt="logo" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content='ЛЧ'><img loading="lazy" src={logo} alt="logo" /></Tippy></LazyLoad>
                         </div>
                         <div>
                             <h1 className="pageName">Лига Чемпионов <span>Сезон: {season}</span></h1>

@@ -10,7 +10,7 @@ const Error = (props) => {
                 <title>404 | Страница не найдена</title>
             </Helmet>
             <LazyLoad offset={800}>
-                <img src={ require(`../../assets/img/error404${Math.ceil(Math.random() * 4)}.jpg`) } alt="img" />
+                <img loading="lazy" src={ require(`../../assets/img/error404${Math.ceil(Math.random() * 4)}.jpg`) } alt="img" />
             </LazyLoad>
             <p>Ошибка 404 | Страница не найдена | <a href="/">Вернуться на главную</a></p>
         </div>

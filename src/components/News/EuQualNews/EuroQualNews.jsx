@@ -45,7 +45,7 @@ const EuroQualNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -72,7 +72,7 @@ const EuroQualNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Европейская квалификация'><img src={euQualLogo} alt="euQualLogo" /></Tippy>
+                    <Tippy content='Европейская квалификация'><img loading="lazy" src={euQualLogo} alt="euQualLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Европейская квалификация</h1>
             </div>

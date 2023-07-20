@@ -46,7 +46,7 @@ const RplNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const RplNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='РПЛ'><img src={rplLogo} alt="rplLogo" /></Tippy>
+                    <Tippy content='РПЛ'><img loading="lazy" src={rplLogo} alt="rplLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Российская Премьер-Лига</h1>
             </div>

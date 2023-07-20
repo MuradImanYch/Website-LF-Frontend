@@ -8,8 +8,8 @@ const Preloader = () => {
     return (
         <div id='preloader'>
             <div className='imgWrap'>
-                <img src={preloadImgL} alt="preloadImgL" />
-                <img src={preloadImgF} alt="preloadImgF" />
+                <img loading="lazy" src={preloadImgL} alt="preloadImgL" />
+                <img loading="lazy" src={preloadImgF} alt="preloadImgF" />
             </div>
             <Typewriter
                 onInit={(e) => {

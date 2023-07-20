@@ -29,14 +29,14 @@ const TransferList = () => {
                     return <div className="col" key={`transferListOther` + i}>
                                 <div>
                                     <div className='player'>
-                                        <LazyLoad offset={800}><Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy></LazyLoad>
-                                        <img src={e.flag} alt="flag" />
+                                        <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy></LazyLoad>
+                                        <img loading="lazy" src={e.flag} alt="flag" />
                                         <span>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
-                                        <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                         <span>→</span>
-                                        <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                        <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
@@ -66,14 +66,14 @@ const TransferList = () => {
                     return <div className="col" key={`transferListOther` + i}>
                                 <div>
                                     <div className='player'>
-                                        <Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy>
-                                        <img src={e.flag} alt="flag" />
+                                        <Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
+                                        <img loading="lazy" src={e.flag} alt="flag" />
                                         <span>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
-                                        <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                         <span>→</span>
-                                        <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                        <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
@@ -114,14 +114,14 @@ const TransferList = () => {
                 return <div className="col" key={`transferListOther` + i}>
                             <div>
                                 <div className='player'>
-                                    <Tippy content={e.name}><img src={e.img} alt="playerImg" /></Tippy>
-                                    <img src={e.flag} alt="flag" />
+                                    <Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
+                                    <img loading="lazy" src={e.flag} alt="flag" />
                                     <span>{e.position}</span>
                                 </div>
                                 <div className='fromTo'>
-                                    <Tippy content={e.clubOutName}><img src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                    <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                     <span>→</span>
-                                    <Tippy content={e.clubInName}><img src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                    <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                 </div>
                             </div>
                             <div>

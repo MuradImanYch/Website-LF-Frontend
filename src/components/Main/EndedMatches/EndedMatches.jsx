@@ -24,44 +24,44 @@ const EndedMatches = () => {
                         <div className="col">
                                 <div className="rcWrap">
                                     <div className="rcht">
-                                        {e.hCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.hCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards2 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards2 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards3 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards3 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards4 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards4 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards5 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards5 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards6 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.hCards6 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
                                     </div>
                                     <div className="rcat">
-                                        {e.aCards === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards2 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards2 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards3 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards3 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards4 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards4 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards5 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards5 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards6 === 'yellowred' ? <img src={yellowRedCard} width={'14px'} alt="КК" /> : false}
-                                        {e.aCards6 === 'redcard' ? <img src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards2 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards2 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards3 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards3 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards4 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards4 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards5 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards5 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards6 === 'yellowred' ? <img loading="lazy" src={yellowRedCard} width={'14px'} alt="КК" /> : false}
+                                        {e.aCards6 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
                                     </div>
                                 </div>
                                 <span className="hName">{e.hName}</span>
-                                <span className="hLogo">{e.hLogo === null ? <LazyLoad offset={800}><Tippy content={e.hName}><img width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.hName}><img src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
+                                <span className="hLogo">{e.hLogo === null ? <LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
                                 <span className="hScore">{e.hScore}</span>
                                 <span className='lLogo'>
                                     <LazyLoad offset={800}>
-                                        <img src={e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
+                                        <img loading="lazy" src={e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                     </LazyLoad>
                                 </span>
                                 <span className="aScore">{e.aScore}</span>
-                                <span className="aLogo">{e.aLogo === null ? <LazyLoad offset={800}><Tippy content={e.aName}><img width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.aName}><img src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
+                                <span className="aLogo">{e.aLogo === null ? <LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
                                 <span className="aName">{e.aName}</span>
                             </div>
                     </Tippy>

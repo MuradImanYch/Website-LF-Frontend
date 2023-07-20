@@ -49,7 +49,7 @@ const Standings5 = () => {
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -77,7 +77,7 @@ const Standings5 = () => {
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -105,7 +105,7 @@ const Standings5 = () => {
                             <div className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -136,7 +136,7 @@ const Standings5 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img loading="lazy" src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -150,7 +150,7 @@ const Standings5 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img loading="lazy" src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -164,7 +164,7 @@ const Standings5 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛЕ'><img loading="lazy" src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>

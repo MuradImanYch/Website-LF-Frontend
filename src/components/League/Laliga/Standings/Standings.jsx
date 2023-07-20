@@ -38,7 +38,7 @@ const Standings = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Ла Лига'><img src={logo} alt="logo" /></Tippy>
+                    <Tippy content='Ла Лига'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Турнирная таблица - Ла Лига</h1>
             </div>
@@ -53,7 +53,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standings && standings.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}

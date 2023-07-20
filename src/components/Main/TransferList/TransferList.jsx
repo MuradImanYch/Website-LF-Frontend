@@ -17,14 +17,14 @@ const TransferList = () => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
                         <LazyLoad offset={800}>
-                            <Tippy offset={[0, 10]} content={e.name}><img src={e.img} alt={e.name} /></Tippy>
+                            <Tippy offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
                         </LazyLoad>
                         <span>{e.name}</span>
                     </div>
                     <div className="outIn">
-                        <Tippy content={e.clubOutName}><img className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                        <Tippy content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
                         <span>→</span>
-                        <Tippy content={e.clubInName}><img className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
+                        <Tippy content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                     </div>
                     <div className="price">{e.price}</div>
                 </div>

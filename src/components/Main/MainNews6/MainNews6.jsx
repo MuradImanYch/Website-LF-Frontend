@@ -37,7 +37,7 @@ const MainNews6 = () => {
                     <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                         <div className="img">
                             <LazyLoad offset={800}>
-                                <img alt={e.title} src={e.img} />
+                                <img loading="lazy" alt={e.title} src={e.img} />
                             </LazyLoad></div>
                         <h3>{e.title}</h3>
                         <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>

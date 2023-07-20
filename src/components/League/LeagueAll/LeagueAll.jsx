@@ -18,7 +18,7 @@ const LeagueAll = (props) => {
             return <Link key={'league' + i} to={`/league/${e.id}`}>
                         <div>
                             <LazyLoad offset={800}>
-                                <Tippy content={e.title}><img src={e.img} alt={e.name} /></Tippy>
+                                <Tippy content={e.title}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
                             </LazyLoad>
                             <span>{e.name}</span>
                         </div>

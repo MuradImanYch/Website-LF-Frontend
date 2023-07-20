@@ -22,7 +22,7 @@ const FifaRanking = () => {
                     return <div className="col wrap" key={'fifaRanking' + indx}>
                     <div>
                         <span className='place'>{item.place}.<span></span></span>
-                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img src={item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img loading="lazy" src={item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
                         <span className={item.difference[0] === '=' ? 'diffEqual' : false || item.difference[0] === '↑' ? 'diffUp' : false || item.difference[0] === '↓' ? 'diffDown' : false}>{item.difference}</span>
                         <span className='total'>{item.points}</span>
                     </div>
@@ -54,7 +54,7 @@ const FifaRanking = () => {
                 <div className="uefaTable">
                     <div className="logoWrap">
                         <LazyLoad offset={800}>
-                            <Tippy content='FIFA'><img src={fifaLogo} alt="fifaLogo" /></Tippy>
+                            <Tippy content='FIFA'><img loading="lazy" src={fifaLogo} alt="fifaLogo" /></Tippy>
                         </LazyLoad>
                     </div>
                     <div className="col">

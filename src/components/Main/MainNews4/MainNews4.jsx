@@ -34,7 +34,7 @@ const MainNews4 = () => {
                     }
                     return  <div key={'mainNews4' + e.id} className="cart" id={'mainNews4' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
-                                    <div className="img"><img alt={e.title} src={e.img} /></div>
+                                    <div className="img"><img loading="lazy" alt={e.title} src={e.img} /></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>

@@ -14,7 +14,7 @@ const MatchesSchedule = () => {
                     return <div key={'matchesSchedule' + i} className="col">
                                 <div className="channel">
                                     <LazyLoad offset={800}>
-                                        <img src={e.channel} alt="channel" />
+                                        <img loading="lazy" src={e.channel} alt="channel" />
                                     </LazyLoad>
                                 </div>
                                 <div className="timeProgramme">

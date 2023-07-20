@@ -285,21 +285,6 @@ function App() {
                 $('#dNavWrap .ecLeagueMenu .subSubMenuWrap').hide();
             });
         }   
-
-        if($(window).width() < 1024) {
-            $(window).scroll(function() {
-                let footer = $('footer');
-                let quickNav = $('#quickNav');
-                let footerPosition = footer.offset().top + footer.outerHeight();
-                let windowHeight = $(window).scrollTop() + $(window).height();
-              
-                if (footerPosition < windowHeight) {
-                  quickNav.css('display', 'none');
-                } else {
-                  quickNav.css('position', 'fixed');
-                }
-              });
-        }
     }, [location]);
 
     const mMenuDownUp = (e) => { // mobile menu news arrow toggle
@@ -432,7 +417,7 @@ function App() {
                 <div className="container">
                     <Link to="">
                         <LazyLoad offset={800}>
-                            <img src={logo} alt="Logo" />
+                            <img loading="lazy" src={logo} alt="Logo" />
                         </LazyLoad>
                     </Link>
                     <nav> {/* --------------Nav----------------*/}
@@ -445,7 +430,7 @@ function App() {
                                         {leagues && leagues.map((e) => 
                                         <Tippy key={e.id + 'dNews'} placement='left' content={e.title}>
                                             <li className={e.id + 'NewsMenu'}>
-                                                <Link to={'/news/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link>
+                                                <Link to={'/news/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name}</Link>
                                             </li>
                                         </Tippy>
                                         )}
@@ -458,7 +443,7 @@ function App() {
                                         {leagues && leagues.map((e) => 
                                         <Tippy key={e.id + 'dLeague'} placement='left' content={e.title}>
                                             <li className={`${e.id}LeagueMenu`}>
-                                                <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
+                                                <Link to={'/league/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
                                                 <ul className='subSubMenuWrap'>
                                                     <Tippy placement='right' content={`Таблица ${e.name}`}>
                                                         <li>
@@ -477,7 +462,7 @@ function App() {
                                                     </Tippy>
                                                     <Tippy placement='right' content={`Бомбардиры ${e.name}`}>
                                                         <li>
-                                                            <Link to={`/league/${e.id}/topscores`}><img src={topScores} alt="topScores" /> Бомбардиры</Link>
+                                                            <Link to={`/league/${e.id}/topscores`}><img loading="lazy" src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                         </li>
                                                     </Tippy>
                                                 </ul>
@@ -490,21 +475,21 @@ function App() {
                                     <div>Трансферы <i className="fas fa-caret-down"></i>
                                     </div>
                                     <ul className='subMenuWrap transfersSubMenu'>
-                                        <li><Link to="/transfers/news"><img src={newspaperIco} alt="news" /> Новости</Link></li>
-                                        <li><Link to="/transfers/list"><img src={transferIco} alt="transfers" /> Переходы</Link></li>
+                                        <li><Link to="/transfers/news"><img loading="lazy" src={newspaperIco} alt="news" /> Новости</Link></li>
+                                        <li><Link to="/transfers/list"><img loading="lazy" src={transferIco} alt="transfers" /> Переходы</Link></li>
                                     </ul>
                                 </li>
                                 <li onMouseEnter={dOthersEnter} onMouseLeave={dOthersOut}>
                                     <div>Разное <i className="fas fa-caret-down"></i></div>
                                     <ul className='subMenuWrap oТВ расписаниеthersSubMenu'>
-                                        <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
-                                        <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to="/other/video"><img src={video} alt="video news" /> Видео</Link></li>
-                                        <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
-                                        <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
-                                        <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
-                                        <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
-                                        <li><Link to="/other/broadcasts"><img src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
+                                        <li><Link to="/other/news"><img loading="lazy" src={newspaperIco} alt="other news" /> Новости</Link></li>
+                                        <li><Link to="/other/blogs"><img loading="lazy" src={newspaperIco} alt="blog" /> Блоги</Link></li>
+                                        <li><Link to="/other/video"><img loading="lazy" src={video} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/uefa-country-ranking"><img loading="lazy" src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
+                                        <li><Link to="/other/fifa-ranking"><img loading="lazy" src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
+                                        <li><Link to="/other/tvschedule"><img loading="lazy" src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
+                                        <li><Link to="/other/odds"><img loading="lazy" src={forecasts} alt="forecasts" /> Котировки</Link></li>
+                                        <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -519,7 +504,7 @@ function App() {
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} className={e.id + 'NewsMenu'} key={e.id + 'mNews'}>
-                                            <Link to={'/news/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link>
+                                            <Link to={'/news/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name}</Link>
                                         </li>
                                         )}
                                     </ul>
@@ -530,7 +515,7 @@ function App() {
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} key={e.id + 'mLeague'}>
                                             <div>
-                                                <Link to={'/league/' + e.id}><img src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
+                                                <Link to={'/league/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name}</Link> <i className='far fa-caret-square-down' onClick={mMenuDownUp}></i>
                                             </div>
                                             <ul className={e.id+'LeagueWrap'}>
                                                 <li title={`Таблица ${e.name}`}>
@@ -543,7 +528,7 @@ function App() {
                                                     <Link to={`/league/${e.id}/results`}><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                 </li>
                                                 <li title={`Бомбардиры ${e.name}`}>
-                                                    <Link to={`/league/${e.id}/topscores`}><img src={topScores} alt="topScores" /> Бомбардиры</Link>
+                                                    <Link to={`/league/${e.id}/topscores`}><img loading="lazy" src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -553,21 +538,21 @@ function App() {
                                 <li>
                                     <div>Трансферы <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='transfersSubMenu'>
-                                        <li><Link to="/transfers/news"><img src={newspaperIco} alt="news" /> Новости</Link></li>
-                                        <li><Link to="/transfers/list"><img src={transferIco} alt="transfer" /> Переходы</Link></li>
+                                        <li><Link to="/transfers/news"><img loading="lazy" src={newspaperIco} alt="news" /> Новости</Link></li>
+                                        <li><Link to="/transfers/list"><img loading="lazy" src={transferIco} alt="transfer" /> Переходы</Link></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <div>Разное <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div>
                                     <ul className='othersSubMenu'>
-                                        <li><Link to="/other/news"><img src={newspaperIco} alt="other news" /> Новости</Link></li>
-                                        <li><Link to="/other/blogs"><img src={newspaperIco} alt="blog" /> Блоги</Link></li>
-                                        <li><Link to="/other/video"><img src={video} alt="video news" /> Видео</Link></li>
-                                        <li><Link to="/other/uefa-country-ranking"><img src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
-                                        <li><Link to="/other/fifa-ranking"><img src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
-                                        <li><Link to="/other/tvschedule"><img src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
-                                        <li><Link to="/other/odds"><img src={forecasts} alt="forecasts" /> Котировки</Link></li>
-                                        <li><Link to="/other/broadcasts"><img src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
+                                        <li><Link to="/other/news"><img loading="lazy" src={newspaperIco} alt="other news" /> Новости</Link></li>
+                                        <li><Link to="/other/blogs"><img loading="lazy" src={newspaperIco} alt="blog" /> Блоги</Link></li>
+                                        <li><Link to="/other/video"><img loading="lazy" src={video} alt="video news" /> Видео</Link></li>
+                                        <li><Link to="/other/uefa-country-ranking"><img loading="lazy" src={rank} alt="uefa ranking" /> Рейтинг УЕФА</Link></li>
+                                        <li><Link to="/other/fifa-ranking"><img loading="lazy" src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
+                                        <li><Link to="/other/tvschedule"><img loading="lazy" src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
+                                        <li><Link to="/other/odds"><img loading="lazy" src={forecasts} alt="forecasts" /> Котировки</Link></li>
+                                        <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
                                 <li className='actual'>
@@ -582,14 +567,14 @@ function App() {
                         <a title="Instagram" href="https://www.instagram.com/legendary___football/" target="__blank"><i onMouseEnter={igMouseEnter} onMouseLeave={igMouseLeave} className="fab fa-instagram"></i></a>
                     </div>
                     {auth || cookies.get('auth') ? <div onClick={profileToggleFunc} id="profile">
-                        <Tippy content='Профиль'><img src={defaultProfile} alt="profilePic" /></Tippy>
+                        <Tippy content='Профиль'><img loading="lazy" src={defaultProfile} alt="profilePic" /></Tippy>
                         <ul className="subMenu">
                             <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
                             <li><a href="#">Настройки</a></li>
                             {adminAuth ? <li style={{marginTop: '30px'}}><Link to='/admin' onClick={adminEnter} style={{color: 'yellow', fontWeight: 'bold'}}>Админ панель</Link></li> : null}
                             <button onClick={logOut}>Выйти</button>
                         </ul>
-                        </div> : <Tippy content='Вход/Регистрация'><img className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
+                        </div> : <Tippy content='Вход/Регистрация'><img loading="lazy" className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
                     <div id="menuToggleMobDiv" onClick={menuToggle}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>

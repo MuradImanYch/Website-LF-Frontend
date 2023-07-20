@@ -45,7 +45,7 @@ const Blogs = () => {
                                     </div>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img className='swiper-lazy' alt={e.title} src={e.img} />
+                                            <img loading="lazy" className='swiper-lazy' alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>

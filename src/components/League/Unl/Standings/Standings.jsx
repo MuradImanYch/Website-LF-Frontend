@@ -181,7 +181,7 @@ const Standings = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Лига наций'><img src={logo} alt="logo" /></Tippy>
+                    <Tippy content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Турнирная таблица - Лига наций</h1>
             </div>
@@ -197,7 +197,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA1 && standingsA1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -259,7 +259,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA2 && standingsA2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -321,7 +321,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA3 && standingsA3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -383,7 +383,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD4 && standingsD4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -445,7 +445,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB1 && standingsB1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -507,7 +507,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB2 && standingsB2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -569,7 +569,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB3 && standingsB3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -631,7 +631,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB4 && standingsB4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -693,7 +693,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC1 && standingsC1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -755,7 +755,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC2 && standingsC2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -817,7 +817,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC3 && standingsC3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -879,7 +879,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC4 && standingsC4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -941,7 +941,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD1 && standingsD1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
@@ -1003,7 +1003,7 @@ const Standings = () => {
                     <Tippy content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD2 && standingsD2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}

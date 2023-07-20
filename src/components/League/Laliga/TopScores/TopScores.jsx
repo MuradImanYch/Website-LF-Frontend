@@ -23,11 +23,11 @@ const TopScores = () => {
                     return <div key={'laliga' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -54,7 +54,7 @@ const TopScores = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Ла Лига'><img src={logo} alt="logo" /></Tippy>
+                    <Tippy content='Ла Лига'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Бомбардиры - Ла Лига</h1>
             </div>

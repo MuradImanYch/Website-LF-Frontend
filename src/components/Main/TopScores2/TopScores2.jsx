@@ -27,11 +27,11 @@ const TopScores = () => {
                     return <div key={'uclTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={e.img} alt={e.player} /></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -51,11 +51,11 @@ const TopScores = () => {
                     return <div key={'uelTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={e.img} alt={e.player} /></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -75,11 +75,11 @@ const TopScores = () => {
                     return <div key={'ueclTopScores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img src={e.img} alt={e.player} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={e.img} alt={e.player} /></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -104,7 +104,7 @@ const TopScores = () => {
                 <Swiper navigation grabCursor={true} slidesPerView={1}>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content={'ЛЧ'}><img src={uclLogo} alt="ЛЧ" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content={'ЛЧ'}><img loading="lazy" src={uclLogo} alt="ЛЧ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -119,7 +119,7 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content={'ЛЕ'}><img src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content={'ЛЕ'}><img loading="lazy" src={uelLogo} alt="ЛЕ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -134,7 +134,7 @@ const TopScores = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800}><Tippy content={'ЛК'}><img src={ueclLogo} alt="ЛК" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy content={'ЛК'}><img loading="lazy" src={ueclLogo} alt="ЛК" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>

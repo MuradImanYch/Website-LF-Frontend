@@ -16,9 +16,9 @@ const Forecasts = () => {
                     return  <div className="col" key={'forecasts' + i}>
                                 <div className="head"><span>{e.lCountryName}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>{e.lName}</span></div>
                                 <div className="center">
-                                    <div className="home"><LazyLoad offset={800}><Tippy content={e.hName}><img src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad><span>{e.hName}</span></div>
+                                    <div className="home"><LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad><span>{e.hName}</span></div>
                                     <div className="dateTime"><span>{e.date}</span><span>{e.time}</span></div>
-                                    <div className="away"><span>{e.aName}</span><LazyLoad offset={800}><Tippy content={e.aName}><img src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad></div>
+                                    <div className="away"><span>{e.aName}</span><LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad></div>
                                 </div>
                                 <div className="coefWrap">
                                     <div className="w1">

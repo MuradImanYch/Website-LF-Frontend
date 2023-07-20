@@ -27,18 +27,18 @@ function HotBoard() {
                                     <progress value={e.time.includes('Доп.') ? String(e.time).split('. ')[1].replace('\'', '') :  String(e.time).replace('\'', '') && e.time === 'Перерыв' ? '45' : String(e.time).replace('\'', '')} max={e.time.includes('Доп.') ? '120' : '90'}></progress>
                                     <span className="hName">{e.hName.slice(0, 10)}</span>
                                     <Tippy placement='bottom' content={e.hName}>
-                                        <img width={'13px'} src={e.hLogo === null ? undefTeam : e.hLogo} alt={e.hName} />
+                                        <img loading="lazy" width={'13px'} src={e.hLogo === null ? undefTeam : e.hLogo} alt={e.hName} />
                                     </Tippy>
                                     <span className='hScore'>{e.hScore}</span>
                                     <div className="lLogoTime">
                                         <Tippy placement='bottom' content={e.lName + ' | ' + String(e.round).replace('null', '') + ', ' + String(e.roundInfo).replace('null', '')}>
-                                            <img width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
+                                            <img loading="lazy" width={'14px'} src={e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                         </Tippy>
                                         <span className="time">{e.time === 'Перерыв' ? 'Пер.' : e.time && e.time.includes('Доп.') ? `${'ДВ' + e.time.split('.')[1]}` : e.time}</span>
                                     </div>
                                     <span className='aScore'>{e.aScore}</span>
                                     <Tippy placement='bottom' content={e.aName}>
-                                        <img width={'13px'} src={e.aLogo === null ? undefTeam : e.aLogo} alt={e.aName} />
+                                        <img loading="lazy" width={'13px'} src={e.aLogo === null ? undefTeam : e.aLogo} alt={e.aName} />
                                     </Tippy>
                                     <span className="aName">{e.aName.slice(0, 10)}</span>
                                 </div>

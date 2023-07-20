@@ -46,7 +46,7 @@ const LaligaNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const LaligaNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Ла Лига'><img src={laligaLogo} alt="laligaLogo" /></Tippy>
+                    <Tippy content='Ла Лига'><img loading="lazy" src={laligaLogo} alt="laligaLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Ла Лига</h1>
             </div>

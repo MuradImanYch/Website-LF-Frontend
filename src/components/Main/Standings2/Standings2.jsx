@@ -32,7 +32,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -60,7 +60,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -88,7 +88,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -116,7 +116,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -147,7 +147,7 @@ const Standings4 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -161,7 +161,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -175,7 +175,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>
@@ -189,7 +189,7 @@ const Standings4 = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
                                 <Tippy content="Позиция"><span>#</span></Tippy>

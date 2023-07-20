@@ -46,7 +46,7 @@ const WcNews = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const WcNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='ЧМ 2026'><img src={wcLogo} alt="wcLogo" /></Tippy>
+                    <Tippy content='ЧМ 2026'><img loading="lazy" src={wcLogo} alt="wcLogo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Чемпионат мира 2026</h1>
             </div>

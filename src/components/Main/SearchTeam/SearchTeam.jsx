@@ -64,7 +64,7 @@ const SearchTeam = () => {
         setInterval(() => {
             setMyTeams(JSON.parse(localStorage.getItem('teamArr')) && JSON.parse(localStorage.getItem('teamArr')).reverse().map((e, i) => {
                 return <div key={'myTeams' + e.name + i}>
-                            <img src={e.img} alt={e.name} />
+                            <img loading="lazy" src={e.img} alt={e.name} />
                             <span>{e.name}</span>
                             <button className='del' onClick={delFavorite}>⨯</button>
                         </div>
@@ -109,12 +109,12 @@ const SearchTeam = () => {
                 <p>Добавить команду в избранные</p>
                 <form>
                     <input type='text' placeholder='Введите название команды' />
-                    {!searchLoading ? <button onClick={searchTeam}><img src={search} alt="поиск" /></button> : <button onClick={(e) => {e.preventDefault()}}><img src={loadSpiner} alt="загрузка" /></button>}
+                    {!searchLoading ? <button onClick={searchTeam}><img loading="lazy" src={search} alt="поиск" /></button> : <button onClick={(e) => {e.preventDefault()}}><img loading="lazy" src={loadSpiner} alt="загрузка" /></button>}
                 </form>
                 <div className="finded">
                     {searchingTeams.map((e) => {
                         return <div key={'finded' + e.name}>
-                                    <img src={e.img[1]} alt={e.name} />
+                                    <img loading="lazy" src={e.img[1]} alt={e.name} />
                                     <span>{e.name}</span>
                                     <button className='add' onClick={addFav}>+</button>
                                 </div>

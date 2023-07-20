@@ -33,7 +33,7 @@ const StandingsSlider = () => {
                     return <div key={'rplStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description && e.description.includes('Лиги') ? e.description + ' (?)*' : e.description}><span className={`place ${e.descrLat && e.descrLat.includes('Ligi') ? null : e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -58,7 +58,7 @@ const StandingsSlider = () => {
                     return <div key={'eplStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -83,7 +83,7 @@ const StandingsSlider = () => {
                     return <div key={'laligaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -108,7 +108,7 @@ const StandingsSlider = () => {
                     return <div key={'bundesligaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -133,7 +133,7 @@ const StandingsSlider = () => {
                     return <div key={'serieaStandings' + i} className="col">
                                 <div className="left">
                                     <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -158,7 +158,7 @@ const StandingsSlider = () => {
                     return <div key={'ligue1Standings' + i} className="col">
                             <div className="left">
                                 <Tippy content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                                <LazyLoad offset={800}><Tippy content={e.name}><img src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                 <span className='name'>{e.name}</span>
                             </div>
                             <div className="nums">
@@ -190,7 +190,7 @@ const StandingsSlider = () => {
                         <div className="lLogo">
                             <LazyLoad offset={800} height={40}>
                                 <Tippy content='РПЛ'>
-                                    <img src={rplLogo} alt="РПЛ" />
+                                    <img loading="lazy" src={rplLogo} alt="РПЛ" />
                                 </Tippy>
                             </LazyLoad>
                         </div>
@@ -206,7 +206,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='АПЛ'><img src={eplLogo} alt="АПЛ" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800} height={40}><Tippy content='АПЛ'><img loading="lazy" src={eplLogo} alt="АПЛ" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -220,7 +220,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='Ла-лига'><img src={laligaLogo} alt="Ла-лига" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800} height={40}><Tippy content='Ла-лига'><img loading="lazy" src={laligaLogo} alt="Ла-лига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -234,7 +234,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='Серия А'><img src={serieaLogo} alt="Серия А" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800} height={40}><Tippy content='Серия А'><img loading="lazy" src={serieaLogo} alt="Серия А" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -248,7 +248,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='Бундеслига'><img src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800} height={40}><Tippy content='Бундеслига'><img loading="lazy" src={bundesligaLogo} alt="Бундеслига" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>
@@ -262,7 +262,7 @@ const StandingsSlider = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="lLogo">
-                            <LazyLoad offset={800} height={40}><Tippy content='Лига 1'><img src={ligue1Logo} alt="Лига 1" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800} height={40}><Tippy content='Лига 1'><img loading="lazy" src={ligue1Logo} alt="Лига 1" /></Tippy></LazyLoad>
                         </div>
                         <div className="head">
                             <Tippy content="Позиция"><span>#</span></Tippy>

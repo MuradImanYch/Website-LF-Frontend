@@ -46,7 +46,7 @@ const Ligue1News = () => {
                                 <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
-                                            <img alt={e.title} src={e.img} />
+                                            <img loading="lazy" alt={e.title} src={e.img} />
                                         </LazyLoad>
                                     </div>
                                     <h3>{e.title}</h3>
@@ -73,7 +73,7 @@ const Ligue1News = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Лига 1'><img src={ligue1Logo} alt="ligue1Logo" /></Tippy>
+                    <Tippy content='Лига 1'><img loading="lazy" src={ligue1Logo} alt="ligue1Logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Новости - Лига 1</h1>
             </div>

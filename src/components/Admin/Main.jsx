@@ -70,11 +70,11 @@ const Main = () => {
             </div>
             <div id="adminNav">
                 <ul>
-                    <li><Link to="/admin"><img src={homeIco} alt="ico" /> Главная панель</Link></li>
-                    <li><Link to="/admin/news"><img src={newsIco} alt="ico" /> Все новости</Link></li>
-                    <li><Link to="/admin/addnews"><img src={addIco} alt="ico" /> Добавить новость</Link></li>
-                    <li><Link to="/admin/broadcasts"><img src={broadcasts} alt="ico" /> Все трансляции</Link></li>
-                    <li><Link to="/admin/addbroadcasts"><img src={addBroadcasts} alt="ico" /> Добавить трансляцию</Link></li>
+                    <li><Link to="/admin"><img loading="lazy" src={homeIco} alt="ico" /> Главная панель</Link></li>
+                    <li><Link to="/admin/news"><img loading="lazy" src={newsIco} alt="ico" /> Все новости</Link></li>
+                    <li><Link to="/admin/addnews"><img loading="lazy" src={addIco} alt="ico" /> Добавить новость</Link></li>
+                    <li><Link to="/admin/broadcasts"><img loading="lazy" src={broadcasts} alt="ico" /> Все трансляции</Link></li>
+                    <li><Link to="/admin/addbroadcasts"><img loading="lazy" src={addBroadcasts} alt="ico" /> Добавить трансляцию</Link></li>
                 </ul>
             </div>
             <Routes>

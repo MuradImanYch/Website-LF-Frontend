@@ -23,6 +23,21 @@ const QuickNav = () => {
         qckNavToggle ? $('#quickNav div:first-child').css({transform: 'rotate(180deg)'}).css({color: 'rgb(204, 135, 45)'}) : $('#quickNav div:first-child').css({transform: 'rotate(0deg)'}).css({color: '#fff'});
     }
 
+    if($(window).width() < 1024) {
+        $(window).scroll(function() {
+            let footer = $('footer');
+            let quickNav = $('#quickNav');
+            let footerPosition = footer.offset().top + footer.outerHeight();
+            let windowHeight = $(window).scrollTop() + $(window).height() + 200;
+          
+            if (footerPosition < windowHeight) {
+                quickNav.css('display', 'none');
+            } else {
+                quickNav.css('display', 'block');
+            }
+          });
+    }
+
     useEffect(() => {
         if(location.pathname === '/') {
             setQuickNav(

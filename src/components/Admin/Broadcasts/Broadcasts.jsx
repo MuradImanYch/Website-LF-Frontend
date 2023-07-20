@@ -135,12 +135,12 @@ const Broadcasts = () => {
                     return <div key={'broadcast' + e.id} id={'broadcast' + e.id}>
                     <Link to={`/broadcast/watch/${e.id}`} id={'broadcast' + e.id}>
                         <div className="col">
-                            <div><LazyLoad offset={800}><img src={e.hLogo} alt={e.hName} /></LazyLoad><span>{e.hName}</span></div>
+                            <div><LazyLoad offset={800}><img loading="lazy" src={e.hLogo} alt={e.hName} /></LazyLoad><span>{e.hName}</span></div>
                             <div className='timeLive'>
-                                <LazyLoad offset={800}><img src={e.lLogo} alt={e.lName} /></LazyLoad>
+                                <LazyLoad offset={800}><img loading="lazy" src={e.lLogo} alt={e.lName} /></LazyLoad>
                                 {e.broadcastLink === null ? <span>{e.time}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live</span>}
                             </div>
-                            <div><span>{e.aName}</span><LazyLoad offset={800}><img src={e.aLogo} alt={e.aName} /></LazyLoad></div>
+                            <div><span>{e.aName}</span><LazyLoad offset={800}><img loading="lazy" src={e.aLogo} alt={e.aName} /></LazyLoad></div>
                         </div>
                     </Link>
                     <div className='btnWrap'>
@@ -194,7 +194,7 @@ const Broadcasts = () => {
     return (
         <div className='adminBroadcasts'>
             <div className="wrap">
-                {item}
+                {item && item.length > 0 ? item : <div className='noData'>Данных нет</div>}
                 <div className="editPopup">
                     <div className="container">
                         <form className="wrap">
