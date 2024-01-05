@@ -5,6 +5,7 @@ import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/unlLogo.webp';
 import Helmet from 'react-helmet';
+import $ from 'jquery';
 
 const Standings = () => {
     const[standingsA1, setStandingsA1] = useState();
@@ -181,66 +182,66 @@ const Standings = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Турнирная таблица - Лига наций</h1>
             </div>
             {standingsA1 && standingsA1.length > 0 ? <div className="wrap">
                 <div className="group">Группа А</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsA1 && standingsA1.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA1 && standingsA1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsA1 && standingsA1.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -250,59 +251,59 @@ const Standings = () => {
             {standingsA2 && standingsA2.length > 0 ? <div className="wrap">
                 <div className="group">Группа B</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsA2 && standingsA2.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA2 && standingsA2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsA2 && standingsA2.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -312,59 +313,59 @@ const Standings = () => {
             {standingsA3 && standingsA3.length > 0 ? <div className="wrap">
                 <div className="group">Группа C</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsA3 && standingsA3.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsA3 && standingsA3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsA3 && standingsA3.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -374,59 +375,59 @@ const Standings = () => {
             {standingsD4 && standingsD4.length > 0 ? <div className="wrap">
                 <div className="group">Группа D</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsD4 && standingsD4.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD4 && standingsD4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsD4 && standingsD4.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -436,59 +437,59 @@ const Standings = () => {
             {standingsB1 && standingsB1.length > 0 ? <div className="wrap">
                 <div className="group">Группа E</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsB1 && standingsB1.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB1 && standingsB1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsB1 && standingsB1.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -498,59 +499,59 @@ const Standings = () => {
             {standingsB2 && standingsB2.length > 0 ? <div className="wrap">
                 <div className="group">Группа F</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsB2 && standingsB2.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB2 && standingsB2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsB2 && standingsB2.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -560,59 +561,59 @@ const Standings = () => {
             {standingsB3 && standingsB3.length > 0 ? <div className="wrap">
                 <div className="group">Группа G</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsB3 && standingsB3.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB3 && standingsB3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsB3 && standingsB3.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -622,59 +623,59 @@ const Standings = () => {
             {standingsB4 && standingsB4.length > 0 ? <div className="wrap">
                 <div className="group">Группа H</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsB4 && standingsB4.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsB4 && standingsB4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsB4 && standingsB4.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -684,59 +685,59 @@ const Standings = () => {
             {standingsC1 && standingsC1.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsC1 && standingsC1.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC1 && standingsC1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsC1 && standingsC1.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -746,59 +747,59 @@ const Standings = () => {
             {standingsC2 && standingsC2.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsC2 && standingsC2.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC2 && standingsC2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsC2 && standingsC2.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -808,59 +809,59 @@ const Standings = () => {
             {standingsC3 && standingsC3.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsC3 && standingsC3.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC3 && standingsC3.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsC3 && standingsC3.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -870,59 +871,59 @@ const Standings = () => {
             {standingsC4 && standingsC4.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsC4 && standingsC4.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsC4 && standingsC4.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsC4 && standingsC4.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -932,59 +933,59 @@ const Standings = () => {
             {standingsD1 && standingsD1.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsD1 && standingsD1.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD1 && standingsD1.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsD1 && standingsD1.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}
@@ -994,59 +995,59 @@ const Standings = () => {
             {standingsD2 && standingsD2.length > 0 ? <div className="wrap">
                 <div className="group">Группа J</div>
                 <div className='col'>
-                    <Tippy content="Позиция"><span className="head">#</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsD2 && standingsD2.map((e, i) => {
-                        return <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
-                    <Tippy content="Название"><span className="head">Команда</span></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
                     {standingsD2 && standingsD2.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span>{e.name}</span>
                                 </div>
                     })}
                 </div>
                 <div className="scroll">
                     <div className='col'>
-                        <Tippy content="Очки"><span className="head">О</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Количество игр"><span className="head">И</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Выигрыши"><span className="head">В</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Ничьи"><span className="head">Н</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
-                        <Tippy content="Проигрыши"><span className="head">П</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsD2 && standingsD2.map((e, i) => {
                             return <span key={'lose' + i}>{e.lose}</span>
                         })}

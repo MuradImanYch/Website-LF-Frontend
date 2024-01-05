@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -29,14 +30,14 @@ const TransferList = () => {
                     return <div className="col" key={`transferListOther` + i}>
                                 <div>
                                     <div className='player'>
-                                        <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy></LazyLoad>
+                                        <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy></LazyLoad>
                                         <img loading="lazy" src={e.flag} alt="flag" />
                                         <span>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
-                                        <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                         <span>→</span>
-                                        <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
@@ -66,14 +67,14 @@ const TransferList = () => {
                     return <div className="col" key={`transferListOther` + i}>
                                 <div>
                                     <div className='player'>
-                                        <Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
                                         <img loading="lazy" src={e.flag} alt="flag" />
                                         <span>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
-                                        <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                         <span>→</span>
-                                        <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
@@ -114,14 +115,14 @@ const TransferList = () => {
                 return <div className="col" key={`transferListOther` + i}>
                             <div>
                                 <div className='player'>
-                                    <Tippy content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
                                     <img loading="lazy" src={e.flag} alt="flag" />
                                     <span>{e.position}</span>
                                 </div>
                                 <div className='fromTo'>
-                                    <Tippy content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
                                     <span>→</span>
-                                    <Tippy content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                 </div>
                             </div>
                             <div>
@@ -142,6 +143,11 @@ const TransferList = () => {
 
     return (
         <div id="transferListPage">
+            <Helmet>
+                <title>Список всех трансферов - на Legendary Football</title>
+                <meta name="description" content="Список всех прошедших футбольных трансферах в одном месте! Будьте в курсе последних переходов звезд мирового футбола с нашим полным списком трансферных событий. Летние и зимние переходы - всё здесь." />
+                <meta name="keywords" content="список всех трансферов, футбольные трансферы, переходы футболистов, трансферное окно, летние трансферы, зимние трансферы, актуальные трансферы, трансферное окно в европе, трансферы рпл, трансферы апл, трансферы серии а, трансферы бундеслиги, трансферы лиги 1" />
+            </Helmet>
             <h1 className="pageName">Список трансферов 
             <select onChange={selectleague} name="leagueSelection">
                 <option value="/transfers/all">Все лиги</option>
@@ -155,12 +161,12 @@ const TransferList = () => {
             <div className="listWrap">
                 <div className="head">
                     <div>
-                        <Tippy content="Игрок"><span>Игрок</span></Tippy>
-                        <Tippy content="Переходы"><span>Откуда → Куда</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Игрок"><span>Игрок</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Переходы"><span>Откуда → Куда</span></Tippy>
                     </div>
                     <div>
-                        <Tippy content="Дата"><span>Дата</span></Tippy>
-                        <Tippy content="Цена"><span>Цена</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Дата"><span>Дата</span></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Цена"><span>Цена</span></Tippy>
                     </div>
                 </div>
                 <div className="default">

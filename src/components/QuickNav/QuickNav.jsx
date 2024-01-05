@@ -42,9 +42,9 @@ const QuickNav = () => {
         if(location.pathname === '/') {
             setQuickNav(
                 <ul>
-                    <li><hr /><a href="#onlineFav" onClick={qckNav}>Онлайн матчи избранных команд</a><hr /></li>
-                    <li><hr /><a href="#fixturesFav" onClick={qckNav}>Расписание матчей избранных команд</a><hr /></li>
-                    <li><hr /><a href="#endedQckNav" onClick={qckNav}>Завершенные матчи</a><hr /></li>
+                    {/* <li><hr /><a href="#onlineFav" onClick={qckNav}>Онлайн матчи избранных команд</a><hr /></li> */}
+                    <li><hr /><a href="#expectedMatchesQckNav" onClick={qckNav}>Ожидаемые матчи</a><hr /></li>
+                    <li><hr /><a href="#endedQckNav" onClick={qckNav}>Завершённые матчи</a><hr /></li>
                     <li><hr /><a href="#oddsQckNav" onClick={qckNav}>Котировки на матчи</a><hr /></li>
                     <li><hr /><a href="#transferListQckNav" onClick={qckNav}>Список популярных трансферов</a><hr /></li>
                     <li><hr /><a href="#broadcastsQckNav" onClick={qckNav}>Трансляция матчей</a><hr /></li>

@@ -6,8 +6,8 @@ import $ from 'jquery';
 import Helmet from 'react-helmet';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
-import unliked from '../../../assets/ico/unliked.png';
-import liked from '../../../assets/ico/liked.png';
+import unliked from '../../../assets/ico/unliked.webp';
+import liked from '../../../assets/ico/liked.webp';
 
 const parse = require('html-react-parser');
 
@@ -94,7 +94,7 @@ const ExtendedNews = () => {
         );
     }, [isLiked]);
 
-    const like = async (e) => {
+    const like = async () => {
         await axios.get('https://api.ipify.org/')
         .then(response => {
             axios.post('/like/post', {
@@ -110,13 +110,13 @@ const ExtendedNews = () => {
         });
 
         setLikeBtn(<img loading="lazy" className='liked' src={liked} />);
-        $('.likes .likeNum').html(+$('.likes').val() + 1);
+        $('.likes .likeNum').html(!selected.likes?.split(',').length ? +$('.likes').val() + 1 : selected.likes?.split(',').length + 1);
     }
     
     function convertDate(str) { // convert date & time
         let date = new Date(str);
         let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-        let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+        let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
         let year = date.getFullYear();
         let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
         let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -150,9 +150,10 @@ const ExtendedNews = () => {
                                 <p><strong>{selected && selected.meta_description}</strong></p>
                                 {selected && parse(selected.content)}
                             </div>
-                            <div className="likes"><span title='Просмотры' className='views'>👁 {isViewed && isViewed}</span> {likeBtn} <span title='Нравится' className='likeNum'>{selected && selected.likes?.split(',').length > 0 ? selected.likes?.split(',').length : '0'}</span></div>
+                            <div className="likes"><span title='Просмотры' className='views'>👁 {isViewed && isViewed}</span> {likeBtn} <span title='Нравится' className='likeNum'>{selected && selected.likes?.split(',').length > 0 ? selected.likes?.split(',').length : 0}</span></div>
                         </article>
                     </div>
+                    <i className='author'>{selected && selected.author}</i>
                 </div>
             </section>
         </div>

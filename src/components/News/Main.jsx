@@ -18,12 +18,12 @@ import WcNews from '../News/WcNews/WcNews';
 import EcNews from '../News/EcNews/EcNews';
 import Error from '../Error/Error';
 
-import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
+// import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
 
 const Main = () => {
     return (
         <div id='news'>
-            <MatchesSlider />
+            {/* <MatchesSlider /> */}
             
             <Routes>
                 <Route path="/" element={<NewsAll />} />

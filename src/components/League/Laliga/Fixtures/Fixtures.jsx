@@ -5,10 +5,31 @@ import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/laligaLogo.webp';
 import Helmet from 'react-helmet';
+import $ from 'jquery';
 
 const Fixtures = () => {
     const [fixtures, setFixtures] = useState([]);
     const [tourSeparators, setTourSeparators] = useState([]);
+
+  function convertGermanToclientTime(germanTime) {
+    // Разбиваем строку времени на часы и минуты
+    const [hours, minutes] = germanTime.split(':').map(Number);
+  
+    // Создаем объект Date с текущей датой и временем в немецкой временной зоне
+    const germanDate = new Date();
+    germanDate.setHours(hours);
+    germanDate.setMinutes(minutes);
+
+    const clientUTCOffset = new Date();
+  
+    // Добавляем разницу между немецким и иранским временем (2.5 часа)
+    const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 2) * 60 * 60 * 1000);
+  
+    // Получаем иранское время в формате "чч:мм"
+    const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
+  
+    return clientTime;
+  }
 
     useEffect(() => {
       window.scrollTo(0, 0); // scroll top, when open page
@@ -53,7 +74,7 @@ const Fixtures = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Ла Лига'><img loading="lazy" src={logo} alt="logo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Ла Лига'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Календарь - Ла Лига</h1>
             </div>
@@ -67,7 +88,7 @@ const Fixtures = () => {
             <div className="center">
               <span className="hName">{fixture.hName}</span>
               <LazyLoad offset={800}>
-                <Tippy content={fixture.hName}>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={fixture.hName}>
                   <img loading="lazy" src={fixture.hLogo} alt={fixture.hName} />
                 </Tippy>
               </LazyLoad>
@@ -80,7 +101,7 @@ const Fixtures = () => {
               </span>
               <span></span>
               <LazyLoad offset={800}>
-                <Tippy content={fixture.aName}>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={fixture.aName}>
                   <img loading="lazy" src={fixture.aLogo} alt={fixture.aName} />
                 </Tippy>
               </LazyLoad>
@@ -88,7 +109,7 @@ const Fixtures = () => {
             </div>
             <div style={fixture.dateTime.includes(':') ? null : { background: '#f02d54' }} className="dateTime">
               <span style={fixture.dateTime.includes(':') ? null : { color: '#fff' }}>
-                {fixture.dateTime.includes(':') ? (fixture.dateTime.includes(',') ? fixture.dateTime : 'Сегодня, ' + fixture.dateTime) : fixture.dateTime}
+                {fixture.dateTime.includes(':') ? (fixture.dateTime.includes(',') ? fixture.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(fixture.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(fixture.dateTime)) : fixture.dateTime}
               </span>
             </div>
           </div>

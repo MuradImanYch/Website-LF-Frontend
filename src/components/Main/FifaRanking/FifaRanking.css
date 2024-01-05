@@ -46,6 +46,8 @@
 @media (min-width: 1024px) {
     #fifaRank .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1), #fifaRankOther .uefaTable .col:not(.uefaTable .col:nth-child(2)) div:nth-child(1) span:nth-child(1) {
         margin: 0 0 0 15px;
+        display: flex;
+        align-items: center;
     }   
     #fifaRank .flagName, #fifaRankOther .flagName {
         margin-left: -10px;
@@ -55,6 +57,8 @@
     }
     #fifaRank > section > div > .col:not(#fifaRank > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total, #fifaRankOther > section > div > .col:not(#fifaRankOther > section > div > .col:nth-child(2)) > div:nth-child(1) > span.total {
         padding-right: 20px;
+        display: flex;
+        align-items: center;
     }
     #fifaRank .uefaTable .flagName img, #fifaRankOther .uefaTable .flagName img {
         min-width: 25px;

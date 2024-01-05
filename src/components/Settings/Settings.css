@@ -1,0 +1,36 @@
+#settings {
+    height: 100vh;
+}
+#settings span {
+    color: #000;
+}
+#settings .item {
+    display: flex;
+    align-items: center;
+}
+#settings .item .title {
+    font-size: 1.2em;
+}
+#settings .item .darkThemeBtn {
+    width: 65px;
+    height: 30px;
+    border: 2px solid #18338a;
+    border-radius: 20px;
+    margin: 0 0 0 50px;
+    display: flex;
+    align-items: center;
+    padding: 14px 2px 15px 2px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#settings .item .darkThemeBtn .round {
+    background: #18338a;
+    height: 25px;
+    width: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}

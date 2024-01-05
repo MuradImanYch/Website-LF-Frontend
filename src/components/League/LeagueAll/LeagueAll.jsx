@@ -5,6 +5,7 @@ import LazyLoad from 'react-lazy-load';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Helmet from 'react-helmet';
+import $ from 'jquery';
 
 const LeagueAll = (props) => {
     const[leagues, setLeagues] = useState();
@@ -18,9 +19,9 @@ const LeagueAll = (props) => {
             return <Link key={'league' + i} to={`/league/${e.id}`}>
                         <div>
                             <LazyLoad offset={800}>
-                                <Tippy content={e.title}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.title}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
                             </LazyLoad>
-                            <span>{e.name}</span>
+                            <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                         </div>
                     </Link>
         }));
@@ -30,11 +31,12 @@ const LeagueAll = (props) => {
     return (
         <div id='leagueAll'>
             <Helmet>
+                <link rel="canonical" href="https://legfootball.com/league" />
                 <title>Все турниры - заходи на любой турнир и смотри новости, расписание, результаты, турнирную таблицу и много чего - на Legendary Football</title>
                 <meta name="description" content="Заходи на любой футбольный турнир и изучай последние новости, результаты и многое другое на нашем сайте. У нас вы найдете все необходимые материалы об известных турнирах, футбольном чемпионате. Весь футбольный мир у нас." />
                 <meta name="keywords" content="все лиги, все турниры, результаты, турнирная таблица, футбол, известные футбольные турниры, апл, ла лига, рпл, бундеслига, серия а, лига 1, уефа" />
             </Helmet>
-            <h1 className="pageName">Все турниры</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Все турниры</h1>
             {leagues}
         </div>
     );

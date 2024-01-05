@@ -1,8 +1,8 @@
-.chempionov {
+.chempionov, [class="place Vikhod v 1/8 finala"] {
     background: linear-gradient(135deg, rgba(13,13,123,1) 35%, rgba(191,0,255,1) 100%);
     color: #fff !important;
 }
-.Yevropi {
+.Yevropi, [class="place Vikhod v 1/16 finala"] {
     background: linear-gradient(135deg, rgba(255,87,0,1) 35%, rgba(0,0,0,1) 100%);
     color: #fff !important;
 }

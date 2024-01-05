@@ -7,6 +7,15 @@
     width: 100%;
     border-bottom: 2px solid #18338a;
 }
+.sectionName {
+    color: #000;
+    padding: 5px 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 40px 0 0 0;
+    width: 100%;
+    border-bottom: 2px solid #18338a;
+}
 nav [aria-describedby] {
     cursor: pointer !important;
 }
@@ -134,7 +143,7 @@ header .active:nth-child(1) {
     margin: 0 0 0 20px;
 }
 #mNavWrap .menuWrap li ul li {
-    align-items: center;
+    align-items: flex-start;
 }
 #mNavWrap .menuWrap li:nth-child(2) ul li div {
     min-width: 100px;
@@ -163,7 +172,7 @@ header .active:nth-child(1) {
     width: 25px;
     height: 25px;
     margin-top: 0;
-    margin-right: 50px;
+    margin-right: 40px;
 }
 #mNavWrap .menuWrap li ul li a {
     font-size: 0.9em;
@@ -281,6 +290,9 @@ header .login {
     outline: none;
     border: 0;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #profile {
     position: relative;
@@ -340,11 +352,29 @@ header .login {
 #mNavWrap > ul > li > ul {
     margin: 20px 0;
 }
+#pointerEffect {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: url('../src/assets/ico/sparkler.gif') no-repeat center/cover;
+    z-index: 2025;
+    display: none;
+}
+
+@media (min-width: 360px) {
+    .sectionName {
+        font-size: 0.9em;
+    }
+}
 
 /*------------------Desctop-------------------*/
 @media (min-width: 1024px) { /* >= 1024px */
     .pageName {
         font-size: 1.6em;
+    }
+    .sectionName {
+        font-size: 1em;
     }
     ::-webkit-scrollbar { /* main scrollbar */
         width: 6px !important;
@@ -381,7 +411,7 @@ header .login {
     #dNavWrap ul li img {
         width: 20px;
         height: 20px;
-        margin: 0 30px 0px 0;
+        margin: 0 20px 0px 15px;
     }
     #dNavWrap .menuWrap {
         height: 100%;
@@ -426,7 +456,7 @@ header .login {
         width: 200px;
     }
     #dNavWrap .transfersSubMenu li img {
-        margin: 0 15px 0 0px;
+        margin: 0 20px 0 15px;
         width: 17px;
         height: 17px;
     }
@@ -456,6 +486,8 @@ header .login {
     #dNavWrap .subMenuWrap li a {
         font-size: 0.8em;
         width: 145px;
+        justify-content: flex-start;
+        text-align: left;
     }
     #dNavWrap .subMenuWrap li a i {
         font-size: 0.8em;

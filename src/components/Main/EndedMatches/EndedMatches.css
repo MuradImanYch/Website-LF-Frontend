@@ -9,10 +9,9 @@
 }
 #endedMatches .wrap .col {
     display: flex;
-    margin: 10px 0;
+    margin: 15px 0;
     align-items: center;
     position: relative;
-    background: #fff;
 }
 #endedMatches .wrap span {
     color: #000;
@@ -56,7 +55,23 @@
 #endedMatches .wrap > [aria-describedby]:hover {
     transform: scale(1.05) !important;
 }
+#endedMatches .hName, #endedMatches .aName {
+    width: 70px;
+    height: 20px;
+}
+#oddsQckNav > div > div > span.hName {
+    justify-content: flex-end;
+}
+#oddsQckNav > div > div > span.lLogo > div {
+    display: flex;
+}
 
+@media (min-width: 320px) {
+    #endedMatches .hName, #endedMatches .aName {
+        width: 80px;
+        height: 20px;
+    }
+}
 
 @media (min-width: 412px) {
     #endedMatches .wrap .hScore, #endedMatches .wrap .aScore {

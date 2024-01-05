@@ -101,6 +101,18 @@
     height: 25px;
     margin: 0 0 0 40px;
 }
+.poll a {
+    color: rgb(0, 110, 201);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    display: block;
+    text-align: center;
+    margin: 20px 0 0 0;
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 @media (min-width: 1280px) {
     .poll {
@@ -111,6 +123,11 @@
         min-height: auto;
         background: transparent;
         padding: 0;
+    }
+    .poll a {
+        font-size: 0.9em;
+        position: static;
+        transform: translate(0, 0);
     }
     .poll h2 {
         text-align: left;

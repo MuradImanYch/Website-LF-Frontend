@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddNews.css';
 import axios from 'axios';
-import { useState } from 'react';
 import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import LazyLoad from 'react-lazy-load';
-import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 
 const parse = require('html-react-parser');
 
@@ -18,12 +17,60 @@ const AddNews = () => {
     const[disabled, setDisabled] = useState(false);
     const[metaDescr, setMetaDescr] = useState('');
     const[metaKeywords, setMetaKeywords] = useState('');
+    const[author, setAuthor] = useState('');
+    const currentDate = new Date();
 
-    const uniqueId = uuidv4();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+    const timezoneOffset = -currentDate.getTimezoneOffset();
+    const timezoneOffsetHours = Math.floor(Math.abs(timezoneOffset) / 60).toString().padStart(2, '0');
+    const timezoneOffsetMinutes = (Math.abs(timezoneOffset) % 60).toString().padStart(2, '0');
+    const timezoneSign = timezoneOffset >= 0 ? '-' : '+';
+
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
     }, []);
+
+    const editorConfig = {
+        // Разрешить iframe тег
+    htmlAllowed: true,
+    // Разрешить необходимые атрибуты для iframe тега
+    htmlAllowedEmptyTags: ['iframe'],
+    htmlAllowedAttributes: {
+      iframe: ['width', 'height', 'src', 'title', 'frameborder', 'allow', 'allowfullscreen'],
+    },
+        placeholder: 'Введите описание новости',
+        mediaEmbed: {
+          previewsInData: true, // Показывать предварительные просмотры видео в режиме редактирования
+          extraProviders: [
+            // Добавляем провайдер для видео из YouTube
+            {
+              name: 'youtube',
+              url: /^https:\/\/www\.youtube\.com\/watch?v=([^/]+)$/,
+              html: (match) => {
+                const videoId = match[1];
+                return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+              },
+            },
+            // Добавляем провайдер для видео из Vimeo
+            {
+              name: 'vimeo',
+              url: /^https:\/\/vimeo\.com\/(\d+)$/,
+              html: (match) => {
+                const videoId = match[1];
+                return `<iframe src="https://player.vimeo.com/video/${videoId}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+              },
+            },
+            // Добавьте другие провайдеры, если необходимо
+          ],
+        },
+      };
 
     const addNews = (e) => {
         e.preventDefault();
@@ -42,6 +89,9 @@ const AddNews = () => {
         }
         else if(metaKeywords === '') {
             alert('Введите поле для мета тега: keywords');
+        }
+        else if(author === '') {
+            alert('Введите имя автора');
         }
         else if(content === '') {
             alert('Введите контент для новости');
@@ -65,6 +115,17 @@ const AddNews = () => {
             content,
             metaDescr,
             metaKeywords,
+            author
+        })
+        .catch(err => {
+            if(err) throw err;
+        });
+
+        axios.post('/sitemap', {
+            formattedDate,
+            title,
+            author,
+            category
         })
         .catch(err => {
             if(err) throw err;
@@ -86,6 +147,7 @@ const AddNews = () => {
         setCategory('none');
         setMetaDescr('');
         setMetaKeywords('');
+        setAuthor('');
         $('input').val('');
         $('.fileText div:last-child button').css({display: 'none'});
 
@@ -98,7 +160,7 @@ const AddNews = () => {
             document.querySelector('.fileText input[type="file"]').removeAttribute('disabled');
             document.querySelector('#newsSubmit').style.background = 'rgba(204, 135, 45, 0.9)';
             setDisabled(false);
-        }, 10000);
+        }, 5000);
     }
 
     const selectImg = async (e) => {
@@ -128,6 +190,12 @@ const AddNews = () => {
 
     return (
         <div id='addNews'>
+            <div className='subNav'>
+                <ul>
+                    <li><Link to="/admin/addnews">Вручную</Link></li>
+                    <li><Link to="/admin/addnews/gpt" >Chat GPT</Link></li>
+                </ul>
+            </div>
             <form>
                 <label htmlFor="newsCategory">Категория:</label>
                 <select onChange={(e) => {
@@ -173,8 +241,10 @@ const AddNews = () => {
                 <input onChange={(e) => {setMetaDescr(e.target.value)}} placeholder='Мета-тэг: description' type="text" id='meta_description' name='meta_description' />
                 <label htmlFor="meta_keywords">Мета-тэг: keywords</label>
                 <input onChange={(e) => {setMetaKeywords(e.target.value)}} placeholder='Мета-тэг: keywords' type="text" id='meta_keywords' name='meta_keywords' />
+                <label htmlFor="author">Автор:</label>
+                <input onChange={(e) => {setAuthor(e.target.value)}} placeholder='Имя Фамилия' type="text" id='author' name='author' />
                 <label id='newsContentLabel' htmlFor="newsContent">Контент:</label>
-                <CKEditor config={{placeholder: "Введите описание новости", mediaEmbed: {previewsInData: true}}} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
+                <CKEditor config={editorConfig} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
                     setContent(editor.getData());
                 }} />
                 <button title='Предпросмотр' type='submit' id='newsSubmit' onClick={addNews}>+</button>
@@ -190,7 +260,9 @@ const AddNews = () => {
                         <LazyLoad offset={800}>
                             <img loading="lazy" id='mainImg' src={img} alt="newsImg" />
                         </LazyLoad>
+                        <p><strong>{metaDescr}</strong></p>
                         <div className="textWrap">{parse(content)}</div>
+                        <i className='author'>{author}</i>
                     </div>
                 </section>
 

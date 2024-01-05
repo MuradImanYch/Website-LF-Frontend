@@ -19,6 +19,8 @@
     font-size: 0.9em;
     margin: 0 8px;
     color: #000;
+    width: 70px;
+    text-align: center;
 }
 .adminBroadcasts .wrap .col div:nth-child(2) {
     display: flex;
@@ -111,6 +113,11 @@
 }
 .adminBroadcasts .editPopup {
     padding: 100px 0 0 0;
+}
+.adminBroadcasts .liveTime {
+    font-size: 0.9em;
+    margin: 5px 0 0 0;
+    color: #000;
 }
 
 @media (min-width: 1024px) { /* >= 1024px */

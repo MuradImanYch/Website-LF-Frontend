@@ -7,6 +7,7 @@ import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
+import $ from 'jquery';
 
 import euroQualLogo from '../../../assets/ico/euroQualLogo.webp';
 
@@ -49,8 +50,8 @@ const Standings4 = () => {
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -77,8 +78,8 @@ const Standings4 = () => {
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -105,8 +106,8 @@ const Standings4 = () => {
                         <div className="group">{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -137,45 +138,45 @@ const Standings4 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {euroQualStandings1 && euroQualStandings1.length > 0 ? euroQualStandings1 : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
+                            <Link to="/league/eu-qualification/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {euroQualStandings2 && euroQualStandings2.length > 0 ? euroQualStandings2 : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
+                            <Link to="/league/eu-qualification/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Европейская квлф."><img loading="lazy" src={euroQualLogo} alt="Европейская квлф." /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {euroQualStandings3 && euroQualStandings3.length > 0 ? euroQualStandings3 : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/eu-qualification/standings">Подробнее</Link>
+                            <Link to="/league/eu-qualification/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

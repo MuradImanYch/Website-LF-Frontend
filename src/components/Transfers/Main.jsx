@@ -6,12 +6,12 @@ import TransferNews from './TransferNews/TransferNews';
 import TransferList from './TransferList/TransferList';
 import Error from '../Error/Error';
 
-import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
+// import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
 
 const Main = () => {
     return (
         <div id='transfers'>
-            <MatchesSlider />
+            {/* <MatchesSlider /> */}
 
             <Routes>
                 <Route path="/news" element={<TransferNews />} />

@@ -5,6 +5,7 @@ import 'tippy.js/dist/tippy.css';
 import logo from '../../../../assets/ico/unlLogo.webp';
 import axios from 'axios';
 import Helmet from 'react-helmet';
+import $ from 'jquery';
 
 import person from '../../../../assets/ico/person.webp';
 
@@ -23,11 +24,11 @@ const TopScores = () => {
                     return <div key={'unlTS' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -54,17 +55,17 @@ const TopScores = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
                 <h1 className="pageName">Бомбардиры - Лига наций</h1>
             </div>
             <div className="head">
-                <Tippy content="Позиция"><span>#</span></Tippy>
-                <Tippy content="Игрок"><span>Игрок</span></Tippy>
-                <Tippy content="Команда"><span>К</span></Tippy>
-                <Tippy content="Голы"><span>Г</span></Tippy>
-                <Tippy content="С пенальти"><span>П</span></Tippy>
-                <Tippy content="Количество игр"><span>И</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Игрок"><span>Игрок</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Команда"><span>К</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Голы"><span>Г</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="С пенальти"><span>П</span></Tippy>
+                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
             </div>
             {topScores && topScores.length > 0 ? topScores : <div className='noData'>Данных нет</div>}
         </div>

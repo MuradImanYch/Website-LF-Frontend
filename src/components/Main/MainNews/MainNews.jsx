@@ -16,7 +16,7 @@ const News = () => {
                 setMainNews(response.data && response.data.reverse().splice(34, 6).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());

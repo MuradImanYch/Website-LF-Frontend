@@ -5,9 +5,12 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
+import Helmet from 'react-helmet';
 
 const Blogs = () => {
     const[news, setNews] = useState();
+    const[currentPage, setCurrentPage] = useState(1);
+    const[newsCount, setNewsCount] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -17,10 +20,11 @@ const Blogs = () => {
         const fetchData = async () => {
             await axios.get('/news/blogs')
             .then(response => {
-                setNews(response.data && response.data.reverse().map((e) => {
+                setNewsCount(response.data.length);
+                setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -53,14 +57,30 @@ const Blogs = () => {
         }
 
         fetchData();
-    }, []);
+    }, [currentPage]);
+
+    const selectPagPage = (e) => {
+        setCurrentPage($(e.target).text());
+        $('.pagination a').css({background: '#fff', color: '#000'}).removeClass('selected');
+        $(e.target).addClass('selected');
+        $('#news .newsHr section').hide();
+        $('#news .newsHr section').fadeIn();
+    }
 
     return (
         <div id='blogsOther' className='newsHr'>
+            <Helmet>
+                <title>Блоги, мнения авторов и аналитика - на Legendary Football</title>
+                <meta name="description" content="Наш блог предлагает эксклюзивный контент, а также мнения и аналитику от наших авторов. Оставайтесь в курсе футбольных событий и интересных фактов, и откройте для себя новые грани увлечений вместе с нами." />
+                <meta name="keywords" content="футбол, новости, оффтопы, спорт, события, эксклюзивный контент, увлекательные истории, блоги, мнения авторов, аналитика, мнения специалистов, инсайды, трансферы, футбольные матчи, футбольные клубы, спортивные события, спортивные факты" />
+            </Helmet>
             <h1 className="pageName">Блоги</h1>
             <section>
                 {news}
             </section>
+            <ul className='pagination'>
+                {newsCount && Array(Math.ceil(newsCount / 30)).fill(1).map((value, index) => <li key={`page${value + index}`}><a onClick={selectPagPage} href='#'>{value + index}</a></li>)}
+            </ul>
         </div>
     );
 };

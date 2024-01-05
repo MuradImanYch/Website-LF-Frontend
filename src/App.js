@@ -7,9 +7,12 @@ import LazyLoad from 'react-lazy-load';
 import cookies from 'js-cookie';
 import axios from 'axios';
 import Helmet from 'react-helmet';
+import $ from 'jquery';
+import Snowfall from 'react-snowfall';
+import config from './conf.json';
 
 import logo from './assets/ico/logo.webp';
-import $ from 'jquery';
+import logoNy from './assets/ico/logo-ny.webp';
 import rplLogo from './assets/ico/rplLogo.webp';
 import eplLogo from './assets/ico/eplLogo.webp';
 import laligaLogo from './assets/ico/laligaLogo.webp';
@@ -55,6 +58,8 @@ const Other = React.lazy(() => import('./components/Other/Main'));
 const League = React.lazy(() => import('./components/League/Main'));
 const QuickNav = React.lazy(() => import('./components/QuickNav/QuickNav'));
 const ExtendedBroadcast = React.lazy(() => import('./components/Main/ExtendedBroadcast/ExtendedBroadcast'));
+const SuggestionComplaints = React.lazy(() => import('./components/SuggestionComplaints/SuggestionComplaints'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 function App() {
     const[barState, setBarstate] = useState(true); 
@@ -65,6 +70,9 @@ function App() {
     const[auth, setAuth] = useState();
     const[username, setUsername] = useState();
     const[profileToggle, setProfileToggle] = useState(true);
+    const[mouseX, setMouseX] = useState();
+    const[mouseY, setMouseY] = useState();
+    const[nyTheme, setNYTheme] = useState(false);
 
     const progressBar = () => { // scroll progressBar func
         let windScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -72,9 +80,48 @@ function App() {
         let scrolled = (windScroll / docHeight) * 100;
         document.getElementById("progressBar").style.width = scrolled + '%';     
     }
-    window.onscroll = () => { 
-        progressBar();
-    }
+
+    useEffect(() => {
+        if(localStorage.getItem('darkTheme') === 'true') {
+            $('body').css({background: '#222'});
+            $('span:not(.hotBoard .liveWrap span)').css({color: '#fff'});
+            $('#settings .item .darkThemeBtn').css({background: '#4CD964'});
+            $('#profile .subMenu li a span').css({color: '#f02d54'});
+        }
+        else {
+            $('body').css({background: '#fff'});
+            $('span:not(.hotBoard .liveWrap span)').css({color: '#000'});
+            $('#settings .item .darkThemeBtn').css({background: '#fff'});
+            $('#profile .subMenu li a span').css({color: '#f02d54'});
+        }
+    }, [JSON.parse(localStorage.getItem('darkTheme'))]);
+
+    useEffect(() => {
+        window.addEventListener("scroll", progressBar);
+        return () => {
+            window.removeEventListener("scroll", progressBar);
+        }
+    }, []);
+
+    useEffect(() => {
+        let authCookie = cookies.get('auth');
+        if(authCookie) { // check is auth and get username by token
+            axios.post('/profile/username', {
+                token: authCookie
+            })
+            .then(response => {
+                if (response.status == 200){
+                    setUsername(response.data);
+                    setAuth(authCookie);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
+        localStorage.getItem('darkTheme') === null && localStorage.setItem('darkTheme', false);
+    }, []);
 
     const menuToggle = () => {
         if($(window).width() <= 1024) { // for mobile
@@ -104,7 +151,7 @@ function App() {
         }
     }
 
-    $('#mNavWrap ul li a').click(() => {
+    $('#mNavWrap ul li a, #mNavWrap > a').click(() => {
         setBarstate(true);
         $('.bar1').css({'transform': 'rotate(0deg) translate(0px, 0px)'});
         $('.bar2').css({'opacity': '1'});
@@ -404,31 +451,49 @@ function App() {
         setProfileToggle(!profileToggle);
         profileToggle ? $('#profile .subMenu').css({display: 'flex'}) : $('#profile .subMenu').css({display: 'none'});
     }
+
+    config['ny-christmass-theme'] &&
+    document.addEventListener('mousemove', function(event) {
+        setMouseX(event.clientX - 60);
+        setMouseY(event.clientY - 60);
+    });
+    document.addEventListener('mousedown', async function() {
+        setTimeout(() => {
+            $('#pointerEffect').fadeIn();
+        }, 100);
+    });
+    document.addEventListener('mouseup', function() {
+        setTimeout(() => {
+            $('#pointerEffect').hide();
+        }, 100);
+    });
     
     return (
         <div id='app'>
             <Helmet>
                 <title>Результаты матчей, новости, онлайн трансляции и много всего футбольного - на Legendary Football</title>
                 <meta name="description" content="Свежие новости, захватывающие трансляции матчей, подробные результаты и все, что нужно знать о мире футбола. Будьте в курсе всех событий как ведущих лиг так и лиг постсоветского пространства, будьте в сердце футбольной страсти с Legendary Football." />
-                <meta name="keywords" content="новости футбола, трансляции матчей, результаты футбольных матчей, футбольные новости, футбол, английская премьер лига, российская премьер лига, лига чемпионов, лига европы, лига конференции, чемпионат мира, чемпионат европы, ла лига, онлайн трансляция, серия а, футбол снг, российский футбол" />
+                <meta name="keywords" content="legfootball главная, ожидаемые матчи, завершенные матчи, таблица уефа, таблица фифа, видео, блоги, турнирная таблица, таблица бомбардиров, новости футбола, трансляции матчей, результаты футбольных матчей, футбольные новости, футбол, расписание матчей, английская премьер лига, российская премьер лига, лига чемпионов, лига европы, лига конференции, чемпионат мира, чемпионат европы, ла лига, онлайн трансляция, серия а, футбол снг, российский футбол" />
             </Helmet>
+            {config['ny-christmass-theme'] && <Snowfall style={{zIndex: '2024'}} />}
+            {config['ny-christmass-theme'] && <div id="pointerEffect" style={{left: mouseX + 'px', top: mouseY + 'px'}}></div>}
             <div id="progressBar"></div>
             <header> {/* ---------------Header--------------- */}
                 <div className="container">
-                    <Link to="">
+                    <Link to="/">
                         <LazyLoad offset={800}>
-                            <img loading="lazy" src={logo} alt="Logo" />
+                            <img loading="lazy" src={config['ny-christmass-theme'] ? logoNy : logo} alt="Logo" />
                         </LazyLoad>
                     </Link>
                     <nav> {/* --------------Nav----------------*/}
                         <div id="dNavWrap">
                             <ul className='menuWrap'>
                                 <li onMouseEnter={dNewsEnter} onMouseLeave={dNewsOut}>
-                                    <Tippy placement='left' content='Все новости'><Link to="/news">Новости <i className="fas fa-caret-down"></i>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='left' content='Все новости'><Link to="/news">Новости <i className="fas fa-caret-down"></i>
                                     </Link></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <Tippy key={e.id + 'dNews'} placement='left' content={e.title}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} key={e.id + 'dNews'} placement='left' content={e.title}>
                                             <li className={e.id + 'NewsMenu'}>
                                                 <Link to={'/news/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name}</Link>
                                             </li>
@@ -437,30 +502,30 @@ function App() {
                                     </ul>
                                 </li>
                                 <li onMouseEnter={dLeagueEnter} onMouseLeave={dLeagueOut}>
-                                    <Tippy placement='left' content='Все турниры'><Link to="/league">Лига <i className="fas fa-caret-down"></i>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='left' content='Все турниры'><Link to="/league">Лига <i className="fas fa-caret-down"></i>
                                     </Link></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
-                                        <Tippy key={e.id + 'dLeague'} placement='left' content={e.title}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} key={e.id + 'dLeague'} placement='left' content={e.title}>
                                             <li className={`${e.id}LeagueMenu`}>
                                                 <Link to={'/league/' + e.id}><img loading="lazy" src={e.img} alt={e.name} />{e.name} <i className='fas fa-caret-right'></i></Link>
                                                 <ul className='subSubMenuWrap'>
-                                                    <Tippy placement='right' content={`Таблица ${e.name}`}>
+                                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='right' content={`Таблица ${e.name}`}>
                                                         <li>
                                                             <Link to={`/league/${e.id}/standings`}><i className="fas fa-list-ol"></i> Таблица</Link>
                                                         </li>
                                                     </Tippy>
-                                                    <Tippy placement='right' content={`Календарь ${e.name}`}>
+                                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='right' content={`Календарь ${e.name}`}>
                                                         <li>
                                                             <Link to={`/league/${e.id}/fixtures`}><i className="fas fa-calendar-alt"></i> Календарь</Link>
                                                         </li>
                                                     </Tippy>
-                                                    <Tippy placement='right' content={`Результаты ${e.name}`}>
+                                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='right' content={`Результаты ${e.name}`}>
                                                         <li>
                                                             <Link to={`/league/${e.id}/results`}><i className="fas fa-clipboard-list"></i> Результаты</Link>
                                                         </li>
                                                     </Tippy>
-                                                    <Tippy placement='right' content={`Бомбардиры ${e.name}`}>
+                                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='right' content={`Бомбардиры ${e.name}`}>
                                                         <li>
                                                             <Link to={`/league/${e.id}/topscores`}><img loading="lazy" src={topScores} alt="topScores" /> Бомбардиры</Link>
                                                         </li>
@@ -492,15 +557,15 @@ function App() {
                                         <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
-                                <li className='actual'>
+                                {/* <li className='actual'>
                                     <Link to="">----</Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <div id="mNavWrap">
                             <ul className="menuWrap">
                                 <li>
-                                    <Tippy placement='left' content='Все новости'><div><Link to="/news">Новости</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='left' content='Все новости'><div><Link to="/news">Новости</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
                                     <ul className='subMenuWrap'>
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} className={e.id + 'NewsMenu'} key={e.id + 'mNews'}>
@@ -510,7 +575,7 @@ function App() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <Tippy placement='left' content='Все турниры'><div><Link to="/league">Лига</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} placement='left' content='Все турниры'><div><Link to="/league">Лига</Link> <i onClick={mMenuDownUp} className="far fa-caret-square-down"></i></div></Tippy>
                                     <ul>
                                         {leagues && leagues.map((e) => 
                                         <li title={e.title} key={e.id + 'mLeague'}>
@@ -555,26 +620,28 @@ function App() {
                                         <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
-                                <li className='actual'>
+                                {/* <li className='actual'>
                                     <div><Link to="">----</Link></div>
-                                </li>
+                                </li> */}
                             </ul>
+
+                            <Link style={{textAlign: 'center', display: 'block', textDecoration: 'underline', textUnderlineOffset: '2px'}} to='/suggestions-complaints'>Предложения и жалобы</Link>
                         </div>
                     </nav>
                     <div className="socnetWrap">
                         <a title="Вконтакте" href="https://vk.com/leg.football" target="__blank"><i onMouseEnter={vkMouseEnter} onMouseLeave={vkMouseLeave} className="fab fa-vk"></i></a>
-                        <a title="Telegram" href="https://t.me/legendarniy_football" target="__blank"><i onMouseEnter={tgMouseEnter} onMouseLeave={tgMouseLeave} className="fab fa-telegram-plane"></i></a>
-                        <a title="Instagram" href="https://www.instagram.com/legendary___football/" target="__blank"><i onMouseEnter={igMouseEnter} onMouseLeave={igMouseLeave} className="fab fa-instagram"></i></a>
+                        <a title="Telegram" href="https://t.me/+zHJJw7xZ2300YjEy" target="__blank"><i onMouseEnter={tgMouseEnter} onMouseLeave={tgMouseLeave} className="fab fa-telegram-plane"></i></a>
+                        <a title="Instagram" href="https://www.instagram.com/leg_football/" target="__blank"><i onMouseEnter={igMouseEnter} onMouseLeave={igMouseLeave} className="fab fa-instagram"></i></a>
                     </div>
                     {auth || cookies.get('auth') ? <div onClick={profileToggleFunc} id="profile">
-                        <Tippy content='Профиль'><img loading="lazy" src={defaultProfile} alt="profilePic" /></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Профиль'><img loading="lazy" src={defaultProfile} alt="profilePic" /></Tippy>
                         <ul className="subMenu">
                             <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
-                            <li><a href="#">Настройки</a></li>
+                            <li><Link to="/settings">Настройки</Link></li>
                             {adminAuth ? <li style={{marginTop: '30px'}}><Link to='/admin' onClick={adminEnter} style={{color: 'yellow', fontWeight: 'bold'}}>Админ панель</Link></li> : null}
                             <button onClick={logOut}>Выйти</button>
                         </ul>
-                        </div> : <Tippy content='Вход/Регистрация'><img loading="lazy" className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
+                        </div> : <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Вход/Регистрация'><img loading="lazy" className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
                     <div id="menuToggleMobDiv" onClick={menuToggle}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>
@@ -588,7 +655,7 @@ function App() {
                     <div id='adWrapLeft'>
                         <AdVerticalLeft />
                         <AdVerticalLeft2 />
-
+                        
                         <Poll />
                     </div>
                 </div>
@@ -603,6 +670,8 @@ function App() {
                             <Route path='other/*' element={<Other />} />
                             <Route path='league/*' element={<League leagues={leagues} />} />
                             <Route path='broadcast/watch/:id' element={<ExtendedBroadcast />} />
+                            <Route path='suggestions-complaints' element={<SuggestionComplaints />} />
+                            <Route path='settings' element={<Settings />} />
                             <Route path='*' element={<Error />} />
                         </Routes>
                     </Suspense>

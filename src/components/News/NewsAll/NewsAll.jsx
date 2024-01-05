@@ -11,7 +11,6 @@ const NewsAll = () => {
     const[news, setNews] = useState();
     const[currentPage, setCurrentPage] = useState(1);
     const[newsCount, setNewsCount] = useState();
-    const[pagination, setPagination] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -25,7 +24,7 @@ const NewsAll = () => {
                 setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -80,7 +79,7 @@ const NewsAll = () => {
                 <meta name="keywords" content="АПЛ, РПЛ, Ла Лига, Серия А, Лига Чемпионов, все новости, результаты матчей, трансферы, голы, клубы, игроки, анализ матчей" />
             </Helmet>
             <section>
-                <h1 className="pageName">Все новости</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Все новости</h1>
                 {news}
             </section>
             <ul className='pagination'>

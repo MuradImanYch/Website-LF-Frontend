@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './TVSchedule.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
+import $ from 'jquery';
 
 const MatchesSchedule = () => {
     const[matchesSchedule, setMatchesSchedule] = useState();
@@ -19,7 +20,7 @@ const MatchesSchedule = () => {
                                 </div>
                                 <div className="timeProgramme">
                                     <span>{e.time}</span>
-                                    <span>{e.programme}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.programme}</span>
                                 </div>
                             </div>
                 }));

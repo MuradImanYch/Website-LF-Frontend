@@ -24,17 +24,17 @@
 	position: absolute;
 }
 #preloader .imgWrap img:first-child {
-	width: 34px;
+	width: auto;
 	height: 49px;
 	left: 67px;
-	top: 30px;
+	top: 47px;
 	animation: logoL 2s infinite;
 }
 #preloader .imgWrap img:last-child {
-	width: 57px;
-	height: 49px;
-	right: 65px;
-	top: 45px;
+	width: 43px;
+	height: auto;
+	right: 71px;
+	top: 50px;
 	animation: logoF 2s infinite;
 }
 #preloader span {

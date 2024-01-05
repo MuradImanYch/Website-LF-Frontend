@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
+import $ from 'jquery';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -17,14 +18,14 @@ const TransferList = () => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
                         <LazyLoad offset={800}>
-                            <Tippy offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy>
                         </LazyLoad>
-                        <span>{e.name}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                     </div>
                     <div className="outIn">
-                        <Tippy content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                        <span>→</span>
-                        <Tippy content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>→</span>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                     </div>
                     <div className="price">{e.price}</div>
                 </div>
@@ -45,7 +46,7 @@ const TransferList = () => {
                 <div className="listWrap">
                     {transferList && transferList.length > 0 ? transferList : <div className='noData'>Данных нет</div>}
                 </div>
-                <Link to="/transfers/list">Подробнее</Link>
+                <Link to="/transfers/list" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
             </section>
         </div>
     );

@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from "swiper";
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
+import $ from 'jquery';
 
 import unlLogo from '../../../assets/ico/unlLogo.webp';
 import Tippy from '@tippyjs/react';
@@ -32,7 +33,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -60,7 +61,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -88,7 +89,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -116,7 +117,7 @@ const Standings4 = () => {
                             <div className="col">
                                 <div className="left">
                                     <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -147,59 +148,59 @@ const Standings4 = () => {
                     <Swiper navigation grabCursor={true} slidesPerView={1}>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsA && unlStandingsA.length > 0 ? unlStandingsA : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/unl/standings">Подробнее</Link>
+                            <Link to="/league/unl/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsB && unlStandingsB.length > 0 ? unlStandingsB : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/unl/standings">Подробнее</Link>
+                            <Link to="/league/unl/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsC && unlStandingsC.length > 0 ? unlStandingsC : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/unl/standings">Подробнее</Link>
+                            <Link to="/league/unl/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                         <SwiperSlide>
                             <div className="lLogo">
-                                <LazyLoad offset={800} height={40}><Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
+                                <LazyLoad offset={800} height={40}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛН'><img loading="lazy" src={unlLogo} alt="ЛН" /></Tippy></LazyLoad>
                             </div>
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Название"><span>Команда</span></Tippy>
-                                <Tippy content="Количество игр"><span>И</span></Tippy>
-                                <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                                <Tippy content="Очки"><span>О</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                             </div>
                             {unlStandingsD && unlStandingsD.length > 0 ? unlStandingsD : <div className='noData'>Данных нет</div>}
-                            <Link to="/league/unl/standings">Подробнее</Link>
+                            <Link to="/league/unl/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </SwiperSlide>
                     </Swiper>
                 </section>

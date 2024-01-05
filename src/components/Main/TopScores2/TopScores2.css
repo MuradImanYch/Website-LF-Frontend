@@ -27,7 +27,7 @@
         margin: 0 0 0 130px;
     }
     #topScores2 .swiper-slide .head span:nth-child(4) {
-        margin: 0 0 0 102px;
+        margin: 0 0 0 102px !important;
     }
 }
 
@@ -36,7 +36,7 @@
         margin: 0 0 0 60px;
     }
     #topScores2 .swiper-slide .head span:nth-child(4) {
-        margin: 0 0 0 35px;
+        margin: 0 0 0 35px !important;
     }
 }
 
@@ -48,6 +48,6 @@
         margin: 0 0 0 70px;
     }
     #topScores2 .swiper-slide .head span:nth-child(4) {
-        margin: 0 0 0 46px;
+        margin: 0 0 0 46px !important;
     }
 }

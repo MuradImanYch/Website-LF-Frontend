@@ -4,6 +4,17 @@
     margin: 0 0 10px 0;
     padding: 0 0 10px 0;
 }
+.extendedBroadcast h1 button {
+    margin: 0 0 0 30px;
+    cursor: pointer;
+}
+.extendedBroadcast [aria-describedby]:hover {
+    transform: scale(1) !important;
+}
+.extendedBroadcast .countdown {
+    font-size: 0.6em;
+    color: #000;
+}
 .extendedBroadcast #myVid {
     width: 100% !important;
     height: auto !important;
@@ -28,6 +39,34 @@
     transition: 0.3s;
     background: rgb(255, 223, 181);
 }
+.extendedBroadcast .info {
+    color: #000;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+}
+.extendedBroadcast .info .infoIco {
+    color: #000;
+    border: 1px solid #000;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    margin: 0 7px 0 0;
+}
+#app > main > div.container > div > div.video-react-controls-enabled.video-react-paused.video-react-fluid.video-react-user-active.video-react > button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#your-ad-container {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (min-width: 1024px) {
     .extendedBroadcast #myVid {
         width: 600px !important;
@@ -35,5 +74,9 @@
     }
     .extendedBroadcast .nav ul {
         margin: 25px 0 10px 0;
+    }
+    .extendedBroadcast .row {
+        display: flex;
+        justify-content: space-between;
     }
 }

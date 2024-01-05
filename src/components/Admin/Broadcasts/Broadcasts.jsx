@@ -4,6 +4,7 @@ import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import $ from 'jquery';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
 const Broadcasts = () => {
     const[item, setItem] = useState();
@@ -17,6 +18,26 @@ const Broadcasts = () => {
     const[aLogo, setALogo] = useState('');
     const[time, setTime] = useState('');
     const[broadcastLink, setBroadcastLink] = useState();
+
+    function convertGermanToclientTime(germanTime) {
+        // Разбиваем строку времени на часы и минуты
+        const [hours, minutes] = germanTime.split(':').map(Number);
+      
+        // Создаем объект Date с текущей датой и временем в немецкой временной зоне
+        const germanDate = new Date();
+        germanDate.setHours(hours);
+        germanDate.setMinutes(minutes);
+
+        const clientUTCOffset = new Date();
+      
+        // Добавляем разницу между немецким и иранским временем (2.5 часа)
+        const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 4) * 60 * 60 * 1000);
+      
+        // Получаем иранское время в формате "чч:мм"
+        const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
+      
+        return clientTime;
+      }
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -86,7 +107,7 @@ const Broadcasts = () => {
             setTimeout(() => {
                 $('.adminBroadcasts .btnWrap button').removeAttr('disabled');
                 $('.adminBroadcasts .btnWrap button').css({background: '#fff'});
-            }, 10000);
+            }, 5000);
         }
     }
 
@@ -94,7 +115,7 @@ const Broadcasts = () => {
         const fetchData = async () => {
             await axios.get('/broadcasts/get')
             .then(response => {
-                setItem(response.data && response.data.reverse().splice(0, 8).map((e) => {    
+                setItem(response.data && response.data.reverse().map((e) => {    
                     const deleteBroadcast = (e) => {
                         setDelId(e.target.id.match(/\d+/)[0]);
                         $('#delConfirm').fadeIn();
@@ -123,7 +144,20 @@ const Broadcasts = () => {
                         setTimeout(() => {
                             $('.adminBroadcasts .btnWrap button').removeAttr('disabled');
                             $('.adminBroadcasts .btnWrap button').css({background: '#fff'});
-                        }, 10000);
+
+                            $('.adminBroadcasts .btnWrap button:first-child').mouseenter((e) => {
+                                $(e.target).css({background: 'rgb(149, 207, 255)'});
+                            });
+                            $('.adminBroadcasts .btnWrap button:first-child').mouseleave((e) => {
+                                $(e.target).css({background: '#fff'});
+                            });
+                            $('.adminBroadcasts .btnWrap button:last-child').mouseenter((e) => {
+                                $(e.target).css({background: 'rgb(255, 192, 192)'});
+                            });
+                            $('.adminBroadcasts .btnWrap button:last-child').mouseleave((e) => {
+                                $(e.target).css({background: '#fff'});
+                            });
+                        }, 5000);
                     }
             
                     const rejectDel = () => {
@@ -133,12 +167,12 @@ const Broadcasts = () => {
                     }
 
                     return <div key={'broadcast' + e.id} id={'broadcast' + e.id}>
-                    <Link to={`/broadcast/watch/${e.id}`} id={'broadcast' + e.id}>
+                    <Link to={`/broadcast/watch/${e.id + '-' + cyrillicToTranslit().transform(e.hName + '-' + e.aName + '-' + e.lName).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`} id={'broadcast' + e.id}>
                         <div className="col">
                             <div><LazyLoad offset={800}><img loading="lazy" src={e.hLogo} alt={e.hName} /></LazyLoad><span>{e.hName}</span></div>
                             <div className='timeLive'>
                                 <LazyLoad offset={800}><img loading="lazy" src={e.lLogo} alt={e.lName} /></LazyLoad>
-                                {e.broadcastLink === null ? <span>{e.time}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live</span>}
+                                {e.broadcastLink === null || e.broadcastLink === '' ? <span>{e.time}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live <br /><div className="liveTime">{convertGermanToclientTime(e.time)}</div></span>}
                             </div>
                             <div><span>{e.aName}</span><LazyLoad offset={800}><img loading="lazy" src={e.aLogo} alt={e.aName} /></LazyLoad></div>
                         </div>

@@ -155,6 +155,30 @@
     height: 250px;
     object-fit: cover;
 }
+.subNav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+    height: 40px;
+}
+.subNav ul {
+    display: flex;
+    align-items: center;
+}
+.subNav ul li {
+    height: 100%;
+}
+.subNav ul li a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background: #1a7ac9;
+}
+.subNav ul li a:hover {
+    transition: 0.3s;
+    background: #1a3796;
+}
 
 @media (min-width: 320px) {
     .preview .acceptBtn {

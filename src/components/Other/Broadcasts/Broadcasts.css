@@ -19,6 +19,8 @@
     font-size: 0.9em;
     margin: 0 8px;
     color: #000;
+    width: 70px;
+    text-align: center;
 }
 .otherBroadcasts .wrap .col div:nth-child(2) {
     display: flex;
@@ -27,7 +29,7 @@
     justify-content: center !important;
 }
 .otherBroadcasts .wrap .col div:nth-child(2) span {
-    font-size: 0.8em;
+    font-size: 0.75em;
     margin: 5px 0 0 0;
 }
 .otherBroadcasts .wrap a:hover .col {
@@ -40,6 +42,14 @@
 }
 .otherBroadcasts .wrap .col img {
     width: 16px;
+}
+.otherBroadcasts .liveTime {
+    font-size: 0.9em;
+    margin: 5px 0 0 0;
+    color: #000;
+}
+.otherBroadcasts .wrap {
+    margin: 0 0 40px 0;
 }
 
 @media (min-width: 1024px) { /* >= 1024px */

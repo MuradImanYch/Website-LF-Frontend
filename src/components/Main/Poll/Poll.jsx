@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Poll.css';
 import $ from 'jquery';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import loadSpiner from '../../../assets/ico/loadSpiner.gif';
 
@@ -109,7 +110,7 @@ const Poll = () => {
         <div className='poll'>
             <div className="wrap">
                 <button onClick={closePoll} className="close">X</button>
-                <h2>Оцени наш сайт👇</h2>
+                <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Оцени наш сайт👇</h2>
                 <form>
                     <div>
                         <div><input value={'yes'} type="radio" name='poll' id='likeYes' /><label htmlFor="likeYes">👍</label></div><div className="progress" style={{width: `${yesWidth}%`}}><span>{yes}</span></div>
@@ -120,6 +121,7 @@ const Poll = () => {
                     {pollLoading ? <img loading="lazy" className='loadSpiner' src={loadSpiner} alt='загрузка' /> : <button onClick={sendPoll}><span className='total'>Голосовать</span></button>}
                 </form>
             </div>
+            <Link to='/suggestions-complaints'>Предложения и жалобы</Link>
         </div>
     );
 };

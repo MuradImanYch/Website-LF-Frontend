@@ -182,6 +182,34 @@
 #editNewsContentLabel {
     padding: 0 0 6px 0;
 }
+.pagination {
+    margin: 60px auto 0 auto;
+    display: flex;
+    overflow: scroll;
+    max-width: 100%;
+    padding: 0 0 20px 0;
+    justify-content: center;
+}
+.pagination a {
+    margin: 0 10px;
+    border: 2px solid rgb(204, 135, 45);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+}
+.pagination li:first-child a {
+    background: rgb(204, 135, 45);
+    color: #fff;
+}
+.pagination a.selected {
+    background: rgb(204, 135, 45) !important;
+    color: #fff !important;
+}
 
 @media (min-width: 320px) {
     .editPopup .acceptBtn {
@@ -273,6 +301,9 @@
     .editPopup .container {
         width: 1020px;
         padding: 30px 10px 400px 10px;
+    }
+    .pagination {
+        max-width: 50%;
     }
 }
 

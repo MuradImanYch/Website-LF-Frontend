@@ -9,8 +9,13 @@
     src: url("assets/fonts/Roboto-Regular.ttf");
 }
 
+main {
+	min-height: 100vh;
+}
+
 body {
 	position: relative;
+	transition: 0.3s;
 }
 html {
 	scroll-behavior: smooth;
@@ -140,6 +145,9 @@ table {
 	padding: 10px 0;
 	margin: 15px 0 0 0;
 	width: 100%;
+}
+span {
+	transition: 0.3s;
 }
 
 @media (min-width: 1024px) {

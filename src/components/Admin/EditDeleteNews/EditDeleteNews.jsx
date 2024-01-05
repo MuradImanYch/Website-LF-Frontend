@@ -7,6 +7,7 @@ import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import LazyLoad from 'react-lazy-load';
+import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
 const EditDeleteNews = () => {
     const[news, setNews] = useState();
@@ -19,6 +20,8 @@ const EditDeleteNews = () => {
     const[editId, setEditId] = useState('');
     const[metaDescr, setMetaDescr] = useState('');
     const[metaKeywords, setMetaKeywords] = useState('');
+    const[currentPage, setCurrentPage] = useState(1);
+    const[newsCount, setNewsCount] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -78,7 +81,7 @@ const EditDeleteNews = () => {
             setTimeout(() => {
                 $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
                 $('#editDeleteNews .newsCart .editDelWrap button').css({background: '#fff'});
-            }, 10000);
+            }, 5000);
         }
     }
 
@@ -86,10 +89,11 @@ const EditDeleteNews = () => {
         const fetchData = async () => {
             await axios.get('/news/allNews')
             .then(response => {
-                setNews(response.data && response.data.reverse().map((e) => {
+                setNewsCount(response.data.length);
+                setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -124,7 +128,7 @@ const EditDeleteNews = () => {
                         setTimeout(() => {
                             $('#editDeleteNews .newsCart .editDelWrap button').removeAttr('disabled');
                             $('#editDeleteNews .newsCart .editDelWrap button').css({background: '#fff'});
-                        }, 10000);
+                        }, 5000);
                     }
                     const rejectDel = () => {
                         setDelId('');
@@ -134,7 +138,7 @@ const EditDeleteNews = () => {
                     }
 
                     return  <div key={'news' + e.id} className="newsCart" id={'news' + e.id}>
-                                <Link to={'/news/read/' + e.id}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className='hover'>
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" src={e.img} alt="newsimg" />
@@ -192,7 +196,7 @@ const EditDeleteNews = () => {
                 console.log(err);
             });
         }
-    }, [delId, category, title, img, content, editId]);  // <-- deleted [news]
+    }, [delId, category, title, img, content, editId, currentPage]);  // <-- deleted [news]
 
     const selectImg = async (e) => {
         const formData = new FormData();
@@ -217,6 +221,14 @@ const EditDeleteNews = () => {
         $('.fileText div:last-child button').css({display: 'none'});
         document.querySelector('.fileText div input[type="text"]').removeAttribute('disabled');
         document.querySelector('.fileText div input[type="file"]').removeAttribute('disabled');
+    }
+
+    const selectPagPage = (e) => {
+        setCurrentPage($(e.target).text());
+        $('.pagination a').css({background: '#fff', color: '#000'}).removeClass('selected');
+        $(e.target).addClass('selected');
+        $('#news .newsHr section').hide();
+        $('#news .newsHr section').fadeIn();
     }
 
     return (
@@ -282,6 +294,9 @@ const EditDeleteNews = () => {
                                 <button title='Подтвердить' type='submit' className='acceptBtn' onClick={acceptEdit}>✓</button>
                                 <button title='Отклонить' type='submit' className='rejectBtn' onClick={rejectEdit}>⨯</button>
                             </div>
+                            <ul className='pagination'>
+                {newsCount && Array(Math.ceil(newsCount / 30)).fill(1).map((value, index) => <li key={`page${value + index}`}><a onClick={selectPagPage} href='#'>{value + index}</a></li>)}
+            </ul>
         </div>
     );
 };

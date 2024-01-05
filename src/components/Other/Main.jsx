@@ -12,12 +12,12 @@ import Odds from './Odds/Odds';
 import Broadcasts from './Broadcasts/Broadcasts';
 import Error from '../Error/Error';
 
-import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
+// import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
 
 const Main = () => {
     return (
         <div id="other">
-            <MatchesSlider />
+            {/* <MatchesSlider /> */}
 
             <Routes>
                 <Route path="/news" element={<OtherNews />} />

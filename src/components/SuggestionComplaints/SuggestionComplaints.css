@@ -1,0 +1,125 @@
+#suggestionsComplaints [aria-describedby] {
+   transform: scale(1);
+}
+#suggestionsComplaints {
+    margin: 0 0 200px 0;
+}
+#suggestionsComplaints label {
+    color: #000;
+    margin: 5px 0;
+    padding: 0 0 0 4px;
+}
+#suggestionsComplaints form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0 0 0;
+}
+#suggestionsComplaints form div div {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+}
+#suggestionsComplaints form input {
+    width: 200px;
+    height: 40px;
+    outline: none;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 191, 102);
+    padding: 0 0 0 10px;
+}
+#suggestionsComplaints form .nameLname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#suggestionsComplaints form .text {
+    width: 100%;
+    height: 0;
+    display: flex;
+    justify-content: center;
+}
+#suggestionsComplaints form textarea {
+    border: 2px solid rgb(255, 191, 102);
+    resize: none;
+    font-family: Arial;
+    font-size: 1em;
+    height: 200px;
+    width: 96%;
+    margin: 5px 0 0 0;
+    outline: none;
+}
+#suggestionsComplaints form select {
+    width: 200px;
+    height: 40px;
+    outline: none;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 191, 102);
+    padding: 0 10px;
+    cursor: pointer;
+    background: rgb(255, 239, 217);
+}
+#suggestionsComplaints > form > label {
+    margin: 20px 0 0 0;
+    width: 100%;
+    margin-left: 10px;
+}
+#suggestionsComplaints > form > div.title > label {
+    padding: 0;
+    margin-right: 120px;
+}
+#suggestionsComplaints form .title {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0;
+    width: 100%;
+    align-items: center;
+}
+#suggestionsComplaints form .email input {
+    width: 250px;
+}
+#suggestionsComplaints button {
+    position: fixed;
+    background: rgba(204, 135, 45, 0.9);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: 10%;
+    right: 8%;
+    color: #fff !important;
+    font-size: 2em;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    #suggestionsComplaints {
+        margin: 0;
+    }
+    #suggestionsComplaints label {
+        color: #000;
+        margin: 5px 0;
+        padding: 0 0 0 20px;
+    }
+    #suggestionsComplaints form .nameLname {
+        flex-direction: row;
+    }
+    #suggestionsComplaints form .nameLname input {
+        margin: 0 20px;
+    }
+    #suggestionsComplaints form .text label {
+        padding: 0;
+    }
+    #suggestionsComplaints form select {
+        margin: 0 20px;
+    }
+    #suggestionsComplaints > form > label {
+        margin-left: 0;
+    }
+    #suggestionsComplaints form .title {
+        margin: 8px 0 0 20px;
+    }
+}

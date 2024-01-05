@@ -3,6 +3,7 @@ import './EndedMatches.css';
 import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import $ from 'jquery';
 
 import friendly from '../../../assets/ico/friendly.webp';
 import redCard from '../../../assets/ico/redCard.webp';
@@ -20,7 +21,7 @@ const EndedMatches = () => {
             await axios.get('/matches/ended')
             .then(response => {
                 setEndedMatches(response.data && response.data.map((e, i) => {
-                    return  <Tippy key={'endedMatches' + i} offset={[0, 15]} className='endedMatchesTippy' content={e.lName.indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
+                    return  <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} key={'endedMatches' + i} offset={[0, 15]} className='endedMatchesTippy' content={e.lName.indexOf('Товарищеский') !== -1 ? 'Товарищеский' : e.lName + ' | ' + e.lRound}>
                         <div className="col">
                                 <div className="rcWrap">
                                     <div className="rcht">
@@ -52,17 +53,17 @@ const EndedMatches = () => {
                                         {e.aCards6 === 'redcard' ? <img loading="lazy" src={redCard} width={'14px'} alt="КК" /> : false}
                                     </div>
                                 </div>
-                                <span className="hName">{e.hName}</span>
-                                <span className="hLogo">{e.hLogo === null ? <LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
-                                <span className="hScore">{e.hScore}</span>
+                                <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hName}</span>
+                                <span className="hLogo">{e.hLogo === null ? <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.hName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad>}</span>
+                                <span className="hScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hScore}</span>
                                 <span className='lLogo'>
                                     <LazyLoad offset={800}>
                                         <img loading="lazy" src={e.lLogo === 'https://s.scr365.net/img/ball16.png' ? notRecogLeague : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/13_36_14/fPHr8_16_439.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/12_250_17/a7wHB_16_438.png' ? friendly : e.lLogo && e.lLogo === 'https://s.scr365.net/s1/logo/22_33_11/46atU_16_742.png' ? wcLogo : e.lLogo} alt={e.lName} />
                                     </LazyLoad>
                                 </span>
-                                <span className="aScore">{e.aScore}</span>
-                                <span className="aLogo">{e.aLogo === null ? <LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
-                                <span className="aName">{e.aName}</span>
+                                <span className="aScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aScore}</span>
+                                <span className="aLogo">{e.aLogo === null ? <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}><img loading="lazy" width={'13px'} src={undefTeam} alt={e.aName} /></Tippy></LazyLoad> : <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad>}</span>
+                                <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aName}</span>
                             </div>
                     </Tippy>
                 })); 

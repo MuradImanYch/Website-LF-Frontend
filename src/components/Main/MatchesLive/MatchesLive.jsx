@@ -50,16 +50,16 @@ const MatchesLive = () => {
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.hName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
                                             <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='hScore'>{e.hScore}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}><img loading="lazy" src={e.lLogo} alt={e.lNameRoundDateTime[0]} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.lNameRoundDateTime[0] + ' | ' + e.lNameRoundDateTime[1] + ', ' + e.lNameRoundDateTime[2]}><img loading="lazy" src={e.lLogo} alt={e.lNameRoundDateTime[0]} /></Tippy></LazyLoad>
                                     <span className='aScore'>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.aName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
                                             <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
@@ -85,7 +85,7 @@ const MatchesLive = () => {
         <div className="matchesLive" id='fixturesFav'>
             <div className="title">
                 <h2 className="sectionName">Онлайн матчи избранных команд</h2>
-                <LazyLoad offset={800}><Tippy content="Добавить команду"><img loading="lazy" src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy></LazyLoad>
+                <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Добавить команду"><img loading="lazy" src={addFavorite} alt="add favorite" onClick={addFavoriteTeam} /></Tippy></LazyLoad>
             </div>
             <div className="wrap">
                 {matchesSlider && matchesSlider.length > 0 ? matchesSlider : <div className='noData'>Данных нет</div>}

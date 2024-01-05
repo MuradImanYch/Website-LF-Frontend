@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './Main.css';
+import $ from 'jquery';
 
 import MainSlider from './MainSlider/MainSlider';
-import MatchesSlider from './MatchesSlider/MatchesSlider';
+// import MatchesSlider from './MatchesSlider/MatchesSlider';
 import MainNews from './MainNews/MainNews';
 import Standings from './Standings/Standings';
 import Standings2 from './Standings2/Standings2';
@@ -26,22 +27,38 @@ import Standings6 from './Standings6/Standings6';
 import Blogs from './Blogs/Blogs';
 import TVSchedule from './TVSchedule/TVSchedule';
 import FifaRanking from './FifaRanking/FifaRanking';
-import MatchesLive from './MatchesLive/MatchesLive';
+// import MatchesLive from './MatchesLive/MatchesLive';
 import Broadcasts from './Broadcasts/Broadcasts';
+import ExpectedMatches from './ExpectedMatches/ExpectedMatches';
+
+import AdsenseAd from './AdseseAd/AdsenseAd';
 
 const Main = (props) => {
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
     }, []);
 
+    useEffect(() => {
+        if(localStorage.getItem('darkTheme') === 'true') {
+            $('.sectionName').css({color: '#fff'});
+            $('.pageName').css({color: '#fff'});
+        }
+        else {
+            $('.sectionName').css({color: '#000'});
+            $('.pageName').css({color: '#000'});
+        }
+    }, [JSON.parse(localStorage.getItem('darkTheme'))]);
+
     return (
         <div id='main'>
             <h1 className="pageName">Главная</h1>
             <div className="mainSliderMatchesLive">
                 <MainSlider />
-                <MatchesLive />
+                {/* <MatchesLive /> */}
+                <ExpectedMatches />
             </div>
-            <MatchesSlider />
+            <AdsenseAd />
+            {/* <MatchesSlider /> */}
             <div className="endedForecast">
                 <EndedMatches />
                 <Forecasts />

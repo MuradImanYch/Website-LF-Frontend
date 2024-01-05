@@ -9,6 +9,7 @@ import AddNews from './AddNews/AddNews';
 import EditDeleteNews from './EditDeleteNews/EditDeleteNews';
 import Broadcasts from './Broadcasts/Broadcasts';
 import AddBroadcasts from './AddBroadcasts/AddBroadcasts';
+import ChatGPT from './AddNews/ChatGPT/ChatGPT';
 import Error from '../Error/Error';
 
 import homeIco from '../../assets/ico/homeIco.webp';
@@ -77,10 +78,12 @@ const Main = () => {
                     <li><Link to="/admin/addbroadcasts"><img loading="lazy" src={addBroadcasts} alt="ico" /> Добавить трансляцию</Link></li>
                 </ul>
             </div>
+
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="news" element={<EditDeleteNews />} />
                 <Route path="addnews" element={<AddNews />} />
+                <Route path="addnews/gpt" element={<ChatGPT />} />
                 <Route path="broadcasts" element={<Broadcasts />} />
                 <Route path="addbroadcasts" element={<AddBroadcasts />} />
                 <Route path='*' element={<Error />} />

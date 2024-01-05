@@ -40,6 +40,26 @@ const Unl = () => {
     }, []);
 
     useEffect(() => {
+        function convertGermanToclientTime(germanTime) {
+            // Разбиваем строку времени на часы и минуты
+            const [hours, minutes] = germanTime.split(':').map(Number);
+          
+            // Создаем объект Date с текущей датой и временем в немецкой временной зоне
+            const germanDate = new Date();
+            germanDate.setHours(hours);
+            germanDate.setMinutes(minutes);
+
+            const clientUTCOffset = new Date();
+          
+            // Добавляем разницу между немецким и иранским временем (2.5 часа)
+            const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 2) * 60 * 60 * 1000);
+          
+            // Получаем иранское время в формате "чч:мм"
+            const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
+          
+            return clientTime;
+          }
+
         const fetchData = async () => {
             await axios.get('/standings/uefacountryrank')
             .then(response => {
@@ -49,7 +69,7 @@ const Unl = () => {
                                     <span>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
                                     <span className='points'>{e.total}</span>
@@ -69,7 +89,7 @@ const Unl = () => {
                                     <span>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
                                     <span className='points'>{e.points}</span>
@@ -91,7 +111,7 @@ const Unl = () => {
 
             await axios.get('/leagueinfo/unl')
             .then(response => {
-                setLastWinner('сб.' + response.data[0].lastWinner.split(' ')[1]);
+                setLastWinner('сб. ');
             })
             .catch(err => {
                 console.log(err);
@@ -112,8 +132,8 @@ const Unl = () => {
                     return <div key={'standings' + i}>
                         <div className="col">
                                 <div className="left">
-                                    <Tippy content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
@@ -139,11 +159,11 @@ const Unl = () => {
                     return <div key={'topScrores' + i} className="col">
                                 <div className="left">
                                     <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
                                     <span className='name'>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
                                     <span className="goals">{e.goals ? e.goals : '0'}</span>
@@ -162,7 +182,7 @@ const Unl = () => {
                 setNews(response.data && response.data.reverse().splice(0, 2).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -204,7 +224,7 @@ const Unl = () => {
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.hName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
                                             <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
@@ -213,13 +233,13 @@ const Unl = () => {
                                     <span className='aScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.aName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
                                             <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? {color: '#000'} : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime : e.dateTime}</span></div>
+                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -232,7 +252,7 @@ const Unl = () => {
                 setNews2(response.data && response.data.reverse().splice(2, 2).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -268,7 +288,7 @@ const Unl = () => {
                 setNews3(response.data && response.data.reverse().splice(4, 2).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -310,7 +330,7 @@ const Unl = () => {
                                 <div className="center">
                                     <span className='hName'>{e.hName}</span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.hName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
                                             <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
@@ -319,13 +339,13 @@ const Unl = () => {
                                     <span className='aScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
-                                        <Tippy content={e.aName}>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
                                             <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
                                     <span className='aName'>{e.aName}</span>
                                 </div>
-                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime : 'Сегодня, ' + e.dateTime : e.dateTime}</span></div>
+                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -338,7 +358,7 @@ const Unl = () => {
                 setNews4(response.data && response.data.reverse().splice(6, 2).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -374,13 +394,13 @@ const Unl = () => {
                 setTransferList(response.data && response.data.splice(0, 10).map((e, i) => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
-                        <LazyLoad offset={800}><Tippy offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy></LazyLoad>
+                        <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy></LazyLoad>
                         <span>{e.name}</span>
                     </div>
                     <div className="outIn">
-                        <Tippy content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
                         <span>→</span>
-                        <Tippy content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
+                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                     </div>
                     <div className="price">{e.price}</div>
                 </div>
@@ -399,13 +419,13 @@ const Unl = () => {
             <Helmet>
                 <title>Лига Наций (ЛН) - новости, результаты, расписание матчей, турнирная таблица и много чего - на Legendary Football</title>
                 <meta name="description" content="Изучайте последние новости, результаты и турнирную таблицу ЛН на нашем сайте. У нас вы найдете все необходимые материалы об отборочном турнире и европейских сборных." />
-                <meta name="keywords" content="лн, новости, результаты, турнирная таблица, футбол, европейский футбол, лига наций, сборная англии, сборная испании, сборная франции, сборная португалии, список бомбардиров" />
+                <meta name="keywords" content="лн, новости, результаты, турнирная таблица, футбол, европейский футбол, лига наций, сборная англии, сборная испании, сборная франции, сборная португалии, список бомбардиров, бомбардиры, ближайшие матчи, последние результаты, рейтинг в уефа, рейтинг в фифа, список популярных трансферов, видео, блоги" />
             </Helmet>
             <div className="logoPageName">
                 <div className="info">
                     <div className='left'>
                         <div>
-                            <LazyLoad offset={800}><Tippy content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy></LazyLoad>
                         </div>
                         <div>
                             <h1 className="pageName">Лига наций <span>Сезон: {season}</span></h1>
@@ -424,11 +444,11 @@ const Unl = () => {
                     <div className="table5xn standings">
                         <div className='standGroup'>{group && group}</div>
                         <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                            <Tippy content="Название"><span>Команда</span></Tippy>
-                            <Tippy content="Количество игр"><span>И</span></Tippy>
-                            <Tippy content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
-                            <Tippy content="Очки"><span>О</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы : Пропущенные голы"><span>З : П</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                         </div>
                         {standings && standings.length > 0 ? standings : <div className='noData'>Данных нет</div>}
                         <Link to="/league/unl/standings">Подробнее</Link>
@@ -441,12 +461,12 @@ const Unl = () => {
                     <h2 className="sectionName">Бомбардиры</h2>
                     <div className="table6xn topScores">
                         <div className="head">
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                            <Tippy content="Игрок"><span>Игрок</span></Tippy>
-                            <Tippy content="Команда"><span>К</span></Tippy>
-                            <Tippy content="Голы"><span>Г</span></Tippy>
-                            <Tippy content="Ассисты"><span>А</span></Tippy>
-                            <Tippy content="Количество игр"><span>И</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Игрок"><span>Игрок</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Команда"><span>К</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Голы"><span>Г</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ассисты"><span>А</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {topScrores && topScrores.length > 0 ? topScrores : <div className='noData'>Данных нет</div>}
                         <Link to="/league/unl/topscores">Подробнее</Link>
@@ -481,9 +501,9 @@ const Unl = () => {
                         <h2 className="sectionName">Рейтинг ассоциаций УЕФА</h2>
                         <div className="wrap">
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Страна"><span>Страна</span></Tippy>
-                                <Tippy content="Сумма очков"><span className='summ'>Сумма</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Страна"><span>Страна</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Сумма очков"><span className='summ'>Сумма</span></Tippy>
                             </div>
                             {uefaRank && uefaRank.length > 0 ? uefaRank : <div className='noData'>Данных нет</div>}
                             <Link to="/other/uefa-country-ranking">Подробнее</Link>
@@ -493,9 +513,9 @@ const Unl = () => {
                         <h2 className="sectionName">Рейтинг ассоциаций ФИФА</h2>
                         <div className="wrap">
                             <div className="head">
-                                <Tippy content="Позиция"><span>#</span></Tippy>
-                                <Tippy content="Страна"><span>Страна</span></Tippy>
-                                <Tippy content="Сумма очков"><span className='summ'>Очки</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Страна"><span>Страна</span></Tippy>
+                                <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Сумма очков"><span className='summ'>Очки</span></Tippy>
                             </div>
                             {fifaRank && fifaRank.length > 0 ? fifaRank : <div className='noData'>Данных нет</div>}
                             <Link to="/other/fifa-ranking">Подробнее</Link>

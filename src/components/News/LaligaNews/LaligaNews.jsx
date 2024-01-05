@@ -13,6 +13,8 @@ import laligaLogo from '../../../assets/ico/laligaLogo.webp';
 
 const LaligaNews = () => {
     const[news, setNews] = useState();
+    const[currentPage, setCurrentPage] = useState(1);
+    const[newsCount, setNewsCount] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -22,10 +24,11 @@ const LaligaNews = () => {
         const fetchData = async () => {
             await axios.get('/news/laligaNews')
             .then(response => {
-                setNews(response.data && response.data.reverse().map((e) => {
+                setNewsCount(response.data.length);
+                setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -62,7 +65,15 @@ const LaligaNews = () => {
         }
 
         fetchData();
-    }, []);
+    }, [currentPage]);
+
+    const selectPagPage = (e) => {
+        setCurrentPage($(e.target).text());
+        $('.pagination a').css({background: '#fff', color: '#000'}).removeClass('selected');
+        $(e.target).addClass('selected');
+        $('#news .newsHr section').hide();
+        $('#news .newsHr section').fadeIn();
+    }
 
     return (
         <div id='laligaNews' className='newsHr leagueNews'>
@@ -73,13 +84,16 @@ const LaligaNews = () => {
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='Ла Лига'><img loading="lazy" src={laligaLogo} alt="laligaLogo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Ла Лига'><img loading="lazy" src={laligaLogo} alt="laligaLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Новости - Ла Лига</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Новости - Ла Лига</h1>
             </div>
             <section>
                 {news}
             </section>
+            <ul className='pagination'>
+                {newsCount && Array(Math.ceil(newsCount / 30)).fill(1).map((value, index) => <li key={`page${value + index}`}><a onClick={selectPagPage} href='#'>{value + index}</a></li>)}
+            </ul>
         </div>
     );
 };

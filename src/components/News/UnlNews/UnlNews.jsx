@@ -13,6 +13,8 @@ import unlLogo from '../../../assets/ico/unlLogo.webp';
 
 const UnlNews = () => {
     const[news, setNews] = useState();
+    const[currentPage, setCurrentPage] = useState(1);
+    const[newsCount, setNewsCount] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
@@ -22,10 +24,11 @@ const UnlNews = () => {
         const fetchData = async () => {
             await axios.get('/news/unlNews')
             .then(response => {
-                setNews(response.data && response.data.reverse().map((e) => {
+                setNewsCount(response.data.length);
+                setNews(response.data && response.data.reverse().splice(currentPage * 30 - 30, 30).map((e) => {
                     let date = new Date(e.date);
                     let day = String(date.getDate()).length < 2 ? '0' + String(date.getDate()) : String(date.getDate());
-                    let month = String(date.getMonth()).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
+                    let month = String(date.getMonth() + 1).length < 2 ? '0' + String(date.getMonth() + 1) : String(date.getMonth() + 1);
                     let year = date.getFullYear();
                     let hours = String(date.getHours()).length < 2 ? '0' + String(date.getHours()) : String(date.getHours());
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
@@ -62,24 +65,35 @@ const UnlNews = () => {
         }
 
         fetchData();
-    }, []);
+    }, [currentPage]);
+
+    const selectPagPage = (e) => {
+        setCurrentPage($(e.target).text());
+        $('.pagination a').css({background: '#fff', color: '#000'}).removeClass('selected');
+        $(e.target).addClass('selected');
+        $('#news .newsHr section').hide();
+        $('#news .newsHr section').fadeIn();
+    }
 
     return (
         <div id='unlNews' className='newsHr leagueNews'>
             <Helmet>
                 <title>Новости Лиги Наций - на Legendary Football</title>
                 <meta name="description" content="Будьте в курсе всех новостей Лиги Наций, также европейских сборных." />
-                <meta name="keywords" content="уефа, лига наций, европейский футбол, футбол, сборная англии, сборная германии, сборная франции, сборная испании, новости, новости уефа" />
+                <meta name="keywords" content="уефа, лига наций, европейский футбол, футбол, сборная англии, сборная германии, сборная франции, сборная испании, новости, новости уефа, новости лиги наций" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy content='ЛН'><img loading="lazy" src={unlLogo} alt="unlLogo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛН'><img loading="lazy" src={unlLogo} alt="unlLogo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Новости - Лига наций УЕФА</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Новости - Лига наций УЕФА</h1>
             </div>
             <section>
                 {news}
             </section>
+            <ul className='pagination'>
+                {newsCount && Array(Math.ceil(newsCount / 30)).fill(1).map((value, index) => <li key={`page${value + index}`}><a onClick={selectPagPage} href='#'>{value + index}</a></li>)}
+            </ul>
         </div>
     );
 };

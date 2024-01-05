@@ -6,7 +6,7 @@ import LeagueAll from './LeagueAll/LeagueAll';
 
 import Error from '../Error/Error';
 
-import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
+// import MatchesSlider from '../Main/MatchesSlider/MatchesSlider';
 
 import Rpl from './Rpl/Rpl';
 import RplStandings from './Rpl/Standings/Standings';
@@ -74,10 +74,16 @@ import UnlFixtures from './Unl/Fixtures/Fixtures';
 import UnlResults from './Unl/Results/Results';
 import UnlTopScores from './Unl/TopScores/TopScores';
 
+import EC from './EC/EC';
+import ECStandings from './EC/Standings/Standings';
+import ECFixtures from './EC/Fixtures/Fixtures';
+import ECResults from './EC/Results/Results';
+import ECTopScores from './EC/TopScores/TopScores';
+
 const Main = (props) => {
     return (
         <div id="league">
-            <MatchesSlider />
+            {/* <MatchesSlider /> */}
 
             <Routes>
                 <Route path="/" element={<LeagueAll leagues={props.leagues} />} />
@@ -147,6 +153,12 @@ const Main = (props) => {
                 <Route path="/unl/fixtures" element={<UnlFixtures />} />
                 <Route path="/unl/results" element={<UnlResults />} />
                 <Route path="/unl/topscores" element={<UnlTopScores />} />
+
+                <Route path="/ec" element={<EC />} />
+                <Route path="/ec/standings" element={<ECStandings />} />
+                <Route path="/ec/fixtures" element={<ECFixtures />} />
+                <Route path="/ec/results" element={<ECResults />} />
+                <Route path="/ec/topscores" element={<ECTopScores />} />
 
                 <Route path='*' element={<Error />} />
             </Routes>

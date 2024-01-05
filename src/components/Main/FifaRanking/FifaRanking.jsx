@@ -19,16 +19,16 @@ const FifaRanking = () => {
             await axios.get('/standings/fifaranking')
             .then(response => {
                 setFifaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
-                    return <div className="col wrap" key={'fifaRanking' + indx}>
+                    return <div className="col wrap" key={'fifaRanking' + indx} style={localStorage.getItem('darkTheme') === 'true' ? {backgroundColor: 'transparent'} : null}>
                     <div>
-                        <span className='place'>{item.place}.<span></span></span>
-                        <div className='flagName'><LazyLoad offset={800}><Tippy content={item.name}><img loading="lazy" src={item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
+                        <span className='place' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.place}.<span></span></span>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={item.name}><img loading="lazy" src={item.flag} alt={item.name} /></Tippy></LazyLoad><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.name}</span></div>
                         <span className={item.difference[0] === '=' ? 'diffEqual' : false || item.difference[0] === '↑' ? 'diffUp' : false || item.difference[0] === '↓' ? 'diffDown' : false}>{item.difference}</span>
-                        <span className='total'>{item.points}</span>
+                        <span className='total' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.points}</span>
                     </div>
                     <div>
-                        <span>{item.pointsDiff}</span>
-                        <span>{item.association}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.pointsDiff}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.association}</span>
                     </div>
                 </div>
                 }));
@@ -54,24 +54,24 @@ const FifaRanking = () => {
                 <div className="uefaTable">
                     <div className="logoWrap">
                         <LazyLoad offset={800}>
-                            <Tippy content='FIFA'><img loading="lazy" src={fifaLogo} alt="fifaLogo" /></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='FIFA'><img loading="lazy" src={fifaLogo} alt="fifaLogo" /></Tippy>
                         </LazyLoad>
                     </div>
                     <div className="col">
                         <div>
-                            <Tippy content="Позиция"><span>#</span></Tippy>
-                            <Tippy content="Страна"><span>Страна</span></Tippy>
-                            <Tippy content="Изменения в позиции"><span>Изменения</span></Tippy>
-                            <Tippy content="Сумма очков"><span className='total'>Очки</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Страна"><span>Страна</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Изменения в позиции"><span>Изменения</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Сумма очков"><span className='total'>Очки</span></Tippy>
                         </div>
                         <div>
-                            <Tippy content="Разница с предыдущими очками"><span>+/-</span></Tippy>
-                            <Tippy content="Ассоциация"><span>Ассоциация</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Разница с предыдущими очками"><span>+/-</span></Tippy>
+                            <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ассоциация"><span>Ассоциация</span></Tippy>
                         </div>
                     </div>
                     {fifaCountryRank && fifaCountryRank.length > 0 ? fifaCountryRank : <div className='noData'>Данных нет</div>}
                     <div className="more">
-                        <Link to={linkToggle}><span onClick={fifaCountryRankToggle}>Развернуть список</span></Link>
+                        <Link to={linkToggle}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} onClick={fifaCountryRankToggle}>Развернуть список</span></Link>
                     </div>
                 </div>
             </section>
