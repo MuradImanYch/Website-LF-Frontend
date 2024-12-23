@@ -43,7 +43,7 @@ const QuickNav = () => {
             setQuickNav(
                 <ul>
                     {/* <li><hr /><a href="#onlineFav" onClick={qckNav}>Онлайн матчи избранных команд</a><hr /></li> */}
-                    <li><hr /><a href="#expectedMatchesQckNav" onClick={qckNav}>Ожидаемые матчи</a><hr /></li>
+                    {/* <li><hr /><a href="#expectedMatchesQckNav" onClick={qckNav}>Ожидаемые матчи</a><hr /></li> */}
                     <li><hr /><a href="#endedQckNav" onClick={qckNav}>Завершённые матчи</a><hr /></li>
                     <li><hr /><a href="#oddsQckNav" onClick={qckNav}>Котировки на матчи</a><hr /></li>
                     <li><hr /><a href="#transferListQckNav" onClick={qckNav}>Список популярных трансферов</a><hr /></li>

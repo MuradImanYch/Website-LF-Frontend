@@ -71,7 +71,7 @@ const Forecasts = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

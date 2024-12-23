@@ -5,7 +5,7 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const News = () => {
     const[news, setNews] = useState();
@@ -42,7 +42,7 @@ const News = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -56,7 +56,7 @@ const News = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -74,7 +74,7 @@ const News = () => {
                 <meta name="description" content="Будьте в курсе актуальных трансферных событий летнего и зимнего окна! Узнайте первыми о переходах звезд мирового футбола на нашей странице с горячими новостями о трансферах." />
                 <meta name="keywords" content="футбольные трансферы, трансферное окно, летние трансферы, зимние трансферы, переходы футболистов, актуальные трансферы, новости трансферов, срочные трансферы, переходные сроки, трансферные слухи, трансферное окно в европе, трансферы рпл, трансферы апл, трансферы серии а, трансферы бундеслиги, трансферы лиги 1" />
             </Helmet>
-            <h1 className="pageName">Новости трансферов</h1>
+            <h1 className="pageName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Новости трансферов</h1>
             <section>
                 {news}
             </section>

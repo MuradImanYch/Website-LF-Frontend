@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import uelLogo from '../../../assets/ico/uelLogo.webp';
 
@@ -46,7 +46,7 @@ const UelNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const UelNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const UelNews = () => {
     return (
         <div id='uelNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Лиги Европы (ЛЕ) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Лиги Европы (ЛЕ) и европейском футболе в целом." />
-                <meta name="keywords" content="уефа, ле, лига европы, европейский футбол, футбол, севилья, рома, айнтрахт франкфурт, вильяреал, новости, новости ле, новости уефа, новости лиги европы" />
+                <title>Новости Лиги Европы (ЛЕ)</title>
+                <meta name="description" content="Свежие новости, результаты матчей, трансферные слухи и все ключевые событии сезона в Лиге Европы." />
+                <meta name="keywords" content="новости ле, новости лиги европы, новости уефа, лига европы новости, европейский футбол новости, севилья новости, рома новости, айнтрахт франкфурт новости, вильяреал новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

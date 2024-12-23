@@ -95,7 +95,7 @@ const TopScores = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

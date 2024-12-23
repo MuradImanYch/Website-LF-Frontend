@@ -6,13 +6,13 @@ import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
 import cookies from 'js-cookie';
 import axios from 'axios';
-import Helmet from 'react-helmet';
 import $ from 'jquery';
 import Snowfall from 'react-snowfall';
 import config from './conf.json';
 
 import logo from './assets/ico/logo.webp';
 import logoNy from './assets/ico/logo-ny.webp';
+import settings from './assets/ico/settings.webp';
 import rplLogo from './assets/ico/rplLogo.webp';
 import eplLogo from './assets/ico/eplLogo.webp';
 import laligaLogo from './assets/ico/laligaLogo.webp';
@@ -60,6 +60,7 @@ const QuickNav = React.lazy(() => import('./components/QuickNav/QuickNav'));
 const ExtendedBroadcast = React.lazy(() => import('./components/Main/ExtendedBroadcast/ExtendedBroadcast'));
 const SuggestionComplaints = React.lazy(() => import('./components/SuggestionComplaints/SuggestionComplaints'));
 const Settings = React.lazy(() => import('./components/Settings/Settings'));
+const ExtendedMatch = React.lazy(() => import('./components/Main/ExtendedMatch/ExtendedMatch'));
 
 function App() {
     const[barState, setBarstate] = useState(true); 
@@ -72,7 +73,6 @@ function App() {
     const[profileToggle, setProfileToggle] = useState(true);
     const[mouseX, setMouseX] = useState();
     const[mouseY, setMouseY] = useState();
-    const[nyTheme, setNYTheme] = useState(false);
 
     const progressBar = () => { // scroll progressBar func
         let windScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -247,7 +247,7 @@ function App() {
         {name: 'Евр. квлф.', img: euQualLogo, id: 'eu-qualification', title: 'Европейская квалификация'},
         {name: 'ЛН', img: unlLogo, id: 'unl', title: 'Лига наций УЕФА'},
         {name: 'ЧМ 2026', img: wcLogo, id: 'wc', title: 'Чемпионат Мира 2026'},
-        {name: 'ЧЕ 2024', img: ecLogo, id: 'ec', title: 'Чемпионат Европы 2024'}
+        {name: `ЧЕ ${config['european-championship-season']}`, img: ecLogo, id: 'ec', title: `Чемпионат Европы ${config['european-championship-season']}`}
     ]
 
     // desc sub sub menu enter/out events
@@ -470,11 +470,6 @@ function App() {
     
     return (
         <div id='app'>
-            <Helmet>
-                <title>Результаты матчей, новости, онлайн трансляции и много всего футбольного - на Legendary Football</title>
-                <meta name="description" content="Свежие новости, захватывающие трансляции матчей, подробные результаты и все, что нужно знать о мире футбола. Будьте в курсе всех событий как ведущих лиг так и лиг постсоветского пространства, будьте в сердце футбольной страсти с Legendary Football." />
-                <meta name="keywords" content="legfootball главная, ожидаемые матчи, завершенные матчи, таблица уефа, таблица фифа, видео, блоги, турнирная таблица, таблица бомбардиров, новости футбола, трансляции матчей, результаты футбольных матчей, футбольные новости, футбол, расписание матчей, английская премьер лига, российская премьер лига, лига чемпионов, лига европы, лига конференции, чемпионат мира, чемпионат европы, ла лига, онлайн трансляция, серия а, футбол снг, российский футбол" />
-            </Helmet>
             {config['ny-christmass-theme'] && <Snowfall style={{zIndex: '2024'}} />}
             {config['ny-christmass-theme'] && <div id="pointerEffect" style={{left: mouseX + 'px', top: mouseY + 'px'}}></div>}
             <div id="progressBar"></div>
@@ -554,9 +549,9 @@ function App() {
                                         <li><Link to="/other/fifa-ranking"><img loading="lazy" src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to="/other/tvschedule"><img loading="lazy" src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
                                         <li><Link to="/other/odds"><img loading="lazy" src={forecasts} alt="forecasts" /> Котировки</Link></li>
-                                        <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
+                                <li className='actual'><Link to="/other/broadcasts">Прямые трансляции</Link></li>
                                 {/* <li className='actual'>
                                     <Link to="">----</Link>
                                 </li> */}
@@ -617,15 +612,12 @@ function App() {
                                         <li><Link to="/other/fifa-ranking"><img loading="lazy" src={rank} alt="fifa ranking" /> Рейтинг ФИФА</Link></li>
                                         <li><Link to="/other/tvschedule"><img loading="lazy" src={tvProgram} alt="tv program" /> ТВ расписание</Link></li>
                                         <li><Link to="/other/odds"><img loading="lazy" src={forecasts} alt="forecasts" /> Котировки</Link></li>
-                                        <li><Link to="/other/broadcasts"><img loading="lazy" src={broadcasts} alt="forecasts" /> Трансляция матчей</Link></li>
                                     </ul>
                                 </li>
-                                {/* <li className='actual'>
-                                    <div><Link to="">----</Link></div>
-                                </li> */}
+                                <li className='actual'><Link to="/other/broadcasts">Прямые трансляции</Link></li>
                             </ul>
 
-                            <Link style={{textAlign: 'center', display: 'block', textDecoration: 'underline', textUnderlineOffset: '2px'}} to='/suggestions-complaints'>Предложения и жалобы</Link>
+                            {/* <Link style={{textAlign: 'center', display: 'block', textDecoration: 'underline', textUnderlineOffset: '2px'}} to='/suggestions-complaints'>Предложения и жалобы</Link> */}
                         </div>
                     </nav>
                     <div className="socnetWrap">
@@ -633,15 +625,17 @@ function App() {
                         <a title="Telegram" href="https://t.me/+zHJJw7xZ2300YjEy" target="__blank"><i onMouseEnter={tgMouseEnter} onMouseLeave={tgMouseLeave} className="fab fa-telegram-plane"></i></a>
                         <a title="Instagram" href="https://www.instagram.com/leg_football/" target="__blank"><i onMouseEnter={igMouseEnter} onMouseLeave={igMouseLeave} className="fab fa-instagram"></i></a>
                     </div>
-                    {auth || cookies.get('auth') ? <div onClick={profileToggleFunc} id="profile">
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Профиль'><img loading="lazy" src={defaultProfile} alt="profilePic" /></Tippy>
-                        <ul className="subMenu">
-                            <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
-                            <li><Link to="/settings">Настройки</Link></li>
-                            {adminAuth ? <li style={{marginTop: '30px'}}><Link to='/admin' onClick={adminEnter} style={{color: 'yellow', fontWeight: 'bold'}}>Админ панель</Link></li> : null}
-                            <button onClick={logOut}>Выйти</button>
-                        </ul>
-                        </div> : <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Вход/Регистрация'><img loading="lazy" className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
+                    <div className="userSettings">
+                        {auth || cookies.get('auth') ? <div onClick={profileToggleFunc} id="profile">
+                        <img className='profilePic' loading="lazy" src={defaultProfile} alt="profilePic" />
+                            <ul className="subMenu">
+                                <li><a href="#">Профиль <span>{username ? username : 'err'}</span></a></li>
+                                {adminAuth ? <li style={{marginTop: '30px'}}><Link to='/admin' onClick={adminEnter} style={{color: 'yellow', fontWeight: 'bold'}}>Админ панель</Link></li> : null}
+                                <button onClick={logOut}>Выйти</button>
+                            </ul>
+                            </div> : <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Вход/Регистрация'><img loading="lazy" className='login' src={login} alt="login" onClick={loginToggle} /></Tippy>}
+                            <Link to={'/settings'}><img className='settingsPic' loading="lazy" src={settings} alt="settingsPic" /></Link>
+                    </div>
                     <div id="menuToggleMobDiv" onClick={menuToggle}>
                         <div className="bar1"></div>
                         <div className="bar2"></div>
@@ -672,6 +666,7 @@ function App() {
                             <Route path='broadcast/watch/:id' element={<ExtendedBroadcast />} />
                             <Route path='suggestions-complaints' element={<SuggestionComplaints />} />
                             <Route path='settings' element={<Settings />} />
+                            {/* <Route path='match/:id' element={<ExtendedMatch />} /> */}
                             <Route path='*' element={<Error />} />
                         </Routes>
                     </Suspense>

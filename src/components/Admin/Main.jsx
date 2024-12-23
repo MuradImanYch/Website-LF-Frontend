@@ -17,6 +17,7 @@ import newsIco from '../../assets/ico/newspaperIco.webp';
 import addIco from '../../assets/ico/add.webp';
 import broadcasts from '../../assets/ico/broadcasts.webp';
 import addBroadcasts from '../../assets/ico/addBroadcasts.webp';
+import { Helmet } from 'react-helmet-async';
 
 const Main = () => {
     const[barState, setBarstate] = useState(true); 
@@ -62,6 +63,10 @@ const Main = () => {
 
     return (
         <div id='adminMain'>
+            <Helmet>
+                <meta name="robots" content="noindex, nofollow" />
+                <title>{`Админка LF`}</title>
+            </Helmet>
             <div id="menuToggleAdminWrap">
                 <div id="menuToggleAdmin" onClick={menuToggle}>
                     <div className="bar1Admin"></div>

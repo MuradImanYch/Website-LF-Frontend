@@ -36,7 +36,7 @@ const TransferList = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

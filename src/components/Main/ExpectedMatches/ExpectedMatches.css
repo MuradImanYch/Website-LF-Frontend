@@ -6,6 +6,7 @@
     align-items: center;
     height: 250px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 #expectedMatches .wrap .col {
     display: flex;
@@ -22,10 +23,12 @@
 }
 #expectedMatches .wrap .col img {
     margin: 0 5px;
+    height: 20px;
+    width: auto;
 }
 #expectedMatches .wrap .col .lLogo img {
-    width: 14px;
-    height: 14px;
+    height: auto;
+    width: 20px;
 }
 #expectedMatches .wrap .hScore, #expectedMatches .wrap .aScore {
     border: 1px solid #ffbf66;
@@ -98,7 +101,7 @@
     #expectedMatches .wrap {
         height: 370px;
     }
-    #expectedMatches .sectionName  {
+    #expectedMatches .sectionName {
         margin: 0;
     }
 }

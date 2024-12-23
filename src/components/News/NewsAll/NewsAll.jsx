@@ -5,7 +5,7 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const NewsAll = () => {
     const[news, setNews] = useState();
@@ -42,7 +42,7 @@ const NewsAll = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -60,7 +60,7 @@ const NewsAll = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -74,9 +74,9 @@ const NewsAll = () => {
     return (
         <div className='newsHr'>
             <Helmet>
-                <title>Все новости АПЛ, РПЛ, Ла Лиги, Серии А, Лиги Чемпионов и другие топ лиги - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей топ лиг как: Английской Премьер-лиге (АПЛ), Российской Премьер-лиге (РПЛ), Ла Лиге, Серии А, Лиге Чемпионов и других ведущих турниров европы и постсоветского пространства." />
-                <meta name="keywords" content="АПЛ, РПЛ, Ла Лига, Серия А, Лига Чемпионов, все новости, результаты матчей, трансферы, голы, клубы, игроки, анализ матчей" />
+                <title>Свежие новости АПЛ, РПЛ, Ла Лиги, Серии А, Лиги Чемпионов и другие турниры</title>
+                <meta name="description" content="Будьте в курсе всех новостей ведущих турниров европы и постсоветского пространства." />
+                <meta name="keywords" content="новости апл, новости рпл, новости ла лиги, новости серии а, новости лч, все новости футбола, результаты матчей, трансферные слухи, актуальные трансферы, свежие новости футбола" />
             </Helmet>
             <section>
                 <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Все новости</h1>

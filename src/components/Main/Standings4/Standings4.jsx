@@ -128,7 +128,7 @@ const Standings4 = () => {
             }); 
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

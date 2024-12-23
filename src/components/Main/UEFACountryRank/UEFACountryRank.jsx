@@ -58,7 +58,7 @@ const UEFACountryRank = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, [expandToggle]); 
 
     const uefaCountryRankToggle = () => {

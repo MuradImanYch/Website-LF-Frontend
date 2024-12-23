@@ -4,7 +4,7 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/uelLogo.webp';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 const Results = () => {
@@ -62,21 +62,21 @@ const Results = () => {
         }
       };
   
-      fetchData();
+      // fetchData();
 }, []);
 
     return (
         <div className='leagueResults'>
           <Helmet>
-                <title>Лига Европы (ЛЕ) - результаты матчей - на Legendary Football</title>
+                <title>Лига Европы (ЛЕ) - Результаты матчей</title>
                 <meta name="description" content="Результаты матчей Лиги Европы (ЛЕ)." />
-                <meta name="keywords" content="ле, лига европы, европейский футбол, футбол, севилья, ливерпуль, вильяреал, манчестер юнайтед, айнтрахт франкфурт, результаты ле, прошедшие матчи ле" />
+                <meta name="keywords" content="лига европы результаты, ле результаты, результаты ле, лига европы матчи, европейский футбол результаты, итоги ле, результаты лиги европы, ливерпуль результаты, айнтрахт результаты, карабах результаты, рома результаты, прошедшие матчи ле" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛЕ'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Результаты - Лига Европы</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Результаты - Лига Европы</h1>
             </div>
             {results && results.length > 0 ? results.map((fixture, index) => (
         <React.Fragment key={'uel' + index}>
@@ -87,17 +87,16 @@ const Results = () => {
               <span style={fixture.dateTime === 'Завершен' || fixture.dateTime.includes(':') ? {color: '#000'} : {color: '#fff'}}>{fixture.round}</span>
             </div>
             <div className="center">
-              <span className="hName">{fixture.hName}</span>
+              <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.hName}</span>
               <LazyLoad offset={800}>
                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={fixture.hName}>
                   <img loading="lazy" src={fixture.hLogo} alt={fixture.hName} />
                 </Tippy>
               </LazyLoad>
-              <span className="hScore" style={fixture.dateTime === 'Завершен' || fixture.dateTime.includes(':') ? {background: '#fff'} : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>
+              <span className="hScore" style={{...(fixture.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && fixture.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.hScore}
               </span>
-              -
-              <span className="aScore" style={fixture.dateTime === 'Завершен' || fixture.dateTime.includes(':') ? {background: '#fff'} : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>
+              <span className="aScore" style={{...(fixture.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && fixture.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.aScore}
               </span>
               <span></span>
@@ -106,7 +105,7 @@ const Results = () => {
                   <img loading="lazy" src={fixture.aLogo} alt={fixture.aName} />
                 </Tippy>
               </LazyLoad>
-              <span className="aName">{fixture.aName}</span>
+              <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.aName}</span>
             </div>
             <div className="dateTime" style={fixture.dateTime === 'Завершен' || fixture.dateTime.includes(':') ? {background: '#ffbf66'} : {background: '#f02d54'}}>
               <span style={fixture.dateTime === 'Завершен' || fixture.dateTime.includes(':') ? {color: '#000'} : {color: '#fff'}}>

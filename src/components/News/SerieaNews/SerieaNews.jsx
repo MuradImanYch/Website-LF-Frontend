@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import serieaLogo from '../../../assets/ico/serieaLogo.webp';
 
@@ -46,7 +46,7 @@ const SerieaNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const SerieaNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const SerieaNews = () => {
     return (
         <div id='serieaNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Чемпионата Италии (Серия А) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Италии (Серия А) и итальянском футболе в целом." />
-                <meta name="keywords" content="серия а, чемпионат италии, итальянский футбол, футбол, ювентус, наполи, милан, интер, новости, новости серии а" />
+                <title>Новости Чемпионата Италии (Серия А)</title>
+                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Италии (Серия А) и итальянском футболе." />
+                <meta name="keywords" content="новости серии а, чемпионат италии новости, серия а новости, новости итальянского футбола, ювентус новости, наполи новости, фк милан новости, интер новости, фк рома новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import rplLogo from '../../../assets/ico/rplLogo.webp';
 
@@ -46,7 +46,7 @@ const RplNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const RplNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const RplNews = () => {
     return (
         <div id='rplNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Российской Премьер Лиги (РПЛ) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Российской Премьер Лиги (РПЛ) и российском футболе в целом." />
-                <meta name="keywords" content="рпл, российская премьер лига, российский футбол, футбол, зенит, спартак, цска, новости, новости рпл, новости российской премьер лиги" />
+                <title>Новости Российской Премьер-Лиги (РПЛ)</title>
+                <meta name="description" content="Будьте в курсе актуальных новостей, матчей, трансферных слухов и ключевых событий сезона в чемпионате России по футболу." />
+                <meta name="keywords" content="новости рпл, новости рфпл, новости чемпионат россии, российская премьер лига новости, трансферы рпл новости, российский футбол, зенит новости, спартак новости, цска новости, новости российской премьер лиги" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

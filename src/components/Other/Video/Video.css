@@ -1,0 +1,29 @@
+#videoOther .cart .playWrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#videoOther .cart .playWrap img {
+    width: 70px;
+    height: 70px;
+    transition: 0.3s;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+}
+
+@media (min-width: 1024px) {
+    #videoOther .cart {
+        height: 220px;
+        width: 320px;
+    }
+    #videoOther .cart .playWrap img {
+        width: 55px;
+        height: 55px;
+    }
+}

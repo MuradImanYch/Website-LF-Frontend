@@ -31,7 +31,7 @@ const Broadcasts = () => {
         const clientUTCOffset = new Date();
       
         // Добавляем разницу между немецким и иранским временем (2.5 часа)
-        const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 4) * 60 * 60 * 1000);
+        const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 0) * 60 * 60 * 1000);
       
         // Получаем иранское время в формате "чч:мм"
         const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
@@ -167,11 +167,11 @@ const Broadcasts = () => {
                     }
 
                     return <div key={'broadcast' + e.id} id={'broadcast' + e.id}>
-                    <Link to={`/broadcast/watch/${e.id + '-' + cyrillicToTranslit().transform(e.hName + '-' + e.aName + '-' + e.lName).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`} id={'broadcast' + e.id}>
+                    <Link to={`/broadcast/watch/${cyrillicToTranslit().transform(e && (e && e.id + '-' + e.hName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh') + '-' + e.aName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh') + '-' + e.lName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh')).replace(/\s+/g, '-').toLowerCase())}`} id={'broadcast' + e.id}>
                         <div className="col">
                             <div><LazyLoad offset={800}><img loading="lazy" src={e.hLogo} alt={e.hName} /></LazyLoad><span>{e.hName}</span></div>
                             <div className='timeLive'>
-                                <LazyLoad offset={800}><img loading="lazy" src={e.lLogo} alt={e.lName} /></LazyLoad>
+                                <span>{e.lName}</span>
                                 {e.broadcastLink === null || e.broadcastLink === '' ? <span>{e.time}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live <br /><div className="liveTime">{convertGermanToclientTime(e.time)}</div></span>}
                             </div>
                             <div><span>{e.aName}</span><LazyLoad offset={800}><img loading="lazy" src={e.aLogo} alt={e.aName} /></LazyLoad></div>
@@ -182,7 +182,7 @@ const Broadcasts = () => {
                             <button id={`editBroadcast${e.id}`} onClick={editBroadcast}>✎</button>
                             <button id={`delBroadcast${e.id}`} onClick={deleteBroadcast}>🗑</button>
                         </div>
-                        <span>ID: {e.id}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>ID: {e.id}</span>
                     </div>
                     <div id="delConfirm">
                         <div id="forCenter">
@@ -230,7 +230,7 @@ const Broadcasts = () => {
             <div className="wrap">
                 {item && item.length > 0 ? item : <div className='noData'>Данных нет</div>}
                 <div className="editPopup">
-                    <div className="container">
+                    <div className="container" style={localStorage.getItem('darkTheme') === 'true' ? {background: 'rgb(34, 34, 34)'} : null}>
                         <form className="wrap">
                             <div>
                                 <label htmlFor="name1">Название команды 1</label>

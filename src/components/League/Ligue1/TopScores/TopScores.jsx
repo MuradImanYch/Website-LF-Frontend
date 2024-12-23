@@ -4,10 +4,11 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import logo from '../../../../assets/ico/ligue1Logo.webp';
 import axios from 'axios';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
+import translate from 'translate';
 
-import person from '../../../../assets/ico/person.webp';
+import config from '../../../../conf.json';
 
 const TopScores = () => {
     const [topScores, setTopScores] = useState(); 
@@ -18,46 +19,71 @@ const TopScores = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/standings/ligue1TS')
-            .then(response => {
-                setTopScores(response.data && response.data.splice(1).map((e, i) => {
-                    return <div key={'ligue1' + i} className="col">
+            const options = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/players/topscorers',
+                params: {
+                  league: '61',
+                  season: `${config['ligue-1-season'].split('/')[0]}`
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+            };
+            
+            try {
+                const response = await axios.request(options);
+                const tsData = response.data && response.data.response;
+
+                if (tsData) {
+                    const translatedTS = await Promise.all(tsData.map(async (e, i) => {
+                        const player = await translate(e.player.name, {to: 'ru'});
+                        const playerFN = await translate(e.player.firstname + ' ' + e.player.lastname, {to: 'ru'});
+                        const team = config['correct-translations'][`${await translate(e.statistics[0].team.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.statistics[0].team.name, {to: 'ru'})}`] : await translate(e.statistics[0].team.name, {to: 'ru'});
+
+                        return (
+                            <div key={'ts' + i} className="col">
                                 <div className="left">
-                                    <span className="place">{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
-                                    <span className='name'>{e.player}</span>
+                                    <span className="place" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{i + 1}</span>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={playerFN}><img loading="lazy" src={e.player.photo} alt={player}/></Tippy></LazyLoad>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={team}><img loading="lazy" src={e.statistics[0].team.logo} alt={team} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
-                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
-                                    <span>{e.games}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="goals">{e.statistics[0].goals.total}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.statistics[0].penalty.scored}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.statistics[0].games.appearences}</span>
                                 </div>
                             </div>
-                }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                        )
+                    }));
+
+                    setTopScores(translatedTS);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
         }
 
-        fetchData();
+        // fetchData();
     }, []);
-    
+
     return (
         <div className='leagueTopScores table6xn'>
             <Helmet>
-                <title>Лига 1 - Список бомбардиров - на Legendary Football</title>
-                <meta name="description" content="Таблица бомбардиров чемпионата франции (Лиги 1)." />
-                <meta name="keywords" content="лига 1, чемпионат франции, французский футбол, футбол, псж, олимпик марсель, олимпик лион, монако, таблица бомбардиров лиги 1, список бомбардиров лиги 1" />
+                <title>Чемпионат Франции (Лига 1) - Список бомбардиров</title>
+                <meta name="description" content="Таблица бомбардиров чемпионата Франции (Лиги 1)." />
+                <meta name="keywords" content="лига 1 бомбардиры, список бомбардиров чемпионата франции, французский футбол бомбардиры, лига 1 список бомбардиров, псж бомбардиры, олимпик марсель бомбардиры, олимпик лион бомбардиры, монако бомбардиры, таблица бомбардиров лиги 1, чемпионат франции бомбардиры" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Лига 1'><img loading="lazy" src={logo} alt="logo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={`Лига 1 ${config['ligue-1-season']}`}><img loading="lazy" src={logo} alt={`Лига 1 ${config['ligue-1-season']}`} /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Бомбардиры - Лига 1</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Лига 1 {config['ligue-1-season']}</h1>
             </div>
             <div className="head">
                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>

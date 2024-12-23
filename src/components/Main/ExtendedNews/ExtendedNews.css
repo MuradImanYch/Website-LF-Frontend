@@ -2,6 +2,9 @@
 .extendedNews .textWrap table tr td {
     padding: 6px;
 }
+.extendedNews .textWrap ul li, .extendedNews .textWrap ol li {
+    color: #ffa72c !important;
+}
 .extendedNews .textWrap a {
     color: rgb(0, 110, 201);
     text-decoration: underline;

@@ -70,7 +70,6 @@
     align-items: center;
     justify-content: flex-start;
     width: 50px;
-    padding: 0 0 0 5px;
 }
 #league > div.leagueStandings > div.wrap > div:nth-child(2) > div > div, #league > div.leagueStandings > div.wrap > div:nth-child(3) > div > div {
     display: flex;
@@ -131,7 +130,7 @@
         padding: 0;
     }
     .leagueStandings .wrap .logoName {
-        padding: 0 0 0 15px;
+        padding: 0 0 0 5px;
     }
 }
 

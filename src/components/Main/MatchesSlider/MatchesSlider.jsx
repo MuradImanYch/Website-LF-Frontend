@@ -104,9 +104,9 @@ const MatchesSlider = (props) => {
             });
         }
         
-        fetchData();
+        // fetchData();
         setInterval(() => {
-            fetchData();
+            // fetchData();
         }, 30000);
     }, []);
 

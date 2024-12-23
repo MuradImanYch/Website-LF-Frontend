@@ -4,8 +4,11 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/serieaLogo.webp';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
+import translate from 'translate';
+
+import config from '../../../../conf.json';
 
 const Standings = () => {
     const[standings, setStandings] = useState();
@@ -16,94 +19,121 @@ const Standings = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get('/standings/seriea')
-            .then(response => {
-                response.data && response.data.map((e) => {
-                    setStandings(response.data);
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            const options = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/standings',
+                params: {
+                  season: `${config['serie-a-season'].split('/')[0]}`,
+                  league: '135'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+              };
+              
+              try {
+                const response = await axios.request(options);
+                const standingsData = response.data && response.data.response[0].league.standings;
+
+                if (standingsData) {
+                    const translatedStandings = await Promise.all(standingsData.map(async (e, i) => {
+                        const translatedPlace = await Promise.all(e.map(async (i, j) => {
+                            const description = await translate(i.description, { to: 'ru' });
+                                return <Tippy key={'table' + j} trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={description}>
+                                    <span style={{...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null), ...(i.description?.includes('Champions League') ? {background: 'linear-gradient(135deg,#0d0d7b 35%,#bf00ff)', color: '#fff'} : null), ...(i.description?.includes('Europa League') ? {background: 'linear-gradient(135deg,#ff5700 35%,#000)', color: '#fff'} : null), ...(i.description?.includes('Europa Conference') ? {background: 'linear-gradient(135deg,#19c778 35%,#000)', color: '#fff'} : null), ...(i.description?.includes('Relegation') ? {background: '#e70000', color: '#fff'} : null), ...(i.description?.includes('(Relegation)') ? {background: '#ff3535', color: '#fff'} : null), ...(i.description?.includes('Play Offs:') ? {background: '#ff3535', color: '#fff'} : null)}} className={`place`}>{i.rank}</span>
+                                </Tippy>
+                        }));
+                        const translatedTeam = await Promise.all(e.map(async (i, j) => {
+                                const teamName = config['correct-translations'][`${await translate(i.team.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(i.team.name, {to: 'ru'})}`] : await translate(i.team.name, {to: 'ru'});
+                                return <div key={'logoName' + j} className='logoName'>
+                                <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={teamName}><img loading="lazy" src={i.team.logo} alt={teamName} /></Tippy></LazyLoad>
+                                <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{teamName}</span>
+                            </div>
+                        }));
+
+                        return (
+                            <div className="wrap" key={'group' + i}>
+                                <div className='col'>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
+                                    {translatedPlace}
+                                </div>
+                                <div className='col'>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
+                                    {translatedTeam}
+                                </div>
+                                <div className="scroll">
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.all.played}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.all.win}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.all.draw}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.all.lose}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.all.goals.for}</span>
+                                        })}
+                                    </div>
+                                    <div className='col'>
+                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
+                                        {e.map((e, i) => {
+                                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.all.goals.against}</span>
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }));
+
+                    setStandings(translatedStandings);
+                }
+              } catch (error) {
+                  console.error(error);
+              }
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
-        <div className='leagueStandings'>
+        <div className='leagueStandings eurocups'>
             <Helmet>
-                <title>Серия А - Турнирная таблица - на Legendary Football</title>
-                <meta name="description" content="Турнирная таблица чемпионата италии (Серии А)." />
-                <meta name="keywords" content="серия а, чемпионат италии, итальянский футбол, футбол, ювентус, наполи, рома, интер, таблица серии а, турнирная таблица серии а" />
+                <title>Чемпионат Италии (Серия А) - Турнирная таблица</title>
+                <meta name="description" content="Турнирная таблица чемпионата Италии (Серии А)." />
+                <meta name="keywords" content="серия а турнирная таблица, таблица чемпионата италии, итальянский футбол таблица, футбол, ювентус таблица, наполи таблица, рома таблица, интер таблица, таблица серии а, турнирная таблица серии а" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
-                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Серия А'><img loading="lazy" src={logo} alt="logo" /></Tippy>
+                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={`Серия А ${config['serie-a-season']}`}><img loading="lazy" src={logo} alt={`Серия А ${config['serie-a-season']}`} /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Турнирная таблица - Серия А</h1>
+                <h1 className="pageName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Турнирная таблица - Серия А {config['serie-a-season']}</h1>
             </div>
-            {standings && standings.length > 0 ? <div className="wrap">
-                <div className='col'>
-                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
-                    {standings && standings.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} key={'place' + i} content={e.description}><span className={`place ${e.descrLat}`}>{e.place}</span></Tippy>
-                    })}
-                </div>
-                <div className='col'>
-                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span className="head">Команда</span></Tippy>
-                    {standings && standings.map((e, i) => {
-                        return <div key={'logoName' + i} className='logoName'>
-                                    <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
-                                </div>
-                    })}
-                </div>
-                <div className="scroll">
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
-                        })}
-                    </div>
-                    <div className='col'>
-                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
-                        {standings && standings.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
-                        })}
-                    </div>
-                </div>
-            </div> : <div className='noData'>Данных нет</div>}
+            {standings ? standings : <div className='noData'>Данных нет</div>}
         </div>
     );
 };

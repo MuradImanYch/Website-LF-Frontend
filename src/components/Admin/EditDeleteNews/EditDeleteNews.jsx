@@ -138,12 +138,12 @@ const EditDeleteNews = () => {
                     }
 
                     return  <div key={'news' + e.id} className="newsCart" id={'news' + e.id}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className='hover'>
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" src={e.img} alt="newsimg" />
                                         </LazyLoad>
-                                        <p>{e.title}</p>
+                                        <p style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.title}</p>
                                     </div>
                                 </Link>
                                 <div className='editDelWrap'>
@@ -151,9 +151,9 @@ const EditDeleteNews = () => {
                                     <button id={'del' + e.id} title='Удалить' onClick={deleteNews}>🗑</button>
                                 </div>
                                 <div className="bottom">
-                                    <span className='newsId'>ID: {e.id}</span>
-                                    <span className='newsDate'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
-                                    <span className='newsCategory'>{`#${e.category}`}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='newsId'>ID: {e.id}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='newsDate'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes}</span>
+                                    <span className='newsCategory' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{`#${e.category}`}</span>
                                 </div>
 
                                 <div id="delConfirm">
@@ -237,7 +237,7 @@ const EditDeleteNews = () => {
             <div className="editPopup">
                                 <p className="popupTitle">Редактировать</p>
 
-                                <div className="container">
+                                <div className="container" style={localStorage.getItem('darkTheme') === 'true' ? {background: 'rgb(34, 34, 34)'} : null}>
                                     <form>
                                         <label htmlFor="editNewsCategory">Категория:</label>
                                         <select onChange={(e) => {

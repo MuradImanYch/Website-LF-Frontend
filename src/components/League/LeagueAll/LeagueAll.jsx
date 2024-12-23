@@ -4,7 +4,7 @@ import './LeagueAll.css';
 import LazyLoad from 'react-lazy-load';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 const LeagueAll = (props) => {
@@ -31,10 +31,9 @@ const LeagueAll = (props) => {
     return (
         <div id='leagueAll'>
             <Helmet>
-                <link rel="canonical" href="https://legfootball.com/league" />
-                <title>Все турниры - заходи на любой турнир и смотри новости, расписание, результаты, турнирную таблицу и много чего - на Legendary Football</title>
-                <meta name="description" content="Заходи на любой футбольный турнир и изучай последние новости, результаты и многое другое на нашем сайте. У нас вы найдете все необходимые материалы об известных турнирах, футбольном чемпионате. Весь футбольный мир у нас." />
-                <meta name="keywords" content="все лиги, все турниры, результаты, турнирная таблица, футбол, известные футбольные турниры, апл, ла лига, рпл, бундеслига, серия а, лига 1, уефа" />
+                <title>Все турниры - читай новости, изучай расписание игр, результаты, турнирную таблицу и много чего</title>
+                <meta name="description" content="Все турниры на одной странице - изучай последние новости, результаты и многое другое на нашем сайте." />
+                <meta name="keywords" content="все лиги, все турниры, футбольные турниры, футбольные лиги, результаты матчей, турнирная таблица, известные футбольные турниры, апл, ла лига, рпл, бундеслига, серия а, лига 1, уефа" />
             </Helmet>
             <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Все турниры</h1>
             {leagues}

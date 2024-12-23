@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import bundesligaLogo from '../../../assets/ico/bundesligaLogo.webp';
 
@@ -46,7 +46,7 @@ const BundesligaNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const BundesligaNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const BundesligaNews = () => {
     return (
         <div id='bundesligaNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Чемпионата Германии (Бундеслига) - на Legendary Football</title>
+                <title>Новости Чемпионата Германии (Бундеслига)</title>
                 <meta name="description" content="Будьте в курсе всех новостей Чемпионата Германии (Бундеслига) и немецком футболе в целом." />
-                <meta name="keywords" content="бундеслига, чемпионат германии, немецкий футбол, футбол, бавария, боррусия дортмунд, лейпциг, айнтрахт франкфурт, новости, новости бундеслиги" />
+                <meta name="keywords" content="бундеслига новости, новости бундеслиги, новости чемпионата германии, немецкий футбол новости, чемпионат германии новости, бавария новости, боррусия дортмунд новости, лейпциг новости, айнтрахт франкфурт новости, байер леверкузен новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

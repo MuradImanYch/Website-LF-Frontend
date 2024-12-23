@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import eplLogo from '../../../assets/ico/eplLogo.webp';
 
@@ -46,7 +46,7 @@ const EplNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const EplNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const EplNews = () => {
     return (
         <div id='eplNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Английской Премьер Лиги (АПЛ) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Английской Премьер Лиги (АПЛ) и английском футболе в целом." />
-                <meta name="keywords" content="апл, английская премьер лига, английский футбол, футбол, манчестер сити, челси, арсенал, ливерпуль, новости, новости апл, новости английской премьер лиги" />
+                <title>Новости Английской Премьер-Лиги (АПЛ)</title>
+                <meta name="description" content="Свежие и актуальные новости, результаты матчей, трансферные слухи и все ключевые событии сезона в чемпионате Англии по футболу." />
+                <meta name="keywords" content="новости апл, английская премьер лига новости, английский футбол новости, манчестер сити новости, челси новости, арсенал новости, ливерпуль новости, новости английской премьер лиги, новости футбола апл" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

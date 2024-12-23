@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './TVSchedule.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const TVSchedule = () => {
     const[matchesSchedule, setMatchesSchedule] = useState();
@@ -20,7 +20,7 @@ const TVSchedule = () => {
                                 <div className="channel"><LazyLoad offset={800}><img loading="lazy" src={e.channel} alt="channel" /></LazyLoad></div>
                                 <div className="timeProgramme">
                                     <span>{e.time}</span>
-                                    <span>{e.programme}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.programme}</span>
                                 </div>
                             </div>
                 }));
@@ -30,17 +30,17 @@ const TVSchedule = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
         <div id='tvScheduleOther'>
             <Helmet>
-                <title>ТВ расписание матчей - на Legendary Football</title>
-                <meta name="description" content="Планируете смотреть футбольные матчи и не хотите пропустить ни одной важной игры? Получите актуальное ТВ расписание матчей и узнайте время и каналы трансляции для любимых команд. Никаких упущенных моментов!" />
-                <meta name="keywords" content="тв расписание матчей, телепередача спортивных событий, трансляция футбольных матчей, график спортивных трансляций, программа телевизионных матчей, расписание футбольных игр на тв, тв-трансляции спорта, спортивные события в эфире, программа просмотра футбольных матчей, тв-график спортивных соревнований" />
+                <title>ТВ расписание матчей - Ежедневная ТВ программа</title>
+                <meta name="description" content="Планируете смотреть футбольные матчи и не хотите пропустить ни одной важной игры? Получите актуальное ТВ расписание матчей, узнайте время и каналы трансляции." />
+                <meta name="keywords" content="расписание матчей, программа спортивных событий, трансляция футбольных матчей, график спортивных трансляций, расписание футбольных игр на тв, тв-трансляции спорта, спортивные события в эфире, программа просмотра футбольных матчей, программа матчей футбол" />
             </Helmet>
-            <h1 className="pageName">ТВ расписание</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">ТВ расписание</h1>
             <section>
                 <div className="wrap">
                     {matchesSchedule}

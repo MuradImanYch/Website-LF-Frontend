@@ -43,8 +43,9 @@
     justify-content: center !important;
 }
 .broadcasts .wrap .col div:nth-child(2) span {
-    font-size: 0.75em;
+    font-size: 0.7em;
     margin: 5px 0 0 0;
+    width: auto;
 }
 .broadcasts .wrap a:hover .col {
     transition: 0.3s;
@@ -67,6 +68,9 @@
     .broadcasts .wrap {
         max-height: 380px;
         height: 380px;
+    }
+    .broadcasts .wrap .col div:nth-child(2) span {
+        width: 70px;
     }
 }
 

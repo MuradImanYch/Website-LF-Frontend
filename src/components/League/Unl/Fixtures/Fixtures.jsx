@@ -4,7 +4,7 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/unlLogo.webp';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 const Fixtures = () => {
@@ -62,21 +62,21 @@ const Fixtures = () => {
             }
           };
       
-          fetchData();
+          // fetchData();
     }, []);
 
     return (
         <div className='leagueFixtures'>
           <Helmet>
-                <title>Лига Наций - расписание матчей - на Legendary Football</title>
+                <title>Лига Наций УЕФА (ЛН) - Расписание матчей</title>
                 <meta name="description" content="Календарь матчей Лиги Наций (ЛН)." />
-                <meta name="keywords" content="лн, лига наций, европейский футбол, футбол, сборная англии, сборная португалии, сборная германии, сборная франции, сборная испании, календарь лн, расписание лн" />
+                <meta name="keywords" content="лига наций календарь, лига наций расписание, европейский футбол расписание, расписание матчей лиги наций, сборная англии расписание, сборная португалии расписание, сборная германии расписание, сборная франции расписание, сборная испании расписание, календарь лиги наций, календарь матчей лиги наций уефа" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Лига наций'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Календарь - Лига наций</h1>
+                <h1 className="pageName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Календарь - Лига наций УЕФА</h1>
             </div>
             {fixtures && fixtures.length > 0 ? fixtures.map((fixture, index) => (
         <React.Fragment key={'unl' + index}>
@@ -86,17 +86,16 @@ const Fixtures = () => {
               <span style={fixture.dateTime.includes(':') ? null : { color: '#fff' }}>{fixture.round}</span>
             </div>
             <div className="center">
-              <span className="hName">{fixture.hName ? fixture.hName : '—'}</span>
+              <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.hName ? fixture.hName : '—'}</span>
               <LazyLoad offset={800}>
                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={fixture.hName}>
                   <img loading="lazy" src={fixture.hLogo} alt={fixture.hName} />
                 </Tippy>
               </LazyLoad>
-              <span className="hScore" style={fixture.dateTime.includes(':') ? null : { background: '#f02d54', color: '#fff', borderColor: '#f02d54' }}>
+              <span className="hScore" style={{...(fixture.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.hScore}
               </span>
-              -
-              <span className="aScore" style={fixture.dateTime.includes(':') ? null : { background: '#f02d54', color: '#fff', borderColor: '#f02d54' }}>
+              <span className="aScore" style={{...(fixture.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.aScore}
               </span>
               <span></span>
@@ -105,7 +104,7 @@ const Fixtures = () => {
                   <img loading="lazy" src={fixture.aLogo} alt={fixture.aName} />
                 </Tippy>
               </LazyLoad>
-              <span className="aName">{fixture.aName ? fixture.aName : '—'}</span>
+              <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.aName ? fixture.aName : '—'}</span>
             </div>
             <div style={fixture.dateTime.includes(':') ? null : { background: '#f02d54' }} className="dateTime">
               <span style={fixture.dateTime.includes(':') ? null : { color: '#fff' }}>

@@ -33,7 +33,7 @@ const MainNews4 = () => {
                         $(`.newsVr #${'mainNews4' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'mainNews4' + e.id} className="cart" id={'mainNews4' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><img loading="lazy" alt={e.title} src={e.img} /></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -47,7 +47,7 @@ const MainNews4 = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []); 
 
     return (

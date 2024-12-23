@@ -28,7 +28,7 @@ const NewsSlider = () => {
                     let minutes = String(date.getMinutes()).length < 2 ? '0' + String(date.getMinutes()) : String(date.getMinutes());
     
                     return <SwiperSlide key={'mainSlider' + e.id}>
-                        <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                        <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                             <div className="swiper-lazy-preloader">
                                 <div className="lds-dual-ring"></div>
                             </div>
@@ -45,13 +45,13 @@ const NewsSlider = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
         <div id="newsSlider">
                 <section id='onlineFav'>
-                    <Swiper id='expectedMatchesQckNav' lazy={true} pagination={{clickable: true}} autoplay={{delay: 5000, disableOnInteraction: false}}>
+                    <Swiper lazy={true} pagination={{clickable: true}} autoplay={{delay: 5000, disableOnInteraction: false}}>
                         {newsSlider && newsSlider.length > 0 ? newsSlider : <div className='noData'>Данных нет</div>}
                     </Swiper>
                 </section>

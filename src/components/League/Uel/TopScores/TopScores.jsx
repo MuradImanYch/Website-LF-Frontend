@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import logo from '../../../../assets/ico/uelLogo.webp';
 import axios from 'axios';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 import person from '../../../../assets/ico/person.webp';
@@ -23,17 +23,17 @@ const TopScores = () => {
                 setTopScores(response.data && response.data.map((e, i) => {
                     return <div key={'uel' + i} className="col">
                                 <div className="left">
-                                    <span className="place">{e.place}</span>
+                                    <span className="place" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
-                                    <span className='name'>{e.player}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
-                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
-                                    <span>{e.games}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="goals">{e.goals ? e.goals : '0'}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                 </div>
                             </div>
                 }));
@@ -43,21 +43,21 @@ const TopScores = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
         <div className='leagueTopScores table6xn'>
             <Helmet>
-                <title>Лига Европы (ЛЕ) - Список бомбардиров - на Legendary Football</title>
+                <title>Лига Европы (ЛЕ) - Список бомбардиров</title>
                 <meta name="description" content="Таблица бомбардиров Лиги Европы (ЛЕ)." />
-                <meta name="keywords" content="ле, лига европы, европейский футбол, футбол, севилья, вильяреал, манчестер юнайтед, ливерпуль, таблица бомбардиров ле, список бомбардиров ле" />
+                <meta name="keywords" content="ле бомбардиры, таблица бомбардиров лига европы, бомбардиры европейский футбол, список бомбардиров ле, бомбардиры ле, ливерпуль бомбардиры, севилья бомбардиры, карабах бомбардиры, айнтрахт бомбардиры, таблица бомбардиров ле" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='ЛЕ'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Бомбардиры - Лига Европы</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Бомбардиры - Лига Европы</h1>
             </div>
             <div className="head">
                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>

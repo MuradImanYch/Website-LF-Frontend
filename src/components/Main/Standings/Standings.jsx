@@ -179,7 +179,7 @@ const StandingsSlider = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

@@ -38,7 +38,7 @@ const FifaRanking = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, [expandToggle]); 
 
     const fifaCountryRankToggle = () => {

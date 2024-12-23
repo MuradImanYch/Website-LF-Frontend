@@ -29,8 +29,9 @@
     justify-content: center !important;
 }
 .adminBroadcasts .wrap .col div:nth-child(2) span {
-    font-size: 0.8em;
+    font-size: 0.7em;
     margin: 5px 0 0 0;
+    width: auto;
 }
 .adminBroadcasts .wrap a:hover .col {
     transition: 0.3s;
@@ -128,6 +129,9 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+    .adminBroadcasts .wrap .col div:nth-child(2) span {
+        width: 70px;
     }
 }
 

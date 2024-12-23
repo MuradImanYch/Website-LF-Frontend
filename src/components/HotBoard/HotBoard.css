@@ -1,10 +1,22 @@
 .hotBoard .noData {
     margin: 2px 0 0 0 !important;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.hotBoard img {
+    height: 22px;
+    width: auto;
+}
+.hotBoard .lLogoTime img {
+    height: auto;
+    width: 22px;
+}
 .hotBoard {
     width: 100%;
-    height: 40px;
+    height: 60px;
     background: transparent;
     backdrop-filter: blur(5px);
     position: fixed;
@@ -15,7 +27,7 @@
 }
 .hotBoard #noMatches {
     width: 100%;
-    height: 40px;
+    height: 60px;
     color: #000;
     position: absolute;
     top: 0;
@@ -39,7 +51,7 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 45px;
+    top: 65px;
 }
 .hotBoard .liveWrap span {
     min-width: 20px;
@@ -63,21 +75,43 @@
     transition-timing-function: linear;
     min-height: 100%;
 }
+.hotBoard .swiper-slide .slideWrap .status {
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    font-size: 0.7em;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
 .hotBoard .swiper-slide .slideWrap {
-    min-height: 40px;
-    width: 240px;
+    min-height: 60px;
+    width: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
     border-left: 2px solid rgb(255, 191, 102);
     border-right: 2px solid rgb(255, 191, 102);
+    overflow: hidden;
+    position: relative;
 }
+.hotBoard .swiper-slide .slideWrap:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0px; /* Высота тени */
+    background-color: red;
+    box-shadow: 0px 0px 15px 3px red;
+    z-index: 1;
+  }
 .hotBoard .swiper-slide .slideWrap span {
     color: #000;
 }
 .hotBoard .swiper-slide .slideWrap .hName, .hotBoard .swiper-slide .slideWrap .aName {
     font-size: 0.7em;
+    text-align: center;
 }
 .hotBoard .swiper-slide .slideWrap .lLogoTime {
     display: flex;
@@ -86,8 +120,8 @@
     position: relative;
 }
 .hotBoard .swiper-slide .slideWrap .lLogoTime .time {
-    font-size: 0.6em;
-    margin: 5px 0 0 0;
+    font-size: 0.7em;
+    margin: 7px 0 0 0;
     padding: 0 0 2px 0;
     text-align: center;
 }
@@ -111,72 +145,32 @@
 }
 .hotBoard .swiper-slide .slideWrap .hScore, .hotBoard .swiper-slide .slideWrap .aScore {
     font-family: Graduate;
+    font-size: 1.2em;
+    margin: 0 6px;
+    font-weight: bold;
 }
 .hotBoard .swiper-wrapper {
     display: flex;
 }
-@media (min-width: 360px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 300px;
-    }
-    .hotBoard progress {
-        width: 300px;
-    }
+.hotBoard .goal-event {
+    font-family: Graduate !important;
+    color: red !important;
+    animation: blink 1s infinite;
 }
-
-@media (min-width: 540px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 240px;
+@keyframes blink {
+    0% {
+      opacity: 1;
     }
-    .hotBoard progress {
-        width: 240px;
+    50% {
+      opacity: 0;
     }
-}
-
-@media (min-width: 768px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 220px;
+    100% {
+      opacity: 1;
     }
-    .hotBoard progress {
-        width: 220px;
-    }
-}
-
-@media (min-width: 912px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 260px;
-    }
-    .hotBoard progress {
-        width: 260px;
-    }
-}
+  }
 
 @media (min-width: 1024px) {
     .hotBoard {
         top: 60px;
-    }
-    .hotBoard .swiper-slide .slideWrap {
-        width: 300px;
-    }
-    .hotBoard progress {
-        width: 300px;
-    }
-}
-
-@media (min-width: 1280px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 240px;
-    }
-    .hotBoard progress {
-        width: 240px;
-    }
-}
-
-@media (min-width: 1680px) {
-    .hotBoard .swiper-slide .slideWrap {
-        width: 300px;
-    }
-    .hotBoard progress {
-        width: 300px;
     }
 }

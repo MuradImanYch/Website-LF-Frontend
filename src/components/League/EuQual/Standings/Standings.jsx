@@ -4,7 +4,7 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/euroQualLogo.webp';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 const Standings = () => {
@@ -126,7 +126,7 @@ const Standings = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
@@ -140,14 +140,14 @@ const Standings = () => {
                 <LazyLoad offset={800}>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Европейская квалификация'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Турнирная таблица - Европейская квалификация</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Турнирная таблица - Европейская квалификация</h1>
             </div>
             {standingsA && standingsA.length > 0 ? <div className="wrap">
-                <div className="group">Группа А</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа А</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsA && standingsA.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -155,7 +155,7 @@ const Standings = () => {
                     {standingsA && standingsA.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -163,53 +163,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsA && standingsA.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : <div className='noData'>Данных нет</div>}
             {standingsB && standingsB.length > 0 ? <div className="wrap">
-                <div className="group">Группа B</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа B</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsB && standingsB.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -217,7 +217,7 @@ const Standings = () => {
                     {standingsB && standingsB.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -225,53 +225,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsB && standingsB.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsC && standingsC.length > 0 ? <div className="wrap">
-                <div className="group">Группа C</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа C</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsC && standingsC.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -279,7 +279,7 @@ const Standings = () => {
                     {standingsC && standingsC.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -287,53 +287,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsC && standingsC.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsD && standingsD.length > 0 ? <div className="wrap">
-                <div className="group">Группа D</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа D</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsD && standingsD.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -341,7 +341,7 @@ const Standings = () => {
                     {standingsD && standingsD.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -349,53 +349,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsD && standingsD.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsE && standingsE.length > 0 ? <div className="wrap">
-                <div className="group">Группа E</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа E</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsE && standingsE.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -403,7 +403,7 @@ const Standings = () => {
                     {standingsE && standingsE.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -411,53 +411,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsE && standingsE.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsF && standingsF.length > 0 ? <div className="wrap">
-                <div className="group">Группа F</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа F</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsF && standingsF.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -465,7 +465,7 @@ const Standings = () => {
                     {standingsF && standingsF.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -473,53 +473,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsF && standingsF.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsG && standingsG.length > 0 ? <div className="wrap">
-                <div className="group">Группа G</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа G</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsG && standingsG.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -527,7 +527,7 @@ const Standings = () => {
                     {standingsG && standingsG.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -535,53 +535,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsG && standingsG.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsH && standingsH.length > 0 ? <div className="wrap">
-                <div className="group">Группа H</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа H</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsH && standingsH.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -589,7 +589,7 @@ const Standings = () => {
                     {standingsH && standingsH.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -597,53 +597,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsH && standingsH.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsI && standingsI.length > 0 ? <div className="wrap">
-                <div className="group">Группа J</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа J</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsI && standingsI.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -651,7 +651,7 @@ const Standings = () => {
                     {standingsI && standingsI.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -659,53 +659,53 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsI && standingsI.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>
             </div> : null}
             {standingsJ && standingsJ.length > 0 ? <div className="wrap">
-                <div className="group">Группа J</div>
+                <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="group">Группа J</div>
                 <div className='col'>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span className="head">#</span></Tippy>
                     {standingsJ && standingsJ.map((e, i) => {
-                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                        return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                     })}
                 </div>
                 <div className='col'>
@@ -713,7 +713,7 @@ const Standings = () => {
                     {standingsJ && standingsJ.map((e, i) => {
                         return <div key={'logoName' + i} className='logoName'>
                                     <LazyLoad><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span>{e.name}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                     })}
                 </div>
@@ -721,43 +721,43 @@ const Standings = () => {
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span className="head">О</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span className='points' key={'points' + i}>{e.points}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points' key={'points' + i}>{e.points}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span className="head">И</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'games' + i}>{e.games}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'games' + i}>{e.games}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Забитые голы"><span className="head">ЗГ</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'for' + i}>{e.goalsFor}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'for' + i}>{e.goalsFor}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Пропущенные голы"><span className="head">ПГ</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'against' + i}>{e.goalsAgainst}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'against' + i}>{e.goalsAgainst}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Выигрыши"><span className="head">В</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'win' + i}>{e.win}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'win' + i}>{e.win}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Ничьи"><span className="head">Н</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'draw' + i}>{e.draw}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'draw' + i}>{e.draw}</span>
                         })}
                     </div>
                     <div className='col'>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Проигрыши"><span className="head">П</span></Tippy>
                         {standingsJ && standingsJ.map((e, i) => {
-                            return <span key={'lose' + i}>{e.lose}</span>
+                            return <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} key={'lose' + i}>{e.lose}</span>
                         })}
                     </div>
                 </div>

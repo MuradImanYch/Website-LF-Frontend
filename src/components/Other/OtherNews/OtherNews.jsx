@@ -5,7 +5,7 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const OtherNews = () => {
     const[news, setNews] = useState();
@@ -42,7 +42,7 @@ const OtherNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -56,7 +56,7 @@ const OtherNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -70,11 +70,11 @@ const OtherNews = () => {
     return (
         <div id='newsOther' className='newsHr'>
             <Helmet>
-                <title>Разные новости, оффтопы и не только про футбол - на Legendary Football</title>
-                <meta name="description" content="Узнайте самые свежие новости, оффтопы и увлекательные истории, которые охватывают мир спорта и гораздо больше. Получите эксклюзивный контент о футбольных событиях и захватывающие статьи на самые разнообразные темы, которые оставят вас в восторге. Откройте новые грани увлечений и оставайтесь в курсе увлекательных историй вместе с нами." />
+                <title>Разные новости, оффтопы и не только про футбол</title>
+                <meta name="description" content="Узнайте самые свежие новости, оффтопы и увлекательные истории, которые охватывают мир спорта и гораздо больше." />
                 <meta name="keywords" content="футбол, новости, футбольные оффтопы, спорт, эксклюзивный контент, топовые матчи, разные новости" />
             </Helmet>
-            <h1 className="pageName">Разные новости</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Разные новости</h1>
             <section>
                 {news}
             </section>

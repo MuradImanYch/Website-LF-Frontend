@@ -1,7 +1,7 @@
 import React from 'react';
 import './Error.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const Error = (props) => {
     return (

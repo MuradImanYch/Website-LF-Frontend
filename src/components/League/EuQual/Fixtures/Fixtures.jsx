@@ -4,7 +4,7 @@ import 'tippy.js/dist/tippy.css';
 import axios from 'axios';
 import LazyLoad from 'react-lazy-load';
 import logo from '../../../../assets/ico/euroQualLogo.webp';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 const Fixtures = () => {
@@ -62,7 +62,7 @@ const Fixtures = () => {
             }
           };
       
-          fetchData();
+          // fetchData();
     }, []);
 
     return (
@@ -76,7 +76,7 @@ const Fixtures = () => {
                 <LazyLoad offset={800}>
                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Европейская квалификация'><img loading="lazy" src={logo} alt="logo" /></Tippy>
                 </LazyLoad>
-                <h1 className="pageName">Календарь - Европейская квалификация</h1>
+                <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Календарь - Европейская квалификация</h1>
             </div>
             {fixtures && fixtures.length > 0 ? fixtures.map((fixture, index) => (
         <React.Fragment key={'euQual' + index}>
@@ -86,17 +86,16 @@ const Fixtures = () => {
               <span style={fixture.dateTime.includes(':') ? null : { color: '#fff' }}>{fixture.round}</span>
             </div>
             <div className="center">
-              <span className="hName">{fixture.hName ? fixture.hName : '—'}</span>
+              <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.hName ? fixture.hName : '—'}</span>
               <LazyLoad offset={800}>
                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={fixture.hName}>
                   <img loading="lazy" src={fixture.hLogo} alt={fixture.hName} />
                 </Tippy>
               </LazyLoad>
-              <span className="hScore" style={fixture.dateTime.includes(':') ? null : { background: '#f02d54', color: '#fff', borderColor: '#f02d54' }}>
+              <span className="hScore" style={{...(fixture.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.hScore}
               </span>
-              -
-              <span className="aScore" style={fixture.dateTime.includes(':') ? null : { background: '#f02d54', color: '#fff', borderColor: '#f02d54' }}>
+              <span className="aScore" style={{...(fixture.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>
                 {fixture.aScore}
               </span>
               <span></span>
@@ -105,7 +104,7 @@ const Fixtures = () => {
                   <img loading="lazy" src={fixture.aLogo} alt={fixture.aName} />
                 </Tippy>
               </LazyLoad>
-              <span className="aName">{fixture.aName ? fixture.aName : '—'}</span>
+              <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{fixture.aName ? fixture.aName : '—'}</span>
             </div>
             <div style={fixture.dateTime.includes(':') ? null : { background: '#f02d54' }} className="dateTime">
               <span style={fixture.dateTime.includes(':') ? null : { color: '#fff' }}>

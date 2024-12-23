@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import './Main.css';
 import $ from 'jquery';
+import AdSense from 'react-adsense';
+import { Helmet } from 'react-helmet-async';
 
 import MainSlider from './MainSlider/MainSlider';
 // import MatchesSlider from './MatchesSlider/MatchesSlider';
@@ -24,14 +26,13 @@ import VideoNews from './VideoNews/VideoNews';
 import EndedMatches from './EndedMatches/EndedMatches';
 import Forecasts from './Odds/Odds';
 import Standings6 from './Standings6/Standings6';
+import Standings7 from './Standings7/Standings7';
 import Blogs from './Blogs/Blogs';
 import TVSchedule from './TVSchedule/TVSchedule';
 import FifaRanking from './FifaRanking/FifaRanking';
 // import MatchesLive from './MatchesLive/MatchesLive';
 import Broadcasts from './Broadcasts/Broadcasts';
 import ExpectedMatches from './ExpectedMatches/ExpectedMatches';
-
-import AdsenseAd from './AdseseAd/AdsenseAd';
 
 const Main = (props) => {
     useEffect(() => {
@@ -51,13 +52,19 @@ const Main = (props) => {
 
     return (
         <div id='main'>
+            <Helmet>
+                <title>Актуальные новости, прямые трансляции матчей, результаты встреч и много другое - на Legendary Football</title>
+                <meta name="description" content="Новости футбола, бесплатные трансляции матчей, подробные результаты и все, что нужно знать о мире футбола." />
+                <meta name="keywords" content="трансляции матчей, смотреть футбол, legfootball главная, ожидаемые матчи, завершенные матчи, таблица уефа, таблица фифа, видео, блоги, турнирная таблица, таблица бомбардиров, новости футбола, результаты футбольных матчей, футбольные новости, футбол, расписание матчей, английская премьер лига, российская премьер лига, лига чемпионов, лига европы, лига конференции, чемпионат мира, чемпионат европы, ла лига, онлайн трансляция, серия а, футбол снг, российский футбол" />
+            </Helmet>
             <h1 className="pageName">Главная</h1>
             <div className="mainSliderMatchesLive">
                 <MainSlider />
                 {/* <MatchesLive /> */}
-                <ExpectedMatches />
+                {/* <ExpectedMatches /> */}
+                {/* <Standings7 /> */}
             </div>
-            <AdsenseAd />
+            
             {/* <MatchesSlider /> */}
             <div className="endedForecast">
                 <EndedMatches />

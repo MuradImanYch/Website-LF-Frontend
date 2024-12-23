@@ -5,7 +5,8 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
+import playIco from '../../../assets/ico/playIco.webp';
 
 const Video = () => {
     const[news, setNews] = useState();
@@ -42,11 +43,14 @@ const Video = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'video' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
+                                    <LazyLoad offset={800}><p className='playWrap'>
+                                        <img loading="lazy" src={playIco} alt="playIco" />
+                                    </p></LazyLoad>
                                 </Link>
                             </div>
                 }));
@@ -56,7 +60,7 @@ const Video = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -70,11 +74,11 @@ const Video = () => {
     return (
         <div id='videoOther' className='newsHr'>
             <Helmet>
-                <title>Видеоматериалы, голы, сюжеты - на Legendary Football</title>
+                <title>Видеоматериалы, голы, сюжеты</title>
                 <meta name="description" content="Видео голов, сюжетов, увлекательные видеоматериалы. Насладитесь лучшими голами, увидьте эпические сюжеты и оцените аналитику специалистов." />
                 <meta name="keywords" content="видео голов, сюжеты, увлекательные видеоматериалы, наслаждение голами, эпические сюжеты, оценка аналитики, специалисты, футбольные голы, захватывающие моменты, видео ролики, лучшие голы, футбольные сюжеты, спортивные видеоматериалы, футбольные моменты, голы в футболе, футбольные хайлайты" />
             </Helmet>
-            <h1 className="pageName">Видео</h1>
+            <h1 className="pageName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Видео</h1>
             <section>
                 {news}
             </section>

@@ -23,7 +23,7 @@ const Broadcasts = () => {
             const clientUTCOffset = new Date();
           
             // Добавляем разницу между немецким и иранским временем (2.5 часа)
-            const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 4) * 60 * 60 * 1000);
+            const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 0) * 60 * 60 * 1000);
           
             // Получаем иранское время в формате "чч:мм"
             const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
@@ -36,11 +36,11 @@ const Broadcasts = () => {
             .then(response => {
                 setItem(response.data && response.data.splice(0, 8).map((e) => {    
                     return <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Смотреть' key={'broadcast' + e.id}>
-                                <Link to={`/broadcast/watch/${e.id + '-' + cyrillicToTranslit().transform(e.hName + '-' + e.aName + '-' + e.lName).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`} id={'broadcast' + e.id}>
+                                <Link to={`/broadcast/watch/${cyrillicToTranslit().transform(e && (e && e.id + '-' + e.hName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh') + '-' + e.aName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh') + '-' + e.lName.replace(' ', '-').replace('ü', 'u').replace('ə', 'a').replace('ö', 'o').replace('ğ', 'gh').replace('ı', 'i').replace('ç', 'ch').replace('ş', 'sh')).replace(/\s+/g, '-').toLowerCase())}`} id={'broadcast' + e.id}>
                                     <div className="col">
                                         <div><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}><img loading="lazy" src={e.hLogo} alt={e.hName} /></Tippy></LazyLoad><span>{e.hName}</span></div>
                                         <div className='timeLive'>
-                                            <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.lName}><img loading="lazy" src={e.lLogo} alt={e.lName} /></Tippy></LazyLoad>
+                                            <span>{e.lName}</span>
                                             {e.broadcastLink === null || e.broadcastLink === '' ? <span>{convertGermanToclientTime(e.time)}</span> : <span style={{color: 'red', letterSpacing: '1.3px'}}>live <br /><div className="liveTime">{convertGermanToclientTime(e.time)}</div></span>}
                                         </div>
                                         <div><span>{e.aName}</span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}><img loading="lazy" src={e.aLogo} alt={e.aName} /></Tippy></LazyLoad></div>
@@ -54,7 +54,7 @@ const Broadcasts = () => {
             }); 
         }
         
-        fetchData();
+        // fetchData();
     }, []); 
 
     return (

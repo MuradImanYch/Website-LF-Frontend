@@ -34,7 +34,7 @@ const News = () => {
                         $(`.newsHr #${'mainNews' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'mainNews' + e.id} className="cart" id={'mainNews' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -52,7 +52,7 @@ const News = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);  
     
 

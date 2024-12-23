@@ -5,7 +5,7 @@ import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const Blogs = () => {
     const[news, setNews] = useState();
@@ -42,7 +42,7 @@ const Blogs = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'blogs' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -56,7 +56,7 @@ const Blogs = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -70,11 +70,11 @@ const Blogs = () => {
     return (
         <div id='blogsOther' className='newsHr'>
             <Helmet>
-                <title>Блоги, мнения авторов и аналитика - на Legendary Football</title>
-                <meta name="description" content="Наш блог предлагает эксклюзивный контент, а также мнения и аналитику от наших авторов. Оставайтесь в курсе футбольных событий и интересных фактов, и откройте для себя новые грани увлечений вместе с нами." />
-                <meta name="keywords" content="футбол, новости, оффтопы, спорт, события, эксклюзивный контент, увлекательные истории, блоги, мнения авторов, аналитика, мнения специалистов, инсайды, трансферы, футбольные матчи, футбольные клубы, спортивные события, спортивные факты" />
+                <title>Блоги, мнения авторов и аналитика</title>
+                <meta name="description" content="Наш блог предлагает эксклюзивный контент, а также мнения и аналитику интересных фактов от наших авторов." />
+                <meta name="keywords" content="футбол блоги, новости, оффтопы, спортивные статьи, события, эксклюзивный контент, увлекательные истории, блоги, мнения авторов, аналитика, мнения специалистов, инсайды, трансферы, футбольные матчи, футбольные клубы, спортивные события, спортивные факты" />
             </Helmet>
-            <h1 className="pageName">Блоги</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Блоги</h1>
             <section>
                 {news}
             </section>

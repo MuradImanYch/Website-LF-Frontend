@@ -70,10 +70,10 @@ const ExpectedMatches = () => {
             });
         }
         
-        fetchData();
+        /* // fetchData();
         setInterval(() => {
-            fetchData();
-        }, 60000);
+            // fetchData();
+        }, 60000); */
     }, []);
 
     return (

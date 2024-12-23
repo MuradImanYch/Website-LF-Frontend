@@ -75,7 +75,7 @@ header .container {
     justify-content: space-between;
     height: 100%;
 }
-header img {
+header img:not(.login, .settingsPic, .profilePic) {
     width: 30px;
     height: 30px;
     margin: 3px 60px 0 auto;
@@ -215,9 +215,19 @@ main .container {
 .sidebar div div {
     display: none;
 }
+nav .actual {
+    width: 200px !important;
+    text-align: center;
+}
+@keyframes blink {
+    0% { background-color: #f02d54; }
+    50% { background-color: transparent; }
+    100% { background-color: #f02d54; }
+}
 nav .actual, nav .actual div a {
-    background-color: #f02d54;
+    animation: blink 2s infinite;
     cursor: pointer;
+    background-color: #f02d54;
 }
 nav .actual:hover, nav .actual div a:hover {
     background-color: #f04e6f !important;
@@ -225,7 +235,7 @@ nav .actual:hover, nav .actual div a:hover {
 #mNavWrap .menuWrap li:last-child {
     min-height: 30px;
     display: flex;
-    padding: 5px 0 0 0;
+    padding: 6px 0 0 0;
 }
 #dNavWrap > ul > li:nth-child(3) {
     cursor: default;
@@ -262,8 +272,8 @@ nav .actual:hover, nav .actual div a:hover {
 header .login {
   width: 20px;
   height: 20px;
-  margin: 0 40px 0 -50px;
   cursor: pointer;
+  margin: 0px 10px 0 0;
 }
 .authWrap {
     width: 100%;
@@ -298,13 +308,13 @@ header .login {
     position: relative;
 }
 #profile img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border: 2px solid #fff;
     padding: 3px;
     border-radius: 50%;
     cursor: pointer;
-    margin: 0 0 0 -60px;
+    margin: 0 0 0 -30px;
 }
 #profile .subMenu {
     position: absolute;
@@ -360,6 +370,17 @@ header .login {
     background: url('../src/assets/ico/sparkler.gif') no-repeat center/cover;
     z-index: 2025;
     display: none;
+}
+.userSettings {
+    position: absolute;
+    right: 19%;
+    top: 25%;
+    display: flex;
+}
+.settingsPic {
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 10px;
 }
 
 @media (min-width: 360px) {
@@ -526,7 +547,7 @@ header .login {
         font-size: 1em;
         padding: 0 10px 0 0;
     }
-    header img {
+    header img:not(.login, .settingsPic, .profilePic) {
         width: 50px;
         height: 50px;
         order: 0;
@@ -536,6 +557,7 @@ header .login {
         order: 2;
         width: 110px;
         font-size: 1.2em;
+        margin: 0 40px 0 0;
     }
     header .active:nth-child(1) {
         margin: 0;
@@ -552,15 +574,20 @@ header .login {
     .favoriteTeamPopUp .close {
         bottom: 10%;
     }
-    header .login {
-        margin: 0 -70px 0 -50px;
+    #profile img, .settingsPic {
+        width: 25px;
+        height: 25px;
     }
-    #profile img {
-        margin: 0 -30px 0 0;
+    header .login {
+        margin: 3px 10px 0 0;
     }
     #profile .subMenu {
         left: -70px;
         top: 44px;
+    }
+    .userSettings {
+        top: 30%;
+        right: 18%;
     }
 }
 
@@ -587,6 +614,9 @@ header .login {
     .sidebar label, .sidebar span {
         color: #000;
     }
+    header .socnetWrap {
+        margin: 5px 0 0 0;
+    }
 }
 
 @media (min-width: 1680px) { /* >= 1680px */
@@ -595,5 +625,8 @@ header .login {
     }
     main .container {
         width: 1200px;
+    }
+    .userSettings {
+        right: 26%;
     }
 }

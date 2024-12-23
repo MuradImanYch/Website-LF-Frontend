@@ -45,7 +45,7 @@ const Poll = () => {
             setTotal(yes + no);
         }
     
-        fetchData();
+        // fetchData();
     }, [yes, no, total, yesWidth, noWidth]);
     
     const closePoll = () => {
@@ -121,7 +121,7 @@ const Poll = () => {
                     {pollLoading ? <img loading="lazy" className='loadSpiner' src={loadSpiner} alt='загрузка' /> : <button onClick={sendPoll}><span className='total'>Голосовать</span></button>}
                 </form>
             </div>
-            <Link to='/suggestions-complaints'>Предложения и жалобы</Link>
+            {/* <Link to='/suggestions-complaints'>Предложения и жалобы</Link> */}
         </div>
     );
 };

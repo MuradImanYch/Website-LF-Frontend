@@ -186,9 +186,9 @@
     margin: 60px auto 0 auto;
     display: flex;
     overflow: scroll;
-    max-width: 100%;
+    max-width: 80%;
     padding: 0 0 20px 0;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .pagination a {
     margin: 0 10px;
@@ -301,9 +301,6 @@
     .editPopup .container {
         width: 1020px;
         padding: 30px 10px 400px 10px;
-    }
-    .pagination {
-        max-width: 50%;
     }
 }
 

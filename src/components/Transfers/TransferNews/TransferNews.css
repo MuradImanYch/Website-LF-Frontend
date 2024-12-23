@@ -72,6 +72,34 @@
     left: 0;
     top: 100% !important;
 }
+.pagination {
+    margin: 60px auto 0 auto;
+    display: flex;
+    overflow: scroll;
+    max-width: 80%;
+    padding: 0 0 20px 0;
+    /* justify-content: center; */
+}
+.pagination a {
+    margin: 0 10px;
+    border: 2px solid rgb(204, 135, 45);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+}
+.pagination li:first-child a {
+    background: rgb(204, 135, 45);
+    color: #fff;
+}
+.pagination a.selected {
+    background: rgb(204, 135, 45) !important;
+    color: #fff !important;
+}
 
 @media (min-width: 540px) { /* >= 540px */
     .newsHr .cart {

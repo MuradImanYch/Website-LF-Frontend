@@ -5,7 +5,7 @@ import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
 
@@ -22,16 +22,16 @@ const FifaRanking = () => {
             await axios.get('/standings/fifaranking')
             .then(response => {
                 setFifaCountryRank(response.data && response.data.splice(0, expandToggle).map((item, indx) => {
-                    return <div className="col wrap" key={'fifaRanking' + indx}>
+                    return <div className="col wrap" key={'fifaRanking' + indx} style={localStorage.getItem('darkTheme') === 'true' ? {background: 'rgb(34, 34, 34)'} : null}>
                     <div>
-                        <span className='place'>{item.place}.<span></span></span>
-                        <div className='flagName'><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={item.name}><img loading="lazy" src={item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
+                        <span className='place' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.place}.<span></span></span>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={item.name}><img loading="lazy" src={item.flag} alt={item.name} /></Tippy></LazyLoad><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.name}</span></div>
                         <span className={item.difference[0] === '=' ? 'diffEqual' : false || item.difference[0] === '↑' ? 'diffUp' : false || item.difference[0] === '↓' ? 'diffDown' : false}>{item.difference}</span>
-                        <span className='total'>{item.points}</span>
+                        <span className='total' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.points}</span>
                     </div>
                     <div>
-                        <span>{item.pointsDiff}</span>
-                        <span>{item.association}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.pointsDiff}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.association}</span>
                     </div>
                 </div>
                 }));
@@ -41,7 +41,7 @@ const FifaRanking = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [expandToggle]); 
 
     const fifaCountryRankToggle = () => {
@@ -52,11 +52,11 @@ const FifaRanking = () => {
     return (
         <div id='fifaRankOther'>
             <Helmet>
-                <title>Рейтинг ФИФА (FIFA) - на Legendary Football</title>
-                <meta name="description" content="Изучите таблицу коэффициентов ФИФА (FIFA) в онлайн режиме - рейтинг сборных на мировой футбольной арене. Узнайте о рейтинговых позициях, статистике и значимости сборных команд в мире." />
-                <meta name="keywords" content="таблица коэффициентов фифа, рейтинг команд фифа, рейтинг ассоциаций фифа, мировая футбольная арена, рейтинговые позиции стран фифа, обновленные данные, fifa коэффициент, мировой футбол, футбольные клубы и ассоциации, онлайн, рейтинг фифа" />
+                <title>Онлайн рейтинг ФИФА (FIFA) - Таблица коэффициентов сборных</title>
+                <meta name="description" content="Изучите таблицу коэффициентов ФИФА (FIFA) в онлайн режиме - рейтинг сборных на мировой футбольной арене." />
+                <meta name="keywords" content="таблица коэффициентов фифа, рейтинг команд фифа, таблица ассоциаций фифа, рейтинговые позиции стран фифа, fifa коэффициент, рейтинг фифа" />
             </Helmet>
-            <h1 className="pageName">Рейтинг ФИФА</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Рейтинг ФИФА</h1>
             <section>
                 <div className="uefaTable">
                     <div className="logoWrap">
@@ -76,7 +76,7 @@ const FifaRanking = () => {
                     </div>
                     {fifaCountryRank}
                     <div className="more">
-                        <span onClick={fifaCountryRankToggle}>Развернуть список</span>
+                        <span onClick={fifaCountryRankToggle} style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Развернуть список</span>
                     </div>
                 </div>
             </section>

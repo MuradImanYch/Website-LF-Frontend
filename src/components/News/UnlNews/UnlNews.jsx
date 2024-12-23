@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import unlLogo from '../../../assets/ico/unlLogo.webp';
 
@@ -46,7 +46,7 @@ const UnlNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const UnlNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const UnlNews = () => {
     return (
         <div id='unlNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Лиги Наций - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Лиги Наций, также европейских сборных." />
-                <meta name="keywords" content="уефа, лига наций, европейский футбол, футбол, сборная англии, сборная германии, сборная франции, сборная испании, новости, новости уефа, новости лиги наций" />
+                <title>Новости Лиги Наций (ЛН)</title>
+                <meta name="description" content="Свежие и актуальные новости, результаты матчей и все ключевые событии сезона в Лиге Наций." />
+                <meta name="keywords" content="новости лиги наций, квалификация чемпионата европы новости, квалификация чемпионата мира новости, лига наций новости, новости уефа, европейский футбол новости, сборная англии новости, сборная германии новости, сборная франции новости, сборная испании новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

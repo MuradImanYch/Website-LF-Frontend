@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import ueclLogo from '../../../assets/ico/ueclLogo.webp';
 
@@ -46,7 +46,7 @@ const UeclNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const UeclNews = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const UeclNews = () => {
     return (
         <div id='ueclNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Лиги Конференции (ЛК) - на Legendary Football</title>
+                <title>Новости Лиги Конференции (ЛК)</title>
                 <meta name="description" content="Будьте в курсе всех новостей Лиги Конференции (ЛК) и европейском футболе в целом." />
-                <meta name="keywords" content="уефа, новости уефа, лк, лига конференции, европейский футбол, футбол, рома, вест хем, новости, новости лк, новости лиги конференции" />
+                <meta name="keywords" content="новости лк, новости уефа, лк новости, лига конференции новости, европейский футбол новости, новости лиги конференции, рома новости, вест хем новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

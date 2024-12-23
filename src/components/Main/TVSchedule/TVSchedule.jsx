@@ -12,6 +12,7 @@ const MatchesSchedule = () => {
             await axios.get('/tv/schedule')
             .then(response => {
                 setMatchesSchedule(response.data && response.data.splice(0, 12).map((e, i) => {
+                    console.log(response.data && response.data[1].live)
                     return <div key={'matchesSchedule' + i} className="col">
                                 <div className="channel">
                                     <LazyLoad offset={800}>
@@ -30,7 +31,7 @@ const MatchesSchedule = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

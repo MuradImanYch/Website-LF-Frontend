@@ -29,21 +29,21 @@ const Standings4 = () => {
             .then(response => {
                 setUnlStandingsA(response.data && response.data.map((e, i) => {
                     return <div className={'unlStandingsA' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsA' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -57,21 +57,21 @@ const Standings4 = () => {
             .then(response => {
                 setUnlStandingsB(response.data && response.data.map((e, i) => {
                     return <div className={'unlStandingsB' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsB' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -85,21 +85,21 @@ const Standings4 = () => {
             .then(response => {
                 setUnlStandingsC(response.data && response.data.map((e, i) => {
                     return <div className={'unlStandingsC' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsC' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -113,21 +113,21 @@ const Standings4 = () => {
             .then(response => {
                 setUnlStandingsD(response.data && response.data.map((e, i) => {
                     return <div className={'unlStandingsD' + e.standingsGroup?.split(' ')[1]} key={'unlStandingsD' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <span className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrLat}`} title={e.description}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
                                     <span className='name'>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -138,7 +138,7 @@ const Standings4 = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

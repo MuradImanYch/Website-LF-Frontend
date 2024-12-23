@@ -164,8 +164,22 @@ const AddBroadcasts = (e) => {
         setALogo(e.target.id.split('separate')[1]);
     }
 
+    const autoSelectBroadcastsManually = async () => {
+        // alert('Начался процесс автоматического подбора трансляций');
+        await axios.post('/broadcasts/autoSelectBroadcastsManually')
+        .catch(err => console.log(err));
+    }
+
+    const autoSelectIPTVLinksManually = async () => {
+        // alert('Начался процесс автоматического подбора ссылок для IPTV');
+        await axios.post('/broadcasts/autoSelectIPTVLinksManually')
+        .catch(err => console.log(err));
+    }
+
     return (
         <div id='addBroadcast'>
+        <button className='autoSelect' onClick={autoSelectBroadcastsManually}>Авто подбор трансляций</button>
+        <button className='autoSelect' onClick={autoSelectIPTVLinksManually}>Авто подбор ссылок IPTV</button>
             <form className="wrap">
                 <div>
                     <label htmlFor="name1">Название команды 1</label>

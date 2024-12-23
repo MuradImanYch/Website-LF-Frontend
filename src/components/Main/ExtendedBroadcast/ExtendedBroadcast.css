@@ -1,3 +1,17 @@
+.extendedBroadcast .playerTitle {
+    font-size: 1.3em;
+    text-align: center;
+    color: rgb(255, 54, 54);
+    font-weight: bold;
+}
+#app > main > div.container > div > div.row > div:nth-child(1) > div:nth-child(2) > div.playerTitle {
+    margin-top: 20px !important;
+}
+.extendedBroadcast #preloader { 
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+}
 .extendedBroadcast h1 {
     color: #000;
     border-bottom: 2px solid #18338a;
@@ -15,9 +29,17 @@
     font-size: 0.6em;
     color: #000;
 }
-.extendedBroadcast #myVid {
+.extendedBroadcast .myVid {
     width: 100% !important;
     height: auto !important;
+}
+.extendedBroadcast .video-js {
+    width: 100%;
+}
+.extendedBroadcast .video-react .video-react-big-play-button {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
 }
 .extendedBroadcast .nav ul {
     display: flex;
@@ -29,7 +51,7 @@
     padding: 10px 15px;
     font-weight: bold;
     cursor: pointer;
-    margin: 5px 10px 0 0;
+    margin: 5px 10px 15px 0;
 }
 .extendedBroadcast .nav ul li:first-child {
     background: rgb(204, 135, 45);
@@ -68,7 +90,7 @@
 }
 
 @media (min-width: 1024px) {
-    .extendedBroadcast #myVid {
+    .extendedBroadcast .myVid, .extendedBroadcast .myVid3 {
         width: 600px !important;
         height: 350px !important;
     }

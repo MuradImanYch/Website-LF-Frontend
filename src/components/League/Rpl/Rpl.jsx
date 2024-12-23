@@ -1,23 +1,25 @@
 import React, { useEffect, useState }  from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import './Rpl.css';
 import axios from 'axios';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
+import translate from 'translate';
+import './Rpl.css';
 
 import logo from '../../../assets/ico/rplLogo.webp';
-import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 import fifaLogo from '../../../assets/ico/fifaLogo.webp';
+import uefaLogo from '../../../assets/ico/uefaLogo.webp';
 
 import VideoNews from '../../Main/VideoNews/VideoNews';
 import Blogs from '../../Main/Blogs/Blogs';
 
+import config from '../../../conf.json';
+
 const Rpl = () => {
-    const[season, setSeason] = useState();
     const[lastWinner, setLastWinner] = useState();
     const[mostWinner, setMostWinner] = useState();
     const[standings, setStandings] = useState();
@@ -27,46 +29,67 @@ const Rpl = () => {
     const[news2, setNews2] = useState();
     const[news3, setNews3] = useState();
     const[fixtures, setFixtures] = useState();
+    const[news4, setNews4] = useState();
+    const[transferList, setTransferList] = useState();
+    const[liveMatches, setLiveMatches] = useState();
     const[uefaCurrentSeason, setUefaCurrentSeason] = useState();
     const[uefaRankName, setUefaRankName] = useState();
     const[fifaRankName, setFifaRankName] = useState();
-    const[news4, setNews4] = useState();
-    const[transferList, setTransferList] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0); // scroll top, when open page
     }, []);
 
     useEffect(() => {
-        function convertGermanToclientTime(germanTime) {
-            // Разбиваем строку времени на часы и минуты
-            const [hours, minutes] = germanTime.split(':').map(Number);
-          
-            // Создаем объект Date с текущей датой и временем в немецкой временной зоне
-            const germanDate = new Date();
-            germanDate.setHours(hours);
-            germanDate.setMinutes(minutes);
-
-            const clientUTCOffset = new Date();
-          
-            // Добавляем разницу между немецким и иранским временем (2.5 часа)
-            const clientDate = new Date(germanDate.getTime() + ((-clientUTCOffset.getTimezoneOffset() / 60) - 2) * 60 * 60 * 1000);
-          
-            // Получаем иранское время в формате "чч:мм"
-            const clientTime = `${clientDate.getHours()}:${clientDate.getMinutes().toString().padStart(2, '0')}`;
-          
-            return clientTime;
-          }
-          
         const fetchData = async () => {
-            await axios.get('/leagueinfo/rpl')
-            .then(response => {
-                setSeason(response.data[0].seasonInfo);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    
+            const options = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/standings',
+                params: {
+                  season: `${config['russian-premier-league-season'].split('/')[0]}`,
+                  league: '235'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+            };
+              
+            try {
+                const response = await axios.request(options);
+                const standingsData = response.data && response.data.response[0].league.standings[Math.floor(Math.random() * response.data.response[0].league.standings.length)];
+
+                if(standingsData) {
+                    const translatedStandings = await Promise.all(standingsData.splice(0, 8).map(async (e, i) => {
+                        const description = await translate(e.description, { to: 'ru' });
+                        const teamName = config['correct-translations'][`${await translate(e.team.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.team.name, {to: 'ru'})}`] : await translate(e.team.name, {to: 'ru'});
+
+                        return <div key={'standings' + i}>
+                        <div className="col">
+                                <div className="left">
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={description}><span style={{...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null), ...(e.description?.includes('Champions League') ? {background: 'linear-gradient(135deg,#0d0d7b 35%,#bf00ff)', color: '#fff'} : null), ...(e.description?.includes('Europa League') ? {background: 'linear-gradient(135deg,#ff5700 35%,#000)', color: '#fff'} : null), ...(e.description?.includes('Europa Conference') ? {background: 'linear-gradient(135deg,#19c778 35%,#000)', color: '#fff'} : null)}} className={`place`}>{e.rank}</span></Tippy>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={teamName}><img loading="lazy" src={e.team.logo} alt={teamName} /></Tippy></LazyLoad>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{teamName}</span>
+                                </div>
+                                <div className="nums">
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.all.played}</span>
+                                    <div className="forAgainst">
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.all.goals.for}</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>:</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.all.goals.against}</span>
+                                    </div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
+                                </div>
+                            </div>
+                    </div>
+                    }));
+
+                    setStandings(translatedStandings);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+
             await axios.get('/leagueinfo/rpl')
             .then(response => {
                 setLastWinner(response.data[0].lastWinner);
@@ -82,55 +105,83 @@ const Rpl = () => {
             .catch(err => {
                 console.log(err);
             });
-    
-            await axios.get('/standings/rpl')
+
+            await axios.get('/standings/uefacountryrankseason')
             .then(response => {
-                setStandings(response.data && response.data.splice(0, 8).map((e, i) => {
-                    return <div key={'standings' + i} className="col">
-                                <div className="left">
-                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.description && e.description.includes('Лиги') ? e.description + ' (?)*' : e.description}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrLat && e.descrLat.includes('Ligi') ? null : e.descrLat}`}>{e.place}</span></Tippy>
-                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
-                                </div>
-                                <div className="nums">
-                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
-                                    <div className="forAgainst">
-                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
-                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>:</span>
-                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
-                                    </div>
-                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
-                                </div>
-                            </div>
-                }));
+                setUefaCurrentSeason(response.data[0].seasonCurrent);
             })
             .catch(err => {
                 console.log(err);
             });
     
-            await axios.get('/standings/rplTS')
+            await axios.get('/standings/uefacountryrank')
             .then(response => {
-                setTopScores(response.data && response.data.splice(1, 8).map((e, i) => {
-                    return <div key={'topScores' + i} className="col">
+                setUefaRankName(response.data && response.data.filter(e => {
+                    return e.name === 'Россия';
+                }));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+            await axios.get('/standings/fifaranking')
+            .then(response => {
+                setFifaRankName(response.data && response.data.filter(e => {
+                    return e.name === 'Россия';
+                }));  
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+            const optionsTS = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/players/topscorers',
+                params: {
+                  league: '235',
+                  season: `${config['russian-premier-league-season'].split('/')[0]}`
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+            };
+            
+            try {
+                const response = await axios.request(optionsTS);
+                const tsData = response.data && response.data.response;
+
+                if (tsData) {
+                    const translatedTS = await Promise.all(tsData.splice(0, 8).map(async (e, i) => {
+                        const player = await translate(e.player.name, {to: 'ru'});
+                        const playerFN = await translate(e.player.firstname + ' ' + e.player.lastname, {to: 'ru'});
+                        const team = config['correct-translations'][`${await translate(e.statistics[0].team.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.statistics[0].team.name, {to: 'ru'})}`] : await translate(e.statistics[0].team.name, {to: 'ru'});
+
+                        return (
+                            <div key={'ts' + i} className="col">
                                 <div className="left">
-                                    <span className="place" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.place}</span>
-                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={e.img} alt={e.player}/></Tippy></LazyLoad>
-                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.player}</span>
+                                    <span className="place" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{i + 1}</span>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={playerFN}><img loading="lazy" src={e.player.photo} alt={player}/></Tippy></LazyLoad>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{player}</span>
                                 </div>
                                 <div className="tLogoName">
-                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
+                                    <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={team}><img loading="lazy" src={e.statistics[0].team.logo} alt={team} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
-                                    <span className="goals" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goals ? e.goals : '0'}</span>
-                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
-                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="goals">{e.statistics[0].goals.total}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.statistics[0].penalty.scored}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.statistics[0].games.appearences}</span>
                                 </div>
                             </div>
-                }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                        )
+                    }));
+
+                    setTopScores(translatedTS);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
     
             await axios.get('/news/rplNews')
             .then(response => {
@@ -155,46 +206,12 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
                                     <span className='category'><span className="likes">❤ {`${e && e.likes?.split(',').length > 0 ? e.likes?.split(',').length : '0'}`}</span> {`#${e.category}`}</span>
                                 </Link>
-                            </div>
-                }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    
-            await axios.get('/results/rpl')
-            .then(response => {
-                let filtered = response.data.filter(e => {
-                    return e.round === response.data[0].round;
-                });
-                setResults(filtered && filtered.map((e, i) => {
-                    return <div className="col" key={'rpl' + i}>
-                                <div className="round" style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}}><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? null : {color: '#fff'}}>{e.round}</span></div>
-                                <div className="center">
-                                    <span className='hName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hName}</span>
-                                    <LazyLoad offset={800}>
-                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
-                                            <img loading="lazy" src={e.hLogo} alt={e.hName} />
-                                        </Tippy>
-                                    </LazyLoad>
-                                    <span className='hScore' style={{...(e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.hScore}</span>
-                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>-</span>
-                                    <span className='aScore' style={{...(e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.aScore}</span>
-                                    <span></span>
-                                    <LazyLoad offset={800}>
-                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
-                                            <img loading="lazy" src={e.aLogo} alt={e.aName} />
-                                        </Tippy>
-                                    </LazyLoad>
-                                    <span className='aName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aName}</span>
-                                </div>
-                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : e.dateTime}</span></div>
                             </div>
                 }));
             })
@@ -225,7 +242,7 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -261,7 +278,7 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -273,68 +290,74 @@ const Rpl = () => {
             .catch(err => {
                 console.log(err);
             });
-    
-            await axios.get('/fixtures/rpl')
-            .then(response => {
-                let filtered = response.data.filter(e => {
-                    return e.round === response.data[0].round;
-                });
-                setFixtures(filtered && filtered.map((e, i) => {
-                    return <div className="col" key={'rpl' + i}>
-                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="round"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.round}</span></div>
-                                <div className="center">
-                                    <span className='hName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hName}</span>
-                                    <LazyLoad offset={800}>
-                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
-                                            <img loading="lazy" src={e.hLogo} alt={e.hName} />
-                                        </Tippy>
-                                    </LazyLoad>
-                                    <span className='hScore' style={{...(e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.hScore}</span>
-                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>-</span>
-                                    <span className='aScore' style={{...(e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.aScore}</span>
-                                    <span></span>
-                                    <LazyLoad offset={800}>
-                                        <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
-                                            <img loading="lazy" src={e.aLogo} alt={e.aName} />
-                                        </Tippy>
-                                    </LazyLoad>
-                                    <span className='aName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aName}</span>
-                                </div>
-                                <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes('.') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime) && e.dateTime.includes('\'') && e.dateTime}</span></div>
-                            </div>
-                }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    
-            await axios.get('/standings/uefacountryrankseason')
-            .then(response => {
-                setUefaCurrentSeason(response.data[0].seasonCurrent);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    
-            await axios.get('/standings/uefacountryrank')
-            .then(response => {
-                setUefaRankName(response.data && response.data.filter(e => {
-                    return e.name === 'Россия';
-                }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
 
-            await axios.get('/standings/fifaranking')
-            .then(response => {
-                setFifaRankName(response.data && response.data.filter(e => {
-                    return e.name === 'Россия';
-                }));  
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            const optionsFixtures = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/fixtures',
+                params: {
+                    league: '235',
+                    season: `${config['russian-premier-league-season'].split('/')[0]}`,
+                    status: 'NS'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+              };
+              
+              try {
+                const response = await axios.request(optionsFixtures);
+                const sortedFixtures = response.data.response.sort((a, b) => {
+                  return new Date(a.fixture.date) - new Date(b.fixture.date);
+                });
+
+                let filtered = sortedFixtures.filter(e => {
+                    return e.league.round === response.data.response[0].league.round;
+                });
+
+                if (sortedFixtures) {
+                  const translatedFixtures = await Promise.all(filtered.splice(0, 8).map(async (e, i) => {
+                    const hName = config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] : await translate(e.teams.home.name, {to: 'ru'});
+                    const aName = config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] : await translate(e.teams.away.name, {to: 'ru'});
+                    const round = await translate(e.league.round, {to: 'ru'});
+                    const date = new Date(e.fixture.timestamp * 1000);
+
+                    return (
+                        <div className="col" key={'fixture' + i}>
+                            <div className="round"><span>{round}</span></div>
+                            <div className="center">
+                                <span className='hName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{hName}</span>
+                                <LazyLoad offset={800}>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={hName}>
+                                        <img loading="lazy" src={e.teams.home.logo} alt={hName} />
+                                    </Tippy>
+                                </LazyLoad>
+                                <span className="hScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>
+                                {e.goals.home ? e.goals.home : '-'}
+                                </span>
+                                <span className="aScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>
+                                {e.goals.away ? e.goals.away : '-'}
+                                </span>
+                                <span></span>
+                                <LazyLoad offset={800}>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={aName}>
+                                        <img loading="lazy" src={e.teams.away.logo} alt={aName} />
+                                    </Tippy>
+                                </LazyLoad>
+                                <span className='aName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{aName}</span>
+                            </div>
+                            <div className="dateTime">
+                                <span>{String(date.getDate()).padStart(2, '0') + '.' + String(date.getMonth() + 1).padStart(2, '0') + '.' + date.getFullYear()} | {String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0')}</span>
+                            </div>
+                        </div>
+                    )
+                  }));
+
+                  setFixtures(translatedFixtures);
+                }
+            } catch (error) {
+                console.error(error);
+            }
     
             await axios.get('/news/rplNews')
             .then(response => {
@@ -359,7 +382,7 @@ const Rpl = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -392,26 +415,163 @@ const Rpl = () => {
             .catch(err => {
                 console.log(err);
             });
+
+            const optionsLive = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/fixtures',
+                params: {
+                  live: 'all',
+                  league: '235'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+              };
+              
+              try {
+                const response = await axios.request(optionsLive);
+                const liveData = response.data && response.data.response;
+
+                if (liveData) {
+                  const translatedMatches = await Promise.all(liveData.map(async (e, i) => {
+                    const hName = config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] : await translate(e.teams.home.name, {to: 'ru'});
+                    const aName = config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] : await translate(e.teams.away.name, {to: 'ru'});
+                    const round = await translate(e.league.round, {to: 'ru'});
+                    const statusTxt = await translate(e.fixture.status.long, {to: 'ru'});
+
+                    return (
+                      <React.Fragment key={'live' + i}>
+                        <div className="col live">
+                          <div style={{background: '#f02d54'}} className="round">
+                            <span style={{color: '#fff'}}>{round}</span>
+                          </div>
+                          <div className="center">
+                            <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{hName}</span>
+                            <LazyLoad offset={800}>
+                              <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={hName}>
+                                <img style={{maxWidth: '20px', maxHeight: '20px', width: 'auto', height: 'auto'}} loading="lazy" src={e.teams.home.logo} alt={hName} />
+                              </Tippy>
+                            </LazyLoad>
+                            <span className="hScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff', background: '#f02d54'} : {color: '#fff', background: '#f02d54'}}>
+                              {e.goals.home ? e.goals.home : '0'}
+                            </span>
+                            <span className="aScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff', background: '#f02d54'} : {color: '#fff', background: '#f02d54'}}>
+                              {e.goals.away ? e.goals.away : '0'}
+                            </span>
+                            <span></span>
+                            <LazyLoad offset={800}>
+                              <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={aName}>
+                                <img style={{maxWidth: '20px', maxHeight: '20px', width: 'auto', height: 'auto'}} loading="lazy" src={e.teams.away.logo} alt={aName} />
+                              </Tippy>
+                            </LazyLoad>
+                            <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{aName}</span>
+                          </div>
+                          <div style={{background: '#f02d54'}} className="dateTime">
+                            <span style={{color: '#fff'}}>{e.fixture.status.elapsed}' {e.fixture.status.short !== 'FT' ? ' | ' + statusTxt : statusTxt}</span>
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    )
+                  }));
+
+                  setLiveMatches(translatedMatches);
+                }
+              } catch (error) {
+                console.error(error);
+              }
+
+              const optionsResults = {
+                method: 'GET',
+                url: 'https://api-football-v1.p.rapidapi.com/v3/fixtures',
+                params: {
+                    league: '235',
+                    season: `${config['russian-premier-league-season'].split('/')[0]}`,
+                    status: 'FT'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '64ba7a5252msh7ee95ca829ca2e4p126736jsn8b074c27e2a5',
+                  'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+              };
+              
+              try {
+                const response = await axios.request(optionsResults);
+                const sortedFixtures = response.data.response.sort((a, b) => {
+                  return new Date(a.fixture.date) - new Date(b.fixture.date);
+                });
+
+                let filtered = sortedFixtures.reverse().filter(e => {
+                    return e.league.round === response.data.response[0].league.round;
+                });
+
+                if (filtered) {
+                  const translatedFixtures = await Promise.all(filtered.splice(0, 8).map(async (e, i) => {
+                    const hName = config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.home.name, {to: 'ru'})}`] : await translate(e.teams.home.name, {to: 'ru'});
+                    const aName = config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] ? config['correct-translations'][`${await translate(e.teams.away.name, {to: 'ru'})}`] : await translate(e.teams.away.name, {to: 'ru'});
+                    const round = await translate(e.league.round, {to: 'ru'});
+                    const date = new Date(e.fixture.timestamp * 1000);
+
+                    return (
+                        <React.Fragment key={'result' + i}>
+                            <div className="col">
+                                <div className="round">
+                                    <span>{round}</span>
+                                </div>
+                                <div className="center">
+                                    <span className="hName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{hName}</span>
+                                    <LazyLoad offset={800}>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={hName}>
+                                        <img style={{maxWidth: '20px', maxHeight: '20px', width: 'auto', height: 'auto'}} loading="lazy" src={e.teams.home.logo} alt={hName} />
+                                    </Tippy>
+                                    </LazyLoad>
+                                    <span className="hScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>
+                                    {e.goals.home ? e.goals.home : '0'}
+                                    </span>
+                                    <span className="aScore" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>
+                                    {e.goals.away ? e.goals.away : '0'}
+                                    </span>
+                                    <span></span>
+                                    <LazyLoad offset={800}>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={aName}>
+                                        <img style={{maxWidth: '20px', maxHeight: '20px', width: 'auto', height: 'auto'}} loading="lazy" src={e.teams.away.logo} alt={aName} />
+                                    </Tippy>
+                                    </LazyLoad>
+                                    <span className="aName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{aName}</span>
+                                </div>
+                                <div className="dateTime">
+                                    <span>{String(date.getDate()).padStart(2, '0') + '.' + String(date.getMonth() + 1).padStart(2, '0') + '.' + date.getFullYear()} | {String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0')}</span>
+                                </div>
+                            </div>
+                        </React.Fragment>
+                    )
+                  }));
+
+                  setResults(translatedFixtures);
+                }
+              } catch (error) {
+                console.error(error);
+              }
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
-        <div id='leagueRpl'>
+        <div id='leagueEuQual'>
             <Helmet>
-                <title>Российская Премьер Лига (РПЛ) - новости, результаты, расписание матчей, турнирная таблица и много чего - на Legendary Football</title>
-                <meta name="description" content="Изучайте последние новости, результаты и турнирную таблицу РПЛ на нашем сайте. У нас вы найдете все необходимые материалы о главном российском футбольном чемпионате и в целом о российском футболе." />
-                <meta name="keywords" content="рпл, новости, результаты, турнирная таблица, футбол, российский футбол, чемпионат россии, зенит, спартак москва, цска, краснодар, список трансферов, бомбардиры, ближайшие матчи, последние результаты, рейтинг в уефа, рейтинг в фифа, список популярных трансферов, видео, блоги" />
+                <title>Российская Премьер Лига (РПЛ) - новости, результаты, расписание матчей, турнирная таблица</title>
+                <meta name="description" content="Российская Премьер-Лига - читай новости, изучай трансферы и турнирную таблицу РПЛ" />
+                <meta name="keywords" content="рпл, новости рпл, результаты, турнирная таблица, футбол, российский футбол, чемпионат россии, зенит, спартак москва, цска, краснодар, список трансферов, бомбардиры рпл, ближайшие матчи" />
             </Helmet>
             <div className="logoPageName">
                 <div className="info">
                     <div className='left'>
                         <div>
-                            <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='РПЛ'><img loading="lazy" src={logo} alt="logo" /></Tippy></LazyLoad>
+                            <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={`РПЛ ${config['russian-premier-league-season']}`}><img loading="lazy" src={logo} alt={`РПЛ ${config['russian-premier-league-season']}`} /></Tippy></LazyLoad>
                         </div>
                         <div>
-                            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Российская Премьер-Лига <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Сезон: {season}</span></h1>
+                            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Российская Премьер-Лига {config['russian-premier-league-season']}</h1>
                             <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Место проведения: <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Россия</span></span>
                         </div>
                     </div>
@@ -423,7 +583,7 @@ const Rpl = () => {
             </div>
             <div className="standingsTopScores">
                 <div className="standingsWrap">
-                    <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Турнирная таблица</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Турнирная таблица</h2>
                     <div className="table5xn standings">
                         <div className="head">
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
@@ -433,14 +593,14 @@ const Rpl = () => {
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                         </div>
                         {standings && standings.length > 0 ? standings : <div className='noData'>Данных нет</div>}
-                        <Link to="/league/rpl/standings" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/league/rpl/standings">Подробнее</Link>
                     </div>
                 </div>
                 <div className="newsWrap newsVr leagueNews">
                     {news}
                 </div>
                 <div className="topScoresWrap">
-                    <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Бомбардиры</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Бомбардиры</h2>
                     <div className="table6xn topScores">
                         <div className="head">
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
@@ -451,15 +611,17 @@ const Rpl = () => {
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {topScores && topScores.length > 0 ? topScores : <div className='noData'>Данных нет</div>}
-                        <Link to="/league/rpl/topscores" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/league/rpl/topscores">Подробнее</Link>
                     </div>
                 </div>
             </div>
             <div className="matchesResultNews">
                 <div className="resultsWrap">
-                    <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Ближайшие матчи</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Ближайшие матчи</h2>
                     <div className="wrap">
+                        {liveMatches}
                         {fixtures && fixtures.length > 0 ? fixtures : <div className='noData'>Данных нет</div>}
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to={'/league/rpl/fixtures'}>Подробнее</Link>
                     </div>
                 </div>
                 <div className="newsWrap newsVr leagueNews">
@@ -471,16 +633,18 @@ const Rpl = () => {
                     {news3}
                 </div>
                 <div className="resultsWrap">
-                    <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Последние результаты</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Последние результаты</h2>
                     <div className="wrap">
+                        {liveMatches?.length > 0 && liveMatches}
                         {results && results.length > 0 ? results : <div className='noData'>Данных нет</div>}
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to={'/league/rpl/results'}>Подробнее</Link>
                     </div>
                 </div>
             </div>
             <div className="ranksNewsTransfers">
                 <div className="ranksWrap">
-                    <div className="ranks">
-                        <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Рейтинг в УЕФА</h2>
+                <div className="ranks">
+                        <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Рейтинг в УЕФА</h2>
                         <div className="wrap">
                             <div className="logoWrap">
                                 <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='UEFA'><img loading="lazy" src={uefaLogo} alt="uefaLogo" /></Tippy></LazyLoad>
@@ -501,7 +665,7 @@ const Rpl = () => {
                         </div>
                     </div>
                     <div className="ranks">
-                        <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Рейтинг в ФИФА</h2>
+                        <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Рейтинг в ФИФА</h2>
                         <div className="wrap">
                             <div className="logoWrap">
                                 <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='FIFA'><img loading="lazy" src={fifaLogo} alt="fifaLogo" /></Tippy></LazyLoad>
@@ -524,11 +688,11 @@ const Rpl = () => {
                     {news4}
                 </div>
                 <div id='transferList'>
-                    <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Список популярных трансферов</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Список популярных трансферов</h2>
                     <div className="listWrap">
                         {transferList && transferList.length > 0 ? transferList : <div className='noData'>Данных нет</div>}
                     </div>
-                    <Link to="/transfers/list" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
+                    <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/transfers/list">Подробнее</Link>
                 </div>
             </div>
             <div id="videoBlogs">

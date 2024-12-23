@@ -1,3 +1,10 @@
+#addBroadcast .autoSelect {
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    margin: 0 0 30px 0;
+    font-size: 1em;
+}
 #addBroadcast form div {
     display: flex;
     flex-direction: column;

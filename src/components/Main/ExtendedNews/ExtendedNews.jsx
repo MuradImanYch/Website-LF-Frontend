@@ -3,7 +3,7 @@ import './ExtendedNews.css';
 import axios from 'axios';
 import { useParams, useLocation } from 'react-router-dom';
 import $ from 'jquery';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
 import unliked from '../../../assets/ico/unliked.webp';
@@ -26,7 +26,7 @@ const ExtendedNews = () => {
             await axios.get('/news/allNews')
             .then(response => {
                 setSelected(response.data.find((obj) => {
-                    return obj.id + '-' + cyrillicToTranslit().transform(obj.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase() === id;
+                    return obj.id + '-' + cyrillicToTranslit().transform(obj.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase() === id;
                 }));
             })
             .catch(err => {
@@ -85,7 +85,7 @@ const ExtendedNews = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, [id]);
 
     useEffect(() => {
@@ -129,16 +129,24 @@ const ExtendedNews = () => {
 
     return (
         <div className='extendedNews'>
+            <style>
+                {`
+                    .textWrap p {
+                        color: ${localStorage.getItem('darkTheme') === 'true' ? '#fff' : null};
+                    }
+                `}
+            </style>
             <Helmet>
                 <title>{selected && selected.title + ' - Legendary Football'}</title>
                 <meta name="description" content={selected && selected.meta_description} />
                 <meta name="keywords" content={selected && selected.meta_keywords} />
+                <link rel="canonical" href={`https://legfootball.com/news/read/${selected && selected.id + '-' + cyrillicToTranslit().transform(selected.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`} />
             </Helmet>
             <section>
                 <div className="container">
                     <div className="postWrap">
                         <article>
-                            <h1 className="pageName">{selected && selected.title}</h1>
+                            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">{selected && selected.title}</h1>
                             <div className="dateCategory">
                                 <ul>
                                     <li className='category'>{selected && selected.category}</li>
@@ -146,14 +154,14 @@ const ExtendedNews = () => {
                                 <span className="date">{selected && convertDate(selected.date)}</span>
                             </div>
                             <img loading="lazy" id='mainImg' src={selected && selected.img} alt="newsImg" />
-                            <div className='textWrap'>
+                            <div style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='textWrap'>
                                 <p><strong>{selected && selected.meta_description}</strong></p>
                                 {selected && parse(selected.content)}
                             </div>
-                            <div className="likes"><span title='Просмотры' className='views'>👁 {isViewed && isViewed}</span> {likeBtn} <span title='Нравится' className='likeNum'>{selected && selected.likes?.split(',').length > 0 ? selected.likes?.split(',').length : 0}</span></div>
+                            <div className="likes"><span title='Просмотры' className='views' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>👁 {isViewed && isViewed}</span> {likeBtn} <span title='Нравится' className='likeNum' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{selected && selected.likes?.split(',').length > 0 ? selected.likes?.split(',').length : 0}</span></div>
                         </article>
                     </div>
-                    <i className='author'>{selected && selected.author}</i>
+                    {/* <i className='author' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{selected && selected.author}</i> */}
                 </div>
             </section>
         </div>

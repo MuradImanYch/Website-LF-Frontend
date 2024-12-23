@@ -6,6 +6,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
+import cookies from 'js-cookie';
 
 import loadSpiner from '../../../../assets/ico/loadSpiner.gif';
 
@@ -80,6 +81,21 @@ const ChatGPT = () => {
     const addNews = (e) => {
         e.preventDefault();
 
+        let authCookie = cookies.get('auth');
+        if(authCookie) { // check is auth and get username by token
+            axios.post('/profile/username', {
+                token: authCookie
+            })
+            .then(response => {
+                if (response.status == 200){
+                    setAuthor(response.data);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+
         if(category === 'none') {
             alert('Выберите категорию');
         }
@@ -94,9 +110,6 @@ const ChatGPT = () => {
         }
         else if(metaKeywords === '') {
             alert('Введите поле для мета тега: keywords');
-        }
-        else if(author === '') {
-            alert('Введите имя автора');
         }
         else if(content === '') {
             alert('Введите контент для новости');
@@ -216,6 +229,7 @@ const ChatGPT = () => {
                         setMetaDescr(response.data.description);
                         setMetaKeywords(response.data.keywords);
                         setContent(response.data.content);
+                        setImg(response.data.img);
     
                         $('#newsTitle').val(response.data.title);
                         $('#meta_description').val(response.data.description);
@@ -291,8 +305,6 @@ const ChatGPT = () => {
                 <input onChange={(e) => {setMetaDescr(e.target.value)}} placeholder='Мета-тэг: description' type="text" id='meta_description' name='meta_description' />
                 <label htmlFor="meta_keywords">Мета-тэг: keywords</label>
                 <input onChange={(e) => {setMetaKeywords(e.target.value)}} placeholder='Мета-тэг: keywords' type="text" id='meta_keywords' name='meta_keywords' />
-                <label htmlFor="author">Автор:</label>
-                <input onChange={(e) => {setAuthor(e.target.value)}} placeholder='Имя Фамилия' type="text" id='author' name='author' />
                 <label id='newsContentLabel' htmlFor="newsContent">Контент:</label>
                 <CKEditor config={editorConfig} data={content} disabled={disabled} id="newsContent" editor={ClassicEditor} onChange={(e, editor) => {
                     setContent(editor.getData());

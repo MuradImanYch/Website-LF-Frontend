@@ -39,7 +39,7 @@ const Blogs = () => {
                     }
                     return  <SwiperSlide key={'blog' + e.id}>
                         <div className="cart" id={'blogs' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="swiper-lazy-preloader">
                                         <div className="lds-dual-ring"></div>
                                     </div>
@@ -61,14 +61,14 @@ const Blogs = () => {
             }); 
         }
         
-        fetchData();
+        // fetchData();
     }, []); 
 
     return (
         <div id='blogs' className='newsVr'>
             <section id='blogsQckNav'>
                 <h2 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="sectionName">Блоги</h2>
-                <Swiper lazy={true} navigation grabCursor={true} breakpoints={{280: {slidesPerView: 1, direction: 'horizontal'}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3, direction: 'vertical'}}} pagination={{type: "progressbar", clickable: true}}>
+                <Swiper style={{overflow: 'hidden'}} lazy={true} navigation grabCursor={true} breakpoints={{280: {slidesPerView: 1, direction: 'horizontal'}, 768: {slidesPerView: 2}, 1024: {slidesPerView: 3, direction: 'vertical'}}} pagination={{type: "progressbar", clickable: true}}>
                     {blogs && blogs.length > 0 ? blogs : <div className='noData'>Данных нет</div>}
                 </Swiper>
             </section>

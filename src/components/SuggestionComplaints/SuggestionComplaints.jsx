@@ -85,7 +85,7 @@ const SuggestionComplaints = () => {
 
     return (
         <div id='suggestionsComplaints'>
-            <h1 className="pageName">Предложения и жалобы</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Предложения и жалобы</h1>
             <form>
                 <div className='nameLname'>
                     <div>

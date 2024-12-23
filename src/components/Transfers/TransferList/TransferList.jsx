@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 const TransferList = () => {
     const[transferList, setTransferList] = useState();
@@ -32,17 +32,17 @@ const TransferList = () => {
                                     <div className='player'>
                                         <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy></LazyLoad>
                                         <img loading="lazy" src={e.flag} alt="flag" />
-                                        <span>{e.position}</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                                        <span>→</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>→</span>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
                                     <div className='date'>
-                                        <span>{e.date}</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.date}</span>
                                     </div>
                                     <div className='price'>
                                         <span>{e.price}</span>
@@ -56,7 +56,7 @@ const TransferList = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [expandToggle]);
 
     useEffect(() => {
@@ -69,17 +69,17 @@ const TransferList = () => {
                                     <div className='player'>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
                                         <img loading="lazy" src={e.flag} alt="flag" />
-                                        <span>{e.position}</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.position}</span>
                                     </div>
                                     <div className='fromTo'>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                                        <span>→</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>→</span>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                     </div>
                                 </div>
                                 <div>
                                     <div className='date'>
-                                        <span>{e.date}</span>
+                                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.date}</span>
                                     </div>
                                     <div className='price'>
                                         <span>{e.price}</span>
@@ -93,7 +93,7 @@ const TransferList = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [expandToggleLeagues, endpoint]);
 
     const transferToggle = () => {
@@ -117,17 +117,17 @@ const TransferList = () => {
                                 <div className='player'>
                                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.img} alt="playerImg" /></Tippy>
                                     <img loading="lazy" src={e.flag} alt="flag" />
-                                    <span>{e.position}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.position}</span>
                                 </div>
                                 <div className='fromTo'>
                                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                                    <span>→</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>→</span>
                                     <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" src={e.clubIn} alt={e.clubInName} /></Tippy>
                                 </div>
                             </div>
                             <div>
                                 <div className='date'>
-                                    <span>{e.date}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.date}</span>
                                 </div>
                                 <div className='price'>
                                     <span>{e.price}</span>
@@ -148,7 +148,7 @@ const TransferList = () => {
                 <meta name="description" content="Список всех прошедших футбольных трансферах в одном месте! Будьте в курсе последних переходов звезд мирового футбола с нашим полным списком трансферных событий. Летние и зимние переходы - всё здесь." />
                 <meta name="keywords" content="список всех трансферов, футбольные трансферы, переходы футболистов, трансферное окно, летние трансферы, зимние трансферы, актуальные трансферы, трансферное окно в европе, трансферы рпл, трансферы апл, трансферы серии а, трансферы бундеслиги, трансферы лиги 1" />
             </Helmet>
-            <h1 className="pageName">Список трансферов 
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Список трансферов 
             <select onChange={selectleague} name="leagueSelection">
                 <option value="/transfers/all">Все лиги</option>
                 <option value="/transfers/rpl">РПЛ</option>
@@ -171,11 +171,11 @@ const TransferList = () => {
                 </div>
                 <div className="default">
                     {transferList}
-                    <span onClick={transferToggle}>Развернуть ещё</span>
+                    <span onClick={transferToggle} style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Развернуть ещё</span>
                 </div>
                 <div className="other">
                     {transferListLeagues}
-                    <span onClick={transferToggleLeagues}>Развернуть ещё</span>
+                    <span onClick={transferToggleLeagues} style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Развернуть ещё</span>
                 </div>
             </div>
         </div>

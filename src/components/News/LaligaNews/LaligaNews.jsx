@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import laligaLogo from '../../../assets/ico/laligaLogo.webp';
 
@@ -46,7 +46,7 @@ const LaligaNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const LaligaNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const LaligaNews = () => {
     return (
         <div id='laligaNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Испанской Премьер Лиги (Ла лига) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Испанской Премьер Лиги (Ла лига) и испанском футболе в целом." />
-                <meta name="keywords" content="ла лига, испанская премьер лига, испанский футбол, футбол, реал мадрид, барселона, атлетико мадрид, севилья, новости, новости ла лиги" />
+                <title>Новости Испанской Премьер-Лиги (Ла лига)</title>
+                <meta name="description" content="Свежие новости, результаты матчей, трансферные слухи и все ключевые событии сезона в Ла-лиге." />
+                <meta name="keywords" content="новости ла лига, ла лига новости, новости испанская премьер лига, испанский футбол новости, новости чемпионата испании, чемпионат испании новости, реал мадрид новости, барселона новости, атлетико мадрид новости, севилья новости, новости ла лиги" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

@@ -1,0 +1,35 @@
+.standings7 .nums {
+    /* margin: 0 26px 0 0; */
+}
+@media (min-width: 320px) {
+    .standings7 .nums {
+        /* margin: 0 26px 0 0; */
+    }
+}
+
+@media (min-width: 1024px) {
+    .standings7 h2 {
+        margin: 0;
+    }
+    .standings7.table5xn {
+        min-width: 320px !important;
+    }
+    .standings7 .name {
+        width: 105px;
+    }
+    .standings7 .head {
+        margin: 0;
+    }
+    .standings7 .lLogo {
+        margin: 10px 0;
+    }
+    .standings7 .col {
+        padding: 15px 0;
+    }
+    #standings7QckNav > div > div.swiper-wrapper > div > a {
+        margin: 8px 0 -8px 0;
+    }
+    .standings7 .nums {
+        margin: 0 21px 0 0;
+    }
+}

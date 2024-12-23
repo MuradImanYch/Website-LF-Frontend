@@ -4,7 +4,7 @@ import axios from 'axios';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import $ from 'jquery';
 
 import uefaLogo from '../../../assets/ico/uefaLogo.webp';
@@ -38,19 +38,19 @@ const UEFACountryRank = () => {
             axios.get('/standings/uefacountryrank')
             .then(response => {
                 setUefaCountryRank(response.data && response.data.map((item, indx) => {
-                    return <div className="col wrap" key={'uefaCountryRank' + indx}>
+                    return <div className="col wrap" key={'uefaCountryRank' + indx} style={localStorage.getItem('darkTheme') === 'true' ? {background: 'rgb(34, 34, 34)'} : null}>
                     <div>
-                        <span className='place'>{item.place}<span>.</span></span>
-                        <div className='flagName'><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={item.name}><img loading="lazy" src={'https://terrikon.com' + item.flag} alt={item.name} /></Tippy></LazyLoad><span>{item.name}</span></div>
-                        <span>{item.quantity}</span>
-                        <span className='total'>{item.total}</span>
+                        <span className='place' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.place}<span>.</span></span>
+                        <div className='flagName'><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={item.name}><img loading="lazy" src={'https://terrikon.com' + item.flag} alt={item.name} /></Tippy></LazyLoad><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.name}</span></div>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.quantity}</span>
+                        <span className='total' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.total}</span>
                     </div>
                     <div>
-                        <span>{item.totalLast5}</span>
-                        <span>{item.totalLast4}</span>
-                        <span>{item.totalLast3}</span>
-                        <span>{item.totalLast2}</span>
-                        <span className='current'>{item.totalCurrent}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.totalLast5}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.totalLast4}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.totalLast3}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{item.totalLast2}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='current'>{item.totalCurrent}</span>
                     </div>
                 </div>
                 }));
@@ -60,17 +60,17 @@ const UEFACountryRank = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []); 
 
     return (
         <div id='uefaCountryRankOther'>
             <Helmet>
-                <title>Таблица коэффициентов УЕФА (UEFA) - на Legendary Football</title>
-                <meta name="description" content="Изучите таблицу коэффициентов УЕФА (UEFA) в онлайн режиме - рейтинг команд и ассоциаций на европейской футбольной арене. Узнайте о рейтинговых позициях, статистике и значимости клубов и стран в еврокубках." />
-                <meta name="keywords" content="таблица коэффициентов уефа, рейтинг команд уефа, рейтинг ассоциаций уефа, европейская футбольная арена, рейтинговые позиции клубов и стран, еврокубки уефа, обновленные данные, uefa коэффициент, европейский футбол, футбольные клубы и ассоциации, онлайн" />
+                <title>Онлайн таблица коэффициентов УЕФА (UEFA) - Таблица европейских чемпионатов</title>
+                <meta name="description" content="Изучите таблицу коэффициентов УЕФА (UEFA) в онлайн режиме - рейтинг команд и ассоциаций на европейской футбольной арене." />
+                <meta name="keywords" content="рейтинг уефа, таблица коэффициентов уефа, рейтинг команд уефа, рейтинг ассоциаций уефа, uefa коэффициент, рейтинг уєфа, рейтинг европейских чемпионатов, коэффициенты уефа онлайн" />
             </Helmet>
-            <h1 className="pageName">Рейтинг ассоциаций УЕФА</h1>
+            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Рейтинг ассоциаций УЕФА</h1>
             <section>
                 <div className="uefaTable">
                     <div className="logoWrap">

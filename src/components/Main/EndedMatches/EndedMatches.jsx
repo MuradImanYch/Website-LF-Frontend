@@ -73,12 +73,12 @@ const EndedMatches = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
         <div id='endedMatches'>
-            <section id='oddsQckNav'>
+            <section id='oddsQckNav expectedMatchesQckNav'>
                 <h2 className="sectionName">Завершенные матчи</h2>
                 <div className="wrap">
                     {endedMatches && endedMatches.length > 0 ? endedMatches : <div className='noData'>Данных нет</div>}

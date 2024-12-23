@@ -174,7 +174,7 @@ const TopScoresSlider = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

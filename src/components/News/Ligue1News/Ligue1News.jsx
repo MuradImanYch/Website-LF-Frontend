@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import ligue1Logo from '../../../assets/ico/ligue1Logo.webp';
 
@@ -46,7 +46,7 @@ const Ligue1News = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const Ligue1News = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const Ligue1News = () => {
     return (
         <div id='ligue1News' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Чемпионата Франции (Лига 1) - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Франции (Лига 1) и французском футболе в целом." />
-                <meta name="keywords" content="лига 1, чемпионат франции, французский футбол, футбол, псж, монако, олимпик лион, олимпик марсель, новости, новости лиги 1" />
+                <title>Новости Чемпионата Франции (Лига 1)</title>
+                <meta name="description" content="Будьте в курсе актуальных новостей, матчей, трансферных слухов и ключевых событий сезона в чемпионате Франции по футболу." />
+                <meta name="keywords" content="лига 1 новости, новости лиги 1, новости чемпионата франции, французский футбол новости, чемпионат франции новости, псж новости, монако новости, олимпик лион новости, олимпик марсель новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

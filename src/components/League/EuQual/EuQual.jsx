@@ -6,7 +6,7 @@ import cyrillicToTranslit from 'cyrillic-to-translit-js';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import logo from '../../../assets/ico/euroQualLogo.webp';
 import person from '../../../assets/ico/person.webp';
@@ -64,13 +64,13 @@ const EuQual = () => {
                 setUefaRank(response.data && response.data.splice(1, 5).map(e => {
                     return <div className='inner'>
                                 <div className='place'>
-                                    <span>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={'https://terrikon.com' + e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
-                                    <span className='points'>{e.total}</span>
+                                    <span className='points' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.total}</span>
                                 </div>
                     </div>
                 }));
@@ -84,13 +84,13 @@ const EuQual = () => {
                 setFifaRank(response.data && response.data.splice(1, 5).map(e => {
                     return <div className='inner'>
                                 <div className='place'>
-                                    <span>{e.place}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.place}</span>
                                 </div>
                                 <div className='countries'>
-                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name'>{e.name.slice(0, 3)}...</span>
+                                    <span><LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.flag} alt={e.name} /></Tippy></LazyLoad></span><span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name.slice(0, 3)}...</span>
                                 </div>
                                 <div className='points'>
-                                    <span className='points'>{e.points}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className='points'>{e.points}</span>
                                 </div>
                     </div>
                 }));
@@ -114,18 +114,18 @@ const EuQual = () => {
                     return <div key={'standings' + i}>
                         <div className="col">
                                 <div className="left">
-                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span className='name'>{e.name}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -140,17 +140,17 @@ const EuQual = () => {
                 settopScrores(response.data && response.data.splice(1, 8).map((e, i) => {
                     return <div key={'topScrores' + i} className="col">
                                 <div className="left">
-                                    <span className="place">{e.place}</span>
+                                    <span className="place" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.place}</span>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.player}><img loading="lazy" src={person} alt={e.player}/></Tippy></LazyLoad>
-                                    <span className='name'>{e.player}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.player}</span>
                                 </div>
                                 <div className="tLogoName">
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.tName}><img loading="lazy" src={e.tLogo} alt={e.tName} /></Tippy></LazyLoad>
                                 </div>
                                 <div className="nums">
-                                    <span className="goals">{e.goals ? e.goals : '0'}</span>
-                                    <span>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
-                                    <span>{e.games}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="goals">{e.goals ? e.goals : '0'}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.pen === '(undefined' ? '(0)' : e.pen}</span>
+                                    <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                 </div>
                             </div>
                 }));
@@ -182,7 +182,7 @@ const EuQual = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -204,22 +204,21 @@ const EuQual = () => {
                     return <div className="col" key={'euQual' + i}>
                                 <div className="round" style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54'}}><span style={e.dateTime.includes('Завершен') ? null : {color: '#fff'} && e.dateTime.includes(',') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
-                                    <span className='hName'>{e.hName}</span>
+                                    <span className='hName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hName}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
                                             <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='hScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
-                                    -
-                                    <span className='aScore' style={e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
+                                    <span className='hScore' style={{...(e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.hScore}</span>
+                                    <span className='aScore' style={{...(e.dateTime.includes('Завершен') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'} && e.dateTime.includes(',') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
                                             <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='aName'>{e.aName}</span>
+                                    <span className='aName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aName}</span>
                                 </div>
                                 <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : e.dateTime}</span></div>
                             </div>
@@ -252,7 +251,7 @@ const EuQual = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -288,7 +287,7 @@ const EuQual = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -310,22 +309,21 @@ const EuQual = () => {
                     return <div className="col" key={'euQual' + i}>
                                 <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="round"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.round}</span></div>
                                 <div className="center">
-                                    <span className='hName'>{e.hName}</span>
+                                    <span className='hName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.hName}</span>
                                     <LazyLoad offset={800}>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.hName}>
                                             <img loading="lazy" src={e.hLogo} alt={e.hName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='hScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.hScore}</span>
-                                    -
-                                    <span className='aScore' style={e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}}>{e.aScore}</span>
+                                    <span className='hScore' style={{...(e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.hScore}</span>
+                                    <span className='aScore' style={{...(e.dateTime.includes(':') ? null : {background: '#f02d54', color: '#fff', borderColor: '#f02d54'}), ...(localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null)}}>{e.aScore}</span>
                                     <span></span>
                                     <LazyLoad offset={800}>
                                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.aName}>
                                             <img loading="lazy" src={e.aLogo} alt={e.aName} />
                                         </Tippy>
                                     </LazyLoad>
-                                    <span className='aName'>{e.aName}</span>
+                                    <span className='aName' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.aName}</span>
                                 </div>
                                 <div style={e.dateTime.includes(':') ? null : {background: '#f02d54'}} className="dateTime"><span style={e.dateTime.includes(':') ? null : {color: '#fff'}}>{e.dateTime.includes(':') ? e.dateTime.includes(',') ? e.dateTime.split(',')[0] + ', ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : 'Сегодня, ' + convertGermanToclientTime(e.dateTime.split(',')[1]) : e.dateTime}</span></div>
                             </div>
@@ -358,7 +356,7 @@ const EuQual = () => {
                         $(`.newsVr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} className="cart" id={'id' + e.id} onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img"><LazyLoad offset={800}><img loading="lazy" alt={e.title} src={e.img} /></LazyLoad></div>
                                     <h3>{e.title}</h3>
                                     <span className='date'>{day + '-' + month + '-' + year + ' | ' + hours + ':' + minutes} <span className='views'>👁 {`${e && e.views?.split(',').length > 0 ? e.views?.split(',').length : '0'}`}</span></span>
@@ -377,11 +375,11 @@ const EuQual = () => {
                     return <div className="col" key={'transferList' + i}>
                     <div className="player">
                         <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} offset={[0, 10]} content={e.name}><img loading="lazy" src={e.img} alt={e.name} /></Tippy></LazyLoad>
-                        <span>{e.name}</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                     </div>
                     <div className="outIn">
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubOutName}><img loading="lazy" className='out' src={e.clubOut} alt={e.clubOutName} /></Tippy>
-                        <span>→</span>
+                        <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>→</span>
                         <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.clubInName}><img loading="lazy" className='in' src={e.clubIn} alt={e.clubInName} /></Tippy>
                     </div>
                     <div className="price">{e.price}</div>
@@ -393,7 +391,7 @@ const EuQual = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (
@@ -410,17 +408,17 @@ const EuQual = () => {
                             <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content='Европейская квалификация'><img loading="lazy" src={logo} alt="logo" /></Tippy></LazyLoad>
                         </div>
                         <div>
-                            <h1 className="pageName">Европейская квалификация <span>Сезон: {season}</span></h1>
-                            <span>Место проведения: <span>Европа</span></span>
+                            <h1 style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className="pageName">Европейская квалификация <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Сезон: {season}</span></h1>
+                            <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Место проведения: <span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Европа</span></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="standingsTopScores">
                 <div className="standingsWrap">
-                    <h2 className="sectionName">Турнирная таблица</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Турнирная таблица</h2>
                     <div className="table5xn standings">
-                        <div className='standGroup'>{group && group}</div>
+                        <div className='standGroup' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{group && group}</div>
                         <div className="head">
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Название"><span>Команда</span></Tippy>
@@ -429,14 +427,14 @@ const EuQual = () => {
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Очки"><span>О</span></Tippy>
                         </div>
                         {standings && standings.length > 0 ? standings : <div className='noData'>Данных нет</div>}
-                        <Link to="/league/eu-qualification/standings">Подробнее</Link>
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/league/eu-qualification/standings">Подробнее</Link>
                     </div>
                 </div>
                 <div className="newsWrap newsVr leagueNews">
                     {news}
                 </div>
                 <div className="topScoresWrap">
-                    <h2 className="sectionName">Бомбардиры</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Бомбардиры</h2>
                     <div className="table6xn topScores">
                         <div className="head">
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
@@ -447,13 +445,13 @@ const EuQual = () => {
                             <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Количество игр"><span>И</span></Tippy>
                         </div>
                         {topScrores && topScrores.length > 0 ? topScrores : <div className='noData'>Данных нет</div>}
-                        <Link to="/league/eu-qualification/topscores">Подробнее</Link>
+                        <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/league/eu-qualification/topscores">Подробнее</Link>
                     </div>
                 </div>
             </div>
             <div className="matchesResultNews">
                 <div className="resultsWrap">
-                    <h2 className="sectionName">Ближайшие матчи</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Ближайшие матчи</h2>
                     <div className="wrap">
                         {fixtures && fixtures.length > 0 ? fixtures : <div className='noData'>Данных нет</div>}
                     </div>
@@ -467,7 +465,7 @@ const EuQual = () => {
                     {news3}
                 </div>
                 <div className="resultsWrap">
-                    <h2 className="sectionName">Последние результаты</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Последние результаты</h2>
                     <div className="wrap">
                         {results && results.length > 0 ? results : <div className='noData'>Данных нет</div>}
                     </div>
@@ -476,7 +474,7 @@ const EuQual = () => {
             <div className="ranksNewsTransfers">
                 <div className="ranksWrap">
                     <div className="ranks">
-                        <h2 className="sectionName">Рейтинг ассоциаций УЕФА</h2>
+                        <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Рейтинг ассоциаций УЕФА</h2>
                         <div className="wrap">
                             <div className="head">
                                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
@@ -484,11 +482,11 @@ const EuQual = () => {
                                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Сумма очков"><span className='summ'>Сумма</span></Tippy>
                             </div>
                             {uefaRank && uefaRank.length > 0 ? uefaRank : <div className='noData'>Данных нет</div>}
-                            <Link to="/other/uefa-country-ranking">Подробнее</Link>
+                            <Link style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} to="/other/uefa-country-ranking">Подробнее</Link>
                         </div>
                     </div>
                     <div className="ranks">
-                        <h2 className="sectionName">Рейтинг ассоциаций ФИФА</h2>
+                        <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Рейтинг ассоциаций ФИФА</h2>
                         <div className="wrap">
                             <div className="head">
                                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Позиция"><span>#</span></Tippy>
@@ -496,7 +494,7 @@ const EuQual = () => {
                                 <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content="Сумма очков"><span className='summ'>Очки</span></Tippy>
                             </div>
                             {fifaRank && fifaRank.length > 0 ? fifaRank : <div className='noData'>Данных нет</div>}
-                            <Link to="/other/fifa-ranking">Подробнее</Link>
+                            <Link to="/other/fifa-ranking" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                         </div>
                     </div>
                 </div>
@@ -504,11 +502,11 @@ const EuQual = () => {
                     {news4}
                 </div>
                 <div id='transferList'>
-                    <h2 className="sectionName">Список популярных трансферов</h2>
+                    <h2 className="sectionName" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Список популярных трансферов</h2>
                     <div className="listWrap">
                         {transferList && transferList.length > 0 ? transferList : <div className='noData'>Данных нет</div>}
                     </div>
-                    <Link to="/transfers/list">Подробнее</Link>
+                    <Link to="/transfers/list" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>Подробнее</Link>
                 </div>
             </div>
             <div id="videoBlogs">

@@ -70,7 +70,7 @@ const TopScores3 = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

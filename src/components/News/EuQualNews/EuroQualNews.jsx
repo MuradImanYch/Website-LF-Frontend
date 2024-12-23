@@ -6,7 +6,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import euQualLogo from '../../../assets/ico/euroQualLogo.webp';
 
@@ -45,7 +45,7 @@ const EuroQualNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -63,7 +63,7 @@ const EuroQualNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -77,9 +77,9 @@ const EuroQualNews = () => {
     return (
         <div id='euQualNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Европейской Квалификации - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Европейской Квалификации, также европейских сборных." />
-                <meta name="keywords" content="уефа, европейская квалификация, европейский футбол, футбол, сборная англии, сборная германии, сборная франции, сборная испании, новости, новости уефа, новости европейской квалификации" />
+                <title>Новости Европейской Квалификации</title>
+                <meta name="description" content="Будьте в курсе всех новостей отборочного турнира Европейской Квалификаци." />
+                <meta name="keywords" content="евро отборочный турнир новости, чемпионат мира отборочный турнир новости, новости европейской квалификации, отборочный турнир че новости, европейская квалификация новости, отборочный турнир чм новости, новости уефа, европейский футбол, сборная англии новости, сборная германии новости, сборная франции новости, сборная испании новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>

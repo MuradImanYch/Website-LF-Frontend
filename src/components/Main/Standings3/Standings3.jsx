@@ -47,21 +47,21 @@ const Standings4 = () => {
             .then(response => {
                 setEuroQualStandings1(response.data && response.data.map((e, i) => {
                     return <div className={'id' + e.standingsGroup} key={'euroQualStandings1' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass && 'Выход в финальную часть турнира'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span className='name'>{e.name}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -75,21 +75,21 @@ const Standings4 = () => {
             .then(response => {
                 setEuroQualStandings2(response.data && response.data.map((e, i) => {
                     return <div className={'id' + e.standingsGroup} key={'euroQualStandings2' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span className='name'>{e.name}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -103,21 +103,21 @@ const Standings4 = () => {
             .then(response => {
                 setEuroQualStandings3(response.data && response.data.map((e, i) => {
                     return <div className={'id' + e.standingsGroup} key={'euroQualStandings3' + i}>
-                        <div className="group">{e.standingsGroup}</div>
+                        <div className="group" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.standingsGroup}</div>
                             <div className="col">
                                 <div className="left">
-                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
+                                    <Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.descrClass !== undefined ? 'Выход в финальную часть турнира' : 'Не квалифицировались'}><span style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null} className={`place ${e.descrClass !== undefined ? e.descrClass : 'out'}`}>{e.place}</span></Tippy>
                                     <LazyLoad offset={800}><Tippy trigger={$(window).width() < 1024 ? 'click' : 'mouseenter'} content={e.name}><img loading="lazy" src={e.logo} alt={e.name} /></Tippy></LazyLoad>
-                                    <span className='name'>{e.name}</span>
+                                    <span className='name' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.name}</span>
                                 </div>
                                 <div className="nums">
-                                    <span className="games">{e.games}</span>
+                                    <span className="games" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.games}</span>
                                     <div className="forAgainst">
-                                        <span className='for'>{e.goalsFor}</span>
+                                        <span className='for' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsFor}</span>
                                         <span>:</span>
-                                        <span className='against'>{e.goalsAgainst}</span>
+                                        <span className='against' style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.goalsAgainst}</span>
                                     </div>
-                                    <div className="points">{e.points}</div>
+                                    <div className="points" style={localStorage.getItem('darkTheme') === 'true' ? {color: '#fff'} : null}>{e.points}</div>
                                 </div>
                             </div>
                     </div>
@@ -128,7 +128,7 @@ const Standings4 = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

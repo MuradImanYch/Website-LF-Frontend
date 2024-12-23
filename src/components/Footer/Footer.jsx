@@ -18,7 +18,7 @@ const Footer = () => {
                         <div>
                             <img src={logo} alt="logo" />
                             <div className="links">
-                                <li><Link to="/suggestions-complaints">— Предложения и жалобы</Link></li>
+                                {/* <li><Link to="/suggestions-complaints">— Предложения и жалобы</Link></li> */}
                                 {/* <li>— Карьера</li> */}
                             </div>
                         </div>

@@ -74,9 +74,9 @@ const MatchesLive = () => {
             });
         }
         
-        fetchData();
+        // fetchData();
         setInterval(() => {
-            fetchData();
+            // fetchData();
         }, 30000);
     }, []);
 

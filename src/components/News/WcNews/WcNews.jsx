@@ -7,7 +7,7 @@ import $ from 'jquery';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import LazyLoad from 'react-lazy-load';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 import wcLogo from '../../../assets/ico/wcLogo.webp';
 
@@ -46,7 +46,7 @@ const WcNews = () => {
                         $(`.newsHr #${'id' + e.id} .img img`).css({'opacity': '0.8'});
                     }
                     return  <div key={'news' + e.id} id={'id' + e.id} className="cart" onMouseEnter={animIn} onMouseLeave={animOut}>
-                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                                <Link to={`/news/read/${e.id + '-' + cyrillicToTranslit().transform(e.title).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                                     <div className="img">
                                         <LazyLoad offset={800}>
                                             <img loading="lazy" alt={e.title} src={e.img} />
@@ -64,7 +64,7 @@ const WcNews = () => {
             });
         }
 
-        fetchData();
+        // fetchData();
     }, [currentPage]);
 
     const selectPagPage = (e) => {
@@ -78,9 +78,9 @@ const WcNews = () => {
     return (
         <div id='wcNews' className='newsHr leagueNews'>
             <Helmet>
-                <title>Новости Чемпионата мира 2026 - на Legendary Football</title>
-                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Мира, который пройдет в трёх странах: США, Канада, Мексика. Также следите за всеми сборными мира." />
-                <meta name="keywords" content="фифа, чемпионат мира, футбол, сборная бразилии, сборная германии, сборная франции, сборная испании, новости, новости фифа, новости чм, чм, чм 2026, чемпионат мира 2026" />
+                <title>Новости Чемпионата мира 2026 (ЧМ 2026)</title>
+                <meta name="description" content="Будьте в курсе всех новостей Чемпионата Мира, который пройдет в трёх странах: США, Канада, Мексика." />
+                <meta name="keywords" content="новости чемпионата мира, новости чм, новости чм 2026, чм новости, чм 2026 новости, чемпионт мира новости, фифа новости, сборная бразилии новости, сборная германии новости, сборная франции новости, сборная испании новости" />
             </Helmet>
             <div className="logoPageName">
                 <LazyLoad offset={800}>
